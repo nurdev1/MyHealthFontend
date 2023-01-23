@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../config/size_config.dart';
 
@@ -42,20 +43,23 @@ class Menu extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed:() {},
-                  icon: Image.asset('images/hopital.png',color: Colors.white,width: 100,),
-                  iconSize: 20,
+                  icon: Icon(MdiIcons.hospital,
+                    color: Colors.white,
+                    size: 35,),
                   padding: EdgeInsets.symmetric(vertical: 20.0),
                 ),
                 IconButton(
                   onPressed:() {},
-                  icon: Image.asset('images/Medecin.png',color: Colors.white,),
-                  iconSize: 20,
+                  icon: Icon(MdiIcons.doctor,
+                    color: Colors.white,
+                    size: 35,),
                   padding: EdgeInsets.symmetric(vertical: 20.0),
                 ),
                 IconButton(
                   onPressed:() {},
-                  icon: Image.asset('images/patient.png',color: Colors.white,),
-                  iconSize: 20,
+                  icon: Icon(MdiIcons.naturePeople,
+                    color: Colors.white,
+                    size: 35,),
                   padding: EdgeInsets.symmetric(vertical: 20.0),
                 ),
                 IconButton(
@@ -80,9 +84,9 @@ class Menu extends StatelessWidget {
                  SizedBox(height: 120,),
               IconButton(
                 onPressed:() {},
-                icon: Image.asset('images/deconect.png',color: Colors.red, height: 100,
-                    width: 900,),
-                iconSize: 20,
+                icon: Icon(MdiIcons.lanDisconnect,
+                  color: Colors.white,
+                  size: 35,),
                 padding: EdgeInsets.symmetric(vertical: 20.0),
               ),
               ],),

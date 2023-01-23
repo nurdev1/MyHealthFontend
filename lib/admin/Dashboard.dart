@@ -28,6 +28,7 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+      backgroundColor:Colors.white,
       key: _drawerKey,
       drawer: SizedBox(width: 100, child: Menu(),),
         appBar: !Responsive.isDesktop(context)
@@ -143,12 +144,12 @@ class Dashboard extends StatelessWidget {
               ),
             ),
             if(Responsive.isDesktop(context))
-            Expanded(
+            /*Expanded(
               flex:4,
               child: Container(
                 width: double.infinity,
                 height: SizeConfig.screenHeight,
-                color: AppColors.secondarBg,
+                color: Colors.grey.withOpacity(0.25),
                //pour scroller
                 child: SingleChildScrollView(
                   padding:
@@ -159,7 +160,26 @@ class Dashboard extends StatelessWidget {
                   ),
                 )
               ),
-            )
+            ),*/
+            Expanded(
+              flex: 4,
+              child: SafeArea(
+                child: Container(
+                  width: double.infinity,
+                  height: SizeConfig.screenHeight,
+                  decoration: BoxDecoration(color: AppColors.secondarBg),
+                  child: SingleChildScrollView(
+                    padding:
+                    EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+                    child: Column(
+                      children: [
+                        DetailDasboard(), ListeActiviteRecente(),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       )

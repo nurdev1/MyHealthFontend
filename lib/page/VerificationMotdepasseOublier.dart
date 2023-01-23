@@ -6,7 +6,7 @@ import 'package:otp_text_field/style.dart';
 
 import '../common/theme_helper.dart';
 import '../widget/HeaderWidget.dart';
-import 'Profil.dart';
+import '../Patient/Profil.dart';
 
 class Verification extends StatefulWidget {
   const Verification({Key? key}) : super(key: key);

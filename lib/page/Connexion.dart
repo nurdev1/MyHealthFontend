@@ -7,7 +7,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import '../common/theme_helper.dart';
 import '../medecin/AccueilMedecin.dart';
 import '../widget/HeaderWidget.dart';
-import 'Inscription.dart';
+import '../Patient/Inscription.dart';
 import 'MotdepasseOublier.dart';
 
 class LoginPage extends StatefulWidget {

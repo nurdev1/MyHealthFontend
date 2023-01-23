@@ -1,9 +1,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/admin/AdminConnexion.dart';
+import 'package:masante/admin/AdminProfil.dart';
+import 'package:masante/admin/AdminSplashPage.dart';
+import 'package:masante/medecin/InscriptionMedecin.dart';
+import 'package:masante/page/Choix.dart';
 import 'package:masante/page/SplashPage.dart';
 
 import 'Patient/PatientNew.dart';
+import 'admin/Dashboard.dart';
 
 void main() {
   runApp(LoginUiApp());
@@ -26,7 +32,9 @@ class LoginUiApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.grey.shade100,
         primarySwatch: Colors.grey,
       ),
-      home: Splash(title: 'Myhealth',)
+      //home: Splash(title: 'Myhealth',),
+      //home: AdminSplash(title: 'Myhealth',),
+      home: AdminProfil(),
 
     );
   }

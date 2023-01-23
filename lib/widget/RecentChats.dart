@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-import '../chat/Chat.dart';
+import '../discutionAvis/Chat.dart';
+
 
 class RecentChats extends StatelessWidget {
   const RecentChats({Key? key}) : super(key: key);

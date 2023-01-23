@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 import '../../config/responsive.dart';
 import '../../config/size_config.dart';
@@ -22,11 +23,11 @@ class InfoMedecin extends StatelessWidget {
         right: Responsive.isDesktop(context) ? 40.0:20,),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
-        color: Colors.blue,
+        color: HexColor('#54DEFC'),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [ Image.asset('images/im2.png',width: 35.0,color: Colors.blueAccent,),
+        children: [ Image.asset('images/im2.png',width: 35.0,color: Colors.white,),
           SizedBox(height: SizeConfig.blockSizeVertical! * 2,),
           PrimaryText(text: "Médecin",color: AppColors.secondarBg,size: 16.0,),
           SizedBox(height: SizeConfig.blockSizeVertical! * 2,),

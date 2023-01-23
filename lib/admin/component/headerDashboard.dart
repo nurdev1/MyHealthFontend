@@ -22,7 +22,7 @@ class HeaderDasboard extends StatelessWidget {
                 Column(
                   children: [
                     PrimaryText(text: 'Tableau de bord',size: 30.0 ,fontWeight: FontWeight.w800,),
-                    PrimaryText(text: 'le suivis',size: 30.0 ,fontWeight: FontWeight.w800, color: AppColors.secondarBg,),
+                    PrimaryText(text: 'le suivis',size: 30.0 ,fontWeight: FontWeight.w800, color: Colors.black,),
                   ],
                 ),
               ],

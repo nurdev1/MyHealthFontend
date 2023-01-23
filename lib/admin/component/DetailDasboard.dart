@@ -28,7 +28,7 @@ class DetailDasboard extends StatelessWidget {
                       offset: const Offset(10.0, 15.0)
                   )]
               ),
-              child:  Image.asset('images/medecin.png',color: Colors.black),
+              child:  Image.asset('assets/images/profil.jpg',),
             ),
             SizedBox(height: SizeConfig.blockSizeVertical! * 5,),
             Column(

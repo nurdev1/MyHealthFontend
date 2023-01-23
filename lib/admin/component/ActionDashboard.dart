@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../style/colors.dart';
 
@@ -20,21 +21,16 @@ class ActionDashboard extends StatelessWidget {
                 children: [
                   IconButton(
                       onPressed: () {},
-                      icon: Image.asset('images/notetif.png',
-                        width: 20.0,)
-                  ),
-                  SizedBox(width: 10.0,),
-                  IconButton(
-                      onPressed: () {},
-                      icon: Image.asset('images/notetif.png',
-                        width: 20.0,)
+                    icon: Icon(Icons.notifications_outlined,
+                      color: Colors.white,
+                      size: 35,),
                   ),
                   SizedBox(width: 15.0,),
                   Row(
                     children: [
                       CircleAvatar(
-                        radius: 17,
-                        backgroundImage: NetworkImage('images/profil.jpg'),
+                        radius: 30,
+                        backgroundImage: AssetImage("assets/images/profil.jpg",),
                       ),
                       Icon(Icons.arrow_drop_down_outlined, color: AppColors.white,)
                     ],

@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:masante/admin/AdminConnexion.dart';
 
-import 'Connexion.dart';
 
-class Splash extends StatefulWidget {
-  Splash({Key? key, required this.title}) : super(key: key);
+class AdminSplash extends StatefulWidget {
+  AdminSplash({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -14,14 +14,14 @@ class Splash extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<Splash> {
+class _SplashScreenState extends State<AdminSplash> {
   bool _isVisible = false;
 
   _SplashScreenState() {
     new Timer(const Duration(milliseconds: 2000), () {
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => LoginPage()), (
+            MaterialPageRoute(builder: (context) => AdminLogin()), (
             route) => false);
       });
     });

@@ -4,11 +4,11 @@ import 'package:flutter/services.dart';
 
 
 import '../widget/HeaderWidget.dart';
-import 'Connexion.dart';
+import '../page/Connexion.dart';
 import 'Inscription.dart';
-import 'MotdepasseOublier.dart';
-import 'SplashPage.dart';
-import 'VerificationMotdepasseOublier.dart';
+import '../page/MotdepasseOublier.dart';
+import '../page/SplashPage.dart';
+import '../page/VerificationMotdepasseOublier.dart';
 
 class Profil extends StatefulWidget{
   const Profil({super.key});
