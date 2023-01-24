@@ -7,7 +7,7 @@ import 'MedecinProfil.dart';
 
 class MedecinAccueil extends StatelessWidget {
  // const MedecinAccueil({Key? key}) : super(key: key);
-  double _headerHeight =  200;
+  double _headerHeight =  160;
 
   @override
   Widget build(BuildContext context) {

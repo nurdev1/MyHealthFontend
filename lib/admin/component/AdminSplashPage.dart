@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:masante/admin/AdminConnexion.dart';
+import 'package:masante/admin/component/AdminConnexion.dart';
 
 
 class AdminSplash extends StatefulWidget {

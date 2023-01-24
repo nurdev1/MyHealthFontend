@@ -9,4 +9,8 @@ class AppColors{
   static const primaryBg = Color(0xff5f5fd);
   static const secondarBg = Color(0xffececf6);
   static const barBg = Color(0xffe33ee);
+
+
+  static const KMaxwith = 1332.0;
+  static const KPadding = 20.0;
 }

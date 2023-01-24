@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/medecin/AccueilMedecin.dart';
+import 'package:masante/medecin/ListePatient.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 
@@ -66,9 +68,18 @@ class MedecinProfil extends StatelessWidget {
                                     ]
                                   ),
                                   child: Center(
-                                    child: Icon(
-                                      Icons.arrow_back,
-                                      color: HexColor('#54DEFC'), size: 28,)
+                                    child:
+                                    GestureDetector(
+                                      child: Icon(
+                                        Icons.arrow_back,
+                                        color: HexColor('#54DEFC'), size: 28,),
+                                      onTap: () {
+                                        Navigator.push(context, MaterialPageRoute(
+                                            builder: (context) => MedecinAccueil()
+                                        )
+                                        );
+                                      },
+                                    ),
                                     ),
                                   ),
                                 ),

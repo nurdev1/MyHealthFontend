@@ -1,21 +1,24 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:masante/page/Choix.dart';
+import 'package:masante/medecin/AccueilMedecin.dart';
+import 'package:masante/medecin/InscriptionMedecin.dart';
 
+
+import '../Patient/Profil.dart';
 import '../common/theme_helper.dart';
 import '../widget/HeaderWidget.dart';
-import 'Profil.dart';
 
-class Inscription extends  StatefulWidget{
+class InscriptionMedecin2 extends  StatefulWidget{
   @override
   State<StatefulWidget> createState() {
-    return _Inscription();
+    return _InscriptionMedecin2();
   }
 }
 
-class _Inscription extends State<Inscription>{
+class _InscriptionMedecin2 extends State<InscriptionMedecin2>{
 
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
@@ -34,28 +37,28 @@ class _Inscription extends State<Inscription>{
             ),
             Padding(
               padding: EdgeInsets.only(top: 50),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      GestureDetector(
-                        child: Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                          size: 35,
-                        ),
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => ChoixPage()
-                          )
-                          );
-                        },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    GestureDetector(
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                        size: 35,
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => InscriptionMedecin()
+                        )
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
 
             ),
             Container(
@@ -91,6 +94,7 @@ class _Inscription extends State<Inscription>{
                                   color: Colors.grey.shade300,
                                   size: 80.0,
                                 ),
+
                               ),
                               Container(
                                 padding: EdgeInsets.fromLTRB(80, 80, 0, 0),
@@ -106,41 +110,25 @@ class _Inscription extends State<Inscription>{
                         SizedBox(height: 30,),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration('Prenom', 'Entrez votre prénom'),
+                            decoration: ThemeHelper().textInputDecoration('Ville', 'Entrez votre ville'),
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 30,),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration('Nom', 'Entrez votre nom '),
+                            decoration: ThemeHelper().textInputDecoration('Adresse', 'Entrez votre adresse '),
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration("E-mail address", "Entrez votre email"),
+                            decoration: ThemeHelper().textInputDecoration("diplôme", "Selectionner un fichier"),
                             keyboardType: TextInputType.emailAddress,
                             validator: (val) {
                               if(!(val!.isEmpty) && !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$").hasMatch(val)){
-                                return "Enter a valid email address";
-                              }
-                              return null;
-                            },
-                          ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                        ),
-                        SizedBox(height: 20.0),
-                        Container(
-                          child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration(
-                                "Numéro téléphone",
-                                "Entrez votre numéro de téléhone"),
-                            keyboardType: TextInputType.phone,
-                            validator: (val) {
-                              if(!(val!.isEmpty) && !RegExp(r"^(\d+)*$").hasMatch(val)){
-                                return "Entrez un numéro de téléphone valide";
+                                return "Enter un fichier valide ";
                               }
                               return null;
                             },
@@ -153,6 +141,21 @@ class _Inscription extends State<Inscription>{
                             obscureText: true,
                             decoration: ThemeHelper().textInputDecoration(
                                 "mot de passe*", "Entrer votre mot de passe"),
+                            validator: (val) {
+                              if (val!.isEmpty) {
+                                return "s'il vous plait entrez votre mot de passe";
+                              }
+                              return null;
+                            },
+                          ),
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        ),
+                        SizedBox(height: 20.0),
+                        Container(
+                          child: TextFormField(
+                            obscureText: true,
+                            decoration: ThemeHelper().textInputDecoration(
+                                "Comfirmer vore mot de passe*", "Entrez votre adresse e-mail"),
                             validator: (val) {
                               if (val!.isEmpty) {
                                 return "s'il vous plait entrez votre mot de passe";
@@ -177,7 +180,7 @@ class _Inscription extends State<Inscription>{
                                             state.didChange(value);
                                           });
                                         }),
-                                    Text("J'accepte tous les termes et conditions.", style: TextStyle(color: Colors.grey),),
+                                    Text("J'accepte tous les termes et conditions.", style: TextStyle(color: Colors.black54),),
                                   ],
                                 ),
                                 Container(
@@ -219,7 +222,7 @@ class _Inscription extends State<Inscription>{
                               if (_formKey.currentState!.validate()) {
                                 Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
-                                        builder: (context) => Profil()
+                                        builder: (context) => MedecinAccueil()
                                     ),
                                         (Route<dynamic> route) => false
                                 );
@@ -228,7 +231,7 @@ class _Inscription extends State<Inscription>{
                           ),
                         ),
                         SizedBox(height: 30.0),
-                        Text("Ou créez un compte en utilisant les médias sociaux",  style: TextStyle(color: Colors.grey),),
+                        Text("Ou créez un compte en utilisant les médias sociaux",  style: TextStyle(color: Colors.black54),),
                         SizedBox(height: 25.0),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,

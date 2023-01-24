@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:masante/page/Choix.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 
@@ -105,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = (){
                                           Navigator.push(context, MaterialPageRoute(
-                                              builder: (context) => Inscription()
+                                              builder: (context) => ChoixPage()
                                           )
                                           );
                                         },

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/Patient/AjouterDossier.dart';
+import 'package:masante/Patient/ListeMedecin.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../widget/EntetePage.dart';
@@ -10,17 +12,17 @@ import 'MedecinListe.dart';
 
 class PatientAccueil extends StatelessWidget {
   //const PatientAccueil({Key? key}) : super(key: key);
-  double _headerHeight =  200;
+  double _headerHeight =  140;
   List Noms = [
-    "Dentiste",
-    "Cardiologue",
-    "Généraliste",
-    "Neurologue",
-    "Dermatologie"
+    "Consultation",
+    "Analyse",
+    "Radiographie",
+    "Traitement",
+    "Antécetent"
   ];
 
   List<Icon> LesIcons = [
-    Icon(MdiIcons.toolboxOutline, color: HexColor('#54DEFC'),size: 30,),
+    Icon(MdiIcons.file, color: HexColor('#54DEFC'),size: 30,),
     Icon(MdiIcons.heartPlus, color: HexColor('#54DEFC'),size: 30,),
     Icon(MdiIcons.eye, color: HexColor('#54DEFC'),size: 30,),
     Icon(MdiIcons.brain, color: HexColor('#54DEFC'),size: 30,),
@@ -73,7 +75,7 @@ class PatientAccueil extends StatelessWidget {
                 Text(
                   "votre dossier médical \nest notre priorité",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
                   ),
@@ -83,13 +85,22 @@ class PatientAccueil extends StatelessWidget {
               ),
               SizedBox(height: 30,),
               Padding(padding: EdgeInsets.only(left: 15),
-                child: Text(
-                  "Catégories",
-                  style: TextStyle(
-                    color: Colors.black.withOpacity(0.7),
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
+                child:
+                GestureDetector(
+                  child: Text(
+                    "Les dossiers",
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(0.7),
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => AjouterDossier()
+                    )
+                    );
+                  },
                 ),
               ),
               SizedBox(height: 20,),
@@ -152,10 +163,19 @@ class PatientAccueil extends StatelessWidget {
                       )
                       ),
                     ),
-                    Text('Voir plus',
-                        style: TextStyle(
-                          fontSize: 20,
+
+                    GestureDetector(
+                      child: Text('Voir plus',
+                          style: TextStyle(
+                            fontSize: 20,
+                          )
+                      ),
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => ListeMedecin()
                         )
+                        );
+                      },
                     ),
                   ],
                 ),
