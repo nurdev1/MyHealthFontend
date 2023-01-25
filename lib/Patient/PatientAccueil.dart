@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/Patient/AjouterDossier.dart';
 import 'package:masante/Patient/ListeMedecin.dart';
+import 'package:masante/Patient/PatientListeMedecin.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../widget/EntetePage.dart';
@@ -172,7 +173,7 @@ class PatientAccueil extends StatelessWidget {
                       ),
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(
-                            builder: (context) => ListeMedecin()
+                            builder: (context) => PatientListeMedecinPage()
                         )
                         );
                       },

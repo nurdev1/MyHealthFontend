@@ -80,11 +80,14 @@ class Dashboard extends StatelessWidget {
                           runSpacing: 20.0,
                           spacing: 20.0,
                           alignment: WrapAlignment.spaceBetween,
+                          crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            InfoMedecin(),
                             InfoHopitalDansboard(),
+                            InfoMedecin(),
                             InfoPatientDasboard(),
-                            InfoSpecialiteDasboard(),
+                           // InfoSpecialiteDasboard(),
+
+
                             SizedBox(
                               height: SizeConfig.blockSizeVertical! * 4,
                             ),
@@ -95,12 +98,12 @@ class Dashboard extends StatelessWidget {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    PrimaryText(text: 'Par année',
+                                    PrimaryText(text: 'Par mois',
                                       size: 16,
                                     color: Colors.black45,),
-                                    PrimaryText(text: '\Par année',
+                                   /* PrimaryText(text: '\Par année',
                                       size: 30,
-                                      color: Colors.black,),
+                                      color: Colors.black,),*/
                                   ],
                                 ),
                                 PrimaryText(text: 'Pendant 30 Jours',
@@ -144,23 +147,6 @@ class Dashboard extends StatelessWidget {
               ),
             ),
             if(Responsive.isDesktop(context))
-            /*Expanded(
-              flex:4,
-              child: Container(
-                width: double.infinity,
-                height: SizeConfig.screenHeight,
-                color: Colors.grey.withOpacity(0.25),
-               //pour scroller
-                child: SingleChildScrollView(
-                  padding:
-                  EdgeInsets.symmetric(vertical: 30.0, horizontal: 30.0),
-                  child: Column(
-                    children: [
-                      DetailDasboard(), ListeActiviteRecente(),],
-                  ),
-                )
-              ),
-            ),*/
             Expanded(
               flex: 4,
               child: SafeArea(

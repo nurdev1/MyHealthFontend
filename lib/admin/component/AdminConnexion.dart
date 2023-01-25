@@ -21,7 +21,7 @@ class AdminLogin extends StatelessWidget {
               colors: [
                 HexColor('#54DEFC'),
                 HexColor('#54DEFC'),
-                HexColor('#EB455F'),
+                Color(0xFFE3F2FD)
               ]
             )
           ),

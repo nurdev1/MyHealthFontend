@@ -45,6 +45,7 @@ dependencies:
   material_design_icons_flutter: ^6.0.7096
   flutter_custom_clippers: ^2.1.0
   custom_clippers: ^2.0.0
+  awesome_dialog: ^3.0.2
 
 
 dev_dependencies:

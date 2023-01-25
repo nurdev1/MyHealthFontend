@@ -16,7 +16,7 @@ class InfoMedecin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(minWidth: Responsive.isDesktop(context) ?  200.0:160),
+      constraints: BoxConstraints(minWidth: Responsive.isDesktop(context) ? 200 : SizeConfig.screenWidth!/2 - 40),
       padding: EdgeInsets.only(
         top: 20.0, left: 20.0,
         bottom: 20.0,
@@ -26,10 +26,10 @@ class InfoMedecin extends StatelessWidget {
         color: HexColor('#54DEFC'),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [ Image.asset('images/im2.png',width: 35.0,color: Colors.white,),
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [ Image.asset('images/im2.png',width: 35.0,color: Colors.black,),
           SizedBox(height: SizeConfig.blockSizeVertical! * 2,),
-          PrimaryText(text: "Médecin",color: AppColors.secondarBg,size: 16.0,),
+          PrimaryText(text: "Médecin",color: Colors.black,size: 16.0,),
           SizedBox(height: SizeConfig.blockSizeVertical! * 2,),
           PrimaryText(text: "934",fontWeight: FontWeight.w700,size: 18.0,),
         ],

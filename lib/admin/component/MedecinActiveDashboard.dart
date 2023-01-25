@@ -23,24 +23,23 @@ class MedecinNouveau extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(top: 10.0,bottom: 10.0,left: 20.0),
+                padding: const EdgeInsets.only(
+                    top: 10.0,bottom: 10.0,left: 20.0),
                 child: CircleAvatar(
                   radius: 17,
-                  backgroundImage:AssetImage('im3.png'),
+                  backgroundImage:AssetImage('assets/images/profil.jpg'),
                 ),
               ),
               PrimaryText(text: 'Mohamed Tumkara',size: 16,
                 color: Colors.black87,
               ),
-              PrimaryText(text: 'Mohamed Tumkara',size: 16,
+              PrimaryText(text: 'Hôpital du Mali',size: 16,
+                color: Colors.black87,
+              ),PrimaryText(text: 'Dentiste',size: 16,
                 color: Colors.black87,
               ),
-              PrimaryText(text: 'Mohamed Tumkara',size: 16,
-                color: Colors.black87,
-              ),
-              PrimaryText(text: 'Mohamed Tumkara',size: 16,
-                color: Colors.black87,
-              ),
+            
+
             ],
           ),
           ),

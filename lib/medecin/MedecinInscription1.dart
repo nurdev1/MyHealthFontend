@@ -1,21 +1,21 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:masante/page/Choix.dart';
+import 'package:masante/medecin/InscriptionMedecin.dart';
+import 'package:masante/medecin/MedecinInscription2.dart';
 
 
 import '../common/theme_helper.dart';
 import '../widget/HeaderWidget.dart';
-import 'MedecinInscription1.dart';
 
-class InscriptionMedecin extends  StatefulWidget{
+class InscriptionMedecin1 extends  StatefulWidget{
   @override
   State<StatefulWidget> createState() {
-    return _InscriptionMedecin();
+    return _InscriptionMedecin1();
   }
 }
 
-class _InscriptionMedecin extends State<InscriptionMedecin>{
+class _InscriptionMedecin1 extends State<InscriptionMedecin1>{
 
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
@@ -47,7 +47,7 @@ class _InscriptionMedecin extends State<InscriptionMedecin>{
                         ),
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => ChoixPage()
+                              builder: (context) => InscriptionMedecin()
                           )
                           );
                         },
@@ -91,6 +91,7 @@ class _InscriptionMedecin extends State<InscriptionMedecin>{
                                   color: Colors.grey.shade300,
                                   size: 80.0,
                                 ),
+
                               ),
                               Container(
                                 padding: EdgeInsets.fromLTRB(80, 80, 0, 0),
@@ -106,35 +107,35 @@ class _InscriptionMedecin extends State<InscriptionMedecin>{
                         SizedBox(height: 100,),
                         Container(
                           child: Text(
-                            'Créer ton compte et retrouve à tout moment les dossiers patients',
+                            'Les dossiers patients à notre mains',
                             style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: 'Roboto'
+                                fontSize: 20,
+                                fontFamily: 'Roboto'
                             ),
                           ),
                         ),
                         SizedBox(height: 30,),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration('Prenom', 'Entrez votre prénom'),
+                            decoration: ThemeHelper().textInputDecoration('Ville', 'Entrez votre ville'),
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 30,),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration('Nom', 'Entrez votre nom '),
+                            decoration: ThemeHelper().textInputDecoration('Adresse', 'Entrez votre adresse '),
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration("E-mail address", "Entrez votre email"),
+                            decoration: ThemeHelper().textInputDecoration("diplôme", "Selectionner un fichier"),
                             keyboardType: TextInputType.emailAddress,
                             validator: (val) {
                               if(!(val!.isEmpty) && !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$").hasMatch(val)){
-                                return "Enter a valid email address";
+                                return "Enter un fichier valide ";
                               }
                               return null;
                             },
@@ -145,8 +146,8 @@ class _InscriptionMedecin extends State<InscriptionMedecin>{
                         Container(
                           child: TextFormField(
                             decoration: ThemeHelper().textInputDecoration(
-                                "Numéro téléphone",
-                                "Entrez votre numéro de téléhone"),
+                                "Spécialité",
+                                "Entrer le nom  de votre spécialité"),
                             keyboardType: TextInputType.phone,
                             validator: (val) {
                               if(!(val!.isEmpty) && !RegExp(r"^(\d+)*$").hasMatch(val)){
@@ -157,17 +158,28 @@ class _InscriptionMedecin extends State<InscriptionMedecin>{
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        SizedBox(height: 20.0),
-
-
-
-                        SizedBox(height: 15.0),
-
+                        /*SizedBox(height: 20.0),
+                        Container(
+                          child: TextFormField(
+                            decoration: ThemeHelper().textInputDecoration(
+                                "Spécialité",
+                                "Entrer le nom  de votre spécialité"),
+                            keyboardType: TextInputType.phone,
+                            validator: (val) {
+                              if(!(val!.isEmpty) && !RegExp(r"^(\d+)*$").hasMatch(val)){
+                                return "Entrez un numéro de téléphone valide";
+                              }
+                              return null;
+                            },
+                          ),
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        ),
+*/
                         SizedBox(height: 20.0),
                         Container(
                           decoration: ThemeHelper().buttonBoxDecoration(context),
                           child: ElevatedButton(
-                           style: ThemeHelper().buttonStyle(),
+                            style: ThemeHelper().buttonStyle(),
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
                               child: Text(
@@ -183,7 +195,7 @@ class _InscriptionMedecin extends State<InscriptionMedecin>{
                               if (_formKey.currentState!.validate()) {
                                 Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
-                                        builder: (context) => InscriptionMedecin1()
+                                        builder: (context) => InscriptionMedecin2()
                                     ),
                                         (Route<dynamic> route) => false
                                 );

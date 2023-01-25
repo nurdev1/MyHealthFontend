@@ -1,15 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:masante/Patient/AjouterDossier.dart';
-import 'package:masante/Patient/ListeMedecin.dart';
-import 'package:masante/Patient/PatientAccueil.dart';
-import 'package:masante/medecin/InscriptionMedecin.dart';
-import 'package:masante/medecin/ListePatient.dart';
-import 'package:masante/medecin/PatientListe.dart';
-import 'package:masante/medecin/PatientListePage.dart';
-import 'package:masante/page/Choix.dart';
+
 import 'package:masante/page/SplashPage.dart';
+
+import 'admin/component/AdminSplashPage.dart';
 
 
 
@@ -35,9 +30,9 @@ class LoginUiApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.grey.shade100,
         primarySwatch: Colors.grey,
       ),
-      home: Splash(title: 'Myhealth',),
-      //home: AdminSplash(title: 'Myhealth',),
-      //home: InscriptionMedecin(),
+     // home: Splash(title: 'Myhealth',),
+      home: AdminSplash(title: 'Myhealth',),
+     // home: InscriptionMedecin(),
 
     );
   }

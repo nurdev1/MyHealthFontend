@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/medecin/AccueilMedecin.dart';
-import 'package:masante/medecin/InscriptionMedecin.dart';
 
 
-import '../Patient/Profil.dart';
 import '../common/theme_helper.dart';
 import '../widget/HeaderWidget.dart';
+import 'MedecinInscription1.dart';
 
 class InscriptionMedecin2 extends  StatefulWidget{
   @override
@@ -32,8 +31,8 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2>{
         child: Stack(
           children: [
             Container(
-              height: 150,
-              child: HeaderWidget(150, Icons.person_add_alt_1_rounded, false),
+              height: 250,
+              child: HeaderWidget(250, Icons.person_add_alt_1_rounded, false),
             ),
             Padding(
               padding: EdgeInsets.only(top: 50),
@@ -50,7 +49,7 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2>{
                       ),
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(
-                            builder: (context) => InscriptionMedecin()
+                            builder: (context) => InscriptionMedecin1()
                         )
                         );
                       },
@@ -107,28 +106,16 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2>{
                             ],
                           ),
                         ),
-                        SizedBox(height: 30,),
+
+                        SizedBox(height: 120,),
+
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration('Ville', 'Entrez votre ville'),
-                          ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                        ),
-                        SizedBox(height: 30,),
-                        Container(
-                          child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration('Adresse', 'Entrez votre adresse '),
-                          ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                        ),
-                        SizedBox(height: 20.0),
-                        Container(
-                          child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration("diplôme", "Selectionner un fichier"),
+                            decoration: ThemeHelper().textInputDecoration("Hôpital", "Selectionner un hôpital"),
                             keyboardType: TextInputType.emailAddress,
                             validator: (val) {
                               if(!(val!.isEmpty) && !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$").hasMatch(val)){
-                                return "Enter un fichier valide ";
+                                return "Selectionner un hôpital valide ";
                               }
                               return null;
                             },

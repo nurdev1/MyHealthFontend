@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/medecin/AccueilMedecin.dart';
 import 'package:masante/medecin/ListePatient.dart';
+import 'package:masante/medecin/ModifierProfile.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 
@@ -246,7 +247,12 @@ class MedecinProfil extends StatelessWidget {
                       backgroundColor:  HexColor('#54DEFC'),
                       icon: Icon(MdiIcons.update,size: 24.0,color: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => ModifierProfilMedecin()
+                        )
+                        );
+                      },
                     ),
                     FloatingActionButton.extended(
                       label: Text('Supprimer',

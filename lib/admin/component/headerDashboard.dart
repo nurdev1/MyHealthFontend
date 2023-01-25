@@ -22,7 +22,7 @@ class HeaderDasboard extends StatelessWidget {
                 Column(
                   children: [
                     PrimaryText(text: 'Tableau de bord',size: 30.0 ,fontWeight: FontWeight.w800,),
-                    PrimaryText(text: 'le suivis',size: 30.0 ,fontWeight: FontWeight.w800, color: Colors.black,),
+                    PrimaryText(text: 'le suivis',size: 16.0 ,fontWeight: FontWeight.w400, color: Colors.black,),
                   ],
                 ),
               ],
@@ -30,7 +30,7 @@ class HeaderDasboard extends StatelessWidget {
         ),
         Spacer(flex: 1,),
         Expanded(
-          flex: Responsive.isDesktop(context) ? 1:2,
+          flex: Responsive.isDesktop(context) ? 1:3,
             child: TextField(
           decoration: InputDecoration(
               filled: true,
@@ -40,15 +40,17 @@ class HeaderDasboard extends StatelessWidget {
               BorderRadius.circular(30.0),
                 borderSide: BorderSide(color: AppColors.white),
               ),
-              focusedBorder: OutlineInputBorder(borderRadius:
-              BorderRadius.circular(30.0),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30.0),
                 borderSide: BorderSide(color: AppColors.white),
               ),
               prefixIcon: Icon(Icons.search,color: Colors.black,),
-              hintText: 'Recherche',
+              hintText: 'recherche',
               helperStyle: TextStyle(color: AppColors.secondarBg, fontSize: 14.0)
           ),
-        ))
+        )
+        ),
+
       ],
     );
   }

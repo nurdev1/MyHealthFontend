@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../config/size_config.dart';
@@ -27,68 +28,118 @@ class Menu extends StatelessWidget {
                   height: 100,
                   padding: EdgeInsets.only(top: 20),
                   child: SizedBox(
-                    width: 35,
-                    height: 35,
-                    child:  Image.asset('images/m1.png'),
+                    width: 50,
+                    height: 50,
+                    child:  Image.asset('images/logo.png',
+                      ),
                   ),
                 ),
+                SizedBox(height: 15,),
+                Text('Fatoumata', style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+                ),
+                //SizedBox(height: 2,),
                 IconButton(
                   onPressed:() {},
                   icon: const Icon(
                     Icons.home,
                     color: Colors.white,
-                    size:35.0,),
+                    size:30.0,),
                   iconSize: 20,
                   padding: EdgeInsets.symmetric(vertical: 20.0),
+                ),
+                //SizedBox(height: 2,),
+                Text('Accueil', style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
                 ),
                 IconButton(
                   onPressed:() {},
                   icon: Icon(MdiIcons.hospital,
                     color: Colors.white,
-                    size: 35,),
+                    size: 30,),
                   padding: EdgeInsets.symmetric(vertical: 20.0),
+                ),
+                //SizedBox(height: 2,),
+                Text('Hôpital', style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
                 ),
                 IconButton(
                   onPressed:() {},
                   icon: Icon(MdiIcons.doctor,
                     color: Colors.white,
-                    size: 35,),
+                    size: 30,),
                   padding: EdgeInsets.symmetric(vertical: 20.0),
+                ),
+                //SizedBox(height: 2,),
+                Text('Medécin', style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
                 ),
                 IconButton(
                   onPressed:() {},
                   icon: Icon(MdiIcons.naturePeople,
                     color: Colors.white,
-                    size: 35,),
+                    size: 30,),
                   padding: EdgeInsets.symmetric(vertical: 20.0),
+                ),
+                //SizedBox(height: 2,),
+                Text('Patient', style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
                 ),
                 IconButton(
                   onPressed:() {},
                   icon: const Icon(
                     Icons.notification_important_outlined,
                     color: Colors.white,
-                    size:35.0,),
+                    size:30.0,),
                   iconSize: 20,
 
                   padding: EdgeInsets.symmetric(vertical: 20.0),
+                ),
+                //SizedBox(height: 2,),
+                Text('Notification', style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
                 ),
                 IconButton(
                   onPressed:() {},
                   icon: const Icon(
                     Icons.settings,
                     color: Colors.white,
-                    size:35.0,),
+                    size:30.0,),
                   padding: EdgeInsets.symmetric(vertical: 20.0),
                 ),
+                //SizedBox(height: 2,),
+                Text('Paramètres', style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+                ),
 
-                 SizedBox(height: 120,),
+                 SizedBox(height: 25,),
               IconButton(
                 onPressed:() {},
-                icon: Icon(MdiIcons.lanDisconnect,
-                  color: Colors.white,
-                  size: 35,),
+                icon: Icon(Icons.turn_left_outlined,
+                  color: HexColor('#EB455F'),
+                  size: 30,),
                 padding: EdgeInsets.symmetric(vertical: 20.0),
               ),
+                //SizedBox(height: 2,),
+                Text('déconnecter', style: TextStyle(
+                  color: HexColor("EB455F"),
+                  fontSize: 14,
+                ),
+                ),
               ],),
           ),
         ),

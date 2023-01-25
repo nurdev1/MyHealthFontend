@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../config/size_config.dart';
 import '../../style/colors.dart';
 import '../../style/style.dart';
 
@@ -16,26 +17,71 @@ class ListeActiviteRecente extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: EdgeInsets.only(left: 0,right: 20.0),
-      visualDensity: VisualDensity.standard,
-      leading: Container(
-        width: 50.0,
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-        decoration: BoxDecoration(
-            color: AppColors.white,
-            borderRadius: BorderRadius.circular(20)
+    return Column(
+      children: [
+        SizedBox(
+          height: SizeConfig.blockSizeVertical! * 5,
         ),
-        child:  Image.asset(icon!,width: 20.0,),
-      ),
-      title: PrimaryText(text: nom!, size: 14.0, fontWeight: FontWeight.w500,),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            PrimaryText(
+                text: 'Consultation', size: 18, fontWeight: FontWeight.w800),
+            PrimaryText(
+              text: '02 Janvier 2023',
+              size: 14,
+              fontWeight: FontWeight.w400,
+              color: AppColors.secondary,
+            ),
+          ],
+        ),
+        Consultation(),
+        Consultation(),
+        Consultation(),
+      ],
+    );
+  }
+}
+
+class Consultation extends StatelessWidget {
+  const Consultation({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      contentPadding: EdgeInsets.only(left: 0, right: 20),
+      visualDensity: VisualDensity.standard,
+
       subtitle: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          PrimaryText(text: "successfuly", size: 12.0,color: AppColors.black,),
-          PrimaryText(text: nombre!, size: 16.0,color: AppColors.secondarBg,fontWeight: FontWeight.w600,)
+          /*text: "Medecin",
+          size: 14,
+          fontWeight: FontWeight.w500),*/
+          PrimaryText(
+            text: 'Medecin',
+            size: 12,
+            fontWeight: FontWeight.w500,
+            color: AppColors.secondary,
+          ),
+          PrimaryText(
+            text: 'Patient',
+            size: 12,
+            fontWeight: FontWeight.w400,
+            color: AppColors.secondary,
+          ),
+          PrimaryText(
+              text: '4',
+              size: 16,
+              fontWeight: FontWeight.w600),
         ],
       ),
+      onTap: () {
+        print('tap');
+      },
+      selected: true,
     );
   }
 }

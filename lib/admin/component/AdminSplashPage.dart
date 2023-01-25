@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:masante/admin/Dashboard.dart';
 import 'package:masante/admin/component/AdminConnexion.dart';
 
 
@@ -21,7 +22,7 @@ class _SplashScreenState extends State<AdminSplash> {
     new Timer(const Duration(milliseconds: 2000), () {
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => AdminLogin()), (
+            MaterialPageRoute(builder: (context) => Dashboard()), (
             route) => false);
       });
     });
