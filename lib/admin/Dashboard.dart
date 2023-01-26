@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 
 
@@ -48,6 +49,7 @@ class Dashboard extends StatelessWidget {
           preferredSize: Size.zero,
           child: SizedBox(),
         ),
+
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,90 +64,96 @@ class Dashboard extends StatelessWidget {
                     child: Menu())
             ),
             Expanded(
-              flex:10,
-              child: Container(
-                width: double.infinity,
-                height: SizeConfig.screenHeight,
-                child: SingleChildScrollView(
-                  padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 30.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      HeaderDasboard(),
-
-                      SizedBox(height: SizeConfig.blockSizeVertical! * 4,),
-                      SizedBox(
-                        width: SizeConfig.screenHeight,
-                        child: Wrap(
-                          runSpacing: 20.0,
-                          spacing: 20.0,
-                          alignment: WrapAlignment.spaceBetween,
-                          crossAxisAlignment: WrapCrossAlignment.center,
+                flex: 10,
+                child: SafeArea(
+                  child: SingleChildScrollView(
+                    padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        HeaderDasboard(),
+                        SizedBox(
+                          height: SizeConfig.blockSizeVertical! * 4,
+                        ),
+                        SizedBox(
+                          width: SizeConfig.screenWidth,
+                          child: Wrap(
+                            spacing: 20,
+                            runSpacing: 20,
+                            alignment: WrapAlignment.spaceBetween,
+                            children: [
+                              InfoHopitalDansboard(),
+                              InfoMedecin(),
+                              InfoPatientDasboard(),
+                              InfoSpecialiteDasboard()
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: SizeConfig.blockSizeVertical! * 4,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            InfoHopitalDansboard(),
-                            InfoMedecin(),
-                            InfoPatientDasboard(),
-                           // InfoSpecialiteDasboard(),
-
-
-                            SizedBox(
-                              height: SizeConfig.blockSizeVertical! * 4,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    PrimaryText(text: 'Par mois',
-                                      size: 16,
-                                    color: Colors.black45,),
-                                   /* PrimaryText(text: '\Par année',
-                                      size: 30,
-                                      color: Colors.black,),*/
-                                  ],
-                                ),
-                                PrimaryText(text: 'Pendant 30 Jours',
-                                  size: 30,
-                                  color: Colors.black,),
-                              ],
-                            ),
-                            SizedBox(
-                              height: SizeConfig.blockSizeVertical! * 4,
-                            ),
-                            Container(
-                              height: 180,
-                              child: BarchartComponent(),
-                            ),
-                            SizedBox(
-                              height: SizeConfig.blockSizeVertical! * 5,
-                            ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                PrimaryText(text: 'Nouveau Médecin ',
-                                size: 30,
-                                    color: Colors.black87,),
-                              PrimaryText(text: 'Traitement Dossier',
-                                size: 16,
-                                color: Colors.black87,),
+                                PrimaryText(
+                                  text: 'Utilisation',
+                                  size: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.secondary,
+                                ),
+                                /*PrimaryText(
+                                    text: '\$1500',
+                                    size: 30,
+                                    fontWeight: FontWeight.w800),*/
                               ],
                             ),
-                            SizedBox(
-                              height: SizeConfig.blockSizeVertical! * 3,
+                            PrimaryText(
+                              text: 'Pendant 30 jours',
+                              size: 16,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.secondary,
                             ),
-                            MedecinNouveau(),
-                            if(!Responsive.isDesktop(context))
-                              ListeActiviteRecente(),
                           ],
                         ),
-                      )
-                    ],
+                        SizedBox(
+                          height: SizeConfig.blockSizeVertical! * 3,
+                        ),
+                        Container(
+                          height: 180,
+                          child: BarchartComponent(),
+                        ),
+                        SizedBox(
+                          height: SizeConfig.blockSizeVertical! * 5,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            PrimaryText(
+                                text: 'Historique',
+                                size: 30,
+                                fontWeight: FontWeight.w800),
+                            PrimaryText(
+                              text: 'Nouveau medécin',
+                              size: 16,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.secondary,
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: SizeConfig.blockSizeVertical! * 3,
+                        ),
+                        MedecinNouveau(),
+                        if (!Responsive.isDesktop(context)) ListeActiviteRecente(),
+                      ],
+                    ),
                   ),
-                ),
-              ),
-            ),
+                )),
+
             if(Responsive.isDesktop(context))
             Expanded(
               flex: 4,
@@ -153,13 +161,15 @@ class Dashboard extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   height: SizeConfig.screenHeight,
-                  decoration: BoxDecoration(color: AppColors.secondarBg),
+                  decoration: BoxDecoration(color: HexColor('#54DEFC').withOpacity(0.9)),
                   child: SingleChildScrollView(
                     padding:
                     EdgeInsets.symmetric(vertical: 30, horizontal: 30),
                     child: Column(
                       children: [
-                        DetailDasboard(), ListeActiviteRecente(),
+                        ActionDashboard(),
+                        DetailDasboard(),
+                        ListeActiviteRecente(),
                       ],
                     ),
                   ),

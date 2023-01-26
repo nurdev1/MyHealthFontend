@@ -11,36 +11,29 @@ class ActionDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(
-                      onPressed: () {},
-                    icon: Icon(Icons.notifications_outlined,
-                      color: Colors.white,
-                      size: 35,),
-                  ),
-                  SizedBox(width: 15.0,),
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 30,
-                        backgroundImage: AssetImage("assets/images/profil.jpg",),
-                      ),
-                      Icon(Icons.arrow_drop_down_outlined, color: AppColors.white,)
-                    ],
-                  )
-                ],
-              )
-            ],
-          )
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications_outlined, color: Colors.white,),
+
+        ),
+       /* SizedBox(width: 10.0,),
+        IconButton(
+            onPressed: () {},
+            icon: Image.asset('images/notetif.png',
+              width: 20.0,)
+        ),*/
+        SizedBox(width: 15),
+        Row(children: [
+          CircleAvatar(
+            radius: 30,
+            backgroundImage: NetworkImage('images/profil.jpg'),
+          ),
+          Icon(Icons.arrow_drop_down_outlined, color: AppColors.white,)
+        ]),
+      ],
     );
   }
 }

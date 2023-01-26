@@ -126,10 +126,10 @@ class Menu extends StatelessWidget {
                 ),
                 ),
 
-                 SizedBox(height: 25,),
+                 //SizedBox(height: 15,),
               IconButton(
                 onPressed:() {},
-                icon: Icon(Icons.turn_left_outlined,
+                icon: Icon(Icons.close,
                   color: HexColor('#EB455F'),
                   size: 30,),
                 padding: EdgeInsets.symmetric(vertical: 20.0),

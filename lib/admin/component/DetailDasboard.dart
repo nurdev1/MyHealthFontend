@@ -28,7 +28,7 @@ class DetailDasboard extends StatelessWidget {
             ),
           )
         ]),
-        child: Image.asset('assets/images/profil.jpg'),
+        child: Image.asset('assets/images/discussion.png'),
       ),
       SizedBox(
         height: SizeConfig.blockSizeVertical! * 5,

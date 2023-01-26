@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/admin/Dashboard.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class AdminLogin extends StatelessWidget {
@@ -104,18 +105,30 @@ class AdminLogin extends StatelessWidget {
                             end: Alignment.centerRight,
                             colors: [
                               HexColor('#54DEFC'),
-                              HexColor('#54DEFC'),
+                              HexColor('#54DEFC').withOpacity(0.5),
+                              HexColor('#54DEFC').withOpacity(0.9),
                             ]
                           )
                         ),
                         child: Padding(
                           padding: EdgeInsets.all(12.0),
-                          child: Text('Se connecter',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold
-                          ),),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary: HexColor('#54DEFC'), // Background color
+                              ),
+                            child: Text('Se connecter',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold
+                            ),),
+                            onPressed: (){
+                              //After successful login we will redirect to profile page. Let's create profile page now
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: (context) => Dashboard()));
+                            },
+                          ),
+
                         ),
                       ),
                     ),

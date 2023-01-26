@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/page/DossierList.dart';
 
 import 'package:masante/page/SplashPage.dart';
 
@@ -31,8 +32,8 @@ class LoginUiApp extends StatelessWidget {
         primarySwatch: Colors.grey,
       ),
      // home: Splash(title: 'Myhealth',),
-      home: AdminSplash(title: 'Myhealth',),
-     // home: InscriptionMedecin(),
+      //home: AdminSplash(title: 'Myhealth',),
+     home: DossierList(),
 
     );
   }

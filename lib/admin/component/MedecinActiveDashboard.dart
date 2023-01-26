@@ -38,7 +38,7 @@ class MedecinNouveau extends StatelessWidget {
               ),PrimaryText(text: 'Dentiste',size: 16,
                 color: Colors.black87,
               ),
-            
+
 
             ],
           ),
