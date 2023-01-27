@@ -1,11 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:masante/page/DossierList.dart';
+import 'package:masante/Patient/PatientListeMedecin.dart';
+import 'package:masante/admin/MedecinListePage.dart';
 
-import 'package:masante/page/SplashPage.dart';
-
-import 'admin/component/AdminSplashPage.dart';
 
 
 
@@ -33,7 +31,7 @@ class LoginUiApp extends StatelessWidget {
       ),
      // home: Splash(title: 'Myhealth',),
       //home: AdminSplash(title: 'Myhealth',),
-     home: DossierList(),
+     home: AdminMedecinListePage(),
 
     );
   }

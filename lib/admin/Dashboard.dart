@@ -22,7 +22,7 @@ import 'component/headerDashboard.dart';
 
 
 class Dashboard extends StatelessWidget {
-  GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+  final GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
 
 
   @override
@@ -31,7 +31,7 @@ class Dashboard extends StatelessWidget {
     return Scaffold(
       backgroundColor:Colors.white,
       key: _drawerKey,
-      drawer: SizedBox(width: 100, child: Menu(),),
+      drawer: const SizedBox(width: 100, child: Menu(),),
         appBar: !Responsive.isDesktop(context)
             ? AppBar(
           elevation: 0,
@@ -40,12 +40,12 @@ class Dashboard extends StatelessWidget {
               onPressed: () {
                 _drawerKey.currentState?.openDrawer();
               },
-              icon: Icon(Icons.menu, color: AppColors.black)),
-          actions: [
+              icon: const Icon(Icons.menu, color: AppColors.black)),
+          actions: const [
             ActionDashboard(),
           ],
         )
-            : PreferredSize(
+            : const PreferredSize(
           preferredSize: Size.zero,
           child: SizedBox(),
         ),
@@ -67,7 +67,7 @@ class Dashboard extends StatelessWidget {
                 flex: 10,
                 child: SafeArea(
                   child: SingleChildScrollView(
-                    padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+                    padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -81,7 +81,7 @@ class Dashboard extends StatelessWidget {
                             spacing: 20,
                             runSpacing: 20,
                             alignment: WrapAlignment.spaceBetween,
-                            children: [
+                            children: const [
                               InfoHopitalDansboard(),
                               InfoMedecin(),
                               InfoPatientDasboard(),
@@ -98,7 +98,7 @@ class Dashboard extends StatelessWidget {
                           children: [
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                              children: const [
                                 PrimaryText(
                                   text: 'Utilisation',
                                   size: 16,
@@ -111,7 +111,7 @@ class Dashboard extends StatelessWidget {
                                     fontWeight: FontWeight.w800),*/
                               ],
                             ),
-                            PrimaryText(
+                            const PrimaryText(
                               text: 'Pendant 30 jours',
                               size: 16,
                               fontWeight: FontWeight.w400,
@@ -124,16 +124,16 @@ class Dashboard extends StatelessWidget {
                         ),
                         Container(
                           height: 180,
-                          child: BarchartComponent(),
+                          child: const BarchartComponent(),
                         ),
                         SizedBox(
                           height: SizeConfig.blockSizeVertical! * 5,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+                          children: const [
                             PrimaryText(
-                                text: 'Historique',
+                                text: 'Historiques',
                                 size: 30,
                                 fontWeight: FontWeight.w800),
                             PrimaryText(
@@ -147,7 +147,7 @@ class Dashboard extends StatelessWidget {
                         SizedBox(
                           height: SizeConfig.blockSizeVertical! * 3,
                         ),
-                        MedecinNouveau(),
+                        const MedecinNouveau(),
                         if (!Responsive.isDesktop(context)) ListeActiviteRecente(),
                       ],
                     ),
@@ -166,7 +166,7 @@ class Dashboard extends StatelessWidget {
                     padding:
                     EdgeInsets.symmetric(vertical: 30, horizontal: 30),
                     child: Column(
-                      children: [
+                      children: const [
                         ActionDashboard(),
                         DetailDasboard(),
                         ListeActiviteRecente(),

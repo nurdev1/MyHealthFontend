@@ -25,13 +25,13 @@ class _DetailMedecinState extends State<DetailMedecin> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.notifications_outlined,
                       color: Colors.white,
                       size: 35,
                     ),
                     GestureDetector(
-                      child: CircleAvatar(
+                      child: const CircleAvatar(
                         radius: 25,
                         backgroundImage: AssetImage("assets/images/profil.jpg",),
                       ),
@@ -64,7 +64,7 @@ class _DetailMedecinState extends State<DetailMedecin> {
                     children: [
                       Row(
                         children: [
-                          Text('Bonjour Fatoumata',
+                          const Text('Bonjour Fatoumata',
                             style:TextStyle(
                               fontWeight: FontWeight.w900,
                               fontSize: 10,
@@ -74,7 +74,7 @@ class _DetailMedecinState extends State<DetailMedecin> {
                           Row(
                             children: [
                               Column(
-                                children: [
+                                children: const [
                                   Text("Dr Fatoumata",
                                   style: TextStyle(
                                     fontSize: 30,

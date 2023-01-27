@@ -26,7 +26,7 @@ class ActionDashboard extends StatelessWidget {
               width: 20.0,)
         ),*/
         SizedBox(width: 15),
-        Row(children: [
+        Row(children: const [
           CircleAvatar(
             radius: 30,
             backgroundImage: NetworkImage('images/profil.jpg'),
