@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'AccueilMedecin.dart';
-import 'PatientListePage.dart';
 
 class PatientDetail extends StatefulWidget {
 
@@ -96,3 +95,16 @@ class _PatientDetailState extends State<PatientDetail> {
     );
   }
 }
+
+
+//modeles
+class Patient{
+  String nom;
+  String ville;
+  String photo;
+
+  Patient({required this.nom, required this.ville, required this.photo});
+}
+
+
+

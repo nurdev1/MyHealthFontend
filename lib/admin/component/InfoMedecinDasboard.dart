@@ -23,15 +23,15 @@ class InfoMedecin extends StatelessWidget {
         right: Responsive.isDesktop(context) ? 40.0:20,),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
-        color: HexColor('#54DEFC'),
+        color: HexColor('#EB455F'),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [ Image.asset('images/im2.png',width: 35.0,color: Colors.black,),
+        children: [ Image.asset('images/medecin.png',width: 35),
           SizedBox(height: SizeConfig.blockSizeVertical! * 2,),
-          PrimaryText(text: "Médecin",color: Colors.black,size: 16.0,),
+          const PrimaryText(text: "Médecin",color: Colors.black,size: 16.0,),
           SizedBox(height: SizeConfig.blockSizeVertical! * 2,),
-          PrimaryText(text: "934",fontWeight: FontWeight.w700,size: 18.0,),
+          const PrimaryText(text: "934",fontWeight: FontWeight.w700,size: 18.0,),
         ],
 
       ),

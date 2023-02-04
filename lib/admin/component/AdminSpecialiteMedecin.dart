@@ -15,8 +15,8 @@ class AdminSpecialiteMedecinWidget extends StatelessWidget {
         children: [
          for (int i=0;i<4;i++)
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 25),
-              padding: EdgeInsets.symmetric(vertical:25, horizontal: 30),
+              margin: EdgeInsets.symmetric(horizontal: 30),
+              padding: EdgeInsets.symmetric(vertical:35, horizontal: 35),
               decoration: BoxDecoration(
                 color: HexColor("EB455F"),
                 borderRadius: BorderRadius.circular(20),

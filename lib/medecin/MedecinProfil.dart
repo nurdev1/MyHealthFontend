@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/medecin/AccueilMedecin.dart';
-import 'package:masante/medecin/ListePatient.dart';
 import 'package:masante/medecin/ModifierProfile.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -19,7 +18,7 @@ class MedecinProfil extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 2.1,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                image: DecorationImage(
                    image: AssetImage(
                      "assets/images/profil.jpg",
@@ -60,7 +59,7 @@ class MedecinProfil extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     color: Color(0xFFF2F8FF),
                                     borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
+                                    boxShadow: const [
                                       BoxShadow(
                                         color: Colors.black54,
                                         blurRadius: 4,
@@ -163,7 +162,7 @@ class MedecinProfil extends StatelessWidget {
             SizedBox(height: 10,),
             Padding(padding: EdgeInsets.symmetric(horizontal: 10),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text("Dr Fatoumata",
                 style: TextStyle(
@@ -171,6 +170,34 @@ class MedecinProfil extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   color: HexColor('#54DEFC'),
                 ),
+                ),
+                SizedBox(height: 5,),
+                Row(
+                  children: [
+                    Icon(MdiIcons.phone, color: HexColor('#54DEFC'), size: 45,),
+                    SizedBox(height: 5,),
+                    Text("74467865",
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black.withOpacity(0.6),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 5,),
+                Row(
+                  children: [
+                    Icon(MdiIcons.email, color: HexColor('#54DEFC'), size: 45,),
+                    SizedBox(height: 5,),
+                    Text("fk1@gmail.com",
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black.withOpacity(0.6),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 5,),
                 Row(
@@ -214,7 +241,7 @@ class MedecinProfil extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 100,),
+                SizedBox(height: 80,),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -237,7 +264,7 @@ class MedecinProfil extends StatelessWidget {
                       ), // <-- Text
                     ),*/
                     FloatingActionButton.extended(
-                      label: Text('Modifier',
+                      label: const Text('Modifier',
                         style: TextStyle(
                             fontSize: 17,
                             fontWeight: FontWeight.w500,
@@ -255,7 +282,7 @@ class MedecinProfil extends StatelessWidget {
                       },
                     ),
                     FloatingActionButton.extended(
-                      label: Text('Supprimer',
+                      label: const Text('Supprimer',
                         style: TextStyle(
                             fontSize: 17,
                             fontWeight: FontWeight.w500,

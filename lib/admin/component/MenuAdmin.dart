@@ -3,8 +3,14 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/admin/Dashboard.dart';
+import 'package:masante/admin/ListeHopital.dart';
+import 'package:masante/admin/ListePatient.dart';
+import 'package:masante/admin/MedecinListePage.dart';
+import 'package:masante/admin/component/AdminConnexion.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import '../../Patient/PatientListeMedecin.dart';
 import '../../config/size_config.dart';
 
 
@@ -30,7 +36,7 @@ class Menu extends StatelessWidget {
                   child: SizedBox(
                     width: 50,
                     height: 50,
-                    child:  Image.asset('images/logo.png',
+                    child:  Image.asset('images/Masante2.png',
                       ),
                   ),
                 ),
@@ -42,7 +48,12 @@ class Menu extends StatelessWidget {
                 ),
                 //SizedBox(height: 2,),
                 IconButton(
-                  onPressed:() {},
+                  onPressed:() {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Dashboard()
+                    )
+                    );
+                  },
                   icon: const Icon(
                     Icons.home,
                     color: Colors.white,
@@ -51,39 +62,54 @@ class Menu extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 20.0),
                 ),
                 //SizedBox(height: 2,),
-                Text('Accueil', style: TextStyle(
+                const Text('Accueil', style: TextStyle(
                   color: Colors.white,
                   fontSize: 14,
                 ),
                 ),
                 IconButton(
-                  onPressed:() {},
-                  icon: Icon(MdiIcons.hospital,
+                  onPressed:() {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => AdminListeHopitaPage()
+                    )
+                    );
+                  },
+                  icon: const Icon(MdiIcons.hospital,
                     color: Colors.white,
                     size: 30,),
                   padding: EdgeInsets.symmetric(vertical: 20.0),
                 ),
                 //SizedBox(height: 2,),
-                Text('Hôpital', style: TextStyle(
+                const Text('Hôpital', style: TextStyle(
                   color: Colors.white,
                   fontSize: 14,
                 ),
                 ),
                 IconButton(
-                  onPressed:() {},
-                  icon: Icon(MdiIcons.doctor,
+                  onPressed:() {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => AdminMedecinListePage()
+                    )
+                    );
+                  },
+                  icon: const Icon(MdiIcons.doctor,
                     color: Colors.white,
                     size: 30,),
                   padding: EdgeInsets.symmetric(vertical: 20.0),
                 ),
                 //SizedBox(height: 2,),
-                Text('Medécin', style: TextStyle(
+                const Text('Medécin', style: TextStyle(
                   color: Colors.white,
                   fontSize: 14,
                 ),
                 ),
                 IconButton(
-                  onPressed:() {},
+                  onPressed:() {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => AdminPatientListePage()
+                    )
+                    );
+                  },
                   icon: Icon(MdiIcons.naturePeople,
                     color: Colors.white,
                     size: 30,),
@@ -128,7 +154,12 @@ class Menu extends StatelessWidget {
 
                  //SizedBox(height: 15,),
               IconButton(
-                onPressed:() {},
+                onPressed:() {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => AdminLogin()
+                  )
+                  );
+                },
                 icon: Icon(Icons.close,
                   color: HexColor('#EB455F'),
                   size: 30,),

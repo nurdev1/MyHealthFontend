@@ -7,6 +7,7 @@ import '../utils.dart';
 import '../widget/scrollable_widget.dart';
 import '../widget/text_dialog_widget.dart';
 
+
 class EditablePage extends StatefulWidget {
   @override
   _EditablePageState createState() => _EditablePageState();
@@ -24,11 +25,11 @@ class _EditablePageState extends State<EditablePage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        body: ScrollableWidget(child: buildDataTable()),
-      );
+    body: ScrollableWidget(child: buildDataTable()),
+  );
 
   Widget buildDataTable() {
-    final columns = ['Prenom', 'Nom', 'Age'];
+    final columns = ['Nom doissier', 'Nom utilisateur', "Date d'ajout"];
     //entête du tableau
 
     return DataTable(
@@ -49,55 +50,55 @@ class _EditablePageState extends State<EditablePage> {
   }
 
   List<DataRow> getRows(List<User> users) => users.map((User user) {
-        final cells = [user.firstName, user.lastName, user.age];
+    final cells = [user.Nomdossier, user.NomUser, user.date];
 
-        return DataRow(
-          cells: Utils.modelBuilder(cells, (index, cell) {
-            final showEditIcon = index == 0 || index == 1;
+    return DataRow(
+      cells: Utils.modelBuilder(cells, (index, cell) {
+        final showEditIcon = index == 0 || index == 1;
 
-            return DataCell(
-              Text('$cell'),
-              showEditIcon: showEditIcon,
-              onTap: () {
-                switch (index) {
-                  case 0:
-                    editFirstName(user);
-                    break;
-                  case 1:
-                    editLastName(user);
-                    break;
-                }
-              },
-            );
-          }),
+        return DataCell(
+          Text('$cell'),
+          showEditIcon: showEditIcon,
+          onTap: () {
+            switch (index) {
+              case 0:
+                editFirstName(user);
+                break;
+              case 1:
+                editLastName(user);
+                break;
+            }
+          },
         );
-      }).toList();
+      }),
+    );
+  }).toList();
 
   Future editFirstName(User editUser) async {
     final firstName = await showTextDialog(
       context,
-      title: 'Change First Name',
-      value: editUser.firstName,
+      title: 'Change nom Dossier',
+      value: editUser.Nomdossier,
     );
 
     setState(() => users = users.map((user) {
-          final isEditedUser = user == editUser;
+      final isEditedUser = user == editUser;
 
-          return isEditedUser ? user.copy(firstName: firstName) : user;
-        }).toList());
+      return isEditedUser ? user.copy(Nomdossier: firstName) : user;
+    }).toList());
   }
 
   Future editLastName(User editUser) async {
     final lastName = await showTextDialog(
       context,
-      title: 'Change Last Name',
-      value: editUser.lastName,
+      title: 'Changer nom utilisateur',
+      value: editUser.NomUser,
     );
 
     setState(() => users = users.map((user) {
-          final isEditedUser = user == editUser;
+      final isEditedUser = user == editUser;
 
-          return isEditedUser ? user.copy(lastName: lastName) : user;
-        }).toList());
+      return isEditedUser ? user.copy(NomUser: lastName) : user;
+    }).toList());
   }
 }

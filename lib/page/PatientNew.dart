@@ -4,8 +4,8 @@ import '../medecin/MedecinProfil.dart';
 import '../widget/CategorieDossier.dart';
 import '../widget/EntetePage.dart';
 
-class PatientNew extends StatelessWidget {
-//  const PatientNew({Key? key}) : super(key: key);
+class PatientNewT extends StatelessWidget {
+//  const PatientNewT({Key? key}) : super(key: key);
   double _headerHeight =  130;
 
   @override

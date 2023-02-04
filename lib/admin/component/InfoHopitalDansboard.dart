@@ -27,11 +27,11 @@ class InfoHopitalDansboard extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [ Image.asset('images/im2.png',width: 35.0,color: Colors.black,),
+        children: [ Image.asset('images/hospital.png',width: 35),
           SizedBox(height: SizeConfig.blockSizeVertical! * 2,),
-          PrimaryText(text: "Hôpital",color: Colors.black,size: 16.0,),
+          const PrimaryText(text: "Hôpital",color: Colors.black,size: 16.0,),
           SizedBox(height: SizeConfig.blockSizeVertical! * 2,),
-          PrimaryText(text: "78",fontWeight: FontWeight.w700,size: 18.0,),
+          const PrimaryText(text: "78", fontWeight: FontWeight.w700,size: 18.0,),
         ],
 
       ),

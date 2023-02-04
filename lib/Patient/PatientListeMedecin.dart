@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 
@@ -7,14 +8,67 @@ import '../medecin/MedecinProfil.dart';
 import '../widget/EntetePage.dart';
 import '../widget/InformationMedecin.dart';
 import '../widget/SpecialiteMedecin.dart';
+import 'MenuPatient.dart';
 
 class PatientListeMedecinPage extends StatelessWidget {
   const PatientListeMedecinPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double  _drawerIconSize = 24;
+    double _drawerFontSize = 17;
     double _headerHeight=120;
     return Scaffold(
+      appBar: AppBar(
+        /*  title: Text("Profile Page",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),*/
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.white),
+        flexibleSpace:Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[Theme.of(context).primaryColor, Theme.of(context).accentColor,]
+              )
+          ),
+        ),
+        actions: [
+          Container(
+            margin: EdgeInsets.only( top: 16, right: 16,),
+            child: Stack(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Icon(Icons.notifications),
+                        GestureDetector(
+                          child: const CircleAvatar(
+                            radius: 30,
+                            backgroundImage: AssetImage("assets/images/profil.jpg",),
+                          ),
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => MedecinProfil()
+                            )
+                            );
+                          },
+                        ),
+                      ],
+                    )
+
+                  ],
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+      drawer: PatientMenu(),
       body: ListView(
         children: [
           Stack(
@@ -33,39 +87,6 @@ class PatientListeMedecinPage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(
-                                Icons.arrow_back,
-                                color: Colors.white,
-                                size: 35,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Icon(
-                                    Icons.notifications_outlined,
-                                    color: Colors.white,
-                                    size: 35,
-                                  ),
-                                  GestureDetector(
-                                    child: CircleAvatar(
-                                      radius: 30,
-                                      backgroundImage: AssetImage("assets/images/profil.jpg",),
-                                    ),
-                                    onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(
-                                          builder: (context) => MedecinProfil()
-                                      )
-                                      );
-                                    },
-                                  ),
-                                ],
-                              )
-
-                            ],
-                          ),
                           SizedBox(height: 25),
                           Text(
                             "Liste Medecin",

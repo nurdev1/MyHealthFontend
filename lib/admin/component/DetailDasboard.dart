@@ -19,23 +19,23 @@ class DetailDasboard extends StatelessWidget {
       Container(
         decoration:
         BoxDecoration(borderRadius: BorderRadius.circular(30),
-            boxShadow: [ BoxShadow(
+            boxShadow: const [ BoxShadow(
             color: Colors.grey,
             blurRadius: 15.0,
-            offset: const Offset(
+            offset: Offset(
               10.0,
               15.0,
             ),
           )
         ]),
-        child: Image.asset('assets/images/discussion.png'),
+        child: Image.asset('assets/images/Masante6.png',width: 300,),
       ),
       SizedBox(
         height: SizeConfig.blockSizeVertical! * 5,
       ),
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: const [
           PrimaryText(
               text: 'Hôpitaux Enregistrer', size: 18, fontWeight: FontWeight.w800),
           PrimaryText(

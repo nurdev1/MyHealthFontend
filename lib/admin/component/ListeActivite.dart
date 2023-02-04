@@ -24,7 +24,7 @@ class ListeActiviteRecente extends StatelessWidget {
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: const [
             PrimaryText(
                 text: 'Consultation', size: 18, fontWeight: FontWeight.w800),
             PrimaryText(
@@ -35,9 +35,9 @@ class ListeActiviteRecente extends StatelessWidget {
             ),
           ],
         ),
-        Consultation(),
-        Consultation(),
-        Consultation(),
+        const Consultation(),
+        const Consultation(),
+        const Consultation(),
       ],
     );
   }
@@ -56,7 +56,7 @@ class Consultation extends StatelessWidget {
 
       subtitle: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
+        children: const [
           /*text: "Medecin",
           size: 14,
           fontWeight: FontWeight.w500),*/

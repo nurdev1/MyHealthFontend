@@ -1,15 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+
 import 'package:masante/page/Choix.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 
+
+import '../Patient/home/PatientNew.dart';
 import '../common/theme_helper.dart';
 import '../medecin/AccueilMedecin.dart';
+import '../page/MotdepasseOublier.dart';
 import '../widget/HeaderWidget.dart';
-import 'MotdepasseOublier.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -26,6 +31,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
       child: Column(
       children: [
@@ -39,13 +45,17 @@ class _LoginPageState extends State<LoginPage> {
           child: Container(
             child: Column(
               children: [
-                const Text(
-                  'MyHealth',
-                  style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
+                 Text(
+                  'Masante',
+                  style: GoogleFonts.openSans(
+                      textStyle: const TextStyle(fontSize: 60,fontWeight: FontWeight.normal)
+                  )
                 ),
-                const Text(
+                 Text(
                   'connexion à votre compte',
-                  style: TextStyle(color: Colors.grey),
+                   style: GoogleFonts.openSans(
+                    textStyle: const TextStyle(fontSize: 25,fontWeight: FontWeight.normal)
+                )
                 ),
                 SizedBox(height: 30.0,),
                 Form(
@@ -93,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                             onPressed: (){
                               //After successful login we will redirect to profile page. Let's create profile page now
                               Navigator.pushReplacement(context,
-                                  MaterialPageRoute(builder: (context) => MedecinAccueil()));
+                                  MaterialPageRoute(builder: (context) => PatientFirst()));
                             },
                           ),
                         ),

@@ -1,18 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/Patient/home/PatientNew.dart';
+import 'package:masante/modeles/Utilisateur.dart';
 import 'package:masante/page/Choix.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 
+import '../Patient/Connexion/Connexion.dart';
 import '../common/theme_helper.dart';
 import '../medecin/AccueilMedecin.dart';
 import '../widget/HeaderWidget.dart';
 import 'MotdepasseOublier.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginPageMedecin extends StatefulWidget {
+  const LoginPageMedecin({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -20,12 +24,16 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+
+
   double _headerHeight =  250;
   Key _formKey= GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
       child: Column(
       children: [
@@ -39,13 +47,17 @@ class _LoginPageState extends State<LoginPage> {
           child: Container(
             child: Column(
               children: [
-                const Text(
-                  'MyHealth',
-                  style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
+                 Text(
+                  'Masante',
+                  style: GoogleFonts.openSans(
+                      textStyle: const TextStyle(fontSize: 60,fontWeight: FontWeight.normal)
+                  )
                 ),
-                const Text(
+                 Text(
                   'connexion à votre compte',
-                  style: TextStyle(color: Colors.grey),
+                   style: GoogleFonts.openSans(
+                    textStyle: const TextStyle(fontSize: 25,fontWeight: FontWeight.normal)
+                )
                 ),
                 SizedBox(height: 30.0,),
                 Form(
@@ -93,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                             onPressed: (){
                               //After successful login we will redirect to profile page. Let's create profile page now
                               Navigator.pushReplacement(context,
-                                  MaterialPageRoute(builder: (context) => MedecinAccueil()));
+                                  MaterialPageRoute(builder: (context) => PatientFirst()));
                             },
                           ),
                         ),
@@ -120,6 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                               )
                           ),
                         ),
+
                       ],
                     )
                 ),

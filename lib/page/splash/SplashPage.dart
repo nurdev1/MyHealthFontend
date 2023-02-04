@@ -1,9 +1,14 @@
 import 'dart:async';
 
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:masante/page/splash/splash_controller.dart';
 
-import 'Connexion.dart';
+import '../../Patient/Connexion/Connexion.dart';
+
 
 class Splash extends StatefulWidget {
   Splash({Key? key, required this.title}) : super(key: key);
@@ -16,24 +21,23 @@ class Splash extends StatefulWidget {
 
 class _SplashScreenState extends State<Splash> {
   bool _isVisible = false;
+ // final SplashController controller = Get.find<SplashController>();
 
   _SplashScreenState() {
     new Timer(const Duration(milliseconds: 2000), () {
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => LoginPage()), (
-            route) => false);
+            MaterialPageRoute(builder: (context) => LoginPage()),
+            (route) => false);
       });
     });
 
-    new Timer(
-        Duration(milliseconds: 10), () {
+    new Timer(Duration(milliseconds: 10), () {
       setState(() {
         _isVisible =
-        true; // Now it is showing fade effect and navigating to Login page
+            true; // Now it is showing fade effect and navigating to Login page
       });
-    }
-    );
+    });
   }
 
   @override
@@ -41,11 +45,9 @@ class _SplashScreenState extends State<Splash> {
     return Container(
       decoration: new BoxDecoration(
         gradient: new LinearGradient(
-          colors: [Theme
-              .of(context)
-              .accentColor, Theme
-              .of(context)
-              .primaryColor
+          colors: [
+            Theme.of(context).accentColor,
+            Theme.of(context).primaryColor
           ],
           begin: const FractionalOffset(0, 0),
           end: const FractionalOffset(1.0, 0.0),
@@ -62,10 +64,12 @@ class _SplashScreenState extends State<Splash> {
             width: 140.0,
             child: Center(
               child: ClipOval(
-                child:Image.asset("assets/images/logo.png",)
-                /*Icon(
+                  child: Image.asset(
+                "assets/images/Masante.png",
+              )
+                  /*Icon(
                   Icons.android_outlined, size: 128,),*/ //put your logo here
-              ),
+                  ),
             ),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
@@ -77,8 +81,7 @@ class _SplashScreenState extends State<Splash> {
                     offset: Offset(5.0, 3.0),
                     spreadRadius: 2.0,
                   )
-                ]
-            ),
+                ]),
           ),
         ),
       ),

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:masante/medecin/AccueilMedecin.dart';
 
+
+import '../Patient/AjouterDossier.dart';
+import '../page/Connexion.dart';
 import '../page/DossierList.dart';
-import 'AjouterDossier.dart';
-import 'Connexion.dart';
-import 'PatientAccueil.dart';
-import 'PatientListeMedecin.dart';
+import 'medecinListePatient/MedecinListe.dart';
 
-class PatientMenu extends StatelessWidget {
-  const PatientMenu({
+
+class MedecinMenu extends StatelessWidget {
+  const MedecinMenu({
     Key? key,
     required double drawerIconSize,
     required double drawerFontSize,
@@ -57,7 +59,7 @@ class PatientMenu extends StatelessWidget {
               title: Text('Accueil', style: TextStyle(fontSize: 17,
                   color: Theme.of(context).accentColor),),
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => PatientAccueil()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MedecinAccueil()));
               },
             ),
             ListTile(
@@ -65,13 +67,13 @@ class PatientMenu extends StatelessWidget {
               title: Text('Ajouter dossier',style: TextStyle(fontSize: _drawerFontSize,
                   color: Theme.of(context).accentColor),),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => AjouterDossier()),);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => AjouterDossierPage()),);
               },
             ),
             Divider(color: Theme.of(context).primaryColor, height: 1,),
             ListTile(
               leading: Icon(Icons.password_rounded, size: _drawerIconSize,color: Theme.of(context).accentColor,),
-              title: Text('Liste Dossier',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+              title: Text('Liste Consultation',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
               onTap: () {
                 Navigator.push( context, MaterialPageRoute(builder: (context) => DossierList()),);
               },
@@ -80,10 +82,10 @@ class PatientMenu extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.verified_user_sharp, size: _drawerIconSize,
                 color: Theme.of(context).accentColor,),
-              title: Text('Liste Médecin',style: TextStyle(fontSize: _drawerFontSize,
+              title: Text('Liste Patients',style: TextStyle(fontSize: _drawerFontSize,
                   color: Theme.of(context).accentColor),),
               onTap: () {
-                Navigator.push( context, MaterialPageRoute(builder: (context) => PatientListeMedecinPage()), );
+                Navigator.push( context, MaterialPageRoute(builder: (context) => MedecinListPatientPage()), );
               },
             ),
             ListTile(
@@ -92,7 +94,7 @@ class PatientMenu extends StatelessWidget {
                   color: Theme.of(context).accentColor),
               ),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPageMedecin()),);
               },
             ),
             Divider(color: Theme.of(context).primaryColor, height: 1,),

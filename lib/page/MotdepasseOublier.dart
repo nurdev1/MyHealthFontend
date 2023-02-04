@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
+import '../Patient/Connexion/Connexion.dart';
 import '../common/theme_helper.dart';
 import '../widget/HeaderWidget.dart';
 import 'Connexion.dart';
@@ -43,28 +45,29 @@ class _MotdepasseOublier extends State<MotdepasseOublier> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Mot de passe oublié?',
-                              style: TextStyle(
-                                  fontSize: 35,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black54
-                              ),
+                                style: GoogleFonts.openSans(
+                                    textStyle:  const TextStyle(
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.w500,color:Colors.black87)
+                                )
                               // textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 10,),
                             Text("Saisissez l'\adresse e-mail associée à votre compte.",
-                              style: TextStyle(
-                                // fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black54
+                              style: GoogleFonts.openSans(
+                                  textStyle:  const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,color:Colors.black)
                               ),
-                              // textAlign: TextAlign.center,
+                              textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 10,),
                             Text('Nous vous enverrons un code de vérification par e-mail pour vérifier votre authenticité.',
-                              style: TextStyle(
-                                color: Colors.black38,
-                                // fontSize: 20,
-                              ),
+                                style: GoogleFonts.openSans(
+                                    textStyle:  const TextStyle(
+                                        fontSize:16,
+                                        fontWeight: FontWeight.w500,color:Colors.black38)
+                                )
                               // textAlign: TextAlign.center,
                             ),
                           ],
@@ -100,11 +103,11 @@ class _MotdepasseOublier extends State<MotdepasseOublier> {
                                       40, 10, 40, 10),
                                   child: Text(
                                     "Envoyer".toUpperCase(),
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
+                                    style:  GoogleFonts.openSans(
+                                  textStyle:  const TextStyle(
+                                  fontSize: 16,
+                                      fontWeight: FontWeight.w500,color:Colors.white)
+                                )
                                   ),
                                 ),
                                 onPressed: () {
@@ -122,7 +125,13 @@ class _MotdepasseOublier extends State<MotdepasseOublier> {
                             Text.rich(
                               TextSpan(
                                 children: [
-                                  TextSpan(text: "N'oubliez pas votre mot de passe? "),
+                                  TextSpan(text: "N'oubliez pas votre mot de passe? "
+                                      ,style: GoogleFonts.openSans(
+                                          textStyle:  const TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w500,color:Colors.black)
+                                      )
+                                  ),
                                   TextSpan(
                                     text: 'Connexion',
                                     recognizer: TapGestureRecognizer()

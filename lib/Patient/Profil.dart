@@ -1,18 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-
 import '../widget/HeaderWidget.dart';
-import '../page/Connexion.dart';
-import 'Inscription.dart';
+import 'Connexion/Connexion.dart';
+import 'inscription/Inscription.dart';
 import '../page/MotdepasseOublier.dart';
-import '../page/SplashPage.dart';
+import '../page/splash/SplashPage.dart';
 import '../page/VerificationMotdepasseOublier.dart';
 
-class Profil extends StatefulWidget{
+class Profil extends StatefulWidget {
   const Profil({super.key});
-
 
   @override
   State<StatefulWidget> createState() {
@@ -20,32 +17,36 @@ class Profil extends StatefulWidget{
   }
 }
 
-class _Profil extends State<Profil>{
-
-  double  _drawerIconSize = 24;
-  double _drawerFontSize = 17;
+class _Profil extends State<Profil> {
+  final double _drawerIconSize = 24;
+  final double _drawerFontSize = 17;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile Page",
+        title: const Text(
+          "Profile Page",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         elevation: 0.5,
-        iconTheme: IconThemeData(color: Colors.white),
-        flexibleSpace:Container(
+        iconTheme: IconThemeData(color: Colors.amber),
+        flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: <Color>[Theme.of(context).primaryColor, Theme.of(context).accentColor,]
-              )
-          ),
+                  colors: <Color>[
+                Theme.of(context).primaryColor,
+                Theme.of(context).accentColor,
+              ])),
         ),
         actions: [
           Container(
-            margin: EdgeInsets.only( top: 16, right: 16,),
+            margin: const EdgeInsets.only(
+              top: 16,
+              right: 16,
+            ),
             child: Stack(
               children: <Widget>[
                 Icon(Icons.notifications),
@@ -53,10 +54,22 @@ class _Profil extends State<Profil>{
                   right: 0,
                   child: Container(
                     padding: EdgeInsets.all(1),
-                    decoration: BoxDecoration( color: Colors.red, borderRadius: BorderRadius.circular(6),),
-                    constraints: BoxConstraints( minWidth: 12, minHeight: 12, ),
-                    child: Text( '5', style: TextStyle(color: Colors.white, fontSize: 8,),
-                      textAlign: TextAlign.center,),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    constraints: const BoxConstraints(
+                      minWidth: 12,
+                      minHeight: 12,
+                    ),
+                    child: const Text(
+                      '5',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 8,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 )
               ],
@@ -66,17 +79,18 @@ class _Profil extends State<Profil>{
       ),
       drawer: Drawer(
         child: Container(
-          decoration:BoxDecoration(
+          decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  stops: [0.0, 1.0],
+                  stops: const [
+                0.0,
+                1.0
+              ],
                   colors: [
-                    Theme.of(context).primaryColor.withOpacity(0.2),
-                    Theme.of(context).accentColor.withOpacity(0.5),
-                  ]
-              )
-          ) ,
+                Theme.of(context).primaryColor.withOpacity(0.2),
+                Theme.of(context).accentColor.withOpacity(0.5),
+              ])),
           child: ListView(
             children: [
               DrawerHeader(
@@ -86,66 +100,143 @@ class _Profil extends State<Profil>{
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     stops: [0.0, 1.0],
-                    colors: [ Theme.of(context).primaryColor,Theme.of(context).accentColor,],
+                    colors: [
+                      Theme.of(context).primaryColor,
+                      Theme.of(context).accentColor,
+                    ],
                   ),
                 ),
                 child: Container(
                   alignment: Alignment.bottomLeft,
-                  child: Text("FlutterTutorial.Net",
-                    style: TextStyle(fontSize: 25,color: Colors.white, fontWeight: FontWeight.bold),
+                  child: const Text(
+                    "MaSante",
+                    style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.screen_lock_landscape_rounded, size: _drawerIconSize,
-                  color: Theme.of(context).accentColor,),
-                title: Text('Splash Screen', style: TextStyle(fontSize: 17,
-                    color: Theme.of(context).accentColor),),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Splash(title: "Splash Screen")));
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.login_rounded,size: _drawerIconSize,color: Theme.of(context).accentColor),
-                title: Text('Login Page', style: TextStyle(fontSize: _drawerFontSize,
-                    color: Theme.of(context).accentColor),
+                leading: Icon(
+                  Icons.screen_lock_landscape_rounded,
+                  size: _drawerIconSize,
+                  color: Theme.of(context).accentColor,
+                ),
+                title: Text(
+                  'Splash Screen',
+                  style: TextStyle(
+                      fontSize: 17, color: Theme.of(context).accentColor),
                 ),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Splash(title: "Splash Screen")));
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
-                leading: Icon(Icons.person_add_alt_1, size: _drawerIconSize,color: Theme.of(context).accentColor),
-                title: Text('Registration Page',style: TextStyle(fontSize: _drawerFontSize,
-                    color: Theme.of(context).accentColor),),
+                leading: Icon(Icons.login_rounded,
+                    size: _drawerIconSize,
+                    color: Theme.of(context).accentColor),
+                title: Text(
+                  'Login Page',
+                  style: TextStyle(
+                      fontSize: _drawerFontSize,
+                      color: Theme.of(context).accentColor),
+                ),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Inscription()),);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              Divider(
+                color: Theme.of(context).primaryColor,
+                height: 1,
+              ),
               ListTile(
-                leading: Icon(Icons.password_rounded, size: _drawerIconSize,color: Theme.of(context).accentColor,),
-                title: Text('Forgot Password Page',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                leading: Icon(Icons.person_add_alt_1,
+                    size: _drawerIconSize,
+                    color: Theme.of(context).accentColor),
+                title: Text(
+                  'Registration Page',
+                  style: TextStyle(
+                      fontSize: _drawerFontSize,
+                      color: Theme.of(context).accentColor),
+                ),
                 onTap: () {
-                  Navigator.push( context, MaterialPageRoute(builder: (context) => MotdepasseOublier()),);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Inscription()),
+                  );
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              Divider(
+                color: Theme.of(context).primaryColor,
+                height: 1,
+              ),
               ListTile(
-                leading: Icon(Icons.verified_user_sharp, size: _drawerIconSize,
-                  color: Theme.of(context).accentColor,),
-                title: Text('Verification Page',style: TextStyle(fontSize: _drawerFontSize,
-                    color: Theme.of(context).accentColor),),
+                leading: Icon(
+                  Icons.password_rounded,
+                  size: _drawerIconSize,
+                  color: Theme.of(context).accentColor,
+                ),
+                title: Text(
+                  'Forgot Password Page',
+                  style: TextStyle(
+                      fontSize: _drawerFontSize,
+                      color: Theme.of(context).accentColor),
+                ),
                 onTap: () {
-                  Navigator.push( context, MaterialPageRoute(builder: (context) => Verification()), );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MotdepasseOublier()),
+                  );
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              Divider(
+                color: Theme.of(context).primaryColor,
+                height: 1,
+              ),
               ListTile(
-                leading: Icon(Icons.logout_rounded, size: _drawerIconSize,color: Theme.of(context).accentColor,),
-                title: Text('Logout',style: TextStyle(fontSize: _drawerFontSize,
-                    color: Theme.of(context).accentColor),),
+                leading: Icon(
+                  Icons.verified_user_sharp,
+                  size: _drawerIconSize,
+                  color: Theme.of(context).accentColor,
+                ),
+                title: Text(
+                  'Verification Page',
+                  style: TextStyle(
+                      fontSize: _drawerFontSize,
+                      color: Theme.of(context).accentColor),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Verification()),
+                  );
+                },
+              ),
+              Divider(
+                color: Theme.of(context).primaryColor,
+                height: 1,
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.logout_rounded,
+                  size: _drawerIconSize,
+                  color: Theme.of(context).accentColor,
+                ),
+                title: Text(
+                  'Logout',
+                  style: TextStyle(
+                      fontSize: _drawerFontSize,
+                      color: Theme.of(context).accentColor),
+                ),
                 onTap: () {
                   SystemNavigator.pop();
                 },
@@ -157,7 +248,10 @@ class _Profil extends State<Profil>{
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            Container(height: 100, child: HeaderWidget(100,Icons.house_rounded,false),),
+            Container(
+              height: 200,
+              child: HeaderWidget(100, Icons.house_rounded, false),
+            ),
             Container(
               alignment: Alignment.center,
               margin: EdgeInsets.fromLTRB(25, 10, 25, 10),
@@ -170,25 +264,46 @@ class _Profil extends State<Profil>{
                       borderRadius: BorderRadius.circular(100),
                       border: Border.all(width: 5, color: Colors.white),
                       color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(color: Colors.black12, blurRadius: 20, offset: const Offset(5, 5),),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 20,
+                          offset: Offset(5, 5),
+                        ),
                       ],
                     ),
-                    child: Icon(Icons.person, size: 80, color: Colors.grey.shade300,),
+                    child: Icon(
+                      Icons.person,
+                      size: 80,
+                      color: Colors.grey.shade300,
+                    ),
                   ),
-                  SizedBox(height: 20,),
-                  Text('Dr Mohamed Sylla', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
-                  SizedBox(height: 20,),
-                  Text('Généraliste', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-                  SizedBox(height: 10,),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    'Dr Mohamed Sylla',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    'Généraliste',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Column(
                       children: <Widget>[
                         Container(
-                          padding: const EdgeInsets.only(left: 8.0, bottom: 4.0),
+                          padding:
+                              const EdgeInsets.only(left: 8.0, bottom: 4.0),
                           alignment: Alignment.topLeft,
-                          child: Text(
+                          child: const Text(
                             "Information médecin",
                             style: TextStyle(
                               color: Colors.black87,
@@ -209,28 +324,27 @@ class _Profil extends State<Profil>{
                                     ...ListTile.divideTiles(
                                       color: Colors.grey,
                                       tiles: [
-                                        ListTile(
+                                        const ListTile(
                                           contentPadding: EdgeInsets.symmetric(
                                               horizontal: 12, vertical: 4),
                                           leading: Icon(Icons.my_location),
                                           title: Text("Ville"),
                                           subtitle: Text("Bamako"),
                                         ),
-                                        ListTile(
+                                        const ListTile(
                                           leading: Icon(Icons.email),
                                           title: Text("Email"),
                                           subtitle: Text("ms1@gmail.com"),
                                         ),
-                                        ListTile(
+                                        const ListTile(
                                           leading: Icon(Icons.phone),
                                           title: Text("Phone"),
                                           subtitle: Text("78983256"),
                                         ),
-                                        ListTile(
+                                        const ListTile(
                                           leading: Icon(Icons.person),
                                           title: Text("Hôpital"),
-                                          subtitle: Text(
-                                              "Mère et l'Enfant."),
+                                          subtitle: Text("Mère et l'Enfant."),
                                         ),
                                       ],
                                     ),
@@ -251,6 +365,4 @@ class _Profil extends State<Profil>{
       ),
     );
   }
-
-
 }

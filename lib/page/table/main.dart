@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:soutenanceest/tab/page/editable_page.dart';
-import 'package:soutenanceest/tab/widget/tabbar_widget.dart';
+import 'package:masante/page/table/page/editable_page.dart';
+import 'package:masante/page/table/widget/tabbar_widget.dart';
+
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,11 +35,11 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) => TabBarWidget(
-        title: 'Data Table',
-        tabs: [
-          Tab(icon: Icon(Icons.edit), text: 'Editable'),
-          Tab(icon: Icon(Icons.sort_by_alpha), text: 'Sortable'),
-          Tab(icon: Icon(Icons.select_all), text: 'Selectable'),
+        title: 'Liste dossiers',
+        tabs: const [
+          Tab(icon: Icon(Icons.select_all_outlined), text: 'Tout'),
+          Tab(icon: Icon(Icons.person), text: 'Utilisateur'),
+          Tab(icon: Icon(Icons.calendar_month), text: "Date d'ajout"),
         ],
         children: [
           EditablePage(),

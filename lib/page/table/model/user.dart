@@ -1,23 +1,23 @@
 class User {
-  final String firstName;
-  final String lastName;
-  final int age;
+  final String Nomdossier;
+  final String NomUser;
+  final String date;
 
   const User({
-    required this.firstName,
-    required this.lastName,
-    required this.age,
+    required this.Nomdossier,
+    required this.NomUser,
+    required this.date,
   });
 
   User copy({
-    String? firstName,
-    String? lastName,
-    int? age,
+    String? Nomdossier,
+    String? NomUser,
+    String? date,
   }) =>
       User(
-        firstName: firstName ?? this.firstName,
-        lastName: lastName ?? this.lastName,
-        age: age ?? this.age,
+        Nomdossier: Nomdossier ?? this.Nomdossier,
+        NomUser: NomUser ?? this.NomUser,
+        date: date ?? this.date,
       );
 
   @override
@@ -25,10 +25,10 @@ class User {
       identical(this, other) ||
       other is User &&
           runtimeType == other.runtimeType &&
-          firstName == other.firstName &&
-          lastName == other.lastName &&
-          age == other.age;
+          Nomdossier == other.Nomdossier &&
+          NomUser == other.NomUser &&
+          date == other.date;
 
   @override
-  int get hashCode => firstName.hashCode ^ lastName.hashCode ^ age.hashCode;
+  int get hashCode => Nomdossier.hashCode ^ NomUser.hashCode ^ date.hashCode;
 }

@@ -9,7 +9,7 @@ import '../medecin/MedecinProfil.dart';
 import '../widget/CategorieDossier.dart';
 import '../widget/EntetePage.dart';
 
-class PatientFirst extends StatelessWidget {
+class MedecinFirst extends StatelessWidget {
 //  const PatientNew({Key? key}) : super(key: key);
   double _headerHeight =  120;
 
@@ -67,7 +67,7 @@ class PatientFirst extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 40,),
-                  Text('Bienvenue\n Mariam',
+                  Text('Bienvenue\nDr Mariam',
                     style: GoogleFonts.openSans(
                         textStyle:  const TextStyle(
                             fontSize: 30,
@@ -143,7 +143,7 @@ class PatientFirst extends StatelessWidget {
                           ),
                         ),
                          Text(
-                            'MaSante ',/*'Votre dossier medical informatisé ',*/
+                            'MaSante ',
                            textAlign: TextAlign.center,
                            style: GoogleFonts.openSans(
                              textStyle:  TextStyle(
@@ -151,7 +151,7 @@ class PatientFirst extends StatelessWidget {
                            ),
                          ),
                         Text(
-                          'Votre dossier medical \nnumérique à porté',
+                          'Prêt a retouver le dossier medical \nnumérique de vos patients',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.openSans(
                               textStyle:  const TextStyle(
@@ -170,7 +170,7 @@ class PatientFirst extends StatelessWidget {
                           onPressed: (){
                             //After successful login we will redirect to profile page. Let's create profile page now
                             Navigator.pushReplacement(context,
-                                MaterialPageRoute(builder: (context) => AjouterDossier()));
+                                MaterialPageRoute(builder: (context) => AjouterDossierPage()));
                           },
                         ),
                       ],

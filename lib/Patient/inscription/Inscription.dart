@@ -1,22 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/page/Choix.dart';
 
-import '../common/theme_helper.dart';
-import '../widget/HeaderWidget.dart';
-import 'Profil.dart';
+import '../../common/theme_helper.dart';
+import '../../widget/HeaderWidget.dart';
+import '../Profil.dart';
 
-class Inscription extends  StatefulWidget{
+class Inscription extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _Inscription();
   }
 }
 
-class _Inscription extends State<Inscription>{
-
+class _Inscription extends State<Inscription> {
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
   bool checkboxValue = false;
@@ -40,27 +39,26 @@ class _Inscription extends State<Inscription>{
                   Row(
                     children: [
                       GestureDetector(
-                        child: Icon(
+                        child: const Icon(
                           Icons.arrow_back,
                           color: Colors.white,
                           size: 35,
                         ),
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => ChoixPage()
-                          )
-                          );
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ChoixPage()));
                         },
                       ),
                     ],
                   ),
                 ],
               ),
-
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(25, 50, 25, 10),
-              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+              margin: const EdgeInsets.fromLTRB(25, 50, 25, 10),
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               alignment: Alignment.center,
               child: Column(
                 children: [
@@ -72,17 +70,17 @@ class _Inscription extends State<Inscription>{
                           child: Stack(
                             children: [
                               Container(
-                                padding: EdgeInsets.all(10),
+                                padding: const EdgeInsets.all(10),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
-                                  border: Border.all(
-                                      width: 5, color: Colors.white),
+                                  border:
+                                      Border.all(width: 5, color: Colors.white),
                                   color: Colors.white,
-                                  boxShadow: [
+                                  boxShadow: const [
                                     BoxShadow(
                                       color: Colors.black12,
                                       blurRadius: 20,
-                                      offset: const Offset(5, 5),
+                                      offset: Offset(5, 5),
                                     ),
                                   ],
                                 ),
@@ -93,7 +91,8 @@ class _Inscription extends State<Inscription>{
                                 ),
                               ),
                               Container(
-                                padding: EdgeInsets.fromLTRB(80, 80, 0, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(80, 80, 0, 0),
                                 child: Icon(
                                   Icons.add_circle,
                                   color: Colors.grey.shade700,
@@ -103,52 +102,65 @@ class _Inscription extends State<Inscription>{
                             ],
                           ),
                         ),
-                        SizedBox(height: 30,),
-                        Container(
-                          child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration('Prenom', 'Entrez votre prénom'),
-                          ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        const SizedBox(
+                          height: 30,
                         ),
-                        SizedBox(height: 30,),
                         Container(
-                          child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration('Nom', 'Entrez votre nom '),
-                          ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                        ),
-                        SizedBox(height: 20.0),
-                        Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration("E-mail address", "Entrez votre email"),
+                            decoration: ThemeHelper().textInputDecoration(
+                                'Prenom', 'Entrez votre prénom'),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Container(
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                          child: TextFormField(
+                            decoration: ThemeHelper().textInputDecoration(
+                                'Nom', 'Entrez votre nom '),
+                          ),
+                        ),
+                        const SizedBox(height: 20.0),
+                        Container(
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                          child: TextFormField(
+                            decoration: ThemeHelper().textInputDecoration(
+                                "E-mail address", "Entrez votre email"),
                             keyboardType: TextInputType.emailAddress,
                             validator: (val) {
-                              if(!(val!.isEmpty) && !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$").hasMatch(val)){
+                              // ignore: prefer_is_not_empty
+                              if (!(val!.isEmpty) &&
+                                  !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+                                      .hasMatch(val)) {
                                 return "Enter a valid email address";
                               }
                               return null;
                             },
                           ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        SizedBox(height: 20.0),
+                        const SizedBox(height: 20.0),
                         Container(
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
                           child: TextFormField(
                             decoration: ThemeHelper().textInputDecoration(
                                 "Numéro téléphone",
                                 "Entrez votre numéro de téléhone"),
                             keyboardType: TextInputType.phone,
                             validator: (val) {
-                              if(!(val!.isEmpty) && !RegExp(r"^(\d+)*$").hasMatch(val)){
+                              // ignore: prefer_is_not_empty
+                              if (!(val!.isEmpty) &&
+                                  !RegExp(r"^(\d+)*$").hasMatch(val)) {
                                 return "Entrez un numéro de téléphone valide";
                               }
                               return null;
                             },
                           ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        SizedBox(height: 20.0),
+                        const SizedBox(height: 20.0),
                         Container(
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
                           child: TextFormField(
                             obscureText: true,
                             decoration: ThemeHelper().textInputDecoration(
@@ -160,9 +172,8 @@ class _Inscription extends State<Inscription>{
                               return null;
                             },
                           ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        SizedBox(height: 15.0),
+                        const SizedBox(height: 15.0),
                         FormField<bool>(
                           builder: (state) {
                             return Column(
@@ -177,7 +188,14 @@ class _Inscription extends State<Inscription>{
                                             state.didChange(value);
                                           });
                                         }),
-                                    Text("J'accepte tous les termes et conditions.", style: TextStyle(color: Colors.grey),),
+                                    Text(
+                                      "J'accepte tous les termes et conditions.",
+                                      style: GoogleFonts.openSans(
+                                          textStyle: const TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black54)),
+                                    ),
                                   ],
                                 ),
                                 Container(
@@ -185,7 +203,10 @@ class _Inscription extends State<Inscription>{
                                   child: Text(
                                     state.errorText ?? '',
                                     textAlign: TextAlign.left,
-                                    style: TextStyle(color: Theme.of(context).errorColor,fontSize: 12,),
+                                    style: TextStyle(
+                                      color: Theme.of(context).errorColor,
+                                      fontSize: 12,
+                                    ),
                                   ),
                                 )
                               ],
@@ -199,16 +220,18 @@ class _Inscription extends State<Inscription>{
                             }
                           },
                         ),
-                        SizedBox(height: 20.0),
+                        const SizedBox(height: 20.0),
                         Container(
-                          decoration: ThemeHelper().buttonBoxDecoration(context),
+                          decoration:
+                              ThemeHelper().buttonBoxDecoration(context),
                           child: ElevatedButton(
                             style: ThemeHelper().buttonStyle(),
                             child: Padding(
-                              padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                              padding:
+                                  const EdgeInsets.fromLTRB(40, 10, 40, 10),
                               child: Text(
                                 "S'inscrire".toUpperCase(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
@@ -219,70 +242,93 @@ class _Inscription extends State<Inscription>{
                               if (_formKey.currentState!.validate()) {
                                 Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
-                                        builder: (context) => Profil()
-                                    ),
-                                        (Route<dynamic> route) => false
-                                );
+                                        builder: (context) => Profil()),
+                                    (Route<dynamic> route) => false);
                               }
                             },
                           ),
                         ),
-                        SizedBox(height: 30.0),
-                        Text("Ou créez un compte en utilisant les médias sociaux",  style: TextStyle(color: Colors.grey),),
-                        SizedBox(height: 25.0),
+                        const SizedBox(height: 30.0),
+                        Text(
+                          "Ou créez un compte en utilisant les médias sociaux",
+                          style: GoogleFonts.openSans(
+                            textStyle: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black),
+                          ),
+                        ),
+                        const SizedBox(height: 25.0),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             GestureDetector(
-                              child: FaIcon(
-                                FontAwesomeIcons.googlePlus, size: 35,
-                                color: HexColor("#EC2D2F"),),
-                              onTap: () {
-                                setState(() {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return ThemeHelper().alartDialog("Google Plus","Vous appuyez sur l'icône sociale GooglePlus.",context);
-                                    },
-                                  );
-                                });
-                              },
+                                child: FaIcon(
+                                  FontAwesomeIcons.googlePlus,
+                                  size: 35,
+                                  color: HexColor("#EC2D2F"),
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return ThemeHelper().alartDialog(
+                                            "Facebook",
+                                            "Vous tapez on Facebook social icon.",
+                                            context);
+                                      },
+                                    );
+                                  });
+                                }),
+                            const SizedBox(
+                              width: 30.0,
                             ),
-                            SizedBox(width: 30.0,),
                             GestureDetector(
                               child: Container(
                                 padding: EdgeInsets.all(0),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
-                                  border: Border.all(width: 5, color: HexColor("#40ABF0")),
+                                  border: Border.all(
+                                      width: 5, color: HexColor("#40ABF0")),
                                   color: HexColor("#40ABF0"),
                                 ),
                                 child: FaIcon(
-                                  FontAwesomeIcons.twitter, size: 23,
-                                  color: HexColor("#FFFFFF"),),
+                                  FontAwesomeIcons.twitter,
+                                  size: 23,
+                                  color: HexColor("#FFFFFF"),
+                                ),
                               ),
                               onTap: () {
                                 setState(() {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
-                                      return ThemeHelper().alartDialog("Twitter","Vous appuyez sur l'icône sociale Twitter.",context);
+                                      return ThemeHelper().alartDialog(
+                                          "Twitter",
+                                          "Vous appuyez sur l'icône sociale Twitter.",
+                                          context);
                                     },
                                   );
                                 });
                               },
                             ),
-                            SizedBox(width: 30.0,),
+                            const SizedBox(
+                              width: 30.0,
+                            ),
                             GestureDetector(
                               child: FaIcon(
-                                FontAwesomeIcons.facebook, size: 35,
-                                color: HexColor("#3E529C"),),
+                                FontAwesomeIcons.facebook,
+                                size: 35,
+                                color: HexColor("#3E529C"),
+                              ),
                               onTap: () {
                                 setState(() {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
-                                      return ThemeHelper().alartDialog("Facebook",
+                                      return ThemeHelper().alartDialog(
+                                          "Facebook",
                                           "Vous tapez on Facebook social icon.",
                                           context);
                                     },
@@ -303,5 +349,4 @@ class _Inscription extends State<Inscription>{
       ),
     );
   }
-
 }

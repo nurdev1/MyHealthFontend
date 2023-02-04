@@ -29,8 +29,8 @@ class ThemeHelper{
   }
 
   BoxDecoration buttonBoxDecoration(BuildContext context, [String color1 = "", String color2 = ""]) {
-    Color c1 = Theme.of(context).primaryColor;
-    Color c2 = Theme.of(context).accentColor;
+    Color c1 = HexColor('54DEFC');
+    Color c2 = HexColor('54DEFC');
     if (color1.isEmpty == false) {
       c1 = HexColor(color1);
     }
@@ -40,7 +40,7 @@ class ThemeHelper{
 
     return BoxDecoration(
       boxShadow: [
-        BoxShadow(color: Colors.black26, offset: Offset(0, 4), blurRadius: 5.0)
+        BoxShadow(color: HexColor('54DEFC'), offset: Offset(0, 4), blurRadius: 5.0)
       ],
       gradient: LinearGradient(
         begin: Alignment.topLeft,
@@ -51,7 +51,7 @@ class ThemeHelper{
           c2,
         ],
       ),
-      color: Colors.deepPurple.shade300,
+      color: HexColor('54DEFC'),
       borderRadius: BorderRadius.circular(30),
     );
   }
@@ -80,7 +80,7 @@ class ThemeHelper{
             style: TextStyle(color: Colors.white),
           ),
           style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.black38)),
+              backgroundColor: MaterialStateProperty.all(HexColor('54DEFC'))),
           onPressed: () {
             Navigator.of(context).pop();
           },

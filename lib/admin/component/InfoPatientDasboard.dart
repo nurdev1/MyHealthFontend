@@ -27,11 +27,11 @@ class InfoPatientDasboard extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [ Image.asset('images/im2.png',width: 35.0,color: Colors.black,),
+        children: [ Image.asset('images/patients.png',width: 35),
           SizedBox(height: SizeConfig.blockSizeVertical! * 2,),
-          PrimaryText(text: "Patient",color: Colors.black,size: 16.0,),
+          const PrimaryText(text: "Patient",color: Colors.black,size: 16.0,),
           SizedBox(height: SizeConfig.blockSizeVertical! * 2,),
-          PrimaryText(text: "9349",fontWeight: FontWeight.w700,size: 18.0,),
+          const PrimaryText(text: "9349",fontWeight: FontWeight.w700,size: 18.0,),
         ],
 
       ),

@@ -85,7 +85,7 @@ class Dashboard extends StatelessWidget {
                               InfoHopitalDansboard(),
                               InfoMedecin(),
                               InfoPatientDasboard(),
-                              InfoSpecialiteDasboard()
+                              //InfoSpecialiteDasboard()
                             ],
                           ),
                         ),

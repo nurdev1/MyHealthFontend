@@ -1,11 +1,13 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/page/Choix.dart';
 
 
-import '../common/theme_helper.dart';
-import '../widget/HeaderWidget.dart';
+import '../../common/theme_helper.dart';
+import '../../widget/HeaderWidget.dart';
 import 'MedecinInscription1.dart';
 
 class InscriptionMedecin extends  StatefulWidget{
@@ -107,10 +109,11 @@ class _InscriptionMedecin extends State<InscriptionMedecin>{
                         Container(
                           child: Text(
                             'Créer ton compte et retrouve à tout moment les dossiers patients',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: 'Roboto'
-                            ),
+                            style: GoogleFonts.openSans(
+                                textStyle:  const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,color:Colors.black)
+                            )
                           ),
                         ),
                         SizedBox(height: 30,),
@@ -167,7 +170,8 @@ class _InscriptionMedecin extends State<InscriptionMedecin>{
                         Container(
                           decoration: ThemeHelper().buttonBoxDecoration(context),
                           child: ElevatedButton(
-                           style: ThemeHelper().buttonStyle(),
+                            style: ThemeHelper().buttonStyle(),
+
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
                               child: Text(

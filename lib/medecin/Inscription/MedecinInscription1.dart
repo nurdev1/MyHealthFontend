@@ -1,12 +1,14 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:masante/medecin/InscriptionMedecin.dart';
-import 'package:masante/medecin/MedecinInscription2.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:masante/medecin/Inscription/InscriptionMedecin.dart';
 
 
-import '../common/theme_helper.dart';
-import '../widget/HeaderWidget.dart';
+
+import '../../common/theme_helper.dart';
+import '../../widget/HeaderWidget.dart';
+import 'MedecinInscription2.dart';
 
 class InscriptionMedecin1 extends  StatefulWidget{
   @override
@@ -108,10 +110,11 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1>{
                         Container(
                           child: Text(
                             'Les dossiers patients à notre mains',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: 'Roboto'
-                            ),
+                            style: GoogleFonts.openSans(
+                                textStyle:  const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,color:Colors.black)
+                            )
                           ),
                         ),
                         SizedBox(height: 30,),

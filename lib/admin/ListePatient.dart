@@ -2,17 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/admin/PatientFiltre.dart';
 import 'package:masante/admin/component/AdminSpecialiteMedecin.dart';
 
 import '../config/responsive.dart';
 import '../medecin/MedecinProfil.dart';
 import 'MedecinNouveau.dart';
+import 'PatientListeTableau.dart';
 import 'component/MenuAdmin.dart';
 
 class AdminPatientListePage extends StatelessWidget {
   const AdminPatientListePage({Key? key}) : super(key: key);
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -50,55 +51,133 @@ class AdminPatientListePage extends StatelessWidget {
             )
           ],
         ),
-        body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: SafeArea(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if(Responsive.isDesktop(context))
-                  Expanded(
-                      flex:2,
-                      child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(67),
-                          ),
-                          child: Menu())
-                  ),
-
+        body: SafeArea(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if(Responsive.isDesktop(context))
                 Expanded(
-                    flex: 13,
-                    child: SafeArea(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            AdminSpecialiteMedecinWidget(),
-                            Text('Liste médecins' ,style: GoogleFonts.openSans(
-                                textStyle: const TextStyle(fontSize: 40,)
-                            ),),
-                            SizedBox(height: 20,),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: ListeMedecinTableau(),
-                            )
-                          ],
+                    flex:2,
+                    child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(67),
+                        ),
+                        child: Menu())
+                ),
+
+              Expanded(
+                flex: 13,
+                child: SafeArea(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Liste des Patients' ,style: GoogleFonts.openSans(
+                          textStyle: const TextStyle(fontSize: 40,fontWeight: FontWeight.bold)
+                      ),),
+                      /*SizedBox(height: 10,),
+                      Container(
+                        width: 500,
+                        alignment: Alignment.bottomLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 40.0, right: 5),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                fillColor: HexColor('#54DEFC').withOpacity(0.5),
+                                filled: true,
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(10)
+                                  ),
+                                ),
+                                suffixIcon: InkWell(
+                                  onTap: (){},
+                                  child: Container(
+                                    padding: EdgeInsets.all(2),
+                                    margin: EdgeInsets.symmetric(horizontal: 2),
+                                    decoration:  BoxDecoration(
+                                      color: HexColor('#54DEFC'),
+                                      borderRadius:
+                                      const BorderRadius.all(Radius.circular(10)
+                                      ),
+
+                                    ),
+                                    child: Icon(Icons.search),
+                                  ),
+                                )
+                            ),
+                          ),
+                        ),
+                      ),*/
+                      Container(
+                        width: 300,
+                       // alignment: Alignment.bottomLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 40.0, right: 5),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                fillColor: HexColor('#54DEFC').withOpacity(0.5),
+                                filled: true,
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(10)
+                                  ),
+                                ),
+                                suffixIcon: InkWell(
+                                  onTap: (){},
+                                  child: Container(
+                                    padding: EdgeInsets.all(2),
+                                    margin: EdgeInsets.symmetric(horizontal: 2),
+                                    decoration:  BoxDecoration(
+                                      color: HexColor('#54DEFC'),
+                                      borderRadius:
+                                      const BorderRadius.all(Radius.circular(10)
+                                      ),
+
+                                    ),
+                                    child: Icon(Icons.search),
+                                  ),
+                                )
+                            ),
+                          ),
                         ),
                       ),
-                    )),
+                      //SizedBox(height: 10,),
+                      AdminPatientFiltreWidget(),
+                      SizedBox(height: 5),
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                          padding:  EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(height: 20,),
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: const ListePatientTableau(),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
 
-                /*if(Responsive.isDesktop(context))
-                Expanded(
-                  flex: 1,
-                  child: Container(),
-                ),*/
-              ],
-            ),
+              /*if(Responsive.isDesktop(context))
+              Expanded(
+                flex: 1,
+                child: Container(),
+              ),*/
+            ],
           ),
         )
     );

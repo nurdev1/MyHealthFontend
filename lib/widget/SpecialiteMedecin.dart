@@ -22,7 +22,7 @@ class SpecialiteMedecinWidget extends StatelessWidget {
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+              children: const [
                 /*Image.asset(
                   "assets/images/profil.jpg",
                   width: 40, height: 40,),*/

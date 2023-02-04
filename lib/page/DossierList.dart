@@ -66,10 +66,10 @@ class DossierList extends StatelessWidget {
                           Column(
                             children: [
                               Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Liste Dossier Médecal',style: TextStyle(
-                                    color: HexColor('#54DEFC'),
-                                    fontSize: 22,
+                                  Text('Liste Dossier Médecal',style: GoogleFonts.openSans(
+                                      textStyle: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold)
                                   ),
                                   ),
                                   Spacer(),
@@ -111,58 +111,8 @@ class DossierList extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 30,),
-                    Container(
-                      padding: EdgeInsets.all(30),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 2,
-                          color: HexColor('#54DEFC').withOpacity(0.30),
-                        ),
-                        borderRadius: BorderRadius.circular(30)
-                      ),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            height: 10,
-                            width: 10,
-                            child: Icon(Icons.file_copy,color: HexColor('#EB455F'),),
-                          ),
-                          SizedBox(width: 10,),
-                          Expanded(
-                            flex: 2,
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 15),
-                                child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children:  [
-                                Text("Consultation",
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.openSans(
-                                    textStyle: const TextStyle(fontSize: 20,)
-                                  ),
-                                ),
-                                SizedBox(height: 5,),
-                                Text("Suite à des maux de tête",
-                                  style: GoogleFonts.roboto(
-                                      textStyle: const TextStyle(fontSize: 18,)
-                                  ),
-                                  ),
-                            ],
-                          ),
-                              )
-                          ),
-                          IconButton(
-                            iconSize: 25,
-                            icon: const Icon(Icons.add),
-                            onPressed: () {
-                              // ...
-                            },
-                          ),
-                        ],
-                      ),
-                    )
+                    const SizedBox(height: 30,),
+
 
                   ],
 

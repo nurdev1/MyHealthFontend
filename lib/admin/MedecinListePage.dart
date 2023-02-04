@@ -4,13 +4,36 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/admin/component/AdminSpecialiteMedecin.dart';
 
+
+
+import '../VarBlobale.dart';
 import '../config/responsive.dart';
 import '../medecin/MedecinProfil.dart';
 import 'MedecinNouveau.dart';
 import 'component/MenuAdmin.dart';
 
 class AdminMedecinListePage extends StatelessWidget {
-  const AdminMedecinListePage({Key? key}) : super(key: key);
+ // const AdminMedecinListePage({Key? key}) : super(key: key);
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  List<String> sortBy = ['Plus médecins', 'moins Descending', ''];
+  SortTypes? sortType;
+  String? sortValue;
+  String? searchValue;
+  int pagesNum = 0;
+  int nextPage = 1;
+
+
+/*  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () async {
+      await Provider.of<HopitalProvider>(context, listen: false)
+          .getProducts(0, null, null, GetTypes.PAGING);
+      pagesNum =
+          Provider.of<ProductProvider>(context, listen: false).pagesNumber;
+    });
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +106,7 @@ class AdminMedecinListePage extends StatelessWidget {
 
                         SizedBox(height: 10,),
                         Container(
-                          width: 700,
+                          width: 500,
                           alignment: Alignment.bottomLeft,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 40.0, right: 5),

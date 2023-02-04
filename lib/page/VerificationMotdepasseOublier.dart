@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 
@@ -47,21 +49,21 @@ class _VerificationState extends State<Verification> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Verification',
-                              style: TextStyle(
-                                  fontSize: 35,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black54
-                              ),
+                                style: GoogleFonts.openSans(
+                                    textStyle:  const TextStyle(
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.w500,color:Colors.black54)
+                                )
                               // textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 10,),
                             Text(
                               'Entrez le code de vérification que nous venons de vous envoyer sur votre adresse e-mail.',
-                              style: TextStyle(
-                                // fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black54
-                              ),
+                                style: GoogleFonts.openSans(
+                                    textStyle:  const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500,color:Colors.black54)
+                                )
                               // textAlign: TextAlign.center,
                             ),
                           ],
@@ -76,7 +78,7 @@ class _VerificationState extends State<Verification> {
                               length: 4,
                               width: 300,
                               fieldWidth: 50,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 30
                               ),
                               textFieldAlignment: MainAxisAlignment.spaceAround,
@@ -93,9 +95,11 @@ class _VerificationState extends State<Verification> {
                                 children: [
                                   TextSpan(
                                     text: "Si vous n'avez pas reçu de code! ",
-                                    style: TextStyle(
-                                      color: Colors.black38,
-                                    ),
+                                      style: GoogleFonts.openSans(
+                                          textStyle:  const TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.w500,color:Colors.black)
+                                      )
                                   ),
                                   TextSpan(
                                     text: 'Renvoyer',
@@ -110,10 +114,12 @@ class _VerificationState extends State<Verification> {
                                           },
                                         );
                                       },
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.orange
-                                    ),
+                                      style: GoogleFonts.openSans(
+                                          textStyle:   TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.w500,
+                                              color: HexColor('EB455F'))
+                                      )
                                   ),
                                 ],
                               ),
@@ -128,11 +134,11 @@ class _VerificationState extends State<Verification> {
                                       40, 10, 40, 10),
                                   child: Text(
                                     "Verifier".toUpperCase(),
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
+                                      style: GoogleFonts.openSans(
+                                          textStyle:  const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,color:Colors.white)
+                                      )
                                   ),
                                 ),
                                 onPressed: _pinSuccess ? () {

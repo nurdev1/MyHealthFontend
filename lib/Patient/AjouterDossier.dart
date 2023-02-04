@@ -1,102 +1,93 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:masante/Patient/PatientAccueil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:masante/modeles/Dossier.dart';
 
-import '../medecin/MedecinProfil.dart';
-import '../widget/EntetePage.dart';
+import '../AllFile/repository/Dossier.dart';
+import '../common/theme_helper.dart';
 
-class AjouterDossier extends StatelessWidget {
-  const AjouterDossier({Key? key}) : super(key: key);
+class AjouterDossierPage extends StatelessWidget {
+  //const AjouterDossier({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double _headerHeight =  140;
-    return Material(
-        child: Stack(
+    final cnom = TextEditingController();
+    // final cdesc = TextEditingController();
+    // final cpat = TextEditingController();
+    // final cdate = TextEditingController();
+
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.all(10),
+          child: Column(
             children: [
-              Container(
-                height: _headerHeight,
-                child: EnteteWidhet(_headerHeight,  false),
+              const SizedBox(
+                height: 40,
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 30),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              GestureDetector(
-                                child: Icon(
-                                  Icons.arrow_back_ios,
-                                  color: Colors.white,
-                                  size: 20,
-                                ),
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(
-                                      builder: (context) => PatientAccueil()
-                                  )
-                                  );
-                                },
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  GestureDetector(
-                                    child: CircleAvatar(
-                                      radius: 30,
-                                      backgroundImage: AssetImage("assets/images/profil.jpg",),
-                                    ),
-                                    onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(
-                                          builder: (context) => MedecinProfil()
-                                      )
-                                      );
-                                    },
-                                  ),
-                                ],
-                              )
-
-                            ],
+              TextField(
+                  controller: cnom,
+                  style: GoogleFonts.openSans(
+                    textStyle: const TextStyle(
+                      fontSize: 22,
+                      //fontWeight: FontWeight.w500,color:Colors.black
+                    ),
+                  ),
+                  decoration: const InputDecoration(
+                      labelText: 'Nom',
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(40))))),
+              const SizedBox(
+                height: 20,
+              ),
+              // TextField(
+              //     controller: cdesc,
+              //     style: GoogleFonts.openSans(
+              //       textStyle: const TextStyle(
+              //         fontSize: 22,
+              //         //fontWeight: FontWeight.w500,color:Colors.black
+              //       ),
+              //     ),
+              //     decoration: const InputDecoration(
+              //         labelText: 'Patient',
+              //         border: OutlineInputBorder(
+              //             borderRadius:
+              //                 BorderRadius.all(Radius.circular(30))))
+              //                 ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                decoration: ThemeHelper().buttonBoxDecoration(context),
+                child: ElevatedButton(
+                    onPressed: () {
+                      final Dossier dossier = Dossier(nom: cnom.text);
+                      //, date: cdate.text, patient: cpat.text
+                      addDossier(dossier);
+                      cnom.text = '';
+                      //  cpat.text = '';
+                    },
+                    style: ThemeHelper().buttonStyle(),
+                    child: Container(
+                      width: double.infinity,
+                      //child: Icon(Icons.add,size: 32, ),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                        child: Text(
+                          "Ajouter".toUpperCase(),
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 30),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text('Ajouter Dossier',style: TextStyle(
-                            fontWeight: FontWeight.w900,
-                            fontSize: 25,
-                          ),),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 5),
-                    Container(
-                      padding: EdgeInsets.only(left: 20, top: 20),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-
-                          ],
                         ),
                       ),
-                    )
-
-                  ],
-
-                ),
-              )
-            ] ));
-
+                    )),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
