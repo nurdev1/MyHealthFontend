@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:masante/Patient/AjouterDossier.dart';
-import 'package:masante/Patient/ToutDossier.dart';
+import 'package:masante/Patient/dossier/AjouterDossier.dart';
+import 'package:masante/Patient/dossier/ToutDossier.dart';
 
 class DossierPage extends StatelessWidget {
   const DossierPage({Key? key}) : super(key: key);
