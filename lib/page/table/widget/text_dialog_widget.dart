@@ -1,4 +1,6 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 Future<T?> showTextDialog<T>(
   BuildContext context, {
@@ -48,9 +50,27 @@ class _TextDialogWidgetState extends State<TextDialogWidget> {
         ),
         actions: [
           ElevatedButton(
-            child: Text('Done'),
+
+            child: Text('enregistrer'),
             onPressed: () => Navigator.of(context).pop(controller.text),
-          )
+          ),
+          /*AnimatedButton(
+              text:"boîte de dialogue d'avertissement",
+              color: Colors.orange,
+              pressEvent: (){
+                AwesomeDialog(
+                  context: context,
+                  dialogType: DialogType.warning,
+                  animType: AnimType.topSlide,
+                  showCloseIcon: true,
+                  title: 'Avertissement',
+                  desc: "description de l'avertissement",
+                  btnCancelOnPress: (){},
+                  btnOkOnPress: ()=>Navigator.of(context).pop(controller.text),
+                ).show();
+              },
+          ),*/
         ],
       );
 }
+

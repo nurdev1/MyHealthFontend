@@ -2,10 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:masante/Patient/AjouterDossier.dart';
+import 'package:masante/Patient/dossier/AjouterDossier.dart';
 import 'package:masante/page/DossierList.dart';
 
-import '../medecin/MedecinProfil.dart';
+import 'profile/MedecinProfil.dart';
 import '../widget/CategorieDossier.dart';
 import '../widget/EntetePage.dart';
 

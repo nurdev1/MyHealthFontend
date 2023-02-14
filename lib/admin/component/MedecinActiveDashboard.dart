@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../config/responsive.dart';
-import '../../config/size_config.dart';
+
+import '../../responsive.dart';
 import '../../style/style.dart';
+import '../config/size_config.dart';
 import '../data.dart';
 
 class MedecinNouveau extends StatelessWidget {

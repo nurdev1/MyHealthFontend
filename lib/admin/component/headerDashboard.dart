@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../config/responsive.dart';
+import '../../responsive.dart';
 import '../../style/colors.dart';
 import '../../style/style.dart';
 
@@ -20,7 +20,7 @@ class HeaderDasboard extends StatelessWidget {
 
               children: [
                 Column(
-                  children: [
+                  children: const [
                     PrimaryText(text: 'Tableau de bord',size: 30.0 ,fontWeight: FontWeight.w800,),
                     PrimaryText(text: 'le suivis',size: 16.0 ,fontWeight: FontWeight.w400, color: Colors.black,),
                   ],

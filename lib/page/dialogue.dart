@@ -3,7 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DialogueTest extends StatelessWidget {
-  const DialogueTest({Key? key}) : super(key: key);
+ // const DialogueTest({Key? key}) : super(key: key);
+
+  /* this is the function that handles getting the image from the device
+*/
+
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +88,8 @@ class DialogueTest extends StatelessWidget {
                     ).show();
                   }
               ),
+
+
 
             ],
           ),

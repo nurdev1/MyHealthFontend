@@ -1,41 +1,35 @@
 import 'Dossier.dart';
 
-class Consultation {
-  int idprescription;
-  String nom;
-  String description;
-  String pieceJoint;
-  DateTime date;
-  Dossier dossier;
+class ConsultationModele {
+  final int idprescription;
+  final String nom;
+  final String description;
+  final String pieceJoint;
+  final DateTime date;
+  final DossierModele dossier;
 
-  Consultation(
-      {
-        required this.idprescription,
-        required this.nom,
-     required this.description,
-     required this.pieceJoint,
-     required this.date,
-     required this.dossier});
+  ConsultationModele(this.idprescription, this.nom, this.description,
+      this.pieceJoint, this.date, this.dossier);
 
- factory Consultation.fromJson(Map<String, dynamic> json) {
-    return Consultation(
-      idprescription : json['idprescription'],
-      nom : json['nom'],
-      description : json['description'],
-      pieceJoint : json['pieceJoint'],
-      date : json['date'],
-      dossier : json['dossier'],
+  factory ConsultationModele.fromMap(Map json) {
+    return ConsultationModele(
+      json['idprescription'],
+      json['nom'],
+      json['description'],
+      json['pieceJoint'],
+      json['date'],
+      json['dossier'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-    'idprescription' : idprescription,
-    'nom' : nom,
-    'description' : description,
-    'pieceJoint' : pieceJoint,
-    'date' : date,
-   'dossier' : dossier
+      'idprescription': idprescription,
+      'nom': nom,
+      'description': description,
+      'pieceJoint': pieceJoint,
+      'date': date,
+      'dossier': dossier
     };
   }
 }

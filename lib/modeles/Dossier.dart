@@ -1,23 +1,23 @@
-class Dossier {
-  String iddossier;
-  String nom;
-  // String date;
-  // String patient;
+class DossierModele {
+  late final String iddossier;
+  final String nom;
+  final String? date;
+  final String patient;
 
-  Dossier({
-    this.iddossier = '',
-    required this.nom,
-    //  required this.date,
-    // required this.patient
-  });
+  DossierModele(
+  this.iddossier,
+   this.nom,
+    this.date,
+   this.patient
+      );
 
   //collection en objet
-  factory Dossier.fromJson(Map<String, dynamic> json) {
-    return Dossier(
-      iddossier: json['iddossier'],
-      nom: json['nom'],
-      //  date: json['date'],
-      //  patient: json['patient']
+  factory DossierModele.fromMap(Map json) {
+    return DossierModele(
+       json['iddossier'],
+       json['nom'],
+     json['date'],
+      json['patient']
     );
   }
 //objet en collection

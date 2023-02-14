@@ -4,12 +4,11 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:masante/Patient/connexion/sign_in_controller.dart';
 import 'package:masante/Patient/home/PatientAccueil.dart';
 import 'package:masante/page/Choix.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../../common/theme_helper.dart';
+import '../../admin/common/theme_helper.dart';
 import '../../page/MotdepasseOublier.dart';
 import '../../widget/HeaderWidget.dart';
 
@@ -23,9 +22,9 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   double _headerHeight = 250;
   Key _formKey = GlobalKey<FormState>();
-  final SignInController controllerpassword = Get.find<SignInController>();
+  /*final SignInController controllerpassword = Get.find<SignInController>();
   final SignInController controllerusername = Get.find<SignInController>();
-  final SignInController controllersignin = Get.find<SignInController>();
+  final SignInController controllersignin = Get.find<SignInController>();*/
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                               decoration:
                                   ThemeHelper().inputBoxDecorationShaddow(),
                               child: TextField(
-                                controller: controllerusername.usernameController,
+                               // controller: controllerusername.usernameController,
                                 decoration: ThemeHelper().textInputDecoration(
                                     'Email', 'Entrer votre nom utiliseteur'),
 
@@ -75,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                               decoration:
                                   ThemeHelper().inputBoxDecorationShaddow(),
                               child: TextField(
-                                controller: controllerpassword.passwordController,
+                              //  controller: controllerpassword.passwordController,
                                 obscureText: true,
                                 decoration: ThemeHelper().textInputDecoration(
                                     'Mot de passe', 'Entrer votre password'),
@@ -107,7 +106,8 @@ class _LoginPageState extends State<LoginPage> {
                                   ThemeHelper().buttonBoxDecoration(context),
                               child: ElevatedButton(
                                 style: ThemeHelper().buttonStyle(),
-                                onPressed: controllersignin.signIn ,
+                                onPressed:(){},
+                               // controllersignin.signIn ,
                                 child: Padding(
                                   padding:
                                        const EdgeInsets.fromLTRB(40, 10, 40, 10),

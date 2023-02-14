@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-import '../medecin/MedecinProfil.dart';
+import '../Patient/profile/profile_page.dart';
+import '../medecin/profile/MedecinProfil.dart';
 import '../widget/EntetePage.dart';
 
 class DossierList extends StatelessWidget {
   // const MedecinAccueil({Key? key}) : super(key: key);
-  double _headerHeight =  140;
+  double _headerHeight =  180;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class DossierList extends StatelessWidget {
                                     ),
                                     onTap: () {
                                       Navigator.push(context, MaterialPageRoute(
-                                          builder: (context) => MedecinProfil()
+                                          builder: (context) => PatientProfilePage()
                                       )
                                       );
                                     },

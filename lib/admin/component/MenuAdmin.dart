@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/admin/Dashboard.dart';
 import 'package:masante/admin/ListeHopital.dart';
@@ -10,8 +11,9 @@ import 'package:masante/admin/MedecinListePage.dart';
 import 'package:masante/admin/component/AdminConnexion.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../../Patient/PatientListeMedecin.dart';
-import '../../config/size_config.dart';
+import '../config/size_config.dart';
+
+
 
 
 class Menu extends StatelessWidget {
@@ -74,7 +76,7 @@ class Menu extends StatelessWidget {
                     )
                     );
                   },
-                  icon: const Icon(MdiIcons.hospital,
+                  icon: const Icon(FontAwesomeIcons.hospital,
                     color: Colors.white,
                     size: 30,),
                   padding: EdgeInsets.symmetric(vertical: 20.0),

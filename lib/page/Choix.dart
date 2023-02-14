@@ -39,10 +39,7 @@ class _ChoixState extends State<ChoixPage> {
                           size: 35,
                         ),
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => LoginPage()
-                          )
-                          );
+
                         },
                       ),
                     ],

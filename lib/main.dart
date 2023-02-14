@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:masante/Patient/Connexion/Connexion.dart';
-import 'package:masante/Patient/home/PatientAccueil.dart';
-import 'package:masante/Patient/home/PatientNew.dart';
-import 'package:masante/medecin/AccueilMedecin.dart';
-import 'package:masante/page/Connexion.dart';
-import 'package:masante/page/splash/SplashPage.dart';
+
 
 // ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
+import 'package:masante/Patient/PatientListeMedecin.dart';
 
-import 'Patient/inscription/Inscription.dart';
-import 'medecin/medecinListePatient/MedecinListe.dart';
+import 'package:masante/medecin/medecinListePatient/MedecinListe.dart';
+import 'package:masante/page/Connexion.dart';
+import 'package:masante/page/DossierList.dart';
+import 'package:masante/page/table/Tablemain.dart';
+
+import 'Patient/dossier/PatientDossier.dart';
+import 'admin/component/AdminSplashPage.dart';
+import 'medecin/PatientListePage.dart';
+
+
+
+
 
 Future<void> main() async {
   runApp(LoginUiApp());
@@ -37,9 +43,9 @@ class LoginUiApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.grey.shade100,
         primarySwatch: Colors.grey,
       ),
-     //home: Splash(title: 'Myhealth',),
+    // home: Splash(title: 'Myhealth',),
       // home: AdminSplash(title: 'Myhealth',),
-       home:  MedecinListPatientPage(),
+       home:  PatientListeMedecinPage(),
     );
 /*  @override
   Widget build(BuildContext context) {

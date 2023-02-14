@@ -2,12 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:masante/Patient/AjouterDossier.dart';
-import 'package:masante/page/DossierList.dart';
+import 'package:masante/Patient/dossier/AjouterDossier.dart';
 
-import '../../medecin/MedecinProfil.dart';
-import '../../widget/CategorieDossier.dart';
 import '../../widget/EntetePage.dart';
+import '../profile/profile_page.dart';
 
 class PatientFirst extends StatelessWidget {
 //  const PatientNew({Key? key}) : super(key: key);
@@ -53,7 +51,7 @@ class PatientFirst extends StatelessWidget {
                                 ),
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
-                                      builder: (context) => MedecinProfil()
+                                      builder: (context) => PatientProfilePage()
                                   )
                                   );
                                 },

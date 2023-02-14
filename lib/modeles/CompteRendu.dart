@@ -1,15 +1,15 @@
 import 'Dossier.dart';
 
-class CompteRendu{
+class CompteRenduModele {
 
   int idCompteRendu;
   String nom;
   String description;
   String pieceJoint;
   DateTime date;
-  Dossier dossier;
+  DossierModele dossier;
 
-  CompteRendu(
+  CompteRenduModele(
       {required this.idCompteRendu,
       required this.nom,
       required this.description,
@@ -18,8 +18,8 @@ class CompteRendu{
      required this.dossier
       });
 
-   factory CompteRendu.fromJson(Map<String, dynamic> json) {
-  return CompteRendu(
+   factory CompteRenduModele.fromJson(Map<String, dynamic> json) {
+  return CompteRenduModele(
       idCompteRendu : json['idprescription'],
       nom : json['nom'],
       description : json['description'],

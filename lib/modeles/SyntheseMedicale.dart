@@ -1,15 +1,15 @@
 
 import 'CompteRendu.dart';
 
-class SyntheseMedical {
+class SyntheseMedicalModele  {
   int idSyntheseMedical;
   String nom;
   String description;
   String pieceJoint;
   String date;
-  CompteRendu compteRendu;
+  CompteRenduModele compteRendu;
 
-  SyntheseMedical(
+  SyntheseMedicalModele (
       {required this.idSyntheseMedical,
       required this.nom,
       required this.description,
@@ -17,8 +17,8 @@ class SyntheseMedical {
       required this.date,
       required this.compteRendu});
 
-  factory SyntheseMedical.fromJson(Map<String, dynamic> json) {
-    return SyntheseMedical (
+  factory SyntheseMedicalModele .fromJson(Map<String, dynamic> json) {
+    return SyntheseMedicalModele  (
         idSyntheseMedical : json['idprescription'],
     nom : json['nom'],
     description : json['description'],

@@ -1,6 +1,7 @@
 import 'package:custom_clippers/custom_clippers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class ChatSample extends StatelessWidget {
@@ -16,10 +17,14 @@ class ChatSample extends StatelessWidget {
           clipper:UpperNipMessageClipper(MessageType.receive),
           child: Container(
             padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(color: HexColor("54DEFC").withOpacity(0.9),
+            decoration: BoxDecoration(color: HexColor("54DEFC").withOpacity(0.8),
             ),
             child: Text("Bonjour Mariam avez vous tous les médicaments?",
-            style: TextStyle( fontSize: 16,color: Colors.white),
+            style:  GoogleFonts.roboto(
+                textStyle:  const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.normal,color:Colors.white)
+            ),
             ),
           ),
         ),
@@ -31,10 +36,14 @@ class ChatSample extends StatelessWidget {
               clipper:LowerNipMessageClipper(MessageType.send),
               child: Container(
                 padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(color: Color(0xFFE1E1E2).withOpacity(0.9),
+                decoration: BoxDecoration(color: HexColor("EB455F").withOpacity(0.8),
                           ),
                 child: Text("Bonjour docteur Fatoumata oui ,j'ai besoins d'explication concernant les médicaments.",
-                  style: TextStyle( fontSize: 16),
+                  style:  GoogleFonts.roboto(
+                      textStyle:  const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.normal,color:Colors.white)
+                  ),
                 ),
               ),
             ),

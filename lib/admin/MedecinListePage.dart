@@ -7,10 +7,10 @@ import 'package:masante/admin/component/AdminSpecialiteMedecin.dart';
 
 
 import '../VarBlobale.dart';
-import '../config/responsive.dart';
-import '../medecin/MedecinProfil.dart';
+import '../responsive.dart';
 import 'MedecinNouveau.dart';
 import 'component/MenuAdmin.dart';
+import 'component/Profil/Screens/ProfileScreen.dart';
 
 class AdminMedecinListePage extends StatelessWidget {
  // const AdminMedecinListePage({Key? key}) : super(key: key);
@@ -61,7 +61,7 @@ class AdminMedecinListePage extends StatelessWidget {
                       ),
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(
-                            builder: (context) => MedecinProfil()
+                            builder: (context) => ProfileAdmin()
                         )
                         );
                       },

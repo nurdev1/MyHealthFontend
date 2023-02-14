@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../medecin/MedecinProfil.dart';
+import '../Patient/profile/profile_page.dart';
+import '../medecin/profile/MedecinProfil.dart';
 import '../widget/CategorieDossier.dart';
 import '../widget/EntetePage.dart';
 
@@ -49,7 +50,7 @@ class PatientNewT extends StatelessWidget {
                                 ),
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
-                                      builder: (context) => MedecinProfil()
+                                      builder: (context) => PatientProfilePage()
                                   )
                                   );
                                 },

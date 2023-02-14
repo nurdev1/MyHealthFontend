@@ -30,7 +30,7 @@ class AdminLogin extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: 70,),
-              Image.asset('assets/images/logo.png',width: 90,),
+              Image.asset('assets/images/Masante6.png',width: 90,),
              /* SizedBox(height: 15,),
               Text('Myhealth',style: TextStyle(
                 color: Colors.white,

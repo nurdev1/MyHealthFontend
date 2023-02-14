@@ -4,7 +4,7 @@ class Connexion {
   int id;
   String username;
   String email;
-  List<Role> roles;
+  List<RoleModele> roles;
  String accessToken;
   String tokenType;
 
@@ -23,8 +23,8 @@ class Connexion {
       username: json['username'] as String,
       email: json['email'] as String,
       //roles : json['roles'].cast<String>(),
-      roles: List<Role>.from((json['roles'] as List<dynamic>).map((element) {
-        return Role.fromJson(element as Map<String, dynamic>);
+      roles: List<RoleModele>.from((json['roles'] as List<dynamic>).map((element) {
+        return RoleModele.fromJson(element as Map<String, dynamic>);
       })),
       accessToken: json['accessToken'],
       tokenType: json['tokenType'],

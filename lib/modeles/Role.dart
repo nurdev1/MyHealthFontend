@@ -1,14 +1,14 @@
-class Role {
+class RoleModele  {
   final int id;
   final String nom;
 
-  Role({
+  RoleModele ({
     required this.id,
     required this.nom,
   });
 
-  factory Role.fromJson(Map<String, dynamic> json) {
-    return Role(
+  factory RoleModele .fromJson(Map<String, dynamic> json) {
+    return RoleModele (
       id: json['id'],
       nom: json['nom'],
     );

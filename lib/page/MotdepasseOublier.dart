@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../Patient/Connexion/Connexion.dart';
-import '../common/theme_helper.dart';
+import '../admin/common/theme_helper.dart';
 import '../widget/HeaderWidget.dart';
 import 'Connexion.dart';
 import 'VerificationMotdepasseOublier.dart';
@@ -136,10 +136,7 @@ class _MotdepasseOublier extends State<MotdepasseOublier> {
                                     text: 'Connexion',
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => LoginPage()),
-                                        );
+
                                       },
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold

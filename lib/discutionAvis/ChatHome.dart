@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import '../widget/ActiveChats.dart';
@@ -8,7 +9,7 @@ import '../widget/RecentChats.dart';
 
 class ChatHome extends StatelessWidget {
  // const ChatHome({Key? key}) : super(key: key);
-  double _headerHeight =  200;
+  double _headerHeight =  100;
 
   @override
   Widget build(BuildContext context) {
@@ -16,21 +17,23 @@ class ChatHome extends StatelessWidget {
       drawer: Drawer(),
       appBar: AppBar(
         backgroundColor:HexColor("54DEFC") ,
-        actions: [
+        actions: const [
           Padding(padding: EdgeInsets.symmetric(horizontal: 10),
-          child: Icon(Icons.notifications_outlined),
+            child: Icon(Icons.notifications_outlined),
           ),
           Padding(padding: EdgeInsets.symmetric(horizontal: 15),
-          child: CircleAvatar(
-            radius: 26,
-            backgroundImage: AssetImage("assets/images/profil.jpg"),
-          ),)
+            child: CircleAvatar(
+              radius: 26,
+              backgroundImage: AssetImage("assets/images/profil.jpg"),
+            ),)
         ],
       ),
       body: ListView(children: [
         Padding(padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
-          child:Text("Avis", style: TextStyle(color: HexColor("54DEFC"),
-              fontSize: 28,fontWeight: FontWeight.bold
+          child:Text("Avis", style:  GoogleFonts.openSans(
+              textStyle:   TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w500,color:HexColor('#54DEFC'))
           ),
           ) ,
         ),
@@ -57,7 +60,7 @@ class ChatHome extends StatelessWidget {
                 child: Padding(padding: EdgeInsets.symmetric(horizontal: 15),
                 child: TextField(
                   decoration: InputDecoration(
-                    hintText: "recherche",
+                    hintText: "Recherche",
                     border: InputBorder.none,
                   ),
                 ),

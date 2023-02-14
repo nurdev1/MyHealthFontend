@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-import '../../config/responsive.dart';
-import '../../config/size_config.dart';
-import '../../style/colors.dart';
+
+import '../../responsive.dart';
 import '../../style/style.dart';
+import '../config/size_config.dart';
 
 
 class InfoMedecin extends StatelessWidget {

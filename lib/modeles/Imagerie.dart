@@ -1,30 +1,31 @@
 import '../admin/component/ListeActivite.dart';
+import 'Consultation.dart';
 
-class Imagerie {
-  int idimagerie;
-  String nom;
-  String description;
-  String pieceJoint;
-  DateTime date;
-  Consultation consultation;
+class ImagerieModele  {
+  final int idimagerie;
+  final String nom;
+  final String description;
+  final String pieceJoint;
+  final DateTime date;
+  final ConsultationModele  consultation;
 
-  Imagerie(
-      {
-        required this.idimagerie,
-      required this.nom,
-      required this.description,
-      required this.pieceJoint,
-      required this.date,
-      required this.consultation});
+  ImagerieModele (
+         this.idimagerie,
+       this.nom,
+       this.description,
+       this.pieceJoint,
+       this.date,
+       this.consultation
+  );
 
-  factory Imagerie.fromJson(Map<String, dynamic> json) {
-   return Imagerie(
-       idimagerie : json['idimagerie'],
-    nom : json['nom'],
-    description : json['description'],
-    pieceJoint : json['pieceJoint'],
-    date : json['date'],
-    consultation : json['consultation']);
+  factory ImagerieModele .fromMap(Map json) {
+   return ImagerieModele (
+        json['idimagerie'],
+     json['nom'],
+    json['description'],
+    json['pieceJoint'],
+    json['date'],
+    json['consultation']);
   }
 
   Map<String, dynamic> toJson() {

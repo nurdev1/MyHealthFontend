@@ -1,23 +1,28 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/modeles/Medecin.dart';
 import 'package:masante/page/Choix.dart';
 
-
-import '../../common/theme_helper.dart';
+import '../../admin/common/theme_helper.dart';
 import '../../widget/HeaderWidget.dart';
 import 'MedecinInscription1.dart';
 
-class InscriptionMedecin extends  StatefulWidget{
+class InscriptionMedecin extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _InscriptionMedecin();
   }
 }
 
-class _InscriptionMedecin extends State<InscriptionMedecin>{
+class _InscriptionMedecin extends State<InscriptionMedecin> {
+
+  final nom = TextEditingController();
+  final prenom = TextEditingController();
+  final email = TextEditingController();
+  final telephone = TextEditingController();
+
 
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
@@ -48,17 +53,16 @@ class _InscriptionMedecin extends State<InscriptionMedecin>{
                           size: 35,
                         ),
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => ChoixPage()
-                          )
-                          );
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ChoixPage()));
                         },
                       ),
                     ],
                   ),
                 ],
               ),
-
             ),
             Container(
               margin: EdgeInsets.fromLTRB(25, 50, 25, 10),
@@ -77,8 +81,8 @@ class _InscriptionMedecin extends State<InscriptionMedecin>{
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
-                                  border: Border.all(
-                                      width: 5, color: Colors.white),
+                                  border:
+                                      Border.all(width: 5, color: Colors.white),
                                   color: Colors.white,
                                   boxShadow: [
                                     BoxShadow(
@@ -105,38 +109,51 @@ class _InscriptionMedecin extends State<InscriptionMedecin>{
                             ],
                           ),
                         ),
-                        SizedBox(height: 100,),
+                        SizedBox(
+                          height: 100,
+                        ),
                         Container(
                           child: Text(
-                            'Créer ton compte et retrouve à tout moment les dossiers patients',
-                            style: GoogleFonts.openSans(
-                                textStyle:  const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500,color:Colors.black)
-                            )
-                          ),
+                              'Créer ton compte et retrouve à tout moment les dossiers patients',
+                              style: GoogleFonts.openSans(
+                                  textStyle: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black))),
                         ),
-                        SizedBox(height: 30,),
+                        const SizedBox(
+                          height: 30,
+                        ),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration('Prenom', 'Entrez votre prénom'),
-                          ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                        ),
-                        SizedBox(height: 30,),
-                        Container(
-                          child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration('Nom', 'Entrez votre nom '),
+                            controller: prenom,
+                            decoration: ThemeHelper().textInputDecoration(
+                                'Prenom', 'Entrez votre prénom'),
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        SizedBox(height: 20.0),
+                        const SizedBox(
+                          height: 30,
+                        ),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration("E-mail address", "Entrez votre email"),
+                            controller: nom,
+                            decoration: ThemeHelper().textInputDecoration(
+                                'Nom', 'Entrez votre nom '),
+                          ),
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        ),
+                        const SizedBox(height: 20.0),
+                        Container(
+                          child: TextFormField(
+                            controller: email,
+                            decoration: ThemeHelper().textInputDecoration(
+                                "E-mail address", "Entrez votre email"),
                             keyboardType: TextInputType.emailAddress,
                             validator: (val) {
-                              if(!(val!.isEmpty) && !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$").hasMatch(val)){
+                              if (!(val!.isEmpty) &&
+                                  !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+                                      .hasMatch(val)) {
                                 return "Enter a valid email address";
                               }
                               return null;
@@ -147,12 +164,14 @@ class _InscriptionMedecin extends State<InscriptionMedecin>{
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
+                            controller: telephone,
                             decoration: ThemeHelper().textInputDecoration(
                                 "Numéro téléphone",
                                 "Entrez votre numéro de téléhone"),
                             keyboardType: TextInputType.phone,
                             validator: (val) {
-                              if(!(val!.isEmpty) && !RegExp(r"^(\d+)*$").hasMatch(val)){
+                              if (!(val!.isEmpty) &&
+                                  !RegExp(r"^(\d+)*$").hasMatch(val)) {
                                 return "Entrez un numéro de téléphone valide";
                               }
                               return null;
@@ -161,19 +180,16 @@ class _InscriptionMedecin extends State<InscriptionMedecin>{
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
-
-
-
                         SizedBox(height: 15.0),
-
                         SizedBox(height: 20.0),
                         Container(
-                          decoration: ThemeHelper().buttonBoxDecoration(context),
+                          decoration:
+                              ThemeHelper().buttonBoxDecoration(context),
                           child: ElevatedButton(
                             style: ThemeHelper().buttonStyle(),
-
                             child: Padding(
-                              padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                              padding:
+                                  const EdgeInsets.fromLTRB(40, 10, 40, 10),
                               child: Text(
                                 "Suivant".toUpperCase(),
                                 style: TextStyle(
@@ -187,10 +203,9 @@ class _InscriptionMedecin extends State<InscriptionMedecin>{
                               if (_formKey.currentState!.validate()) {
                                 Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
-                                        builder: (context) => InscriptionMedecin1()
-                                    ),
-                                        (Route<dynamic> route) => false
-                                );
+                                        builder: (context) =>
+                                            InscriptionMedecin1()),
+                                    (Route<dynamic> route) => false);
                               }
                             },
                           ),
@@ -206,5 +221,4 @@ class _InscriptionMedecin extends State<InscriptionMedecin>{
       ),
     );
   }
-
 }

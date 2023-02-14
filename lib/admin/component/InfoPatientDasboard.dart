@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-import '../../config/responsive.dart';
-import '../../config/size_config.dart';
+
+import '../../modeles/Patient.dart';
+import '../../responsive.dart';
 import '../../style/colors.dart';
 import '../../style/style.dart';
+import '../config/size_config.dart';
 
 
 class InfoPatientDasboard extends StatelessWidget {
@@ -15,6 +17,7 @@ class InfoPatientDasboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final   ModelPatient nombre;
     return Container(
       constraints: BoxConstraints(minWidth: Responsive.isDesktop(context) ? 200 : SizeConfig.screenWidth!/2 - 40),
       padding: EdgeInsets.only(

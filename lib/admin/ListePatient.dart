@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/admin/PatientFiltre.dart';
-import 'package:masante/admin/component/AdminSpecialiteMedecin.dart';
 
-import '../config/responsive.dart';
-import '../medecin/MedecinProfil.dart';
-import 'MedecinNouveau.dart';
+
+import '../responsive.dart';
 import 'PatientListeTableau.dart';
 import 'component/MenuAdmin.dart';
+import 'component/Profil/Screens/ProfileScreen.dart';
 
 class AdminPatientListePage extends StatelessWidget {
   const AdminPatientListePage({Key? key}) : super(key: key);
@@ -39,7 +38,7 @@ class AdminPatientListePage extends StatelessWidget {
                         ),
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => MedecinProfil()
+                              builder: (context) => ProfileAdmin()
                           )
                           );
                         },

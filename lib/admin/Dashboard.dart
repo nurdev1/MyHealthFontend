@@ -4,8 +4,8 @@ import 'package:hexcolor/hexcolor.dart';
 
 
 
-import '../config/responsive.dart';
-import '../config/size_config.dart';
+
+import '../responsive.dart';
 import '../style/colors.dart';
 import '../style/style.dart';
 import 'component/ActionDashboard.dart';
@@ -19,6 +19,7 @@ import 'component/ListeActivite.dart';
 import 'component/MedecinActiveDashboard.dart';
 import 'component/MenuAdmin.dart';
 import 'component/headerDashboard.dart';
+import 'config/size_config.dart';
 
 
 class Dashboard extends StatelessWidget {

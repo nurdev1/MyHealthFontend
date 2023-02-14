@@ -3,9 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:masante/page/splash/splash_controller.dart';
+
 
 import '../../Patient/Connexion/Connexion.dart';
 
@@ -21,10 +19,9 @@ class Splash extends StatefulWidget {
 
 class _SplashScreenState extends State<Splash> {
   bool _isVisible = false;
- // final SplashController controller = Get.find<SplashController>();
 
   _SplashScreenState() {
-    new Timer(const Duration(milliseconds: 2000), () {
+    new Timer(const Duration(milliseconds: 2050), () {
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (context) => LoginPage()),
@@ -65,7 +62,7 @@ class _SplashScreenState extends State<Splash> {
             child: Center(
               child: ClipOval(
                   child: Image.asset(
-                "assets/images/Masante.png",
+                "assets/images/Masante6.png",
               )
                   /*Icon(
                   Icons.android_outlined, size: 128,),*/ //put your logo here

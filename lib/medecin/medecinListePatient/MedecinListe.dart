@@ -1,8 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/medecin/consultation/consultation.dart';
+import 'package:masante/modeles/Medecin.dart';
+import 'package:masante/modeles/Patient.dart';
+import 'package:masante/service/Medecin.dart';
+import 'package:masante/service/Patient.dart';
+
 
 import '../../Patient/MenuPatient.dart';
-import '../MedecinProfil.dart';
+import '../profile/MedecinProfil.dart';
+
 
 class MedecinListPatientPage extends StatefulWidget {
   @override
@@ -11,39 +19,11 @@ class MedecinListPatientPage extends StatefulWidget {
 
 class _MedecinListViewPageState extends State<MedecinListPatientPage> {
 
-  double _headerHeight =  120;
-  // Title List Here
-  var titleList = [
-    "Dr Aminata",
-    "Dr Fatoumata",
-    "Dr Mariam",
-    "Dr Hawa",
-    "Dr Sophia",
-    "Dr Bintou",
-    "Dr Aïchata"
-  ];
 
-  // Description List Here
-  var descList = [
-    "Neurologue",
-    "Cardiologue",
-    "Pédiatre",
-    "Dentiste",
-  /*  "Dermentologue",
-    "Oncologue",
-    "Généraliste"*/
-  ];
 
-  // Image Name List Here
-  var imgList = [
-    "assets/images/profil.jpg",
-    "assets/images/profil.jpg",
-    "assets/images/profil.jpg",
-    "assets/images/profil.jpg",
-  /*  "assets/images/profil.jpg",
-    "assets/images/profil.jpg",
-    "assets/images/profil.jpg"*/
-  ];
+  double _headerHeight =  80;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +31,9 @@ class _MedecinListViewPageState extends State<MedecinListPatientPage> {
     double width = MediaQuery.of(context).size.width * 0.6;
     return Scaffold(
       appBar: AppBar(
-        /*  title: Text("Profile Page",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),*/
+        title: Text("Liste patient",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.white),
         flexibleSpace:Container(
@@ -74,12 +54,35 @@ class _MedecinListViewPageState extends State<MedecinListPatientPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.notifications),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 15),
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          // height: 50,
+                          decoration: BoxDecoration(
+                            color:HexColor('#EB455F').withOpacity(0.3),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Row(children: [
+                            Icon(Icons.search, size: 40,),
+                            Container(
+                              margin: EdgeInsets.only(left: 5),
+                              height: 30,
+                              width: 60,
+                              child: TextField(
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: "rechercher"
+                                ),
+                              ),
+                            ),
+                          ],
+                          ),
+                        ),
                         GestureDetector(
                           child: const CircleAvatar(
-                            radius: 30,
+                            radius: 35,
                             backgroundImage: AssetImage("assets/images/profil.jpg",),
                           ),
                           onTap: () {
@@ -100,47 +103,68 @@ class _MedecinListViewPageState extends State<MedecinListPatientPage> {
         ],
       ),
       drawer: PatientMenu(),
-      // Main List View With Builder
-      body:Stack(
+      // Main List View With Builder,
+      body: Container(child:
+
+
+
+
+    FutureBuilder(
+    future: PatientService().getPatientModel(),
+    builder: (BuildContext context, AsyncSnapshot<List<ModelPatient>> snapshot) {
+    if(snapshot.hasError) {
+    return Center(child: Text('Erreur : ${snapshot.error}'),);
+    } else if (snapshot.hasData) {
+    var data = snapshot.data!;
+    print('-------------------------------------data--------------------------');
+    print(snapshot.data);
+    return ListView.builder(
+    itemCount: data.length,
+    itemBuilder: (context, index){
+      return Stack(
         children: [
-          Text('ygukgcbh,vh'),
-         SizedBox(height: 24),
-         /* Container(
-            height: _headerHeight,
-            child: EnteteWidhet(_headerHeight,  false),
-          ),
-          SizedBox(height: 150,),*/
-          listePatientClasse(imgList: imgList, titleList: titleList, descList: descList, width: width),
+
+          listePatientClasse(img: data[index].prenom!, title: data[index].nom!, desc: data[index].email!, width: width),
 
         ],
-      )
+      );
+    });
+    }else{
+    return const Center(child: CircularProgressIndicator());
+    }
+
+
+    }
+        ,),
+      ),
     );
   }
 }
-
+//late final ModelPatient modelPatient;
 class listePatientClasse extends StatelessWidget {
+
+
+  final String img;
+  final String title;
+  final String desc;
+  final double width;
+
   const listePatientClasse({
     Key? key,
-    required this.imgList,
-    required this.titleList,
-    required this.descList,
+    required this.img,
+    required this.title,
+    required this.desc,
     required this.width,
   }) : super(key: key);
 
-  final List<String> imgList;
-  final List<String> titleList;
-  final List<String> descList;
-  final double width;
-
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: imgList.length,
-      itemBuilder: (context, index) {
+
+
         return GestureDetector(
           onTap: () {
             // This Will Call When User Click On ListView Item
-            showDialogFunc(context, imgList[index], titleList[index], descList[index]);
+            showDialogFunc(context, img, title, desc);
           },
           // Card Which Holds Layout Of ListView Item
           child: Card(
@@ -149,7 +173,7 @@ class listePatientClasse extends StatelessWidget {
                 Container(
                   width: 100,
                   height: 100,
-                  child: Image.asset(imgList[index]),
+                  child: Image.asset(img),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -157,7 +181,7 @@ class listePatientClasse extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        titleList[index],
+                        title,
                         style: TextStyle(
                           fontSize: 25,
                           color: Colors.grey,
@@ -170,7 +194,7 @@ class listePatientClasse extends StatelessWidget {
                       Container(
                         width: width,
                         child: Text(
-                          descList[index],
+                         desc,
                           maxLines: 3,
                           style: TextStyle(
                               fontSize: 15, color: Colors.grey[500]),
@@ -183,8 +207,7 @@ class listePatientClasse extends StatelessWidget {
             ),
           ),
         );
-      },
-    );
+
   }
 }
 
@@ -202,7 +225,7 @@ showDialogFunc(context, img, title, desc) {
               color: Colors.white,
             ),
             padding: EdgeInsets.all(15),
-            height: 320,
+            height: 350,
             width: MediaQuery.of(context).size.width * 0.7,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -215,18 +238,18 @@ showDialogFunc(context, img, title, desc) {
                     height: 200,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 25,
                     color: Colors.grey,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -239,6 +262,25 @@ showDialogFunc(context, img, title, desc) {
                       style: TextStyle(fontSize: 15, color: Colors.grey[500]),
                       textAlign: TextAlign.center,
                     ),
+                  ),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: HexColor('#54DEFC'), // Background color
+                  ),
+                  onPressed:(){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Consulation()
+                    )
+                    );
+                  },
+                  // controllersignin.signIn ,
+                    child: Text(
+                      'Consultation'.toUpperCase(),
+                      style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                   ),
                 ),
               ],

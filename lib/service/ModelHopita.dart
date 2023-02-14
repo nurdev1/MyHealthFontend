@@ -3,8 +3,9 @@ import 'dart:convert';
 import 'package:masante/modeles/Hopi.dart';
 import 'package:masante/modeles/Hopital.dart';
 
-import '../global/LaisonBankend.dart';
 import 'package:http/http.dart' as http;
+
+import '../AllFile/global/LaisonBankend.dart';
 
 class ServiceHopital {
   static Future<HopiModel> ajouterHopital(String nom, String image) async {

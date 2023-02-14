@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:masante/Patient/AjouterDossier.dart';
+import 'package:masante/Patient/dossier/AjouterDossier.dart';
 import 'package:masante/Patient/PatientListeMedecin.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../../medecin/MedecinProfil.dart';
+
 import '../../widget/EntetePage.dart';
 import '../MenuPatient.dart';
+import '../profile/profile_page.dart';
 
 
 
@@ -71,7 +72,7 @@ class PatientAccueil extends StatelessWidget {
                           ),
                           onTap: () {
                             Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => MedecinProfil()
+                                builder: (context) => PatientProfilePage()
                             )
                             );
                           },

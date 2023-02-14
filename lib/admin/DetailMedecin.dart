@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/admin/component/Profil/Screens/ProfileScreen.dart';
 
-import '../medecin/MedecinProfil.dart';
+import '../medecin/profile/MedecinProfil.dart';
 
 class DetailMedecin extends StatefulWidget {
   const DetailMedecin({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class _DetailMedecinState extends State<DetailMedecin> {
                       ),
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(
-                            builder: (context) => MedecinProfil()
+                            builder: (context) => ProfileAdmin()
                         )
                         );
                       },

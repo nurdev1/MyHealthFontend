@@ -6,7 +6,7 @@ import 'package:masante/medecin/Inscription/InscriptionMedecin.dart';
 
 
 
-import '../../common/theme_helper.dart';
+import '../../admin/common/theme_helper.dart';
 import '../../widget/HeaderWidget.dart';
 import 'MedecinInscription2.dart';
 
@@ -22,6 +22,12 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1>{
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
   bool checkboxValue = false;
+
+  final specialite = TextEditingController();
+  final ville = TextEditingController();
+  final adresse = TextEditingController();
+ // final _contollerdipôme = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -120,6 +126,7 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1>{
                         SizedBox(height: 30,),
                         Container(
                           child: TextFormField(
+                            controller: ville,
                             decoration: ThemeHelper().textInputDecoration('Ville', 'Entrez votre ville'),
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -127,6 +134,7 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1>{
                         SizedBox(height: 30,),
                         Container(
                           child: TextFormField(
+                            controller: adresse,
                             decoration: ThemeHelper().textInputDecoration('Adresse', 'Entrez votre adresse '),
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -148,6 +156,7 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1>{
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
+                            controller: specialite,
                             decoration: ThemeHelper().textInputDecoration(
                                 "Spécialité",
                                 "Entrer le nom  de votre spécialité"),
@@ -161,23 +170,7 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1>{
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        /*SizedBox(height: 20.0),
-                        Container(
-                          child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration(
-                                "Spécialité",
-                                "Entrer le nom  de votre spécialité"),
-                            keyboardType: TextInputType.phone,
-                            validator: (val) {
-                              if(!(val!.isEmpty) && !RegExp(r"^(\d+)*$").hasMatch(val)){
-                                return "Entrez un numéro de téléphone valide";
-                              }
-                              return null;
-                            },
-                          ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                        ),
-*/
+
                         SizedBox(height: 20.0),
                         Container(
                           decoration: ThemeHelper().buttonBoxDecoration(context),
@@ -187,7 +180,7 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1>{
                               padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
                               child: Text(
                                 "Suivant".toUpperCase(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,

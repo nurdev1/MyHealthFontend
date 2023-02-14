@@ -1,29 +1,32 @@
 import 'package:masante/admin/component/ListeActivite.dart';
 
-class Prescription {
+import 'Consultation.dart';
+
+class PrescriptionModele  {
   int idprescription;
-  String nom;
-  String description;
-  String pieceJoint;
-  String date;
-  Consultation consultation;
+  final String nom;
+  final String description;
+  final String pieceJoint;
+  final String date;
+  final ConsultationModele  consultation;
 
-  Prescription(
-      {required this.idprescription,
-      required this.nom,
-      required this.description,
-      required this.pieceJoint,
-      required this.date,
-      required this.consultation});
+  PrescriptionModele (
+       this.idprescription,
+       this.nom,
+       this.description,
+       this.pieceJoint,
+       this.date,
+       this.consultation
+      );
 
-  factory Prescription.fromJson(Map<String, dynamic> json) {
-    return Prescription(
-      idprescription: json['idprescription'],
-      nom: json['nom'],
-      description: json['description'],
-      pieceJoint: json['pieceJoint'],
-      date: json['date'],
-      consultation: json['consultation'],
+  factory PrescriptionModele .fromMap(Map json) {
+    return PrescriptionModele (
+    json['idprescription'],
+      json['nom'],
+       json['description'],
+       json['pieceJoint'],
+      json['date'],
+       json['consultation'],
     );
   }
 

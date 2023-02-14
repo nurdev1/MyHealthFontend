@@ -1,0 +1,15 @@
+
+
+              // return Container(child: Text(data[index]!.nom!),);
+                return Scaffold(
+                    appBar:
+                    body:
+                );
+              });
+
+
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      },
+    );

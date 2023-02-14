@@ -6,7 +6,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 
-import '../common/theme_helper.dart';
+import '../admin/common/theme_helper.dart';
 import '../widget/HeaderWidget.dart';
 import '../Patient/Profil.dart';
 

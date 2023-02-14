@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/discutionAvis/ChatHome.dart';
 
 import '../widget/ChatBottomSheet.dart';
 import '../widget/ChatSimple.dart';
@@ -16,12 +17,25 @@ class ChatPage extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.only(top: 5),
           child: AppBar(leadingWidth: 30,backgroundColor:  HexColor("54DEFC"),
-          title: Row(children: [
+          title: Row
+            (
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+            GestureDetector(
+              child: Icon(Icons.chevron_left,color: Colors.white,size: 40,),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => ChatHome()
+                )
+                );
+              },
+            ),
+            SizedBox(height: 10,),
             ClipRRect(
               borderRadius: BorderRadius.circular(35),
               child: Image.asset("assets/images/profil.jpg", height: 45, width: 45,),
             ),
-          Padding(padding: EdgeInsets.only(left: 10),
+          const Padding(padding: EdgeInsets.only(left: 10),
             child: Text(
               "DR Fatoumata",
               style: TextStyle(

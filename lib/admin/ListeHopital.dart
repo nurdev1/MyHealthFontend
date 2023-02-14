@@ -5,9 +5,9 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/admin/ListeHopitalTableau.dart';
 import 'package:masante/admin/VilleHopital.dart';
 
-import '../config/responsive.dart';
-import '../medecin/MedecinProfil.dart';
+import '../responsive.dart';
 import 'component/MenuAdmin.dart';
+import 'component/Profil/Screens/ProfileScreen.dart';
 
 class AdminListeHopitaPage extends StatelessWidget {
   const AdminListeHopitaPage({Key? key}) : super(key: key);
@@ -37,7 +37,7 @@ class AdminListeHopitaPage extends StatelessWidget {
                         ),
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => MedecinProfil()
+                              builder: (context) => ProfileAdmin()
                           )
                           );
                         },

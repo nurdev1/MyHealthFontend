@@ -1,30 +1,31 @@
 import 'package:masante/admin/component/ListeActivite.dart';
+import 'package:masante/modeles/Consultation.dart';
 
-class Dispensation {
-  int idDispensation;
-  String nom;
-  String description;
-  String pieceJoint;
-  DateTime date;
-  Consultation consultation;
+class DispensationModele  {
+  final int idDispensation;
+  final String nom;
+  final String description;
+  final String pieceJoint;
+  final DateTime date;
+  final ConsultationModele consultation;
 
-  Dispensation(
-      {
-        required this.idDispensation,
-        required this.nom,
-        required this.description,
-        required this.pieceJoint,
-       required this.date,
-       required this.consultation});
+  DispensationModele(
 
-  factory Dispensation.fromJson(Map<String, dynamic> json) {
-   return Dispensation(
-       idDispensation : json['idDispensation'],
-       nom : json['nom'],
-       description : json['description'],
-       pieceJoint : json['pieceJoint'],
-       date : json['date'],
-       consultation : json['consultation'],
+         this.idDispensation,
+         this.nom,
+         this.description,
+         this.pieceJoint,
+        this.date,
+        this.consultation);
+
+  factory DispensationModele.fromMap(Map json){
+   return DispensationModele(
+       json['idDispensation'],
+       json['nom'],
+        json['description'],
+       json['pieceJoint'],
+       json['date'],
+        json['consultation'],
             );
   }
 

@@ -2,15 +2,15 @@ import 'package:masante/modeles/CompteRendu.dart';
 
 import '../admin/component/ListeActivite.dart';
 
-class Soins {
+class SoinsModele  {
   int idSoins;
   String nom;
   String description;
   String pieceJoint;
   String date;
-  CompteRendu compteRendu;
+  CompteRenduModele compteRendu;
 
-  Soins(
+  SoinsModele (
       {required this.idSoins,
       required this.nom,
       required this.description,
@@ -18,8 +18,8 @@ class Soins {
       required this.date,
       required this.compteRendu});
 
-  factory Soins.fromJson(Map<String, dynamic> json) {
-   return Soins(
+  factory SoinsModele.fromJson(Map<String, dynamic> json) {
+   return SoinsModele(
        idSoins : json['idSoins'],
     nom : json['nom'],
     description : json['description'],

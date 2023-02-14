@@ -2,14 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:masante/Patient/AjouterDossier.dart';
+import 'package:masante/Patient/dossier/AjouterDossier.dart';
 import 'package:masante/Patient/PatientListeMedecin.dart';
 import 'package:masante/page/DossierList.dart';
 
 import '../../Patient/Connexion/Connexion.dart';
 import '../../Patient/inscription/Inscription.dart';
 import '../../Patient/home/PatientAccueil.dart';
-import '../../medecin/MedecinProfil.dart';
+import '../../Patient/profile/profile_page.dart';
+import '../../medecin/profile/MedecinProfil.dart';
 import '../../widget/EntetePage.dart';
 import '../MotdepasseOublier.dart';
 import '../splash/SplashPage.dart';
@@ -63,7 +64,7 @@ class _DossierAjoutState extends State<DossierAjout> {
                             ),
                             onTap: () {
                               Navigator.push(context, MaterialPageRoute(
-                                  builder: (context) => MedecinProfil()
+                                  builder: (context) => PatientProfilePage()
                               )
                               );
                             },

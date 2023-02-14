@@ -1,11 +1,17 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:masante/medecin/AccueilMedecin.dart';
+import 'package:http/http.dart' as http;
 
-import '../../common/theme_helper.dart';
+import 'package:masante/modeles/Medecin.dart';
+import 'package:masante/service/Medecin.dart';
+
+import '../../AllFile/global/LaisonBankend.dart';
+import '../../admin/common/theme_helper.dart';
 import '../../widget/HeaderWidget.dart';
 import 'MedecinInscription1.dart';
 
@@ -20,6 +26,17 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2> {
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
   bool checkboxValue = false;
+  TextEditingController motdepasse = TextEditingController();
+  TextEditingController hopital = TextEditingController();
+  //rcomfirmation = TextEditingController();
+  TextEditingController nom = TextEditingController();
+  TextEditingController prenom = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController telephone = TextEditingController();
+  TextEditingController specialite = TextEditingController();
+  TextEditingController ville = TextEditingController();
+  TextEditingController adresse = TextEditingController();
+  MedecinService medecinService = MedecinService();
 
   @override
   Widget build(BuildContext context) {
@@ -108,14 +125,14 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2> {
                         Container(
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                           child: TextFormField(
+                            controller: hopital,
                             decoration: ThemeHelper().textInputDecoration(
                                 "Hôpital", "Selectionner un hôpital"),
                             keyboardType: TextInputType.emailAddress,
                             validator: (val) {
                               if (!(val!.isEmpty) &&
-                                  !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
-                                      .hasMatch(val)) {
-                                return "Selectionner un hôpital valide ";
+                                  !RegExp(r"^(\d+)*$").hasMatch(val)) {
+                                return "Selectionner un hôpital valide";
                               }
                               return null;
                             },
@@ -124,6 +141,7 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
+                            controller: motdepasse,
                             obscureText: true,
                             decoration: ThemeHelper().textInputDecoration(
                                 "mot de passe*", "Entrer votre mot de passe"),
@@ -136,9 +154,10 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2> {
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        SizedBox(height: 20.0),
-                        Container(
+                        //SizedBox(height: 20.0),
+                        /*Container(
                           child: TextFormField(
+                            controller: _contollercomfirmation,
                             obscureText: true,
                             decoration: ThemeHelper().textInputDecoration(
                                 "Comfirmer vore mot de passe*",
@@ -151,7 +170,7 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2> {
                             },
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                        ),
+                        ),*/
                         SizedBox(height: 15.0),
                         FormField<bool>(
                           builder: (state) {
@@ -218,12 +237,22 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2> {
                               ),
                             ),
                             onPressed: () {
+
+
                               if (_formKey.currentState!.validate()) {
-                                Navigator.of(context).pushAndRemoveUntil(
+                                /*   Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
                                         builder: (context) => MedecinAccueil()),
-                                    (Route<dynamic> route) => false);
+                                    (Route<dynamic> route) => false);*/
+                                /*   final DossierModele dossier = DossierModele(nom: cnom.text);
+                      //, date: cdate.text, patient: cpat.text
+                      addDossier(dossier);
+                      cnom.text = '';
+                      //  cpat.text = '';*/
+                               // MedecinService.addMedecin(nom.text,prenom.text,email.text,motdepasse.text,telephone.text,specialite.text);
+
                               }
+
                             },
                           ),
                         ),
@@ -329,3 +358,4 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2> {
     );
   }
 }
+
