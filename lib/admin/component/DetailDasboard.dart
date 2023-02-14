@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../style/colors.dart';
-import '../../style/style.dart';
+import '../../AllFile/style/colors.dart';
+import '../../AllFile/style/style.dart';
 import '../config/size_config.dart';
 import 'ActionDashboard.dart';
 

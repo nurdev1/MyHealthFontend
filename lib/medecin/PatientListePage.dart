@@ -6,8 +6,6 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'PatientDetails.dart';
 
 
-
-
 class PatientListePage extends StatefulWidget {
   const PatientListePage({Key? key}) : super(key: key);
 

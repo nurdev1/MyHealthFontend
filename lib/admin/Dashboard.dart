@@ -5,9 +5,8 @@ import 'package:hexcolor/hexcolor.dart';
 
 
 
+import '../AllFile/style/style.dart';
 import '../responsive.dart';
-import '../style/colors.dart';
-import '../style/style.dart';
 import 'component/ActionDashboard.dart';
 import 'component/CourbeDashboard.dart';
 import 'component/DetailDasboard.dart';
@@ -36,12 +35,12 @@ class Dashboard extends StatelessWidget {
         appBar: !Responsive.isDesktop(context)
             ? AppBar(
           elevation: 0,
-          backgroundColor: AppColors.white,
+          backgroundColor: Colors.white,
           leading: IconButton(
               onPressed: () {
                 _drawerKey.currentState?.openDrawer();
               },
-              icon: const Icon(Icons.menu, color: AppColors.black)),
+              icon: const Icon(Icons.menu, color: Colors.black)),
           actions: const [
             ActionDashboard(),
           ],
@@ -99,12 +98,12 @@ class Dashboard extends StatelessWidget {
                           children: [
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children:  [
                                 PrimaryText(
                                   text: 'Utilisation',
                                   size: 16,
                                   fontWeight: FontWeight.w400,
-                                  color: AppColors.secondary,
+                                    color: Colors.white60,
                                 ),
                                 /*PrimaryText(
                                     text: '\$1500',
@@ -116,7 +115,7 @@ class Dashboard extends StatelessWidget {
                               text: 'Pendant 30 jours',
                               size: 16,
                               fontWeight: FontWeight.w400,
-                              color: AppColors.secondary,
+                              color: Colors.white60,
                             ),
                           ],
                         ),
@@ -141,7 +140,7 @@ class Dashboard extends StatelessWidget {
                               text: 'Nouveau medécin',
                               size: 16,
                               fontWeight: FontWeight.w400,
-                              color: AppColors.secondary,
+                              color: Colors.white60,
                             ),
                           ],
                         ),

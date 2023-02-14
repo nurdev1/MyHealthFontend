@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 
+import '../../AllFile/style/style.dart';
 import '../../responsive.dart';
-import '../../style/colors.dart';
-import '../../style/style.dart';
 import '../config/size_config.dart';
 
 

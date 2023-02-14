@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../style/colors.dart';
-import '../../style/style.dart';
+
+import '../../AllFile/style/style.dart';
 import '../config/size_config.dart';
 
 
@@ -24,14 +24,14 @@ class ListeActiviteRecente extends StatelessWidget {
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children:  [
             PrimaryText(
                 text: 'Consultation', size: 18, fontWeight: FontWeight.w800),
             PrimaryText(
               text: '02 Janvier 2023',
               size: 14,
               fontWeight: FontWeight.w400,
-              color: AppColors.secondary,
+              color:  Colors.white60,
             ),
           ],
         ),
@@ -64,13 +64,13 @@ class Consultation extends StatelessWidget {
             text: 'Medecin',
             size: 12,
             fontWeight: FontWeight.w500,
-            color: AppColors.secondary,
+            color: Colors.white60,
           ),
           PrimaryText(
             text: 'Patient',
             size: 12,
             fontWeight: FontWeight.w400,
-            color: AppColors.secondary,
+            color: Colors.white60,
           ),
           PrimaryText(
               text: '4',

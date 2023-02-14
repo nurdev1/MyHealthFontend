@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/Patient/profile/profile_page.dart';
 
@@ -99,11 +100,10 @@ class PatientListeMedecinPage extends StatelessWidget {
                             SizedBox(height: 5),
                             Text(
                               "Liste Medecin",
-                              style: TextStyle(
-                                color: HexColor('#EB455F'),
-                                fontSize: 30,
-                                fontWeight: FontWeight.w500,
-                              ),
+                              style:
+                                GoogleFonts.openSans(
+                                    textStyle:  TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: HexColor('#EB455F'))
+                                )
                             ),
 
                           ],
@@ -159,11 +159,9 @@ class PatientListeMedecinPage extends StatelessWidget {
                       horizontal: 10,
                     ),
                     child: Text("Spécialité",
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: HexColor("54DEFC")
-                    ),),
+                    style:GoogleFonts.openSans(
+                        textStyle:  TextStyle(fontSize: 25,fontWeight: FontWeight.w900,color: HexColor('#EB455F'))
+                    )),
                   ),
                   //spécialité a scroller
                   SpecialiteMedecinWidget(),

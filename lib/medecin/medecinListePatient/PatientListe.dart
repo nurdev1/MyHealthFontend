@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:masante/medecin/profile/profile_page.dart';
 
 import '../../widget/EntetePage.dart';
 import '../profile/MedecinProfil.dart';
@@ -39,7 +38,7 @@ class ListePatient extends StatelessWidget {
                         ),
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => MedecinProfile()
+                              builder: (context) => MedecinProfil()
                           )
                           );
                         },
@@ -55,7 +54,7 @@ class ListePatient extends StatelessWidget {
                             ),
                             onTap: () {
                               Navigator.push(context, MaterialPageRoute(
-                                  builder: (context) => MedecinProfile()
+                                  builder: (context) => MedecinProfil()
                               )
                               );
                             },

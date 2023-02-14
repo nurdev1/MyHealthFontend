@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../AllFile/style/colors.dart';
 import '../admin/config/size_config.dart';
-import '../style/colors.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
