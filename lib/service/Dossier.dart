@@ -5,10 +5,9 @@ import '../AllFile/global/LaisonBankend.dart';
 import '../modeles/Dossier.dart';
 import 'package:http/http.dart' as http;
 
-import '../modeles/Patient.dart';
 
 class DossierService {
-  static Future<DossierModele> ajouterDossier(String nom,
+/*  static Future<DossierModele> ajouterDossier(String nom,
       String patient) async {
     Map data = {
       'nom': nom,
@@ -65,5 +64,32 @@ class DossierService {
     );
     print(response.body);
     return response;
+  }*/
+
+  var data = [];
+  List<DossierModele> results = [];
+
+  String fetchUrl ='$masante/patient/afficher';
+  Future<List<DossierModele>> getDossierModel({String ,query}) async{
+
+    var url = Uri.parse(fetchUrl);
+    var response = await http.get(url);
+
+    try{
+      if(response.statusCode == 200){
+        data = json.decode(response.body);
+        results = data.map((e)=> DossierModele.fromJson(e)).toList();
+
+        if(query != null){
+          results = results.where((element) => element.nom!.toLowerCase().contains(query.toString())).toList();
+        }
+      }else{
+        print('Api error');
+      }
+    }on Exception catch(e){
+      print('Error: $e');
+    }
+
+    return results;
   }
 }

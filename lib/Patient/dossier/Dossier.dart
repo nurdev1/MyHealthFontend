@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/Patient/dossier/AjouterDossier.dart';
-import 'package:masante/Patient/dossier/ToutDossier.dart';
 
 class DossierPage extends StatelessWidget {
   const DossierPage({Key? key}) : super(key: key);
@@ -44,7 +43,7 @@ class DossierPage extends StatelessWidget {
           body: TabBarView(
             children: [
               AjouterDossierPage(),
-              const AllDossier(),
+              //const AllDossier(),
               const Center(
                 child: Text('Page3'),
               )

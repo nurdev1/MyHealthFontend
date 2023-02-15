@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:masante/modeles/Patient.dart';
 
 import '../AllFile/global/LaisonBankend.dart';
@@ -116,6 +117,40 @@ class PatientService {
     return results;
   }
 
+/*  Future<ModelPatient> registerPatient(
+      String nom, String prenom, String telephone, String email, BuildContext context) async {
+    String fetchUrl ='$masante/patient/ajouter';
+    var url = Uri.parse(fetchUrl);
+    var response = await http.post(url,
+        headers: <String, String>{"Content-Type": "application/json"},
+        body: jsonEncode(<String, String>{
+          "nom": nom,
+          "prenom": prenom,
+          "telephone": telephone,
+          "email": email,
+        }));
 
-}
+
+  }*/
+  static Future<String> addPatient(String nom, String email, String prenom, String telephone) async {
+    var url = Uri.parse('$masante/patient/ajouter');
+    final data = jsonEncode(
+        {'nom': nom, 'email': email, 'prenom': prenom, 'telephone':telephone});
+    Map<String, String> headers = {"Content-Type": "application/json"};
+    var response = await http.post(url, body: data, headers: headers);
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> json = jsonDecode(response.body);
+     // connexion = true;
+      return json['message'];
+    } else {
+      //throw ("Can't get the Articles");
+      return "Problème lors de l'inscription ${response.statusCode} ${response.body}";
+    }
+  }
+  }
+
+
+
+
 

@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/modeles/Patient.dart';
 import 'package:http/http.dart' as http;
+import 'package:masante/service/Patient.dart';
 import 'package:motion_toast/motion_toast.dart';
 
 
@@ -31,71 +32,13 @@ class _Inscription extends State<Inscription> {
   bool checkedValue = false;
   bool checkboxValue = false;
 
-  ModelPatient _user = ModelPatient(
-      email: '',
-      nom: '',
-      prenom: '',
-      telephone: '');
 
- /* void _submit() {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      // Envoyer les données de l'utilisateur à l'API ici.
-      // Encoder les données de l'utilisateur en JSON.
-      Map<String, dynamic> data = {
-        "email": _user.email,
-        "nom": _user.nom,
-        "prenom": _user.prenom,
-        "telephone": _user.telephone,
-      };
 
-      var jsonData = jsonEncode(data);
-      print(jsonData);
-      // Envoyer les données de l'utilisateur à l'API.
-      http.post(Uri.parse('http://10.175.48.86:8082/patient/ajouter'),
-          headers: {"Content-Type": "application/json"},
-          body: jsonData).then((response) {
-        if (response.statusCode == 200) {
-          Map resp = json.decode(jsonData);
-          ModelPatient modelPatient = ModelPatient.fromMap(resp);
-          print("donner envoyer avec succes");
-          return modelPatient;
-          // Afficher un message de réussite ou rediriger l'utilisateur vers une autre page.
-
-          *//*Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
-                  (Route<dynamic> route) => false);*//*
-          return btn1(context);
-        } else {
-          // Afficher une erreur.
-          String jsonString = response.body;
-          Map<String, dynamic> jsonMap = jsonDecode(jsonString);
-          String message = jsonMap['message'];
-          print(message);
-          print(response.statusCode);
-          //print(jsonDecode(response.body).);
-          _displaySuccessMotionToast(message);
-        }
-      });
-    }
-  }*/
-
-  void _displaySuccessMotionToast(context) {
-    MotionToast.warning(
-      title: const Text(
-        'Alerte',
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      description: Text(
-        '${context}',
-        style: TextStyle(fontSize: 12),
-      ),
-      /*  layoutOrientation: ToastOrientation.ltr,
-      animationType: AnimationType.fromTop,
-      position: MotionToastPosition.top,*/
-      dismissable: false,
-    ).show(context);
-  }
+  TextEditingController nomController = TextEditingController();
+  TextEditingController prenomController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController telephoneController = TextEditingController();
+  late ModelPatient patient;
 
 
   @override
@@ -157,13 +100,13 @@ class _Inscription extends State<Inscription> {
                         SizedBox(height: 30,),
                         Container(
                           child: TextFormField(
+                            controller: telephoneController,
                             validator: (String? value) {
                               if (value == null || value.isEmpty) {
                                 return 'Veuillez entrez numéro de téléphone';
                               }
                               return null;
                             },
-                            onSaved: (value) => _user.prenom = value!,
                             decoration: ThemeHelper().textInputDecoration(
                                 'Prenom', 'Entrez votre prénom'),
                           ),
@@ -172,13 +115,13 @@ class _Inscription extends State<Inscription> {
                         SizedBox(height: 30,),
                         Container(
                           child: TextFormField(
+                            controller: nomController,
                             validator: (String? value) {
                               if (value == null || value.isEmpty) {
                                 return 'Veuillez entrez nom';
                               }
                               return null;
                             },
-                            onSaved: (value) => _user.nom = value!,
                             decoration: ThemeHelper().textInputDecoration(
                                 'Nom', 'Entrez votre nom '),
                           ),
@@ -187,7 +130,7 @@ class _Inscription extends State<Inscription> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            onSaved: (value) => _user.email = value!,
+                            controller: emailController,
                             decoration: ThemeHelper().textInputDecoration(
                                 "E-mail address", "Entrez votre email"),
                             keyboardType: TextInputType.emailAddress,
@@ -205,13 +148,13 @@ class _Inscription extends State<Inscription> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
+                            controller: telephoneController,
                             /*  validator: (String? value) {
                               if (value == null || value.isEmpty) {
                                 return 'Veuillez entrez numéro de téléphone';
                               }
                               return null;
                             },*/
-                            onSaved: (value) => _user.telephone = value!,
                             decoration: ThemeHelper().textInputDecoration(
                                 "Numéro téléphone",
                                 "Entrez votre numéro de téléhone"),
@@ -235,7 +178,6 @@ class _Inscription extends State<Inscription> {
                               }
                               return null;
                             },*/
-                            onSaved: (value) => _user.telephone = value!,
                             obscureText: true,
                             decoration: ThemeHelper().textInputDecoration(
                                 "mot de passe*", "Entrer votre mot de passe"),
@@ -315,19 +257,34 @@ class _Inscription extends State<Inscription> {
                                   )
                               ),
                             ),
-                            onPressed: () {
+                              onPressed: () async {
+                                if (_formKey.currentState!.validate()) {
+                                  String nom = nomController.text;
+                                  String prenom = prenomController.text;
+                                  String phone = telephoneController.text;
+                                  String email = emailController.text;
+                                  String retour = await PatientService.addPatient(
+                                      nom, phone, prenom, email);
+                                  prenomController.text = '';
+                                  emailController.text = '';
+                                  telephoneController.text = '';
+                                  print(retour);
+                                }
+                              }
+                        /*    onPressed: () {
                               // if (_formKey.currentState!.validate()) {
-                              /* Navigator.of(context).pushAndRemoveUntil(
+                              *//* Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
                                         builder: (context) => MedecinProfile()
                                     ),
                                         (Route<dynamic> route) => false
-                                );*/
-                              if (_formKey.currentState!.validate()) {
-                                // Process data.
-                               // _submit();
-                              }
-                            },
+                                );*//*
+
+                                final DossierModele dossier = DossierModele(nom: cnom.text);
+                      //, date: cdate.text, patient: cpat.text
+                      addDossier(dossier);
+
+                            },*/
                           ),
                         ),
                         SizedBox(height: 30.0),
