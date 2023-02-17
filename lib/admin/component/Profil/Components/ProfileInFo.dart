@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 import '../PlatformService.dart';
 import '../ReUsableComponent/ReUsableButton.dart';
@@ -6,7 +7,7 @@ import '../ReUsableComponent/ReUsableText.dart';
 
 class ProfileInFo extends StatelessWidget {
   String data =
-      'An artist of considerable range, Jenna the name taken by Melbourne-raised, Brooklyn-based Nick Murphy writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.';
+      "Passionné de tout ce qui est de l'informatique, la nouvelle technologie et les Big data.";
   late bool isMobile;
 
   @override
@@ -14,28 +15,35 @@ class ProfileInFo extends StatelessWidget {
     isMobile = PlatFormServices.isMobile(context) ? true : false;
     return Container(
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          Container(
+              width: double.infinity,
+              child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                Spacer(flex: 1),
+                SocialValue('Java', 22),
+                SocialValue('web', 10),
+                SocialValue('Flutter', 86),
+                Spacer(flex: 10),
+                ElevatedButton.icon(
+                  onPressed: () {},
+                  icon: Icon( // <-- Icon
+                    Icons.edit,
+                    size: 24.0,
+                    color: HexColor('#54DEFC'),
+                  ),
+                  label: Text(''), // <-- Text
+                ),
+                Spacer(flex: 1)
+              ])),
       /// card header
-      Container(
-          width: double.infinity,
-          child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            Spacer(flex: 1),
-            SocialValue('Friends', 22),
-            SocialValue('Photos', 10),
-            SocialValue('Comments', 86),
-            Spacer(flex: 10),
-            NormalButton(
-                'Edit', Colors.white, '', Colors.white, Colors.teal[300]!),
-            Spacer(flex: 1)
-          ])),
-      SizedBox(height: isMobile ? 20 : 50), LargeBoldTextBlack('Jenna Stones'),
-      SizedBox(height: 10),
+      SizedBox(height: isMobile ? 20 : 50), LargeBoldTextBlack('Fatoumata Sy'),
+      SizedBox(height: 30),
       Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(Icons.location_pin, size: 20, color: Colors.grey[400]),
             SizedBox(width: 5),
-            NormalGreyText('LOS ANGELES, CALIFORNIA')
+            NormalGreyText('Bamako')
           ]),
       SizedBox(height: 30),
       Row(
@@ -44,9 +52,9 @@ class ProfileInFo extends StatelessWidget {
           children: [
             Icon(Icons.work, size: 20, color: Colors.grey[400]),
             SizedBox(width: 5),
-            NormalGreyText('Solution Manager - Creative Team Officer')
+            NormalGreyText('Développeuse full-stack')
           ]),
-      SizedBox(height: 10),
+   /*   SizedBox(height: 10),
       Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -54,13 +62,11 @@ class ProfileInFo extends StatelessWidget {
             Icon(Icons.school, size: 20, color: Colors.grey[400]),
             SizedBox(width: 5),
             NormalGreyText('University of Computer Science')
-          ]),
+          ]),*/
 
       /// description
       Divider(height: 30, thickness: 1, color: Colors.grey[300]),
       NormalGreyText(data),
-      SizedBox(height: 10),
-      TextButtons('Show more', Colors.green)
     ]));
   }
 

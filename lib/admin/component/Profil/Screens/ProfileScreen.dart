@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../Components/FooterPanel.dart';
-import '../Components/HeaderPanel.dart';
 import '../Components/ProfilePanle.dart';
 import '../Components/TopBackground.dart';
 import '../PlatformService.dart';
@@ -23,7 +21,7 @@ class ProfileAdmin extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [HeaderPanel(), ProfilePanle(), FooterPanel()]),
+                      children: [ ProfilePanle()]),
                 )
               ])
             : SafeArea(
@@ -33,7 +31,7 @@ class ProfileAdmin extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [HeaderPanel(), ProfilePanle(), FooterPanel()]),
+                      children: [ ProfilePanle()]),
                 )
               ])));
   }

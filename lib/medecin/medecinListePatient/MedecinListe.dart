@@ -269,10 +269,10 @@ showDialogFunc(context, img, title, desc) {
                     primary: HexColor('#54DEFC'), // Background color
                   ),
                   onPressed:(){
-                    Navigator.push(context, MaterialPageRoute(
+                 /*   Navigator.push(context, MaterialPageRoute(
                         builder: (context) => Consulation()
                     )
-                    );
+                    );*/
                   },
                   // controllersignin.signIn ,
                     child: Text(

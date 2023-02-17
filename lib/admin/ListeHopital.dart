@@ -4,8 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/admin/ListeHopitalTableau.dart';
 import 'package:masante/admin/VilleHopital.dart';
+import 'package:masante/admin/tableau.dart';
 
 import '../responsive.dart';
+import 'HopitalTableau.dart';
 import 'component/MenuAdmin.dart';
 import 'component/Profil/Screens/ProfileScreen.dart';
 
@@ -80,42 +82,48 @@ class AdminListeHopitaPage extends StatelessWidget {
                         ),
                       ),
 
-                     /* const SizedBox(height: 10,),
-                      Container(
-                        width: 500,
-                        alignment: Alignment.bottomLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 40.0, right: 5),
-                          child: TextField(
-                            decoration: InputDecoration(
-                                fillColor: HexColor('#54DEFC').withOpacity(0.5),
-                                filled: true,
-                                border: const OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(10)
-                                  ),
-                                ),
-                                suffixIcon: InkWell(
-                                  onTap: (){},
-                                  child: Container(
-                                    padding: EdgeInsets.all(2),
-                                    margin: EdgeInsets.symmetric(horizontal: 2),
-                                    decoration:  BoxDecoration(
-                                      color: HexColor('#54DEFC'),
+                      const SizedBox(height: 10,),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            width: 500,
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 40.0, right: 5),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                    fillColor: HexColor('#54DEFC').withOpacity(0.5),
+                                    filled: true,
+                                    border: const OutlineInputBorder(
+                                      borderSide: BorderSide.none,
                                       borderRadius:
-                                      const BorderRadius.all(Radius.circular(10)
+                                      BorderRadius.all(Radius.circular(10)
                                       ),
-
                                     ),
-                                    child: Icon(Icons.search),
-                                  ),
-                                )
+                                    suffixIcon: InkWell(
+                                      onTap: (){},
+                                      child: Container(
+                                        padding: EdgeInsets.all(2),
+                                        margin: EdgeInsets.symmetric(horizontal: 2),
+                                        decoration:  BoxDecoration(
+                                          color: HexColor('#54DEFC'),
+                                          borderRadius:
+                                          const BorderRadius.all(Radius.circular(10)
+                                          ),
+
+                                        ),
+                                        child: Icon(Icons.search),
+                                      ),
+                                    )
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),*/
-                      AdminVilleHopitalWidget(),
+                          AdminVilleHopitalWidget(),
+                        ],
+                      ),
 
                       //SizedBox(height: 10,),
                       Padding(
@@ -132,7 +140,8 @@ class AdminListeHopitaPage extends StatelessWidget {
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                child: const ListeHopitalTableau(),
+                                //child:  HopitalTableau(),
+                                child: ListeHopitalTableau(),
                               )
                             ],
                           ),

@@ -1,35 +1,56 @@
-import 'Dossier.dart';
+import 'package:masante/modeles/Patient.dart';
+
+import 'Medecin.dart';
 
 class ConsultationModele {
-  final int idprescription;
-  final String nom;
-  final String description;
-  final String pieceJoint;
-  final DateTime date;
-  final DossierModele dossier;
+  int? idconsultation;
+  String? titre;
+  String? description;
+  String? fichier;
+  bool? etat;
+  DateTime? date;
+  MedecinModel? medecin;
+  ModelPatient? patient;
 
-  ConsultationModele(this.idprescription, this.nom, this.description,
-      this.pieceJoint, this.date, this.dossier);
+  ConsultationModele({
+    this.idconsultation,
+    this.titre,
+    this.description,
+    this.fichier,
+    this.etat,
+    this.date,
+    this.medecin,
+    this.patient,
+  });
 
-  factory ConsultationModele.fromMap(Map json) {
+  factory ConsultationModele.fromJson(Map<String, dynamic> json) {
     return ConsultationModele(
-      json['idprescription'],
-      json['nom'],
-      json['description'],
-      json['pieceJoint'],
-      json['date'],
-      json['dossier'],
+      idconsultation: json['idconsultation'],
+      titre: json['titre'],
+      description: json['desciption'],
+      fichier: json['fichier'],
+      etat: json['etat'],
+      date: DateTime.parse(json['date']),
+      medecin: MedecinModel.fromJson(json['medecin']),
+      patient: ModelPatient.fromJson(json['patient']),
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'idprescription': idprescription,
-      'nom': nom,
-      'description': description,
-      'pieceJoint': pieceJoint,
-      'date': date,
-      'dossier': dossier
-    };
+    final Map<String, dynamic> data =  Map<String, dynamic>();
+     data ['idconsultation']= idconsultation;
+     data ['titre']= titre;
+    data['description']= description;
+    data['fichier']= fichier;
+    data['etat']= etat;
+    data['date']= date;
+     if(MedecinModel != null) {
+       data['medecin']= MedecinModel().toJson();
+    }
+     if(ModelPatient != null) {
+    data['patient'] = ModelPatient().toJson();
+      }
+    return data;
   }
 }
+

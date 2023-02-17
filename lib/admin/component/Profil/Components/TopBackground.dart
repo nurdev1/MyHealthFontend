@@ -10,6 +10,6 @@ class TopBackground extends StatelessWidget {
     return Container(
         width: _width,
         height: PlatFormServices.isMobile(context) ? 300 : 450,
-        child: Image.asset('assets/images/mount.png', fit: BoxFit.cover));
+        child: Image.asset('assets/images/profil.jpg', fit: BoxFit.cover));
   }
 }
