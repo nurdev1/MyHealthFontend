@@ -8,12 +8,16 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:masante/modeles/Medecin.dart';
+import 'package:masante/modeles/hopitalModel.dart';
+import 'package:masante/service/Hopital.dart';
 import 'package:masante/service/Medecin.dart';
 
 import '../../AllFile/global/LaisonBankend.dart';
 import '../../admin/common/theme_helper.dart';
 import '../../widget/HeaderWidget.dart';
 import 'InscriptionMedecin.dart';
+
+//List listes = ["Moussa", "Aliou", "hawa", "Fatoumata"];
 
 class InscriptionMedecin1 extends StatefulWidget {
   @override
@@ -26,6 +30,9 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1> {
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
   bool checkboxValue = false;
+  //HopitalsModel hopitalsModel;
+  //String nomPersonne = listes.first;
+  String nomHopital='Hopital';
   TextEditingController motdepasseController = TextEditingController();
   TextEditingController hopitalController = TextEditingController();
   TextEditingController nomController = TextEditingController();
@@ -91,7 +98,7 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
                                   border:
-                                      Border.all(width: 5, color: Colors.white),
+                                  Border.all(width: 5, color: Colors.white),
                                   color: Colors.white,
                                   boxShadow: [
                                     BoxShadow(
@@ -121,7 +128,7 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1> {
                         const SizedBox(
                           height: 130,
                         ),
-                        Container(
+                        /*Container(
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                           child: TextFormField(
                             controller: hopitalController,
@@ -136,25 +143,73 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1> {
                               return null;
                             },
                           ),
+                        ),*/
+                        Container(
+                          child: TextFormField(
+                            controller: prenomController,
+                            decoration: ThemeHelper().textInputDecoration(
+                                "Spécialité", "Entrez votre spécialité"),
+                          ),
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
 
                         SizedBox(height: 20.0),
-                        Container(
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                          child: TextFormField(
-                            controller: hopitalController,
-                            decoration: ThemeHelper().textInputDecoration(
-                                "Hôpital", "Selectionner un hôpital"),
-                            keyboardType: TextInputType.emailAddress,
-                            validator: (val) {
-                              if (!(val!.isEmpty) &&
-                                  !RegExp(r"^(\d+)*$").hasMatch(val)) {
-                                return "Selectionner un hôpital valide";
-                              }
-                              return null;
-                            },
-                          ),
-                        ),
+
+                      FutureBuilder(
+                          future: HopitalService().getHopitalModel(),
+                          builder: (BuildContext context, AsyncSnapshot<List<HopitalsModel>> snapshot) {
+                            if(snapshot.hasError) {
+                              return Center(child: Text('Erreur : ${snapshot.error}'),);
+                            } else if (snapshot.hasData) {
+                              var data = snapshot.data!;
+                              print('-------------------------------------data--------------------------');
+                              print(snapshot.data);
+                              return ListView.builder(
+                                  itemCount: data.length,
+                                  itemBuilder: (context, index){
+                                    return
+                                      DropdownButtonFormField(
+                                      decoration: const InputDecoration(
+                                          contentPadding:
+                                          EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                                          border: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                style: BorderStyle.solid, color: Colors.amber),
+                                          )),
+                                      value: data.first,
+                                      icon: const Icon(Icons.keyboard_arrow_down),
+                                      items: data.map((hopital) {
+                                        print(hopital.nom);
+                                        print(hopital.idhopital);
+                                        print(hopital.adresse);
+                                        return DropdownMenuItem(
+                                            value: hopital,
+                                            child: Text(
+                                              hopital.nom!,
+                                              style: GoogleFonts.roboto(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.amber),
+                                            ),
+                                        );
+                                      }).toList(),
+                                      onChanged: (Object? valeur) {
+                                        setState(() {
+
+                                          data.first = valeur!.toString() as HopitalsModel;
+                                        });
+                                      },
+                                    );
+
+                                  });
+                            }else{
+                              return const Text('Hôpitaux');
+                            }
+
+
+                          }
+                          ,),
+
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
@@ -221,21 +276,21 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1> {
                         SizedBox(height: 20.0),
                         Container(
                           decoration:
-                              ThemeHelper().buttonBoxDecoration(context),
+                          ThemeHelper().buttonBoxDecoration(context),
                           child: ElevatedButton(
-                            style: ThemeHelper().buttonStyle(),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.fromLTRB(40, 10, 40, 10),
-                              child: Text(
-                                "S'inscrire".toUpperCase(),
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
+                              style: ThemeHelper().buttonStyle(),
+                              child: Padding(
+                                padding:
+                                const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                child: Text(
+                                  "S'inscrire".toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                            ),
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
                                   String nom = nomController.text;
@@ -363,4 +418,3 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1> {
     );
   }
 }
-

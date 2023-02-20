@@ -39,5 +39,33 @@ class ConsultationService{
   }
 
 
+  var data = [];
+  List<ConsultationModele> results = [];
+
+  String fetchUrl ='$masante/consultation/patient/{id}';
+  Future<List<ConsultationModele>> getConsultation({String ,query}) async{
+
+    var url = Uri.parse(fetchUrl);
+    var response = await http.get(url);
+
+    try{
+      if(response.statusCode == 200){
+        data = json.decode(response.body);
+        results = data.map((e)=> ConsultationModele.fromJson(e)).toList();
+
+        if(query != null){
+          results = results.where((element) => element.description!.toLowerCase().contains(query.toString())).toList();
+        }
+      }else{
+        print('Api error');
+      }
+    }on Exception catch(e){
+      print('Error: $e');
+    }
+
+    return results;
+  }
+
+
 
 }

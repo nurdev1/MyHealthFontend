@@ -123,7 +123,7 @@ class DossierList extends StatelessWidget {
                             ),
                             const SizedBox(height: 30,),
                             Container(
-                              height: 1000,
+                              height: 500,
                               child: WidgetDossier(),
                             ),
 
