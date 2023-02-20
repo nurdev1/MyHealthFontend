@@ -39,6 +39,7 @@ class _Inscription extends State<Inscription> {
   TextEditingController prenomController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController telephoneController = TextEditingController();
+  TextEditingController motdepasseController=TextEditingController();
   late ModelPatient patient;
 
 
@@ -50,8 +51,8 @@ class _Inscription extends State<Inscription> {
         child: Stack(
           children: [
             Container(
-              height: 150,
-              child: HeaderWidget(150, Icons.person_add_alt_1_rounded, false),
+              height: 200,
+              child: HeaderWidget(200, Icons.person_add_alt_1_rounded, false),
             ),
             Container(
               margin: EdgeInsets.fromLTRB(25, 50, 25, 10),
@@ -98,8 +99,8 @@ class _Inscription extends State<Inscription> {
                             ],
                           ),
                         ),
-                        SizedBox(height: 30,),
-                        Container(
+                        SizedBox(height: 60,),
+                      /*  Container(
                           child: TextFormField(
                             controller: telephoneController,
                             validator: (String? value) {
@@ -110,6 +111,14 @@ class _Inscription extends State<Inscription> {
                             },
                             decoration: ThemeHelper().textInputDecoration(
                                 'Prenom', 'Entrez votre prénom'),
+                          ),
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        ),
+                        SizedBox(height: 30,),*/
+                        Container(
+                          child: TextFormField(
+                            controller: prenomController,
+                            decoration: ThemeHelper().textInputDecoration('Prenom', 'Entrez votre prénom'),
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
@@ -170,15 +179,10 @@ class _Inscription extends State<Inscription> {
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        const SizedBox(height: 20.0),
+                        SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            /*  validator: (String? value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Veuillez entrez mot de passe';
-                              }
-                              return null;
-                            },*/
+                            controller: motdepasseController,
                             obscureText: true,
                             decoration: ThemeHelper().textInputDecoration(
                                 "mot de passe*", "Entrer votre mot de passe"),
@@ -191,7 +195,6 @@ class _Inscription extends State<Inscription> {
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        SizedBox(height: 15.0),
                         FormField<bool>(
                           builder: (state) {
                             return Column(
@@ -264,28 +267,20 @@ class _Inscription extends State<Inscription> {
                                   String prenom = prenomController.text;
                                   String phone = telephoneController.text;
                                   String email = emailController.text;
+                                  String motdepasse = motdepasseController.text;
                                   String retour = await PatientService.addPatient(
-                                      nom, phone, prenom, email);
+                                      nom, phone, prenom, email,motdepasse);
                                   prenomController.text = '';
                                   emailController.text = '';
                                   telephoneController.text = '';
+                                  nomController.text='';
+                                  motdepasseController.text='';
+                                  prenomController.text='';
                                   print(retour);
+                                  print("okkkkkkk");
                                 }
                               }
-                        /*    onPressed: () {
-                              // if (_formKey.currentState!.validate()) {
-                              *//* Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                        builder: (context) => MedecinProfile()
-                                    ),
-                                        (Route<dynamic> route) => false
-                                );*//*
 
-                                final DossierModele dossier = DossierModele(nom: cnom.text);
-                      //, date: cdate.text, patient: cpat.text
-                      addDossier(dossier);
-
-                            },*/
                           ),
                         ),
                         SizedBox(height: 30.0),
@@ -343,7 +338,7 @@ class _Inscription extends State<Inscription> {
                                   color: HexColor("#FFFFFF"),),
                               ),
                               onTap: () {
-                                setState(() {
+                               /* setState(() {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
@@ -353,7 +348,7 @@ class _Inscription extends State<Inscription> {
                                           context);
                                     },
                                   );
-                                });
+                                });*/
                               },
                             ),
                             SizedBox(width: 30.0,),
@@ -362,7 +357,7 @@ class _Inscription extends State<Inscription> {
                                 FontAwesomeIcons.facebook, size: 35,
                                 color: HexColor("#3E529C"),),
                               onTap: () {
-                                setState(() {
+                               /* setState(() {
                                   showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
@@ -372,7 +367,7 @@ class _Inscription extends State<Inscription> {
                                           context);
                                     },
                                   );
-                                });
+                                });*/
                               },
                             ),
                           ],

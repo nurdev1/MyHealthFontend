@@ -13,29 +13,28 @@ import 'package:masante/service/Medecin.dart';
 import '../../AllFile/global/LaisonBankend.dart';
 import '../../admin/common/theme_helper.dart';
 import '../../widget/HeaderWidget.dart';
-import 'MedecinInscription1.dart';
+import 'InscriptionMedecin.dart';
 
-class InscriptionMedecin2 extends StatefulWidget {
+class InscriptionMedecin1 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _InscriptionMedecin2();
+    return _InscriptionMedecin1();
   }
 }
 
-class _InscriptionMedecin2 extends State<InscriptionMedecin2> {
+class _InscriptionMedecin1 extends State<InscriptionMedecin1> {
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
   bool checkboxValue = false;
-  TextEditingController motdepasse = TextEditingController();
-  TextEditingController hopital = TextEditingController();
-  //rcomfirmation = TextEditingController();
-  TextEditingController nom = TextEditingController();
-  TextEditingController prenom = TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController telephone = TextEditingController();
-  TextEditingController specialite = TextEditingController();
-  TextEditingController ville = TextEditingController();
-  TextEditingController adresse = TextEditingController();
+  TextEditingController motdepasseController = TextEditingController();
+  TextEditingController hopitalController = TextEditingController();
+  TextEditingController nomController = TextEditingController();
+  TextEditingController prenomController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController telephoneController = TextEditingController();
+  TextEditingController specialiteController = TextEditingController();
+  TextEditingController villeController = TextEditingController();
+  TextEditingController adresseController = TextEditingController();
   MedecinService medecinService = MedecinService();
 
   @override
@@ -66,7 +65,7 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => InscriptionMedecin1()));
+                                  builder: (context) => InscriptionMedecin()));
                         },
                       ),
                     ],
@@ -125,7 +124,25 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2> {
                         Container(
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                           child: TextFormField(
-                            controller: hopital,
+                            controller: hopitalController,
+                            decoration: ThemeHelper().textInputDecoration(
+                                "Spécialité", "Entrez votre spécialité"),
+                            keyboardType: TextInputType.emailAddress,
+                            validator: (val) {
+                              if (!(val!.isEmpty) &&
+                                  !RegExp(r"^(\d+)*$").hasMatch(val)) {
+                                return "Enter un une spécialité";
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+
+                        SizedBox(height: 20.0),
+                        Container(
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                          child: TextFormField(
+                            controller: hopitalController,
                             decoration: ThemeHelper().textInputDecoration(
                                 "Hôpital", "Selectionner un hôpital"),
                             keyboardType: TextInputType.emailAddress,
@@ -141,7 +158,7 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            controller: motdepasse,
+                            controller: motdepasseController,
                             obscureText: true,
                             decoration: ThemeHelper().textInputDecoration(
                                 "mot de passe*", "Entrer votre mot de passe"),
@@ -154,23 +171,6 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2> {
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        //SizedBox(height: 20.0),
-                        /*Container(
-                          child: TextFormField(
-                            controller: _contollercomfirmation,
-                            obscureText: true,
-                            decoration: ThemeHelper().textInputDecoration(
-                                "Comfirmer vore mot de passe*",
-                                "Entrez votre adresse e-mail"),
-                            validator: (val) {
-                              if (val!.isEmpty) {
-                                return "s'il vous plait entrez votre mot de passe";
-                              }
-                              return null;
-                            },
-                          ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                        ),*/
                         SizedBox(height: 15.0),
                         FormField<bool>(
                           builder: (state) {
@@ -190,7 +190,7 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2> {
                                       "J'accepte tous les termes et conditions.",
                                       style: GoogleFonts.openSans(
                                           textStyle: const TextStyle(
-                                              fontSize: 15,
+                                              fontSize: 14,
                                               fontWeight: FontWeight.w500,
                                               color: Colors.black54)),
                                     ),
@@ -236,24 +236,29 @@ class _InscriptionMedecin2 extends State<InscriptionMedecin2> {
                                 ),
                               ),
                             ),
-                            onPressed: () {
-
-
-                              if (_formKey.currentState!.validate()) {
-                                /*   Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                        builder: (context) => MedecinAccueil()),
-                                    (Route<dynamic> route) => false);*/
-                                /*   final DossierModele dossier = DossierModele(nom: cnom.text);
-                      //, date: cdate.text, patient: cpat.text
-                      addDossier(dossier);
-                      cnom.text = '';
-                      //  cpat.text = '';*/
-                               // MedecinService.addMedecin(nom.text,prenom.text,email.text,motdepasse.text,telephone.text,specialite.text);
-
+                              onPressed: () async {
+                                if (_formKey.currentState!.validate()) {
+                                  String nom = nomController.text;
+                                  String prenom = prenomController.text;
+                                  String phone = telephoneController.text;
+                                  String email = emailController.text;
+                                  String hopital =hopitalController.text;
+                                  String specialite = specialiteController.text;
+                                  String motdepasse = motdepasseController.text;
+                                  String retour = await MedecinService.addMedecin(
+                                      nom, phone, prenom, email,motdepasse,hopital,specialite);
+                                  prenomController.text = '';
+                                  emailController.text = '';
+                                  telephoneController.text = '';
+                                  nomController.text='';
+                                  motdepasseController.text='';
+                                  prenomController.text='';
+                                  specialiteController.text='';
+                                  hopitalController.text='';
+                                  print(retour);
+                                  print("okkkkkkk");
+                                }
                               }
-
-                            },
                           ),
                         ),
                         SizedBox(height: 30.0),

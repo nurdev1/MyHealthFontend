@@ -91,7 +91,7 @@ class ModifierProfilMedecin extends StatelessWidget {
               buildText("Numéro", "76349804",false),
               buildText("Adresse", "ACI 200",false),
               buildText("Mot de passe", "*****",true),
-              SizedBox(height: 25,),
+              //SizedBox(height: 5,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

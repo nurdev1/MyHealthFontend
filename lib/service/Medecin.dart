@@ -36,6 +36,25 @@ try{
     return results;
   }
 
+  static Future<String> addMedecin(String nom, String email, String prenom, String telephone,String password, String hopital, String specialite) async {
+    var url = Uri.parse('$masante/medecin/ajouter');
+    final data = jsonEncode(
+        {'nom': nom, 'email': email, 'prenom': prenom, 'telephone':telephone,'motdepasse':password,'specialite':specialite,'hopital':hopital });
+    print(data);
+    Map<String, String> headers = {"Content-Type": "application/json"};
+    var response = await http.post(url, body: data, headers: headers);
+
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      Map<String, dynamic> json = jsonDecode(response.body);
+      // connexion = true;
+      return json['message'];
+    } else {
+      //throw ("Can't get the Articles");
+      return "Problème lors de l'inscription ${response.statusCode} ${response.body}";
+    }
+  }
+}
 
 
 
@@ -132,4 +151,4 @@ try{
 
   }*/
 
-}
+

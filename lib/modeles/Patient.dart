@@ -8,6 +8,8 @@ class ModelPatient {
   String? ville;
   String? adresse;
   bool? etat;
+  String? codePatient;
+  String? motdepasse;
 
 
   ModelPatient(
@@ -20,6 +22,8 @@ class ModelPatient {
         this.ville,
         this.adresse,
         this.etat,
+        this.codePatient,
+        this.motdepasse
        });
 
   /*ModelPatient.fromMap(Map json){
@@ -60,6 +64,8 @@ class ModelPatient {
     ville = json['ville'];
     adresse = json['adresse'];
     etat = json['etat'];
+    codePatient=json['codePatient'];
+    motdepasse=json['motdepasse'];
   }
 
   Map<String, dynamic> toJson() {
@@ -73,6 +79,8 @@ class ModelPatient {
     data['ville'] = this.ville;
     data['adresse'] = this.adresse;
     data['etat'] = this.etat;
+    data['codePatient']=this.codePatient;
+    data['motdepasse']=this.motdepasse;
     return data;
   }
 }

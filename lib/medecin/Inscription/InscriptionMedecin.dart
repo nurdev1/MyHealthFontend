@@ -7,7 +7,7 @@ import 'package:masante/page/Choix.dart';
 
 import '../../admin/common/theme_helper.dart';
 import '../../widget/HeaderWidget.dart';
-import 'MedecinInscription1.dart';
+/**/import 'MedecinInscription2.dart';
 
 class InscriptionMedecin extends StatefulWidget {
   @override
@@ -18,10 +18,10 @@ class InscriptionMedecin extends StatefulWidget {
 
 class _InscriptionMedecin extends State<InscriptionMedecin> {
 
-  final nom = TextEditingController();
-  final prenom = TextEditingController();
-  final email = TextEditingController();
-  final telephone = TextEditingController();
+TextEditingController prenomController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController telephoneController = TextEditingController();
+  TextEditingController nomController =TextEditingController();
 
 
   final _formKey = GlobalKey<FormState>();
@@ -126,7 +126,7 @@ class _InscriptionMedecin extends State<InscriptionMedecin> {
                         ),
                         Container(
                           child: TextFormField(
-                            controller: prenom,
+                            controller: prenomController,
                             decoration: ThemeHelper().textInputDecoration(
                                 'Prenom', 'Entrez votre prénom'),
                           ),
@@ -137,7 +137,7 @@ class _InscriptionMedecin extends State<InscriptionMedecin> {
                         ),
                         Container(
                           child: TextFormField(
-                            controller: nom,
+                            controller: nomController,
                             decoration: ThemeHelper().textInputDecoration(
                                 'Nom', 'Entrez votre nom '),
                           ),
@@ -146,7 +146,7 @@ class _InscriptionMedecin extends State<InscriptionMedecin> {
                         const SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            controller: email,
+                            controller: emailController,
                             decoration: ThemeHelper().textInputDecoration(
                                 "E-mail address", "Entrez votre email"),
                             keyboardType: TextInputType.emailAddress,
@@ -164,7 +164,7 @@ class _InscriptionMedecin extends State<InscriptionMedecin> {
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            controller: telephone,
+                            controller: telephoneController,
                             decoration: ThemeHelper().textInputDecoration(
                                 "Numéro téléphone",
                                 "Entrez votre numéro de téléhone"),

@@ -36,9 +36,9 @@ class _HopitalTableauState extends State<HopitalTableau> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<dynamic>>(
+    return FutureBuilder<List<HopitalsModel>>(
       future: HopitalService().getHopitalModel(),
-      builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<List<HopitalsModel>> snapshot) {
         if (snapshot.hasData) {
           return SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -67,9 +67,9 @@ class _HopitalTableauState extends State<HopitalTableau> {
                 snapshot.data!.length,
                     (index) => DataRow(
                   cells: <DataCell>[
-                    DataCell(Text(snapshot.data![index]['nom'])),
+                /*    DataCell(Text(snapshot.data![index]['nom'])),
                     DataCell(Text(snapshot.data![index]['ville'])),
-                    DataCell(Text(snapshot.data![index]['adresse'])),
+                    DataCell(Text(snapshot.data![index]['adresse'])),*/
                   ],
                 ),
               ),

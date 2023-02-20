@@ -83,7 +83,7 @@ class PatientFirst extends StatelessWidget {
                     height: 400,
                     decoration:  const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/images/profil.jpg'),
+                        image: AssetImage('assets/images/1.jpg'),
                         fit: BoxFit.cover,
                       )
                     ),

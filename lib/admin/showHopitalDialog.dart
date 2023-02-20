@@ -1,17 +1,15 @@
 import 'dart:io';
 
-import 'package:fire_cars/models/carModel.dart';
-import 'package:fire_cars/services/dbServices.dart';
-import 'package:fire_cars/views/shared-ui/showSnackBar.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class CarDialog {
-  User? user;
-  CarDialog({this.user});
+class Hopitalialog {
+  /* User? user;
+  CarDialog({this.user});*/
 
   // pour visualiser la boite de dialogue
   void showCarDialog(BuildContext context, ImageSource source) async {
@@ -23,8 +21,14 @@ class CarDialog {
     showDialog(
         context: context,
         builder: (BuildContext context) {
-          final mobilHeight = MediaQuery.of(context).size.height * 0.25;
-          final webHeight = MediaQuery.of(context).size.height * 0.5;
+          final mobilHeight = MediaQuery
+              .of(context)
+              .size
+              .height * 0.25;
+          final webHeight = MediaQuery
+              .of(context)
+              .size
+              .height * 0.5;
           return SimpleDialog(
             contentPadding: EdgeInsets.zero,
             children: [
@@ -34,13 +38,13 @@ class CarDialog {
                 color: Colors.grey,
                 child: kIsWeb
                     ? Image(
-                        image: NetworkImage(_file.path),
-                        fit: BoxFit.cover,
-                      )
+                  image: NetworkImage(_file.path),
+                  fit: BoxFit.cover,
+                )
                     : Image(
-                        image: FileImage(_file),
-                        fit: BoxFit.cover,
-                      ),
+                  image: FileImage(_file),
+                  fit: BoxFit.cover,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -52,7 +56,7 @@ class CarDialog {
                         maxLength: 20,
                         onChanged: (value) => _carName = value,
                         validator: (value) =>
-                            _carName == '' ? _formError : null,
+                        _carName == '' ? _formError : null,
                         decoration: InputDecoration(
                           labelText: 'Nom de la voiture',
                           border: OutlineInputBorder(),
@@ -71,8 +75,11 @@ class CarDialog {
                             ),
                           ),
                           ElevatedButton(
-                            onPressed: () => onSubmit(context, _keyForm, _file,
-                                _pickedFile, _carName, user),
+                            /*   onPressed: () => onSubmit(context, _keyForm, _file,
+                                _pickedFile, _carName, user),*/
+                            onPressed: () {
+
+                            },
                             child: Text('PUBLIER'),
                           )
                         ],
@@ -85,6 +92,8 @@ class CarDialog {
           );
         });
   }
+}
+/*
 
   void onSubmit(context, keyForm, file, fileWeb, carName, user) async {
     if (keyForm.currentState!.validate()) {
@@ -106,3 +115,4 @@ class CarDialog {
     }
   }
 }
+*/

@@ -7,7 +7,7 @@ import '../../constants.dart';
 import '../../controllers/MenuController.dart';
 import 'components/side_menu.dart';
 
-class MainScreen extends StatelessWidget {
+class DetailHopital extends StatelessWidget {
   final MenuController _controller = Get.put(MenuController());
   @override
   Widget build(BuildContext context) {

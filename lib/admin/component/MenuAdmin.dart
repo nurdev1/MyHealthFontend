@@ -82,7 +82,7 @@ class Menu extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 20.0),
                 ),
                 //SizedBox(height: 2,),
-                const Text('Hôpital', style: TextStyle(
+                const Text('Hôpitaux', style: TextStyle(
                   color: Colors.white,
                   fontSize: 14,
                 ),

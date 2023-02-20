@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 import '../../AllFile/style/style.dart';
 import '../../responsive.dart';
@@ -38,6 +39,46 @@ class MedecinNouveau extends StatelessWidget {
                 color: Colors.black87,
               ),PrimaryText(text: 'Dentiste',size: 16,
                 color: Colors.black87,
+              ),
+              Container(
+                width: 50,
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 40.0, right: 5),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        fillColor: HexColor('#EB455F').withOpacity(0.5),
+                        filled: true,
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius:
+                          BorderRadius.all(Radius.circular(10)
+                          ),
+                        ),
+                        suffixIcon: InkWell(
+                          onTap: (){},
+                          child: Container(
+                            padding: EdgeInsets.all(2),
+                            margin: EdgeInsets.symmetric(horizontal: 2),
+                            decoration:  BoxDecoration(
+                              color: HexColor('#EB455F'),
+                              borderRadius:
+                              const BorderRadius.all(Radius.circular(10)
+                              ),
+
+                            ),
+                            child: IconButton(
+                              iconSize: 30,
+                              icon: const Icon(Icons.offline_pin_rounded),
+                              onPressed: () {
+                                // ...
+                              },
+                            ),
+                          ),
+                        )
+                    ),
+                  ),
+                ),
               ),
 
 

@@ -49,15 +49,15 @@ class _LoginPageState extends State<LoginPage> {
                       GoogleFonts.openSans(
                           textStyle:  const TextStyle(
                               fontSize: 60,
-                              fontWeight: FontWeight.normal,color:Colors.black)
+                              fontWeight: FontWeight.bold,color:Colors.black)
                       )
                     ),
                      Text(
                       'connexion à votre compte',
                       style:  GoogleFonts.openSans(
                           textStyle:  const TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.w500,color:Colors.black12)
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,color:Colors.black)
                       )
                     ),
                     SizedBox(
@@ -109,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                                   "Mot de passe oublier?",
                                   style:  GoogleFonts.openSans(
                                       textStyle:  const TextStyle(
-                                          fontSize: 25,
+                                          fontSize: 18,
                                           fontWeight: FontWeight.normal,color:Colors.grey)
                                   ),
                                   ),
@@ -125,10 +125,11 @@ class _LoginPageState extends State<LoginPage> {
                                   padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
                                   child: Text(
                                     'Se connecter'.toUpperCase(),
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
+                                    style:  GoogleFonts.openSans(
+                                        textStyle:  const TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,color:Colors.white)
+                                    )
                                   ),
                                 ),
                                 onPressed: () {

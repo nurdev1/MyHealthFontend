@@ -65,73 +65,73 @@ class BarchartComponent extends StatelessWidget {
             BarChartGroupData(
                 x: 0,
                 barRods: [
-                  BarChartRodData(y: 35, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 25 : 25, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.grey.withOpacity(0.5)])),
+                  BarChartRodData(y: 0, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 15 : 15, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.white.withOpacity(0.5)])),
                 ]
             ),
             BarChartGroupData(
                 x: 1,
                 barRods: [
-                  BarChartRodData(y: 45, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 25 : 25, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.grey.withOpacity(0.5)]))
+                  BarChartRodData(y: 45, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 15 : 15, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.white.withOpacity(0.5)]))
                 ]
             ),
             BarChartGroupData(
                 x: 2,
                 barRods: [
-                  BarChartRodData(y: 50, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 25 : 25, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.grey.withOpacity(0.5)]))
+                  BarChartRodData(y: 55, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 15 : 15, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.white.withOpacity(0.5)]))
                 ]
             ),
             BarChartGroupData(
                 x: 3,
                 barRods: [
-                  BarChartRodData(y: 40, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 25 : 25, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.grey.withOpacity(0.5)]))
+                  BarChartRodData(y: 60, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 15 : 15, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.white.withOpacity(0.5)]))
                 ]
             ),
             BarChartGroupData(
                 x: 4,
                 barRods: [
-                  BarChartRodData(y: 60, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 25 : 25, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.grey.withOpacity(0.5)]))
+                  BarChartRodData(y: 60, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 15 : 15, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.white.withOpacity(0.5)]))
                 ]
             ),
             BarChartGroupData(
                 x: 5,
                 barRods: [
-                  BarChartRodData(y: 55, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 25 : 25, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.grey.withOpacity(0.5)]))
+                  BarChartRodData(y: 55, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 15 : 15, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.white.withOpacity(0.5)]))
                 ]
             ),
             BarChartGroupData(
                 x: 6,
                 barRods: [
-                  BarChartRodData(y: 55, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 25 : 25, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.grey.withOpacity(0.5)]))
+                  BarChartRodData(y: 55, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 15 : 15, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.white.withOpacity(0.5)]))
                 ]
             ),
             BarChartGroupData(
                 x: 7,
                 barRods: [
-                  BarChartRodData(y: 65, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 25 : 25, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.grey.withOpacity(0.5)]))
+                  BarChartRodData(y: 65, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 15 : 15, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.white.withOpacity(0.5)]))
                 ]
             ),
             BarChartGroupData(
                 x: 8,
                 barRods: [
-                  BarChartRodData(y: 70, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 25 : 25, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.grey.withOpacity(0.5)]))
+                  BarChartRodData(y: 70, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 15 : 15, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.white.withOpacity(0.5)]))
                 ]
             ),
             BarChartGroupData(
                 x: 9,
                 barRods: [
-                  BarChartRodData(y: 90, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 25 : 25, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.grey.withOpacity(0.5)]))
+                  BarChartRodData(y: 75, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 15 : 15, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.white.withOpacity(0.5)]))
                 ]
             ),
             BarChartGroupData(
                 x: 10,
                 barRods: [
-                  BarChartRodData(y: 80, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 25 : 25, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.grey.withOpacity(0.5)]))
+                  BarChartRodData(y: 80, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 15 : 15, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.white.withOpacity(0.5)]))
                 ]
             ),
             BarChartGroupData(
                 x: 11,
                 barRods: [
-                  BarChartRodData(y: 90, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 25 : 25, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.grey.withOpacity(0.5)]))
+                  BarChartRodData(y: 90, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 15 : 15, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.white.withOpacity(0.5)]))
                 ]
             ),
           ]

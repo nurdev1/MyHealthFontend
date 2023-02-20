@@ -16,7 +16,7 @@ class AdminVilleHopitalWidget extends StatelessWidget {
           for (int i=0;i<2;i++)
             Container(
               margin: EdgeInsets.symmetric(horizontal: 30),
-              padding: EdgeInsets.symmetric(vertical:35, horizontal: 35),
+              padding: EdgeInsets.symmetric(vertical:30, horizontal: 30),
               decoration: BoxDecoration(
                 color: HexColor("EB455F"),
                 borderRadius: BorderRadius.circular(20),

@@ -8,6 +8,7 @@ import 'package:masante/admin/tableau.dart';
 
 import '../responsive.dart';
 import 'HopitalTableau.dart';
+import 'addHopitalSection.dart';
 import 'component/MenuAdmin.dart';
 import 'component/Profil/Screens/ProfileScreen.dart';
 
@@ -82,10 +83,10 @@ class AdminListeHopitaPage extends StatelessWidget {
                         ),
                       ),
 
-                      const SizedBox(height: 10,),
+                      //const SizedBox(height: 5,),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
                             width: 500,
@@ -122,6 +123,46 @@ class AdminListeHopitaPage extends StatelessWidget {
                             ),
                           ),
                           AdminVilleHopitalWidget(),
+                          Container(
+                            width: 100,
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 40.0, right: 5),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                    fillColor: HexColor('#54DEFC').withOpacity(0.5),
+                                    filled: true,
+                                    border: const OutlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius:
+                                      BorderRadius.all(Radius.circular(10)
+                                      ),
+                                    ),
+                                    suffixIcon: InkWell(
+                                      onTap: (){},
+                                      child: Container(
+                                        padding: EdgeInsets.all(2),
+                                        margin: EdgeInsets.symmetric(horizontal: 2),
+                                        decoration:  BoxDecoration(
+                                          color: HexColor('#54DEFC'),
+                                          borderRadius:
+                                          const BorderRadius.all(Radius.circular(10)
+                                          ),
+
+                                        ),
+                                        child: IconButton(
+                                          iconSize: 30,
+                                          icon: const Icon(Icons.add),
+                                          onPressed: () {
+                                            // ...
+                                          },
+                                        ),
+                                      ),
+                                    )
+                                ),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
 
@@ -134,7 +175,7 @@ class AdminListeHopitaPage extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              SizedBox(height: 20,),
+                              //SizedBox(height: 5,),
                               Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white,
