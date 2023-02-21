@@ -126,13 +126,17 @@ class PatientAccueil extends StatelessWidget {
                     ),
                     SizedBox(height: 90,),
                     Padding(padding: EdgeInsets.only(left: 15),
-                      child: Text(
-                        "Mes dossier",
-                        style: TextStyle(
-                          color: HexColor('#EB455F'),
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                        ),
+                      child: Row(
+                        children: [
+                          Text(
+                            "Mes dossier",
+                            style: TextStyle(
+                              color: HexColor('#EB455F'),
+                              fontSize: 24,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     SizedBox(height: 20,),

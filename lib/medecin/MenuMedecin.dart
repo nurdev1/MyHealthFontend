@@ -9,16 +9,16 @@ import '../page/DossierList.dart';
 import 'medecinListePatient/MedecinListe.dart';
 
 class MedecinMenu extends StatelessWidget {
-  const MedecinMenu({
+/*  const MedecinMenu({
     Key? key,
     required double drawerIconSize,
     required double drawerFontSize,
   })  : _drawerIconSize = drawerIconSize,
         _drawerFontSize = drawerFontSize,
-        super(key: key);
-
-  final double _drawerIconSize;
-  final double _drawerFontSize;
+        super(key: key);*/
+/**/
+/*  final double _drawerIconSize;
+  final double _drawerFontSize;*/
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,7 @@ class MedecinMenu extends StatelessWidget {
             ListTile(
               leading: Icon(
                 Icons.screen_lock_landscape_rounded,
-                size: _drawerIconSize,
+                size: 40,
                 color: Theme.of(context).accentColor,
               ),
               title: Text(
@@ -80,7 +80,7 @@ class MedecinMenu extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.person_add_alt_1,
-                  size: _drawerIconSize, color: Theme.of(context).accentColor),
+                  size: 40, color: Theme.of(context).accentColor),
               title: Text(
                 'Ajouter dossier',
                 style:  GoogleFonts.openSans(
@@ -101,7 +101,7 @@ class MedecinMenu extends StatelessWidget {
             ListTile(
               leading: Icon(
                 Icons.password_rounded,
-                size: _drawerIconSize,
+                size:  40,
                 color: Theme.of(context).accentColor,
               ),
               title: Text(
@@ -124,7 +124,7 @@ class MedecinMenu extends StatelessWidget {
             ListTile(
               leading: Icon(
                 Icons.verified_user_sharp,
-                size: _drawerIconSize,
+                size: 40,
                 color: Theme.of(context).accentColor,
               ),
               title: Text(
@@ -143,7 +143,7 @@ class MedecinMenu extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.login_rounded,
-                  size: _drawerIconSize, color: Theme.of(context).accentColor),
+                  size: 40, color: Theme.of(context).accentColor),
               title: Text(
                 'Login Page',
                 style:  GoogleFonts.openSans(
@@ -163,7 +163,7 @@ class MedecinMenu extends StatelessWidget {
             ListTile(
               leading: Icon(
                 Icons.logout_rounded,
-                size: _drawerIconSize,
+                size: 40,
                 color: Theme.of(context).accentColor,
               ),
               title: Text(

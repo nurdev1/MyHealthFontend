@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../Patient/MenuPatient.dart';
+import '../Patient/dossier/TypeDossierWidget.dart';
 import '../Patient/profile/profile_page.dart';
 import '../medecin/profile/MedecinProfil.dart';
 import '../widget/EntetePage.dart';
@@ -17,9 +19,6 @@ class DossierList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        /*  title: Text("Profile Page",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),*/
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.white),
         flexibleSpace:Container(
@@ -66,28 +65,60 @@ class DossierList extends StatelessWidget {
         ],
       ),
       drawer: PatientMenu(),
-      body: Material(
+      body: SingleChildScrollView(
           child: Stack(
               children: [
-                Container(
-                  height: _headerHeight,
-                  child: EnteteWidhet(_headerHeight,  false),
-                ),
-                  Padding(
+                Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(height: 60),
+                        Text('Liste Dossier Médecal',style: GoogleFonts.openSans(
+                            textStyle:  TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: HexColor('#EB455F'))
+                        ),
+                        ),
+                        Container(
+                          width: 200,
+                          // alignment: Alignment.bottomLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 40.0, right: 5),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  fillColor: HexColor('#54DEFC').withOpacity(0.5),
+                                  filled: true,
+                                  border: const OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40)
+                                    ),
+                                  ),
+                                  suffixIcon: InkWell(
+                                    onTap: (){},
+                                    child: Container(
+                                      padding: EdgeInsets.all(2),
+                                      margin: EdgeInsets.symmetric(horizontal: 2),
+                                      decoration:  BoxDecoration(
+                                        color: HexColor('#54DEFC'),
+                                        borderRadius:
+                                        const BorderRadius.all(Radius.circular(40)
+                                        ),
+
+                                      ),
+                                      child: Icon(Icons.search),
+                                    ),
+                                  )
+                              ),
+                            ),
+                          ),
+                        ),
                         Column(
                           children: [
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text('Liste Dossier Médecal',style: GoogleFonts.openSans(
-                                    textStyle:  TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: HexColor('#EB455F'))
-                                ),
-                                ),
+
+                                SizedBox(height: 40),
+                                TypeDossierWidget(),
                                 //Spacer(),
                                 SizedBox(height: 40),
                                 Expanded(

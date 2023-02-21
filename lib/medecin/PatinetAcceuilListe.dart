@@ -1,21 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/modeles/Patient.dart';
 import 'package:masante/service/Medecin.dart';
+import 'package:masante/service/Patient.dart';
 
 import '../../modeles/Medecin.dart';
 
-class MedecinListe extends StatelessWidget {
-  const MedecinListe({Key? key}) : super(key: key);
+class PatientAccueilListe extends StatelessWidget {
+  const PatientAccueilListe({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 340,
+      height: 180,
+     // color: Colors.black,
       child: FutureBuilder(
-          future: MedecinService().getMedecinModel(),
+          future: PatientService().getPatientModel(),
           builder: ((BuildContext context,
-              AsyncSnapshot<List<MedecinModel>> snapshot) {
+              AsyncSnapshot<List<ModelPatient>> snapshot) {
             if (snapshot.hasError) {
               return Center(
                 child: Text('Erreur : ${snapshot.error}'),
@@ -28,13 +32,13 @@ class MedecinListe extends StatelessWidget {
               return ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  itemCount: 4,
+                  itemCount: data.length,
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
                         Container(
-                          height: 300,
-                          width: 200,
+                          height: 140,
+                          width: 140,
                           margin: EdgeInsets.symmetric(
                               horizontal: 15, vertical: 20),
                           decoration: BoxDecoration(
@@ -49,7 +53,7 @@ class MedecinListe extends StatelessWidget {
                             ],
                           ),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Stack(
                                 children: [
@@ -63,8 +67,8 @@ class MedecinListe extends StatelessWidget {
                                       //child: Image.asset("assets/images/docteur${index + 1}.jpg",
                                       child: Image.asset(
                                         "assets/images/profil.jpg",
-                                        height: 150,
-                                        width: 150,
+                                        height: 80,
+                                        width: 80,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -81,27 +85,17 @@ class MedecinListe extends StatelessWidget {
                                   children: [
                                     Text(
                                       data[index].nom!,
-                                      style: TextStyle(
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.w500,
-                                          color: HexColor("54DEFC")),
+                                      style: GoogleFonts.openSans(
+                                          textStyle:  TextStyle(fontSize: 12,
+                                              fontWeight: FontWeight.normal,color: HexColor('#54DEFC'),)),
                                     ),
                                     Text(
-                                      data[index].specialite!,
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.black87.withOpacity(0.6),
-                                      ),
+                                      data[index].prenom!,
+                                      style: GoogleFonts.openSans(
+                                          textStyle: const TextStyle(fontSize: 12,fontWeight: FontWeight.normal,
+                                              color: Colors.black)),
                                     ),
-                                    Text(
-                                      data[index].hopital!.nom!,
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.black87.withOpacity(0.6),
-                                      ),
-                                    ),
+
                                   ],
                                 ),
                               )
