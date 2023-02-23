@@ -92,4 +92,24 @@ class DossierService {
 
     return results;
   }
+
+  static Future<String> addDossier(String nom, String email, String prenom, String telephone,String password) async {
+    var url = Uri.parse('$masante/patient/ajouter');
+    final data = jsonEncode(
+        {'nom': nom, 'email': email, 'prenom': prenom, 'telephone':telephone,'motdepasse':password });
+    print(data);
+    Map<String, String> headers = {"Content-Type": "application/json"};
+    var response = await http.post(url, body: data, headers: headers);
+
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      Map<String, dynamic> json = jsonDecode(response.body);
+      // connexion = true;
+      return json['message'];
+    } else {
+      //throw ("Can't get the Articles");
+      return "Problème lors de l'inscription ${response.statusCode} ${response.body}";
+    }
+  }
+
 }

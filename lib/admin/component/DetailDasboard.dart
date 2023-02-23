@@ -88,3 +88,5 @@ class NouveauHopitaux extends StatelessWidget {
   }
 }
 
+/* child:  (Lottie.network("https://assets10.lottiefiles.com/packages/lf20_tutvdkg0.json",
+                  animate: true)*/

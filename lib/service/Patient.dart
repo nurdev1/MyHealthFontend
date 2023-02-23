@@ -10,6 +10,8 @@ import 'package:http/http.dart' as http;
 
 class PatientService {
 
+
+
   /*static Future<ModelPatient> ajouterDossier(String nom, String image) async {
     Map data = {
       'nom': nom,
@@ -95,6 +97,12 @@ class PatientService {
 
   String fetchUrl ='$masante/patient/afficher';
   Future<List<ModelPatient>> getPatientModel({String ,query}) async{
+    final headers = {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+      'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+    };
 
     var url = Uri.parse(fetchUrl);
     var response = await http.get(url);
@@ -108,11 +116,12 @@ class PatientService {
           results = results.where((element) => element.nom!.toLowerCase().contains(query.toString())).toList();
         }
       }else{
-        print('Api error');
+        print('Erreur lors de la récupération des données');
       }
     }on Exception catch(e){
-      print('Error: $e');
+      print('Erreur lors de la récupération des données: $e');
     }
+    print(results);
 
     return results;
   }
@@ -153,6 +162,31 @@ class PatientService {
   }
 
 
+/*
+Future<void> fetchData() async {
+  final url = 'https://example.com/data';
+  final headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+  };
+
+  try {
+    final response = await http.get(Uri.parse(url), headers: headers);
+
+    if (response.statusCode == 200) {
+      // Traitement des données de réponse
+    } else {
+      print('Erreur lors de la récupération des données: ${response.statusCode}');
+    }
+  } catch (e) {
+    print('Erreur lors de la récupération des données: $e');
+  }
+}
 
 
 
+
+
+*/

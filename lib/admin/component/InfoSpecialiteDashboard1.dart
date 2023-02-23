@@ -4,19 +4,16 @@ import 'package:hexcolor/hexcolor.dart';
 
 
 import '../../AllFile/style/style.dart';
-import '../../modeles/Patient.dart';
 import '../../responsive.dart';
+
 import '../config/size_config.dart';
 
 
-class InfoPatientDasboard extends StatelessWidget {
-  const InfoPatientDasboard({
-    Key? key,
-  }) : super(key: key);
+class InfoSpecialiteDasboard1 extends StatelessWidget {
+  const InfoSpecialiteDasboard1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final   ModelPatient nombre;
     return Container(
       constraints: BoxConstraints(minWidth: Responsive.isDesktop(context) ? 200 : SizeConfig.screenWidth!/2 - 40),
       padding: EdgeInsets.only(
@@ -29,14 +26,16 @@ class InfoPatientDasboard extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [ Image.asset('assets/images/pp.jpg',width: 35),
+        children: [ Image.asset('assets/images/special.png',width: 50,),
           SizedBox(height: SizeConfig.blockSizeVertical! * 2,),
-          const PrimaryText(text: "Patient",color: Colors.black,size: 16.0,),
+          const PrimaryText(text: "Spécialité Médecin",color: Colors.black,size: 16.0,),
           SizedBox(height: SizeConfig.blockSizeVertical! * 2,),
-          const PrimaryText(text: "9349",fontWeight: FontWeight.w700,size: 18.0,),
+          const PrimaryText(text: "934",fontWeight: FontWeight.w700,size: 18.0,),
         ],
 
       ),
     );
   }
 }
+
+

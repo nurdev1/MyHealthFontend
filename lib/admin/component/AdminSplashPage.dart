@@ -63,7 +63,7 @@ class _SplashScreenState extends State<AdminSplash> {
             width: 140.0,
             child: Center(
               child: ClipOval(
-                child:Image.asset("assets/images/Masante6.png",)
+                child:Image.asset("assets/images/2.jpg",)
                 /*Icon(
                   Icons.android_outlined, size: 128,),*/ //put your logo here
               ),

@@ -9,6 +9,7 @@ import 'package:localization/localization.dart';
 import 'package:masante/Patient/PatientListeMedecin.dart';
 import 'package:masante/Patient/home/PatientAccueil.dart';
 import 'package:masante/Patient/home/PatientNew.dart';
+import 'package:masante/admin/Dashboard.dart';
 import 'package:masante/admin/ListePatient.dart';
 import 'package:masante/admin/component/Profil/Screens/ProfileScreen.dart';
 import 'package:masante/medecin/AccueilMedecin.dart';
@@ -18,9 +19,11 @@ import 'package:masante/page/Choix.dart';
 import 'package:masante/page/Connexion.dart';
 import 'package:masante/page/DossierAjout/DossierAjout.dart';
 import 'package:masante/page/DossierList.dart';
+import 'package:masante/page/splash/SplashPage.dart';
 import 'package:masante/page/table/Tablemain.dart';
 
 import 'Patient/dossier/AjouterDossier.dart';
+import 'Patient/dossier/test.dart';
 import 'Patient/inscription/Inscription.dart';
 import 'admin/ListeHopital.dart';
 import 'admin/PatientListeTableau.dart';
@@ -71,9 +74,9 @@ class LoginUiApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.grey.shade100,
         primarySwatch: Colors.grey,
       ),
-    // home: Splash(title: 'Myhealth',),
+    //home: Splash(title: 'Myhealth',),
       // home: AdminSplash(title: 'Myhealth',),
-       home: DossierList(),
+       home: Dashboard(),
     );
 /*  @override
   Widget build(BuildContext context) {

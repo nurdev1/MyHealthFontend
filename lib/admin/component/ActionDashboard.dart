@@ -30,7 +30,7 @@ class ActionDashboard extends StatelessWidget {
         Row(children: const [
           CircleAvatar(
             radius: 30,
-            backgroundImage: NetworkImage('images/profil.jpg'),
+            backgroundImage: NetworkImage('assets/images/profil.jpg'),
           ),
           Icon(Icons.arrow_drop_down_outlined, color: AppColors.white,)
         ]),

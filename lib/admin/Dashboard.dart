@@ -13,7 +13,8 @@ import 'component/DetailDasboard.dart';
 import 'component/InfoHopitalDansboard.dart';
 import 'component/InfoMedecinDasboard.dart';
 import 'component/InfoPatientDasboard.dart';
-import 'component/InfoSpecialiteDashboard.dart';
+import 'component/InfoSpecialiteDasboard.dart';
+import 'component/InfoSpecialiteDashboard1.dart';
 import 'component/ListeActivite.dart';
 import 'component/MedecinActiveDashboard.dart';
 import 'component/MenuAdmin.dart';
@@ -80,12 +81,12 @@ class Dashboard extends StatelessWidget {
                           child: Wrap(
                             spacing: 20,
                             runSpacing: 20,
-                            alignment: WrapAlignment.spaceBetween,
+                           // alignment: WrapAlignment.spaceBetween,
                             children: const [
                               InfoHopitalDansboard(),
                               InfoMedecin(),
                               InfoPatientDasboard(),
-                              //InfoSpecialiteDasboard()
+                              InfoSpecialiteDasboard()
                             ],
                           ),
                         ),
