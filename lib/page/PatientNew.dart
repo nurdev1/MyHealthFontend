@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:masante/AllFile/global/LaisonBankend.dart';
 
 import '../Patient/profile/profile_page.dart';
 import '../medecin/profile/MedecinProfil.dart';
@@ -7,7 +8,7 @@ import '../widget/EntetePage.dart';
 
 class PatientNewT extends StatelessWidget {
 //  const PatientNewT({Key? key}) : super(key: key);
-  double _headerHeight =  130;
+  double _headerHeight =  160;
 
   @override
   Widget build(BuildContext context) {
@@ -64,15 +65,10 @@ class PatientNewT extends StatelessWidget {
                 ],),
               ),
               SizedBox(height: 15,),
-              SizedBox(height: 40,),
               Padding(padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
               child: Column( crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                const Text('Bonjour Fatoumata',style: TextStyle(color: Colors.white,fontSize: 18),),
-                const SizedBox(height: 15,),
-                Text('  Creer et rétrouver partout \nton dossier médical informatiser',
-                    style: TextStyle(color: Colors.white,fontSize: 18)
-                ),
+                 Text(" $nom",style: TextStyle(color: Colors.white,fontSize: 18),),
                   SizedBox(height: 40,),
                   Column(
                     children: [

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../AllFile/style/colors.dart';
 import '../../AllFile/style/style.dart';
 import '../config/size_config.dart';
-import 'ActionDashboard.dart';
+import 'package:lottie/lottie.dart';
 
 class DetailDasboard extends StatelessWidget {
   const DetailDasboard({
@@ -17,18 +17,22 @@ class DetailDasboard extends StatelessWidget {
         height: SizeConfig.blockSizeVertical! * 5,
       ),
       Container(
-        decoration:
-        BoxDecoration(borderRadius: BorderRadius.circular(30),
-            boxShadow: const [ BoxShadow(
-            color: Colors.grey,
-            blurRadius: 15.0,
-            offset: Offset(
-              10.0,
-              15.0,
-            ),
-          )
-        ]),
-        child: Image.asset('assets/images/Masante6.png',width: 300,),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.grey,
+                blurRadius: 15.0,
+                offset: Offset(
+                  10.0,
+                  15.0,
+                ),
+              )
+            ]),
+        // child: Image.asset('assets/images/Masante6.png',width: 300,),
+        child: Image.network(
+            'https://cdn.pixabay.com/animation/2022/12/05/15/23/15-23-06-837_512.gif',
+            )
       ),
       SizedBox(
         height: SizeConfig.blockSizeVertical! * 5,
@@ -37,7 +41,9 @@ class DetailDasboard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           PrimaryText(
-              text: 'Hôpitaux Enregistrer', size: 18, fontWeight: FontWeight.w800),
+              text: 'Hôpitaux Enregistrer',
+              size: 18,
+              fontWeight: FontWeight.w800),
           PrimaryText(
             text: '02 Janvier 20213',
             size: 14,
@@ -52,7 +58,6 @@ class DetailDasboard extends StatelessWidget {
       NouveauHopitaux(),
       NouveauHopitaux(),
       NouveauHopitaux()
-
     ]);
   }
 }
@@ -65,7 +70,7 @@ class NouveauHopitaux extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: EdgeInsets.only(left: 0,right:20.0),
+      contentPadding: EdgeInsets.only(left: 0, right: 20.0),
       visualDensity: VisualDensity.standard,
       leading: Container(
           width: 50.0,
@@ -74,14 +79,24 @@ class NouveauHopitaux extends StatelessWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Image.asset('images/h.jpg')
+          child: Image.asset('images/h.jpg')),
+      title: PrimaryText(
+        text: 'Hôpital hu Mali',
+        size: 15,
       ),
-      title: PrimaryText(text: 'Hôpital hu Mali',size: 15,),
       subtitle: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          PrimaryText(text: 'Médecins',size: 14,color: Colors.black,),
-          PrimaryText(text: '566',size: 14,color: Colors.black,),
+          PrimaryText(
+            text: 'Médecins',
+            size: 14,
+            color: Colors.black,
+          ),
+          PrimaryText(
+            text: '566',
+            size: 14,
+            color: Colors.black,
+          ),
         ],
       ),
     );

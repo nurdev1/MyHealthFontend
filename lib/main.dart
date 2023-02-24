@@ -19,6 +19,7 @@ import 'package:masante/page/Choix.dart';
 import 'package:masante/page/Connexion.dart';
 import 'package:masante/page/DossierAjout/DossierAjout.dart';
 import 'package:masante/page/DossierList.dart';
+import 'package:masante/page/PatientNew.dart';
 import 'package:masante/page/splash/SplashPage.dart';
 import 'package:masante/page/table/Tablemain.dart';
 
@@ -76,7 +77,7 @@ class LoginUiApp extends StatelessWidget {
       ),
     //home: Splash(title: 'Myhealth',),
       // home: AdminSplash(title: 'Myhealth',),
-       home: LoginPage(),
+       home: PatientNewT(),
     );
 /*  @override
   Widget build(BuildContext context) {

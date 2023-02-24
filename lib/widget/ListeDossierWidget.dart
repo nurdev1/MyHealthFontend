@@ -20,6 +20,10 @@ class _WidgetDossierState extends State<WidgetDossier> {
     "analyse du sang",
     "Groupe Sangin",
     "Allergie",
+    "analyse du sang",
+    "analyse du sang",
+    "Groupe Sangin",
+    "Allergie",
     "analyse du sang"
   ];
   @override

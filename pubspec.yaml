@@ -65,6 +65,7 @@ dependencies:
   localization: ^2.1.0
   file_picker: ^4.0.0
   quickalert: ^1.0.1
+  lottie: ^2.2.0
 
 
 
