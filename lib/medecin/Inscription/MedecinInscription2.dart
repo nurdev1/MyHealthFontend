@@ -11,11 +11,14 @@ import 'package:masante/modeles/Medecin.dart';
 import 'package:masante/modeles/hopitalModel.dart';
 import 'package:masante/service/Hopital.dart';
 import 'package:masante/service/Medecin.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 import '../../AllFile/global/LaisonBankend.dart';
 import '../../admin/common/theme_helper.dart';
 import '../../widget/HeaderWidget.dart';
 import 'InscriptionMedecin.dart';
+import 'Inscriptionvar.dart';
 
 //List listes = ["Moussa", "Aliou", "hawa", "Fatoumata"];
 
@@ -30,19 +33,7 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1> {
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
   bool checkboxValue = false;
-  //HopitalsModel hopitalsModel;
-  //String nomPersonne = listes.first;
-  String nomHopital='Hopital';
-  TextEditingController motdepasseController = TextEditingController();
-  TextEditingController hopitalController = TextEditingController();
-  TextEditingController nomController = TextEditingController();
-  TextEditingController prenomController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController telephoneController = TextEditingController();
-  TextEditingController specialiteController = TextEditingController();
-  TextEditingController villeController = TextEditingController();
-  TextEditingController adresseController = TextEditingController();
-  MedecinService medecinService = MedecinService();
+
 
   @override
   Widget build(BuildContext context) {
@@ -128,92 +119,45 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1> {
                         const SizedBox(
                           height: 130,
                         ),
-                        /*Container(
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        Container(
                           child: TextFormField(
-                            controller: hopitalController,
+                            controller: emailController,
                             decoration: ThemeHelper().textInputDecoration(
-                                "Spécialité", "Entrez votre spécialité"),
+                                "E-mail address", "Entrez votre email"),
                             keyboardType: TextInputType.emailAddress,
                             validator: (val) {
                               if (!(val!.isEmpty) &&
-                                  !RegExp(r"^(\d+)*$").hasMatch(val)) {
-                                return "Enter un une spécialité";
+                                  !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+                                      .hasMatch(val)) {
+                                return "Enter a valid email address";
                               }
                               return null;
                             },
                           ),
-                        ),*/
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        ),
+                        SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            controller: prenomController,
+                            controller: telephoneController,
                             decoration: ThemeHelper().textInputDecoration(
-                                "Spécialité", "Entrez votre spécialité"),
+                                "Numéro téléphone",
+                                "Entrez votre numéro de téléhone"),
+                            keyboardType: TextInputType.phone,
+                            validator: (val) {
+                              if (!(val!.isEmpty) &&
+                                  !RegExp(r"^(\d+)*$").hasMatch(val)) {
+                                return "Entrez un numéro de téléphone valide";
+                              }
+                              return null;
+                            },
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-
-                        SizedBox(height: 20.0),
-
-                      FutureBuilder(
-                          future: HopitalService().getHopitalModel(),
-                          builder: (BuildContext context, AsyncSnapshot<List<HopitalsModel>> snapshot) {
-                            if(snapshot.hasError) {
-                              return Center(child: Text('Erreur : ${snapshot.error}'),);
-                            } else if (snapshot.hasData) {
-                              var data = snapshot.data!;
-                              print('-------------------------------------data--------------------------');
-                              print(snapshot.data);
-                              return ListView.builder(
-                                  itemCount: data.length,
-                                  itemBuilder: (context, index){
-                                    return
-                                      DropdownButtonFormField(
-                                      decoration: const InputDecoration(
-                                          contentPadding:
-                                          EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                                          border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                style: BorderStyle.solid, color: Colors.amber),
-                                          )),
-                                      value: data.first,
-                                      icon: const Icon(Icons.keyboard_arrow_down),
-                                      items: data.map((hopital) {
-                                        print(hopital.nom);
-                                        print(hopital.idhopital);
-                                        print(hopital.adresse);
-                                        return DropdownMenuItem(
-                                            value: hopital,
-                                            child: Text(
-                                              hopital.nom!,
-                                              style: GoogleFonts.roboto(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Colors.amber),
-                                            ),
-                                        );
-                                      }).toList(),
-                                      onChanged: (Object? valeur) {
-                                        setState(() {
-
-                                          data.first = valeur!.toString() as HopitalsModel;
-                                        });
-                                      },
-                                    );
-
-                                  });
-                            }else{
-                              return const Text('Hôpitaux');
-                            }
-
-
-                          }
-                          ,),
-
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            controller: motdepasseController,
+                            controller: passwordController,
                             obscureText: true,
                             decoration: ThemeHelper().textInputDecoration(
                                 "mot de passe*", "Entrer votre mot de passe"),
@@ -297,21 +241,30 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1> {
                                   String prenom = prenomController.text;
                                   String phone = telephoneController.text;
                                   String email = emailController.text;
-                                  String hopital =hopitalController.text;
+                                  String username =usernameController.text;
                                   String specialite = specialiteController.text;
-                                  String motdepasse = motdepasseController.text;
-                                  String retour = await MedecinService.addMedecin(
-                                      nom, phone, prenom, email,motdepasse,hopital,specialite);
+                                  String password = passwordController.text;
+                                  String retour = await MedecinService.addMedecin( nom, phone, prenom, email,password,username,specialite);
                                   prenomController.text = '';
                                   emailController.text = '';
                                   telephoneController.text = '';
                                   nomController.text='';
-                                  motdepasseController.text='';
+                                  passwordController.text='';
                                   prenomController.text='';
                                   specialiteController.text='';
-                                  hopitalController.text='';
+                                  usernameController.text='';
                                   print(retour);
                                   print("okkkkkkk");
+                                  await Future.delayed(const Duration(milliseconds: 1000));
+                                  await QuickAlert.show(
+                                    context: context,
+                                    type: QuickAlertType.success,
+                                    text: "Bonjour, votre demande a été bien pris en compte veuillez vérifier vos email!.",
+                                  );
+                               /*   Navigator.push(context, MaterialPageRoute(
+                                      builder: (context) => PatientFirst()
+                                  )
+                                  );*/
                                 }
                               }
                           ),

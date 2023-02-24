@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:masante/page/Choix.dart';
 
 import '../../admin/common/theme_helper.dart';
 
-import '../../modeles/hopitalModel.dart';
-import '../../service/Hopital.dart';
-import '../../service/Medecin.dart';
 import '../../widget/HeaderWidget.dart';
+import 'Inscriptionvar.dart';
+import 'MedecinInscription2.dart';
 
 class InscriptionMedecin extends StatefulWidget {
   @override
@@ -19,15 +17,7 @@ class InscriptionMedecin extends StatefulWidget {
 
 class _InscriptionMedecin extends State<InscriptionMedecin> {
 
-TextEditingController prenomController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController telephoneController = TextEditingController();
-  TextEditingController nomController =TextEditingController();
-TextEditingController motdepasseController = TextEditingController();
-TextEditingController hopitalController = TextEditingController();
-TextEditingController specialiteController = TextEditingController();
-TextEditingController villeController = TextEditingController();
-TextEditingController adresseController = TextEditingController();
+
 
 
   final _formKey = GlobalKey<FormState>();
@@ -140,184 +130,63 @@ TextEditingController adresseController = TextEditingController();
                         const SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            controller: emailController,
-                            decoration: ThemeHelper().textInputDecoration(
-                                "E-mail address", "Entrez votre email"),
-                            keyboardType: TextInputType.emailAddress,
-                            validator: (val) {
-                              if (!(val!.isEmpty) &&
-                                  !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
-                                      .hasMatch(val)) {
-                                return "Enter a valid email address";
+                            controller: usernameController,
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Veuillez entrez utilisateur';
                               }
                               return null;
                             },
+                            decoration: ThemeHelper().textInputDecoration(
+                                'num utilisateur', 'Entrez votre utilisateur '),
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
-                            controller: telephoneController,
-                            decoration: ThemeHelper().textInputDecoration(
-                                "Numéro téléphone",
-                                "Entrez votre numéro de téléhone"),
-                            keyboardType: TextInputType.phone,
-                            validator: (val) {
-                              if (!(val!.isEmpty) &&
-                                  !RegExp(r"^(\d+)*$").hasMatch(val)) {
-                                return "Entrez un numéro de téléphone valide";
+                            controller: specialiteController,
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Veuillez entrez votre spécialité';
                               }
                               return null;
                             },
+                            decoration: ThemeHelper().textInputDecoration(
+                                'Spécialité", "Entrez votre spécialité '),
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 20.0),
-                        FutureBuilder(
-                          future: HopitalService().getHopitalModel(),
-                          builder: (BuildContext context, AsyncSnapshot<List<HopitalsModel>> snapshot) {
-                            if(snapshot.hasError) {
-                              return Center(child: Text('Erreur : ${snapshot.error}'),);
-                            } else if (snapshot.hasData) {
-                              var data = snapshot.data!;
-                              print('-------------------------------------data--------------------------');
-                              print(snapshot.data);
-                              return ListView.builder(
-                                  itemCount: data.length,
-                                  itemBuilder: (context, index){
-                                    return
-                                      DropdownButtonFormField(
-                                        decoration: const InputDecoration(
-                                            contentPadding:
-                                            EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                                            border: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  style: BorderStyle.solid, color: Colors.amber),
-                                            )),
-                                        value: data.first,
-                                        icon: const Icon(Icons.keyboard_arrow_down),
-                                        items: data.map((hopital) {
-                                          print(hopital.nom);
-                                          print(hopital.idhopital);
-                                          print(hopital.adresse);
-                                          return DropdownMenuItem(
-                                            value: hopital,
-                                            child: Text(
-                                              hopital.nom!,
-                                              style: GoogleFonts.roboto(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Colors.amber),
-                                            ),
-                                          );
-                                        }).toList(),
-                                        onChanged: (Object? valeur) {
-                                          setState(() {
-
-                                            data.first = valeur!.toString() as HopitalsModel;
-                                          });
-                                        },
-                                      );
-
-                                  });
-                            }else{
-                              return const Text('Hôpitaux');
-                            }
-
-
-                          }
-                          ,),
-                        SizedBox(height: 15.0),
-                        FormField<bool>(
-                          builder: (state) {
-                            return Column(
-                              children: <Widget>[
-                                Row(
-                                  children: <Widget>[
-                                    Checkbox(
-                                        value: checkboxValue,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            checkboxValue = value!;
-                                            state.didChange(value);
-                                          });
-                                        }),
-                                    Text(
-                                      "J'accepte tous les termes et conditions.",
-                                      style: GoogleFonts.openSans(
-                                          textStyle: const TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black54)),
-                                    ),
-                                  ],
-                                ),
-                                Container(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    state.errorText ?? '',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      color: Theme.of(context).errorColor,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            );
-                          },
-                          validator: (value) {
-                            if (!checkboxValue) {
-                              return 'Vous devez accepter les termes et conditions';
-                            } else {
-                              return null;
-                            }
-                          },
-                        ),
-                        SizedBox(height: 20.0),
                         Container(
-                          decoration:
-                          ThemeHelper().buttonBoxDecoration(context),
+                          decoration: ThemeHelper().buttonBoxDecoration(context),
                           child: ElevatedButton(
-                              style: ThemeHelper().buttonStyle(),
-                              child: Padding(
-                                padding:
-                                const EdgeInsets.fromLTRB(40, 10, 40, 10),
-                                child: Text(
-                                  "S'inscrire".toUpperCase(),
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
+                            style: ThemeHelper().buttonStyle(),
+
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                              child: Text(
+                                "Suivant".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
                                 ),
                               ),
-                              onPressed: () async {
-                                if (_formKey.currentState!.validate()) {
-                                  String nom = nomController.text;
-                                  String prenom = prenomController.text;
-                                  String phone = telephoneController.text;
-                                  String email = emailController.text;
-                                  String hopital =hopitalController.text;
-                                  String specialite = specialiteController.text;
-                                  String motdepasse = motdepasseController.text;
-                                  String retour = await MedecinService.addMedecin(
-                                      nom, phone, prenom, email,motdepasse,hopital,specialite);
-                                  prenomController.text = '';
-                                  emailController.text = '';
-                                  telephoneController.text = '';
-                                  nomController.text='';
-                                  motdepasseController.text='';
-                                  prenomController.text='';
-                                  specialiteController.text='';
-                                  hopitalController.text='';
-                                  print(retour);
-                                  print("okkkkkkk");
-                                }
+                            ),
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                        builder: (context) => InscriptionMedecin1()
+                                    ),
+                                        (Route<dynamic> route) => false
+                                );
                               }
+                            },
                           ),
                         ),
+                        SizedBox(height: 15.0),
                       ],
                     ),
                   ),

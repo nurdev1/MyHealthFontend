@@ -6,11 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/Patient/home/PatientNew.dart';
 import 'package:masante/modeles/Patient.dart';
 import 'package:http/http.dart' as http;
 import 'package:masante/service/Patient.dart';
 import 'package:motion_toast/motion_toast.dart';
-
+import 'package:quickalert/quickalert.dart';
 
 
 import '../../AllFile/showSnackBar.dart';
@@ -40,6 +41,7 @@ class _Inscription extends State<Inscription> {
   TextEditingController emailController = TextEditingController();
   TextEditingController telephoneController = TextEditingController();
   TextEditingController motdepasseController=TextEditingController();
+  TextEditingController usernameController=TextEditingController();
   late ModelPatient patient;
 
 
@@ -100,21 +102,6 @@ class _Inscription extends State<Inscription> {
                           ),
                         ),
                         SizedBox(height: 60,),
-                      /*  Container(
-                          child: TextFormField(
-                            controller: telephoneController,
-                            validator: (String? value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Veuillez entrez numéro de téléphone';
-                              }
-                              return null;
-                            },
-                            decoration: ThemeHelper().textInputDecoration(
-                                'Prenom', 'Entrez votre prénom'),
-                          ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                        ),
-                        SizedBox(height: 30,),*/
                         Container(
                           child: TextFormField(
                             controller: prenomController,
@@ -134,6 +121,21 @@ class _Inscription extends State<Inscription> {
                             },
                             decoration: ThemeHelper().textInputDecoration(
                                 'Nom', 'Entrez votre nom '),
+                          ),
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        ),
+                        SizedBox(height: 20.0),
+                        Container(
+                          child: TextFormField(
+                            controller: usernameController,
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Veuillez entrez utilisateur';
+                              }
+                              return null;
+                            },
+                            decoration: ThemeHelper().textInputDecoration(
+                                'num utilisateur', 'Entrez votre utilisateur '),
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
@@ -267,17 +269,35 @@ class _Inscription extends State<Inscription> {
                                   String prenom = prenomController.text;
                                   String phone = telephoneController.text;
                                   String email = emailController.text;
-                                  String motdepasse = motdepasseController.text;
+                                  String password = motdepasseController.text;
+                                  String username= usernameController.text;
                                   String retour = await PatientService.addPatient(
-                                      nom, phone, prenom, email,motdepasse);
+                                      nom, phone, prenom, email,password,username);
                                   prenomController.text = '';
                                   emailController.text = '';
                                   telephoneController.text = '';
                                   nomController.text='';
                                   motdepasseController.text='';
                                   prenomController.text='';
+                                  usernameController.text='';
                                   print(retour);
                                   print("okkkkkkk");
+                               /*   QuickAlert.show(
+                                    context: context,
+                                    type: QuickAlertType.success,
+                                    text: 'Félicitations, votre inscription a été effectuée avec succès !!',
+                                  );*/
+                                  await Future.delayed(const Duration(milliseconds: 1000));
+                                  await QuickAlert.show(
+                                    context: context,
+                                    type: QuickAlertType.success,
+                                    text: "Félicitations, votre inscription a été effectuée avec succès !!.",
+                                  );
+                                  Navigator.push(context, MaterialPageRoute(
+                                      builder: (context) => PatientFirst()
+                                  )
+                                  );
+
                                 }
                               }
 

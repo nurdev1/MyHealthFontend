@@ -126,25 +126,10 @@ class PatientService {
     return results;
   }
 
-/*  Future<ModelPatient> registerPatient(
-      String nom, String prenom, String telephone, String email, BuildContext context) async {
-    String fetchUrl ='$masante/patient/ajouter';
-    var url = Uri.parse(fetchUrl);
-    var response = await http.post(url,
-        headers: <String, String>{"Content-Type": "application/json"},
-        body: jsonEncode(<String, String>{
-          "nom": nom,
-          "prenom": prenom,
-          "telephone": telephone,
-          "email": email,
-        }));
-
-
-  }*/
-  static Future<String> addPatient(String nom, String email, String prenom, String telephone,String password) async {
-    var url = Uri.parse('$masante/patient/ajouter');
+  static Future<String> addPatient(String nom, String prenom,String username,String email, String telephone,String password) async {
+    var url = Uri.parse('$masante/patient/signup');
     final data = jsonEncode(
-        {'nom': nom, 'email': email, 'prenom': prenom, 'telephone':telephone,'motdepasse':password });
+        {'nom': nom, 'email': email, 'prenom': prenom, 'telephone':telephone,'password':password,'username':username });
       print(data);
     Map<String, String> headers = {"Content-Type": "application/json"};
     var response = await http.post(url, body: data, headers: headers);

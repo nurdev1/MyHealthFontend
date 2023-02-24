@@ -36,10 +36,10 @@ try{
     return results;
   }
 
-  static Future<String> addMedecin(String nom, String email, String prenom, String telephone,String password, String hopital, String specialite) async {
-    var url = Uri.parse('$masante/medecin/ajouter');
+  static Future<String> addMedecin(String nom, String email, String prenom, String telephone,String password, String username, String specialite) async {
+    var url = Uri.parse('$masante/medecin/save');
     final data = jsonEncode(
-        {'nom': nom, 'email': email, 'prenom': prenom, 'telephone':telephone,'motdepasse':password,'specialite':specialite,'hopital':hopital });
+        {'nom': nom,  'prenom': prenom, 'telephone':telephone,'password':password,'specialite':specialite,'username':username,'email': email });
     print(data);
     Map<String, String> headers = {"Content-Type": "application/json"};
     var response = await http.post(url, body: data, headers: headers);
@@ -56,99 +56,5 @@ try{
   }
 }
 
-
-
-
-/*
-  static const String api = "http:/host:8082/hopital";
-
-  Map<String, String> headers = {
-    "content-type": "application/json",
-    "accept": "application/json",
-  };*/
-
-  // ===== methode pour l'ajout des contact de l'utilisateur =========================
-/*  static Future<MedecinModele> addMedecin(String nom, String prenom, String email, String numero, String motdepasse, String specialite) async{
-    Map data = {
-      "nom": nom,
-      "prenom": prenom,
-      "email": email,
-      "numero": numero,
-      "motdepasse": motdepasse,
-      "specialite":specialite
-    };
-
-    var body = json.encode(data);
-    var url = Uri.parse(masante + "/medecin/ajouter");
-
-    http.Response response = await http.post(url,
-        headers: headers,
-        body: body
-    );
-    Map responseMap = jsonDecode(response.body);
-
-    MedecinModele medecinModele = MedecinModele.fromMap(responseMap);
-    print('c moi');
-    return medecinModele;
-  }*/
-
-
-
-
-
-
-  //pour la methode get des medecin de l'hôpital
-/*  static Future<List<MedecinModele>> getMedecinParHopital(int id) async{
-    var url = Uri.parse(masante + '/medecin/afficher/$id');
-    http.Response response = await http.get(url,
-      headers: headers,
-    );
-
-    List responseList = jsonDecode(response.body);
-    List<MedecinModele> medecins = [];
-    for (Map contactMap in responseList){
-      MedecinModele medecinModele = MedecinModele.fromMap(contactMap);
-      medecins.add(medecinModele);
-    }
-
-    return medecins;
-  }*/
-
-/*
-
-
-
-  //======= methode pour effacer les medecin =======
-  static Future<http.Response> deleteContact(int id) async {
-    var url = Uri.parse(masante + '/supprimer/delete/$id');
-    print(id);
-
-    http.Response response = await http.delete(url,
-      headers: headers,
-    );
-    return response;
-  }
-
-  //================== recuperation de la liste des medecin ===========
-  static Future<List<MedecinModel>> getMedecin() async {
-    var url = Uri.parse('$masante/medecin/afficher');
-    Response res = await get(url);
-    /*http.Response  response = await http.get(url,
-      headers: headers,);*/
-    if (res.statusCode == 200) {
-      Map<String, dynamic> json = jsonDecode(res.body);
-
-      //List<dynamic> body = json['data'];
-
-      //this line will allow us to get the different articles from the json file and putting them into a list
-      List<MedecinModel> medecins =
-      json['data'].map((dynamic item) => MedecinModel.fromJson(item)).toList();
-
-      return medecins;
-    } else {
-      throw ("Il y a pas de liste");
-    }
-
-  }*/
 
 

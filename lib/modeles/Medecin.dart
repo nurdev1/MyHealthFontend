@@ -1,43 +1,3 @@
-/*class MedecinModele {
-  final int id;
-  final String username;
-  final String email;
-  final String adresse;
-  final String numero;
-  final String password;
-  final String nom;
-  final String specialite;
-  final String photo;
-  final String prenom;
-
-  MedecinModele(
-    this.id,
-    this.username,
-    this.email,
-    this.adresse,
-    this.numero,
-    this.password,
-    this.nom,
-    this.photo,
-    this.prenom,
-    this.specialite,
-  );
-
-  factory MedecinModele.fromMap(Map userMap) {
-    return MedecinModele(
-      userMap['id'],
-      userMap['username'],
-      userMap['email'],
-      userMap['adresse'],
-      userMap['numero'],
-      userMap['password'],
-      userMap['nom'],
-      userMap['prenom'],
-      userMap['specialite'],
-      userMap['photo'],
-    );
-  }
-}*/
 
 import 'dart:convert';
 
@@ -57,6 +17,9 @@ class MedecinModel {
   String? specialite;
   bool? etat;
   Hopital? hopital;
+  String? password;
+  String? username;
+
 
 
   MedecinModel(
@@ -72,26 +35,9 @@ class MedecinModel {
         this.specialite,
         this.etat,
         this.hopital,
+        this.password,
+        this.username
         });
-/*
- factory MedecinModel.fromJson(Map<String, dynamic> json) {
-   return MedecinModel(
-       idmedecin : json['idmedecin'],
-    nom : json['nom'],
-    prenom : json['prenom'],
-    photo : json['photo'],
-    telehone : json['telehone'],
-    email : json['email'],
-    ville : json['ville'],
-    adresse : json['adresse'],
-    diplome : json['diplome'],
-    specialite : json['specialite'],
-    etat : json['etat'],
-    hopital :
-    json['hopital'] != null ? Hopital.fromJson(json['hopital']) : null,
-    utilisateus : json['utilisateus']);
-  }*/
-
   MedecinModel.fromJson(Map<String, dynamic> json){
     idmedecin= json['idmedecin'];
     nom = json['nom'];
@@ -104,6 +50,8 @@ class MedecinModel {
     diplome = json['diplome'];
     specialite = json['specialite'];
     etat = json['etat'];
+    password=json['password'];
+    username=json['username'];
     hopital = json['hopital'] != null ? Hopital.fromJson(json['hopital']) : null;
 
   }
@@ -121,6 +69,8 @@ class MedecinModel {
     data['diplome'] = this.diplome;
     data['specialite'] = this.specialite;
     data['etat'] = this.etat;
+    data['password']=this.password;
+    data['username']=this.username;
 if(Hopital != null){
   data['Hopital'] = Hopital().toJson();
 }

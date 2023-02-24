@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:masante/page/Choix.dart';
 import 'package:http/http.dart' as http;
+import 'package:masante/service/connexion.dart';
 import '../Patient/home/PatientNew.dart';
 import '../admin/common/theme_helper.dart';
 import '../medecin/AccueilMedecin.dart';
@@ -23,8 +24,10 @@ class _LoginPageState extends State<LoginPage> {
   double _headerHeight = 250;
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController emailController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  ConnexionService connexionService = ConnexionService();
+
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                               decoration:
                                   ThemeHelper().inputBoxDecorationShaddow(),
                               child: TextFormField(
-                                controller: emailController,
+                                controller: usernameController,
                                 validator: (value) =>
                                     value!.isEmpty ? "veillez saisir un nom" : null,
                                 decoration: ThemeHelper().textInputDecoration(
@@ -132,14 +135,21 @@ class _LoginPageState extends State<LoginPage> {
                                     )
                                   ),
                                 ),
-                                onPressed: () {
+                                onPressed: () async {
                                   //After successful login we will redirect to profile page. Let's create profile page now
-                                  //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MedecinAccueil()));
                                   if (_formKey.currentState!.validate()) {
-                                    signIn(emailController.text,
+                                    /*signIn(usernameController.text,
                                         passwordController.text);
-                                    passwordController.text = '';
-                                    emailController.text = '';
+                                   *//* passwordController.text = '';
+                                    emailController.text = '';*/
+                                    signIn(usernameController.text,
+                                        passwordController.text);
+                                    /*if(await ConnexionService.LoginUser(usernameController.text,
+                                        passwordController.text)){
+                                      print('salut');
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) => MedecinAccueil()));
+                                    }*/
                                   }
                                 },
                               ),
@@ -178,7 +188,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   signIn(String username, String password) async {
-    //  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+     // SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     Map data = {'username': username, 'password': password};
 
     print(data);
@@ -192,7 +202,7 @@ class _LoginPageState extends State<LoginPage> {
     final msg = jsonEncode({"username": username, "password": password});
 
     var response = await http.post(
-        Uri.parse('http://10.175.48.86:8082/api/auth/signin'),
+        Uri.parse('http://10.0.2.2:8082/api/auth/signin'),
         body: msg,
         headers: headers);
     jsonResponse = json.decode(response.body);
