@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import '../AllFile/global/LaisonBankend.dart';
 import '../medecin/AccueilMedecin.dart';
 
 
@@ -70,7 +71,7 @@ class _MedecinDetailState extends State<MedecinDetail> {
                       style: GoogleFonts.poppins(fontSize: 25.0,fontWeight: FontWeight.w500),
                     ),*/
                     SizedBox(height: 7.0,),
-                    Text('Dr Fatoumata',
+                    Text(" Dr $prenomUser ",
                       style: GoogleFonts.poppins(fontSize: 25,fontWeight: FontWeight.w900,color:HexColor('#54DEFC')),
                     ),
                     SizedBox(height: 30.0,),

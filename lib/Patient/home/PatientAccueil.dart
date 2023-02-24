@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/AllFile/global/LaisonBankend.dart';
 import 'package:masante/Patient/PatientListeMedecin.dart';
 import 'package:masante/page/DossierList.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -105,7 +106,7 @@ class PatientAccueil extends StatelessWidget {
                         children: [
                           SizedBox(height: 15),
                           Text(
-                            "Salut Mariam",
+                            " Salut $nom",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 15,

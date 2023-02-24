@@ -8,6 +8,7 @@ import 'package:masante/medecin/MenuMedecin.dart';
 import 'package:masante/medecin/medecinListePatient/MedecinListe.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import '../AllFile/global/LaisonBankend.dart';
 import '../Patient/MenuPatient.dart';
 import '../Patient/PatientListeMedecin.dart';
 import '../widget/EntetePage.dart';
@@ -93,7 +94,7 @@ class MedecinAccueil extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Salut Mariam",
+                            " Dr $prenomUser ",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 15,

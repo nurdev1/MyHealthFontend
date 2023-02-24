@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:masante/AllFile/global/LaisonBankend.dart';
 import 'package:masante/page/Choix.dart';
 import 'package:http/http.dart' as http;
 import 'package:masante/service/connexion.dart';
@@ -138,18 +139,8 @@ class _LoginPageState extends State<LoginPage> {
                                 onPressed: () async {
                                   //After successful login we will redirect to profile page. Let's create profile page now
                                   if (_formKey.currentState!.validate()) {
-                                    /*signIn(usernameController.text,
-                                        passwordController.text);
-                                   *//* passwordController.text = '';
-                                    emailController.text = '';*/
                                     signIn(usernameController.text,
                                         passwordController.text);
-                                    /*if(await ConnexionService.LoginUser(usernameController.text,
-                                        passwordController.text)){
-                                      print('salut');
-                                      Navigator.push(context,
-                                          MaterialPageRoute(builder: (context) => MedecinAccueil()));
-                                    }*/
                                   }
                                 },
                               ),
@@ -218,9 +209,32 @@ class _LoginPageState extends State<LoginPage> {
       sharedPreferences.setString("body", response.body);
       isLoggedIn
       sharedPreferences.setBool("isLoggedIn", true);*/
+      var rol = json.decode(response.body);
+      var firstname = json.decode(response.body);
+      var lastname = json.decode(response.body);
+      var nomUtilisateur = json.decode(response.body);
+      roleuser = rol['roles'];
+      nomUser = lastname['nom'];
+      prenomUser = firstname['prenom'];
+      nom = nomUtilisateur['username'];
+      print(roleuser);
+      print(nomUser);
+      print(prenomUser);
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (BuildContext context) => PatientFirst()),
-          (Route<dynamic> route) => false);
+                MaterialPageRoute(builder: (BuildContext context) => PatientFirst()), (Route<dynamic> route) => false);
+
+     // if(){
+     //   Navigator.of(context).pushAndRemoveUntil(
+     //       MaterialPageRoute(builder: (BuildContext context) => PatientFirst()),
+     //           (Route<dynamic> route) => false);
+     //
+     // }
+     // else{
+     //
+     //   Navigator.of(context).pushAndRemoveUntil(
+     //       MaterialPageRoute(builder: (BuildContext context) => MedecinAccueil()),
+     //           (Route<dynamic> route) => false);
+     // }
     } else {
       setState(() {
       });

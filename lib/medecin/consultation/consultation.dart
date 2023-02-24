@@ -7,6 +7,7 @@ import 'package:masante/service/Consultation.dart';
 import 'package:file_picker/file_picker.dart';
 
 
+import '../../AllFile/global/LaisonBankend.dart';
 import '../../admin/common/theme_helper.dart';
 import '../../widget/DateChoisirWidget.dart';
 import '../../widget/EntetePage.dart';
@@ -80,7 +81,7 @@ class _CreerConsultationPageState extends State<CreerConsultationPage> {
                       ),
                       SizedBox(height: 5),
                       Text(
-                        " Dr Fatoumata",
+                        " Dr $prenomUser ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,

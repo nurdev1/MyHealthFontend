@@ -4,12 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/Patient/dossier/AjouterDossier.dart';
 
+import '../../AllFile/global/LaisonBankend.dart';
 import '../../widget/EntetePage.dart';
 import '../profile/profile_page.dart';
 
 class PatientFirst extends StatelessWidget {
 //  const PatientNew({Key? key}) : super(key: key);
-  double _headerHeight =  120;
+  double _headerHeight =  250;
 
   @override
   Widget build(BuildContext context) {
@@ -27,15 +28,11 @@ class PatientFirst extends StatelessWidget {
                 children: [
                   Padding(padding:  EdgeInsets.symmetric(horizontal: 15),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                           const Icon(
-                            Icons.menu,
-                            color: Colors.white,
-                            size: 35,
-                          ),
+                     Icon(Icons.chevron_left,color: Colors.white,size: 35,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -63,24 +60,24 @@ class PatientFirst extends StatelessWidget {
                       )],
                     ),
                   ),
-
-                  SizedBox(height: 40,),
-                  Text('Bienvenue\n Mariam',
-                    style: GoogleFonts.openSans(
-                        textStyle:  const TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,color:Colors.black))),
-                  SizedBox(height: 30,),
+                  SizedBox(height: 20,),
+                  Text(
+                      "salut $prenomUser $nomUser",
+                      style: GoogleFonts.openSans(
+                          textStyle:  const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,color:Colors.white))),
+                  SizedBox(height: 60,),
                   Text('comment vous sentez vous ?',
                       style: GoogleFonts.openSans(
                           textStyle:  const TextStyle(
-                              fontSize: 25,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,color:Colors.black)
                       )
                   ),
-                  SizedBox(height: 30,),
+                  SizedBox(height: 70,),
                   Container(
-                    height: 400,
+                    height: 480,
                     decoration:  const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/images/1.jpg'),
@@ -95,7 +92,7 @@ class PatientFirst extends StatelessWidget {
                           child: CarouselSlider(
                               items: [
                                 Container(
-                                  height: 120,
+                                  height: 200,
                                   decoration:  BoxDecoration(
                                     image:  const DecorationImage(
                                       image:
@@ -117,7 +114,7 @@ class PatientFirst extends StatelessWidget {
                                   ),
                                 ),
                                 Container(
-                                  height: 100,
+                                  height: 200,
                                   decoration:  BoxDecoration(
                                     image:  const DecorationImage(
                                       image:
@@ -129,7 +126,7 @@ class PatientFirst extends StatelessWidget {
                                 ),
                               ],
                               options: CarouselOptions(
-                                height: 120.0,
+                                height: 200.0,
                                 enlargeCenterPage: true,
                                 autoPlay: true,
                                 aspectRatio: 16/9,
