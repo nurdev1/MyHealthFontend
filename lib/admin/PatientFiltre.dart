@@ -13,7 +13,7 @@ class AdminPatientFiltreWidget extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          for (int i=0;i<4;i++)
+          for (int i=0;i<3;i++)
             Container(
               margin: EdgeInsets.symmetric(horizontal: 30),
               padding: EdgeInsets.symmetric(vertical:35, horizontal: 35),
@@ -21,7 +21,7 @@ class AdminPatientFiltreWidget extends StatelessWidget {
                 color: HexColor("EB455F"),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Specialite( image: 'assets/images/discussion.png',nom: "Hôpital",),
+              child: Specialite( image:"assets/images/profil.jpg",nom: "Hôpital",),
             )
         ],
       ),

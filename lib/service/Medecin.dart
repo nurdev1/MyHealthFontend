@@ -56,7 +56,7 @@ try{
   }
   /****yhugyutdddddddddikkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk***/
 
-  static Future<List<MedecinModel>> getAllHopital() async {
+  static Future<List<MedecinModel>> getAllMedecin() async {
     //SharedPreferences prefs = await SharedPreferences.getInstance();
     List<MedecinModel> items = [];
     //String? token = prefs.getString("token");

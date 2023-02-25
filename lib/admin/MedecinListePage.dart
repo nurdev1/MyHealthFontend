@@ -98,13 +98,13 @@ class AdminMedecinListePage extends StatelessWidget {
                           child: Column(
                             children: [
                               Text('Liste des médecins' ,style: GoogleFonts.openSans(
-                                  textStyle: const TextStyle(fontSize: 40,fontWeight: FontWeight.bold)
+                                  textStyle: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold)
                               ),),
                             ],
                           ),
                         ),
 
-                        SizedBox(height: 10,),
+                      /*  SizedBox(height: 10,),
                         Container(
                           width: 500,
                           alignment: Alignment.bottomLeft,
@@ -138,8 +138,8 @@ class AdminMedecinListePage extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ),
-                        AdminSpecialiteMedecinWidget(),
+                        ),*/
+                       // AdminSpecialiteMedecinWidget(),
 
                         //SizedBox(height: 10,),
                           Padding(
@@ -150,7 +150,7 @@ class AdminMedecinListePage extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  SizedBox(height: 20,),
+                                 // SizedBox(height: 20,),
                                   Container(
                                     decoration: BoxDecoration(
                                       color: Colors.white,

@@ -74,78 +74,46 @@ class AdminPatientListePage extends StatelessWidget {
                       Text('Liste des Patients' ,style: GoogleFonts.openSans(
                           textStyle: const TextStyle(fontSize: 40,fontWeight: FontWeight.bold)
                       ),),
-                      /*SizedBox(height: 10,),
-                      Container(
-                        width: 500,
-                        alignment: Alignment.bottomLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 40.0, right: 5),
-                          child: TextField(
-                            decoration: InputDecoration(
-                                fillColor: HexColor('#54DEFC').withOpacity(0.5),
-                                filled: true,
-                                border: const OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(10)
-                                  ),
-                                ),
-                                suffixIcon: InkWell(
-                                  onTap: (){},
-                                  child: Container(
-                                    padding: EdgeInsets.all(2),
-                                    margin: EdgeInsets.symmetric(horizontal: 2),
-                                    decoration:  BoxDecoration(
-                                      color: HexColor('#54DEFC'),
+                      Row(
+                        children: [
+                          Container(
+                            width: 300,
+                           // alignment: Alignment.bottomLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 40.0, right: 5),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                    fillColor: HexColor('#54DEFC').withOpacity(0.5),
+                                    filled: true,
+                                    border: const OutlineInputBorder(
+                                      borderSide: BorderSide.none,
                                       borderRadius:
-                                      const BorderRadius.all(Radius.circular(10)
+                                      BorderRadius.all(Radius.circular(10)
                                       ),
-
                                     ),
-                                    child: Icon(Icons.search),
-                                  ),
-                                )
+                                    suffixIcon: InkWell(
+                                      onTap: (){},
+                                      child: Container(
+                                        padding: EdgeInsets.all(2),
+                                        margin: EdgeInsets.symmetric(horizontal: 2),
+                                        decoration:  BoxDecoration(
+                                          color: HexColor('#54DEFC'),
+                                          borderRadius:
+                                          const BorderRadius.all(Radius.circular(10)
+                                          ),
+
+                                        ),
+                                        child: Icon(Icons.search),
+                                      ),
+                                    )
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),*/
-                      Container(
-                        width: 300,
-                       // alignment: Alignment.bottomLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 40.0, right: 5),
-                          child: TextField(
-                            decoration: InputDecoration(
-                                fillColor: HexColor('#54DEFC').withOpacity(0.5),
-                                filled: true,
-                                border: const OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(10)
-                                  ),
-                                ),
-                                suffixIcon: InkWell(
-                                  onTap: (){},
-                                  child: Container(
-                                    padding: EdgeInsets.all(2),
-                                    margin: EdgeInsets.symmetric(horizontal: 2),
-                                    decoration:  BoxDecoration(
-                                      color: HexColor('#54DEFC'),
-                                      borderRadius:
-                                      const BorderRadius.all(Radius.circular(10)
-                                      ),
-
-                                    ),
-                                    child: Icon(Icons.search),
-                                  ),
-                                )
-                            ),
-                          ),
-                        ),
+                          AdminPatientFiltreWidget(),
+                        ],
                       ),
                       //SizedBox(height: 10,),
-                      AdminPatientFiltreWidget(),
-                      SizedBox(height: 5),
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: SingleChildScrollView(
@@ -154,7 +122,6 @@ class AdminPatientListePage extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              SizedBox(height: 20,),
                               Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white,

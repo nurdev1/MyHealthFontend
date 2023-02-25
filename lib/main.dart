@@ -29,6 +29,7 @@ import 'Patient/dossier/AjouterDossier.dart';
 import 'Patient/dossier/test.dart';
 import 'Patient/inscription/Inscription.dart';
 import 'admin/ListeHopital.dart';
+import 'admin/MedecinListePage.dart';
 import 'admin/PatientListeTableau.dart';
 import 'admin/component/AdminSplashPage.dart';
 import 'admin/hopital/screens/home/home_screen.dart';
@@ -80,7 +81,7 @@ class LoginUiApp extends StatelessWidget {
       ),
     //home: Splash(title: 'Myhealth',),
       // home: AdminSplash(title: 'Myhealth',),
-       home: AdminListeHopitaPage(),
+       home: AdminPatientListePage(),
     );
 /*  @override
   Widget build(BuildContext context) {

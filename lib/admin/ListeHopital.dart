@@ -7,7 +7,6 @@ import 'package:masante/admin/VilleHopital.dart';
 import 'package:masante/admin/tableau.dart';
 
 import '../responsive.dart';
-import 'HopitalTableau.dart';
 import 'addHopitalSection.dart';
 import 'component/MenuAdmin.dart';
 import 'component/Profil/Screens/ProfileScreen.dart';
@@ -77,7 +76,7 @@ class AdminListeHopitaPage extends StatelessWidget {
                         child: Column(
                           children: [
                             Text('Liste des Hôpitaux' ,style: GoogleFonts.openSans(
-                                textStyle: const TextStyle(fontSize: 40,fontWeight: FontWeight.bold)
+                                textStyle: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold)
                             ),),
                           ],
                         ),

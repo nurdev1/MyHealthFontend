@@ -13,117 +13,99 @@ class ListePatientTableau extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: PatientService().getPatientModel(),
-      builder:  (BuildContext context, AsyncSnapshot<List<ModelPatient>> snapshot) {
-        if(snapshot.hasError){
-          return Center(child: Text('Erreur : ${snapshot.error}'),);
-        }else if (snapshot.hasData){
-          var data = snapshot.data!;
-          print('-------------------------------------data--------------------------');
-          print(snapshot.data);
-          return Column(
-            children: [
-              SizedBox(
-                width: double.infinity,
-                child: DataTable(
-                    horizontalMargin: 0,
+    return Column(
+      //  crossAxisAlignment: CrossAxisAlignment.center,
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        SizedBox(
+         // width: double.infinity,
+          child: FutureBuilder<List<ModelPatient>>(
+            future: PatientService.getAllPatient(),
+            builder:
+                (BuildContext context, AsyncSnapshot<List<ModelPatient>> snapshot) {
+              if (snapshot.hasData) {
+                var liste = snapshot.data as List<ModelPatient>;
+                return SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: DataTable(
                     headingRowColor:
                     MaterialStateColor.resolveWith((states) => HexColor('#54DEFC')),
-                    columns: [
-                      DataColumn(label: Text("Nom",style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),),
+                    columns:  <DataColumn>[
+                      DataColumn(
+                        label: Text(
+                          'Nom',
+                          style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),),
                       ),
-                      DataColumn(label: Text("Prénom",style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),),
+                      DataColumn(
+                        label: Text(
+                          'Prénom',
+                          style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),
+                        ),
                       ),
-                      DataColumn(label: Text("Numéro",style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),),
+                      DataColumn(
+                        label: Text(
+                          'Numéro',
+                          style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),
+                        ),
                       ),
-                      DataColumn(label: Text("Email",style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),),
-                      ),
-                      DataColumn(label: Text("Ville",style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),),
-                      ),
-                      DataColumn(label: Text("Hôpitale",style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),),
+                      DataColumn(
+                        label: Text(
+                          'Email',
+                          style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),
+                        ),
                       ),
                       DataColumn(label: Text("Etat",style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),),
                       ),
                       DataColumn(label: Text("Action",style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),),
                       ),
                     ],
-                    rows:  [
-                      AttributListeMedecin(),
-                      AttributListeMedecin(),
-                      AttributListeMedecin(),
-                      AttributListeMedecin(),
-
-                    ]),
-              )
-            ],
-          );
-        }else{
-          return const Center(child: CircularProgressIndicator());
-        }
-
-      }
+                    rows: List<DataRow>.generate(
+                      snapshot.data!.length,
+                          (index) => DataRow(
+                        cells: <DataCell>[
+                          DataCell(Text(liste[index].nom!,style: GoogleFonts.roboto(
+                              textStyle: const TextStyle(fontSize: 18,)
+                          ),)),
+                          DataCell(Text(liste[index].prenom!,style: GoogleFonts.roboto(
+                              textStyle: const TextStyle(fontSize: 18,)
+                          ),)),
+                          DataCell(Text(liste[index].telephone!,style: GoogleFonts.roboto(
+                              textStyle: const TextStyle(fontSize: 18,)
+                          ),)),
+                          DataCell(Text(liste[index].email!,style: GoogleFonts.roboto(
+                              textStyle: const TextStyle(fontSize: 18,)
+                          ),)),
+                          DataCell(Icon(Icons.offline_pin_rounded,
+                              color: HexColor('54DEFC'))),
+                          DataCell(Row(
+                            children: [
+                              Icon(
+                                Icons.edit,
+                                color: HexColor('54DEFC'),
+                              ),
+                              Icon(
+                                Icons.delete,
+                                color: HexColor('EB455F'),
+                              ),
+                              Icon(Icons.remove_red_eye_outlined,
+                                  color: HexColor('54DEFC'))
+                            ],
+                          )),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
+            },
+          ),
+        ),
+      ],
     );
   }
 
-  DataRow AttributListeMedecin() {
-    return   DataRow(
-        cells:[
-          DataCell(Text("Traoré",style: GoogleFonts.roboto(
-              textStyle: const TextStyle(fontSize: 18,)))),
-          DataCell(Text("Mariam",style: GoogleFonts.roboto(
-              textStyle: const TextStyle(fontSize: 18,)))),
-          DataCell(Text("76589034",style: GoogleFonts.roboto(
-              textStyle: const TextStyle(fontSize: 18,)))),
-          DataCell(Text("fk@mail.com",style: GoogleFonts.roboto(
-              textStyle: const TextStyle(fontSize: 18,)))),
-          DataCell(Text("Bamako",style: GoogleFonts.roboto(
-              textStyle: const TextStyle(fontSize: 18,)))),
-          DataCell(Text(
-              "Mère et l'enfant",style: GoogleFonts.roboto(
-              textStyle: const TextStyle(fontSize: 18,)))),
-          DataCell(Icon(Icons.offline_pin_rounded,color: HexColor('54DEFC'))),
-          DataCell(Row(
-            children: [Icon
-              (Icons.edit,color: HexColor('54DEFC'),
-            ),
-              Icon(Icons.delete,color:HexColor('EB455F'),
-              ),
-              Icon(Icons.remove_red_eye_outlined,color: HexColor('54DEFC'))
-
-            ],
-          )
-          ),
-        ] );
-  }
 }
-/*  DataRow AttributListeMedecin() {
-    return   DataRow(
-        cells:[
-          DataCell(Text("Traoré",style: GoogleFonts.roboto(
-              textStyle: const TextStyle(fontSize: 18,)))),
-          DataCell(Text("Mariam",style: GoogleFonts.roboto(
-              textStyle: const TextStyle(fontSize: 18,)))),
-          DataCell(Text("76589034",style: GoogleFonts.roboto(
-              textStyle: const TextStyle(fontSize: 18,)))),
-          DataCell(Text("fk@mail.com",style: GoogleFonts.roboto(
-              textStyle: const TextStyle(fontSize: 18,)))),
-          DataCell(Text("Bamako",style: GoogleFonts.roboto(
-              textStyle: const TextStyle(fontSize: 18,)))),
-          DataCell(Text(
-              "Mère et l'enfant",style: GoogleFonts.roboto(
-              textStyle: const TextStyle(fontSize: 18,)))),
-          DataCell(Icon(Icons.offline_pin_rounded,color: HexColor('54DEFC'))),
-          DataCell(Row(
-            children: [Icon
-              (Icons.edit,color: HexColor('54DEFC'),
-            ),
-              Icon(Icons.delete,color:HexColor('EB455F'),
-              ),
-              Icon(Icons.remove_red_eye_outlined,color: HexColor('54DEFC'))
-
-            ],
-          )
-          ),
-        ] );
-  }*/
