@@ -4,8 +4,10 @@ class Hopital{
   String? ville;
   String? adresse;
   String? photo;
+  String? email;
+  String? telephone;
 
-  Hopital({this.idhopital, this.nom, this.ville, this.adresse, this.photo,});
+  Hopital({this.idhopital, this.nom, this.ville, this.adresse, this.photo,this.telephone,this.email});
 
   Hopital.fromJson(Map<String, dynamic> json){
     idhopital = json['idhopital'];
@@ -13,6 +15,8 @@ class Hopital{
     ville = json['ville'];
     adresse = json['adresse'];
     photo = json['photo'];
+    telephone = json['telephone'];
+    email = json['email'];
   }
 
   Map<String, dynamic> toJson(){
@@ -22,6 +26,8 @@ class Hopital{
     data['ville'] = ville;
     data['adresse'] = adresse;
     data['photo'] = photo;
+    data['telehone'] = this.telephone;
+    data['email'] = this.email;
     return data;
   }
 

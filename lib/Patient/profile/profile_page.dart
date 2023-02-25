@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/AllFile/global/LaisonBankend.dart';
 import 'package:masante/Patient/profile/user_preferences.dart';
 
 import 'user.dart';
@@ -45,12 +46,12 @@ class _PatientProfilePageState extends State<PatientProfilePage> {
   Widget buildName(UsersPatient user) => Column(
         children: [
           Text(
-            user.name,
+            '$nomUser',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
           ),
           const SizedBox(height: 4),
           Text(
-            user.email,
+              '$prenomUser',
             style: TextStyle(color: Colors.grey),
           )
         ],
@@ -66,6 +67,10 @@ class _PatientProfilePageState extends State<PatientProfilePage> {
               'Telethone',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
+            Text(
+              '$userTelehone',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 16),
             Text(
               user.lovalisation,
@@ -73,12 +78,12 @@ class _PatientProfilePageState extends State<PatientProfilePage> {
             ),
             SizedBox(height: 16,),
             const Text(
-              'Ville',
+              'email',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             Text(
-              user.lovalisation,
+              '$emailUser',
               style: TextStyle(fontSize: 16, height: 1.4),
             ),
             SizedBox(height: 30,),
@@ -88,14 +93,14 @@ class _PatientProfilePageState extends State<PatientProfilePage> {
              children: [
                IconButton(
                  iconSize: 45,
-                 icon: const Icon(Icons.edit,color: Colors.blue,),
+                 icon:  Icon(Icons.edit,color: HexColor('#54DEFC'),),
                  onPressed: () {
                    // ...
                  },
                ),
                IconButton(
                  iconSize: 45,
-                 icon: const Icon(Icons.delete,color: Colors.blue),
+                 icon:  Icon(Icons.delete,color: HexColor('#EB455F')),
                  onPressed: () {
                    // ...
                  },

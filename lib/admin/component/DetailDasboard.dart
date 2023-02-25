@@ -34,6 +34,7 @@ class DetailDasboard extends StatelessWidget {
             'https://cdn.pixabay.com/animation/2022/12/05/15/23/15-23-06-837_512.gif',
             )
       ),
+      //https://assets2.lottiefiles.com/packages/lf20_ioxlu1zt.json
       SizedBox(
         height: SizeConfig.blockSizeVertical! * 5,
       ),

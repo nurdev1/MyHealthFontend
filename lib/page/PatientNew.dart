@@ -64,12 +64,12 @@ class PatientNewT extends StatelessWidget {
                   )
                 ],),
               ),
-              SizedBox(height: 15,),
+              SizedBox(height: 45,),
               Padding(padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
               child: Column( crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                  Text(" $nom",style: TextStyle(color: Colors.white,fontSize: 18),),
-                  SizedBox(height: 40,),
+                  SizedBox(height: 60,),
                   Column(
                     children: [
                       Padding(padding: EdgeInsets.only(top: 20),

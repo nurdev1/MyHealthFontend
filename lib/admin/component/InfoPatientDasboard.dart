@@ -25,7 +25,7 @@ class InfoPatientDasboard extends StatelessWidget {
         right: Responsive.isDesktop(context) ? 40.0:20,),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
-        color: HexColor('#EB455F'),
+        color: HexColor('#EB455F').withOpacity(0.8),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

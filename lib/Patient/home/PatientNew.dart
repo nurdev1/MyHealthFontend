@@ -44,7 +44,7 @@ class PatientFirst extends StatelessWidget {
                               GestureDetector(
                                 child:  const CircleAvatar(
                                   radius: 30,
-                                  backgroundImage: AssetImage("assets/images/profil.jpg",),
+                                  backgroundImage: AssetImage("assets/images/user.pnj",),
                                 ),
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
@@ -60,25 +60,27 @@ class PatientFirst extends StatelessWidget {
                       )],
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 10,),
                   Text(
-                      "salut $prenomUser $nomUser",
+                      "salut $nomUser",
                       style: GoogleFonts.openSans(
                           textStyle:  const TextStyle(
                               fontSize: 18,
-                              fontWeight: FontWeight.bold,color:Colors.white))),
-                  SizedBox(height: 60,),
+                              fontWeight: FontWeight.bold,color:Colors.white))
+                  ),
+                  SizedBox(height: 40,),
                   Text('comment vous sentez vous ?',
                       style: GoogleFonts.openSans(
-                          textStyle:  const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,color:Colors.black)
+                          textStyle:   TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,color:HexColor('#EB455F'))
                       )
                   ),
                   SizedBox(height: 70,),
+                  //https://assets5.lottiefiles.com/packages/lf20_2ZKqKUm2Jm.json
                   Container(
                     height: 480,
-                    decoration:  const BoxDecoration(
+                    decoration:   BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/images/1.jpg'),
                         fit: BoxFit.cover,
@@ -146,7 +148,7 @@ class PatientFirst extends StatelessWidget {
                            ),
                          ),
                         Text(
-                          'Votre dossier medical \nnumérique à porté',
+                          'Avoir votre dossier medical \nnumérique à porté',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.openSans(
                               textStyle:  const TextStyle(

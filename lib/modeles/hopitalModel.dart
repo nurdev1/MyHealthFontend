@@ -1,6 +1,6 @@
 
 class HopitalsModel {
-  String? idhopital, nom, photo, adresse,ville,date;
+  String? idhopital, nom, photo, adresse,ville,date  ,email,telephone;
 
   HopitalsModel(
       {
@@ -18,6 +18,8 @@ class HopitalsModel {
     ville = json['ville'];
     adresse = json['adresse'];
     photo = json['photo'];
+    telephone = json['telephone'];
+    email = json['email'];
   }
 
   Map<String, dynamic> toJson(){
@@ -27,6 +29,8 @@ class HopitalsModel {
     data['ville'] = ville;
     data['adresse'] = adresse;
     data['photo'] = photo;
+    data['telehone'] = this.telephone;
+    data['email'] = this.email;
     return data;
   }
 

@@ -9,20 +9,7 @@ import '../modeles/hopitalModel.dart';
 class HopitalService {
 
 
-/*  Map<String, String> headers = {
-    "content-type": "application/json",
-    "accept": "application/json",
-  };
-
-  Future<http.Response> get(String url, Map<String, String> params) async {
-    try{
-      Uri uri = Uri.parse(api+url).replace(queryParameters: params);
-      http.Response response = await http.get(uri);
-      return response;
-    }catch(e){
-      return http.Response({"message":e}.toString(),400);
-    }
-  }
+/*
 
   Future<http.Response> post(String url, Map<String, dynamic> body) async {
     try {
@@ -57,10 +44,10 @@ class HopitalService {
       return http.Response({"message": e}.toString(), 400);
     }
   }*/
-  static const String _baseURL = '$masante+medecin/'; // Mettez l'URL de votre API REST ici
 
-  static Future<List<Hopital>> fetchHopitaux() async {
-    final response = await http.get(Uri.parse('$_baseURL/hopitaux'));
+/////////////////////////////////////////////////////////////////////////
+  static Future<List<Hopital>> compteHopital() async {
+    final response = await http.get(Uri.parse('$masante/compte'));
     if (response.statusCode == 200) {
       final List<dynamic> jsonList = json.decode(response.body);
       return jsonList.map((e) => Hopital.fromJson(e)).toList();
@@ -68,33 +55,50 @@ class HopitalService {
       throw Exception('Échec du chargement des hôpitaux');
     }
   }
-
+  ///////////////////////////////////////////////////////////////
   var data = [];
   List<HopitalsModel> results = [];
 
-  String fetchUrl ='$masante/hopital/afficher';
-  Future<List<HopitalsModel>> getHopitalModel({String ,query}) async{
+  String fetchUrl ='http://127.0.0.1:8082/hopital/afficher';
 
-    var url = Uri.parse(fetchUrl);
-    var response = await http.get(url);
+  static Future<List<Hopital>> getAllHopital() async {
+    //SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<Hopital> items = [];
+    //String? token = prefs.getString("token");
+    //Get the item from the API
+    var url = Uri.parse('http://127.0.0.1:8082/hopital/afficher');
+    // var headers = {
+    //   "Authorization": "Bearer $token"
+    // };
+    /*http.Response response = await http.get(url,
+      headers: headers,
+    );*/
 
-    try{
-      if(response.statusCode == 200){
-        data = json.decode(response.body);
-        results = data.map((e)=> HopitalsModel.fromJson(e)).toList();
+    http.Response response = await http.get(url);
 
-        if(query != null){
-          results = results.where((element) => element.nom!.toLowerCase().contains(query.toString())).toList();
-        }
-      }else{
-        print('Api error');
-      }
-    }on Exception catch(e){
-      print('Error: $e');
+    if (response.statusCode == 200) {
+
+      //get the data from the response
+      String jsonString = response.body;
+      var jsonByte = response.bodyBytes;
+
+      //Convert to List<Map>
+      //List data = json.decode(jsonString);
+      List data = json.decode(utf8.decode(jsonByte));
+      //Convert to List<Map>
+      print(data);
+      //List data = jsonDecode(jsonString);
+      items = data.map((e) => Hopital.fromJson(e)).toList();
+      print("items");
+      print(items);
+
     }
 
-    return results;
+    return items;
+
+
   }
+
 
 
 

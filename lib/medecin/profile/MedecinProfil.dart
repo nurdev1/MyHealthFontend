@@ -22,7 +22,7 @@ class MedecinProfil extends StatelessWidget {
               decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
-                      "assets/images/profil.jpg",
+                      "assets/images/images.jpg",
                     ),
                     fit: BoxFit.cover,
                   ),
@@ -203,6 +203,25 @@ class MedecinProfil extends StatelessWidget {
                     height: 5,
                   ),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text("Nom uilisateur",
+                          style: GoogleFonts.openSans(
+                              textStyle:  const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,color:Colors.black87))
+                      ),
+                      SizedBox(height: 10,),
+                      Text("Fatou",
+                        style: GoogleFonts.openSans(
+                            textStyle:  const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,color:Colors.black87))
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10,),
+                  Row(
                     children: [
                       Icon(
                         Icons.call,
@@ -309,50 +328,19 @@ class MedecinProfil extends StatelessWidget {
                                   color: Colors.black))),
                     ],
                   ),
-                /*  SizedBox(height: 10,),
-                  Row(
-                    children: [
-                      Icon(MdiIcons.city, color: HexColor('#54DEFC'), size: 40,),
-                      SizedBox(height: 5,),
-                      Text("Bamako",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black.withOpacity(0.6),
-                        ),
-                      ),
-                    ],
-                  ),*/
+
                   SizedBox(height: 20,),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-
-                      /* ElevatedButton.icon(
-                      onPressed: () {},
-                      icon: Icon( // <-- Icon
-                        MdiIcons.update,
-                        color: HexColor('#54DEFC'),
-                        size: 24.0,
-                      ),
-                      label: Text('Modifier',
-                        style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white
-                      ),
-                      ), // <-- Text
-                    ),*/
-
-
                       IconButton(onPressed: (){
                         Navigator.push(context, MaterialPageRoute(
                             builder: (context) => ModifierProfilMedecin()
                         )
                         );
                       },
-                        icon: Icon(Icons.edit,size: 50.0,color: HexColor('#EB455F'),
+                        icon: Icon(Icons.edit,size: 50.0,color: HexColor('#54DEFC'),
                       ),
                       ),
                       IconButton(onPressed: (){
@@ -361,7 +349,7 @@ class MedecinProfil extends StatelessWidget {
                         )
                         );
                       },
-                        icon: Icon(MdiIcons.delete,size: 50.0,color: HexColor('#54DEFC'),
+                        icon: Icon(MdiIcons.delete,size: 50.0,color: HexColor('#EB455F'),
                       ),
                       )
                     ],

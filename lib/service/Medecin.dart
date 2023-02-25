@@ -54,6 +54,45 @@ try{
       return "Problème lors de l'inscription ${response.statusCode} ${response.body}";
     }
   }
+  /****yhugyutdddddddddikkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk***/
+
+  static Future<List<MedecinModel>> getAllHopital() async {
+    //SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<MedecinModel> items = [];
+    //String? token = prefs.getString("token");
+    //Get the item from the API
+    var url = Uri.parse('http://127.0.0.1:8082/medecin/afficher');
+    // var headers = {
+    //   "Authorization": "Bearer $token"
+    // };
+    /*http.Response response = await http.get(url,
+      headers: headers,
+    );*/
+
+    http.Response response = await http.get(url);
+
+    if (response.statusCode == 200) {
+
+      //get the data from the response
+      String jsonString = response.body;
+      var jsonByte = response.bodyBytes;
+
+      //Convert to List<Map>
+      //List data = json.decode(jsonString);
+      List data = json.decode(utf8.decode(jsonByte));
+      //Convert to List<Map>
+      print(data);
+      //List data = jsonDecode(jsonString);
+      items = data.map((e) => MedecinModel.fromJson(e)).toList();
+      print("items");
+      print(items);
+
+    }
+
+    return items;
+
+
+  }
 }
 
 

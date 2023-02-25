@@ -9,12 +9,14 @@ import 'package:localization/localization.dart';
 import 'package:masante/Patient/PatientListeMedecin.dart';
 import 'package:masante/Patient/home/PatientAccueil.dart';
 import 'package:masante/Patient/home/PatientNew.dart';
+import 'package:masante/Patient/profile/profile_page.dart';
 import 'package:masante/admin/Dashboard.dart';
 import 'package:masante/admin/ListePatient.dart';
 import 'package:masante/admin/component/Profil/Screens/ProfileScreen.dart';
 import 'package:masante/medecin/AccueilMedecin.dart';
 import 'package:masante/medecin/medecinListePatient/MedecinListe.dart';
 import 'package:masante/medecin/profile/MedecinProfil.dart';
+import 'package:masante/modeles/Connexion.dart';
 import 'package:masante/page/Choix.dart';
 import 'package:masante/page/Connexion.dart';
 import 'package:masante/page/DossierAjout/DossierAjout.dart';
@@ -31,6 +33,7 @@ import 'admin/PatientListeTableau.dart';
 import 'admin/component/AdminSplashPage.dart';
 import 'admin/hopital/screens/home/home_screen.dart';
 import 'admin/hopital/screens/main/main_screen.dart';
+import 'admin/tableau.dart';
 import 'admin/test.dart';
 import 'medecin/Consultaion1.dart';
 import 'medecin/Inscription/InscriptionMedecin.dart';
@@ -77,7 +80,7 @@ class LoginUiApp extends StatelessWidget {
       ),
     //home: Splash(title: 'Myhealth',),
       // home: AdminSplash(title: 'Myhealth',),
-       home: PatientNewT(),
+       home: AdminListeHopitaPage(),
     );
 /*  @override
   Widget build(BuildContext context) {

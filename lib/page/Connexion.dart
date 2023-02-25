@@ -213,10 +213,15 @@ class _LoginPageState extends State<LoginPage> {
       var firstname = json.decode(response.body);
       var lastname = json.decode(response.body);
       var nomUtilisateur = json.decode(response.body);
+      var phone = json.decode(response.body);
+      var mail =json.decode(response.body);
       roleuser = rol['roles'];
       nomUser = lastname['nom'];
       prenomUser = firstname['prenom'];
       nom = nomUtilisateur['username'];
+      userTelehone = phone['telephone'];
+      emailUser = mail['email'];
+
       print(roleuser);
       print(nomUser);
       print(prenomUser);
