@@ -19,6 +19,7 @@ class MedecinModel {
   Hopital? hopital;
   String? password;
   String? username;
+  DateTime? date;
 
 
 
@@ -35,6 +36,7 @@ class MedecinModel {
         this.specialite,
         this.etat,
         this.hopital,
+        this.date,
         this.password,
         this.username
         });
@@ -52,6 +54,7 @@ class MedecinModel {
     etat = json['etat'];
     password=json['password'];
     username=json['username'];
+    date: DateTime.parse(json['date']);
     hopital = json['hopital'] != null ? Hopital.fromJson(json['hopital']) : null;
 
   }
@@ -71,6 +74,7 @@ class MedecinModel {
     data['etat'] = this.etat;
     data['password']=this.password;
     data['username']=this.username;
+    data['date']= date;
 if(Hopital != null){
   data['Hopital'] = Hopital().toJson();
 }

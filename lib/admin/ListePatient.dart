@@ -138,11 +138,6 @@ class AdminPatientListePage extends StatelessWidget {
                 ),
               ),
 
-              /*if(Responsive.isDesktop(context))
-              Expanded(
-                flex: 1,
-                child: Container(),
-              ),*/
             ],
           ),
         )

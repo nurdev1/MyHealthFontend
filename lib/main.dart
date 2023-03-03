@@ -80,8 +80,8 @@ class LoginUiApp extends StatelessWidget {
         primarySwatch: Colors.grey,
       ),
     //home: Splash(title: 'Myhealth',),
-      // home: AdminSplash(title: 'Myhealth',),
-       home: AdminPatientListePage(),
+       //home: AdminSplash(title: 'Myhealth',),
+       home: Dashboard(),
     );
 /*  @override
   Widget build(BuildContext context) {

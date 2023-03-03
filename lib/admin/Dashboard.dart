@@ -135,11 +135,11 @@ class Dashboard extends StatelessWidget {
                           children: const [
                             PrimaryText(
                                 text: 'Historiques',
-                                size: 30,
+                                size: 25,
                                 fontWeight: FontWeight.w800),
                             PrimaryText(
                               text: 'Nouveau medécin',
-                              size: 16,
+                              size: 14,
                               fontWeight: FontWeight.w400,
                               color: Colors.white60,
                             ),
