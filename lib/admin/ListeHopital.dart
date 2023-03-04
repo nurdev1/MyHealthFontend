@@ -70,7 +70,7 @@ class AdminListeHopitaPage extends StatelessWidget {
                 child: SafeArea(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
                         child: Column(
@@ -81,8 +81,7 @@ class AdminListeHopitaPage extends StatelessWidget {
                           ],
                         ),
                       ),
-
-                      //const SizedBox(height: 5,),
+                      SizedBox(height: 10,),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,

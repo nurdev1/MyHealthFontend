@@ -13,88 +13,64 @@ class ListePatientTableau extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    String _searchText = "";
     return Column(
-      //  crossAxisAlignment: CrossAxisAlignment.center,
-      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SizedBox(
-         // width: double.infinity,
           child: FutureBuilder<List<ModelPatient>>(
             future: PatientService.getAllPatient(),
-            builder:
-                (BuildContext context, AsyncSnapshot<List<ModelPatient>> snapshot) {
+            builder: (BuildContext context, AsyncSnapshot<List<ModelPatient>> snapshot) {
               if (snapshot.hasData) {
                 var liste = snapshot.data as List<ModelPatient>;
-                return SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: DataTable(
-                    headingRowColor:
-                    MaterialStateColor.resolveWith((states) => HexColor('#54DEFC')),
-                    columns:  <DataColumn>[
-                      DataColumn(
-                        label: Text(
-                          'Nom',
-                          style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          'Prénom',
-                          style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          'Numéro',
-                          style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          'Email',
-                          style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),
-                        ),
-                      ),
-                      DataColumn(label: Text("Etat",style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),),
-                      ),
-                      DataColumn(label: Text("Action",style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),),
-                      ),
-                    ],
-                    rows: List<DataRow>.generate(
-                      snapshot.data!.length,
-                          (index) => DataRow(
-                        cells: <DataCell>[
-                          DataCell(Text(liste[index].nom!,style: GoogleFonts.roboto(
-                              textStyle: const TextStyle(fontSize: 18,)
-                          ),)),
-                          DataCell(Text(liste[index].prenom!,style: GoogleFonts.roboto(
-                              textStyle: const TextStyle(fontSize: 18,)
-                          ),)),
-                          DataCell(Text(liste[index].telephone!,style: GoogleFonts.roboto(
-                              textStyle: const TextStyle(fontSize: 18,)
-                          ),)),
-                          DataCell(Text(liste[index].email!,style: GoogleFonts.roboto(
-                              textStyle: const TextStyle(fontSize: 18,)
-                          ),)),
-                          DataCell(Icon(Icons.offline_pin_rounded,
-                              color: HexColor('54DEFC'))),
-                          DataCell(Row(
-                            children: [
-                              Icon(
-                                Icons.edit,
-                                color: HexColor('54DEFC'),
-                              ),
-                              Icon(
-                                Icons.delete,
-                                color: HexColor('EB455F'),
-                              ),
-                              Icon(Icons.remove_red_eye_outlined,
-                                  color: HexColor('54DEFC'))
-                            ],
-                          )),
-                        ],
+                return PaginatedDataTable(
+                  //headingRowColor: MaterialStateColor.resolveWith((states) => HexColor('#54DEFC')),
+                  columns: <DataColumn>[
+                    DataColumn(
+                      label: Text(
+                        'Code',
+                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
                       ),
                     ),
-                  ),
+                    DataColumn(
+                      label: Text(
+                        'Nom',
+                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Prénom',
+                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Numéro',
+                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Email',
+                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Etat',
+                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Action',
+                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
+                      ),
+                    ),
+                  ],
+                  source: _PatientDataSource(liste),
+                  rowsPerPage: 4,
                 );
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
@@ -107,5 +83,96 @@ class ListePatientTableau extends StatelessWidget {
       ],
     );
   }
+}
+
+class _PatientDataSource extends DataTableSource {
+  _PatientDataSource(this._liste);
+
+  final List<ModelPatient> _liste;
+
+  @override
+  DataRow? getRow(int index) {
+    if (index >= _liste.length) {
+      return null;
+    }
+    final patient = _liste[index];
+    return DataRow.byIndex(
+      index: index,
+      cells: <DataCell>[
+        DataCell(
+          Text(
+            patient.username!,
+            style: GoogleFonts.roboto(
+              textStyle: const TextStyle(fontSize: 14,),
+            ),
+          ),
+        ),
+        DataCell(
+          Text(
+            patient.nom!,
+            style: GoogleFonts.roboto(
+              textStyle: const TextStyle(fontSize: 14,),
+            ),
+          ),
+        ),
+        DataCell(
+          Text(
+            patient.prenom!,
+            style: GoogleFonts.roboto(
+              textStyle: const TextStyle(fontSize: 14,),
+            ),
+          ),
+        ),
+        DataCell(Text(patient.telephone!, style: GoogleFonts.roboto(
+            textStyle: const TextStyle(fontSize: 14,)
+        ),)),
+        DataCell(Text(patient.email!, style: GoogleFonts.roboto(
+            textStyle: const TextStyle(fontSize: 14,)
+        ),)),
+       /* DataCell(Icon(Icons.offline_pin_rounded,
+            color: HexColor('54DEFC'))),*/
+           DataCell(
+          Icon(
+            patient.etat! ? Icons.offline_pin_rounded : Icons.offline_pin_rounded, // changer l'icone en fonction de l'etat du medecin
+            color: patient.etat! ? HexColor('EB45F') : HexColor('54DEFC'), // changer la couleur de l'icone en fonction de l'etat du medecin
+          ),
+        ),
+        /*   DataCell(
+          Icon(
+            patient.isDoctor ? Icons.offline_pin_rounded : Icons.online_pin_rounded, // changer l'icone en fonction de l'etat du medecin
+            color: patient.isDoctor ? HexColor('EB45F') : HexColor('54DEFC'), // changer la couleur de l'icone en fonction de l'etat du medecin
+          ),
+        ),
+*/
+
+        DataCell(Row(
+          children: [
+            Icon(
+              Icons.edit,
+              color: HexColor('54DEFC'),
+            ),
+            Icon(
+              Icons.delete,
+              color: HexColor('EB455F'),
+            ),
+            Icon(Icons.remove_red_eye_outlined,
+                color: HexColor('54DEFC'))
+          ],
+        )),
+      ],
+    );
+  }
+
+  @override
+  bool get isRowCountApproximate => false;
+
+  @override
+  int get rowCount=> _liste.length;
+
+  @override
+  int get selectedRowCount => 0;
+  List<DataRow> getRowKist() =>
+      List.generate(rowCount, (index) => getRow(index)!);
 
 }
+

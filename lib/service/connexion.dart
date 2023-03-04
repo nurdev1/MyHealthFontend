@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:masante/AllFile/global/LaisonBankend.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ConnexionService{
 
@@ -33,4 +34,73 @@ class ConnexionService{
       throw ('erreur de connexion');
     }
   }
+  ////////////////////////////////////////////////////////////////
+  //SIGN IN
+
+  var client = http.Client();
+  Future<String> signin(String username, String password) async {
+    var url = Uri.parse('$masante/signin');
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final data = jsonEncode(
+        {'username': username, 'password': password});
+    Map<String, String> headers = {"Content-Type": "application/json"};
+    var response = await client.post(url, body: data, headers: headers);
+
+    if (response.statusCode == 200) {
+      prefs.setBool("loggedIn", true);
+      connecte = true;
+      Map<String, dynamic> json = jsonDecode(response.body);
+      prefs.setString("token", json['accessToken']);
+      token = json['accessToken'];
+      prefs.setInt("id", json['id']);
+      //prefs.setString("profil", json['image']);
+      id = json['id'];
+      print("mon id");
+      print(id);
+      connexion = true;
+      return "Bienvenue ${json['username']} !".toUpperCase();
+
+    } else {
+      //throw ("Can't get the Articles");
+      return "Nom d'utilisateur ou mot de passe incorrect !";
+    }
+  }
+  ///////////////////////////////////////////////////////////////////
+  //Get user
+  Future<Map<String,dynamic>> getUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int? UID = prefs.getInt("id");
+
+    String? token = prefs.getString("token");
+    //Get the item from the API
+    var url = Uri.parse('$masante/user/$UID');
+    var headers = {
+      "Authorization": "Bearer $token"
+    };
+    http.Response response = await http.get(url,
+      headers: headers,
+    );
+
+    print(response.body);
+
+    if (response.statusCode == 200) {
+      Map<String,dynamic> item = {};
+      //get the data from the response
+      String jsonString = response.body;
+      var jsonByte = response.bodyBytes;
+
+      //Convert to List<Map>
+      item = json.decode(utf8.decode(jsonByte));
+      prefs.setString("profil", item['image']);
+      return item;
+    } else {
+      throw ("Liste introuvable : ${response.body}");
+    }
+  }
+  //auth
+  bool connexion = true;
+  bool connecte = false;
+  String token = '';
+  int id = 0;
+  String photo = '';
 }

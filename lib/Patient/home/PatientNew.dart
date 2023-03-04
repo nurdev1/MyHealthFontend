@@ -34,17 +34,13 @@ class PatientFirst extends StatelessWidget {
                         children: [
                      Icon(Icons.chevron_left,color: Colors.white,size: 35,),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                               const Icon(
-                                Icons.notifications_outlined,
-                                color: Colors.white,
-                                size: 35,
-                              ),
                               GestureDetector(
                                 child:  const CircleAvatar(
                                   radius: 30,
-                                  backgroundImage: AssetImage("assets/images/user.pnj",),
+                                  backgroundImage: AssetImage("assets/images/Masante6.png",),
                                 ),
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
@@ -62,7 +58,7 @@ class PatientFirst extends StatelessWidget {
                   ),
                   SizedBox(height: 10,),
                   Text(
-                      "salut $nomUser",
+                      "salut",
                       style: GoogleFonts.openSans(
                           textStyle:  const TextStyle(
                               fontSize: 18,
@@ -79,7 +75,7 @@ class PatientFirst extends StatelessWidget {
                   SizedBox(height: 70,),
                   //https://assets5.lottiefiles.com/packages/lf20_2ZKqKUm2Jm.json
                   Container(
-                    height: 480,
+                    height: 490,
                     decoration:   BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/images/1.jpg'),
@@ -151,8 +147,8 @@ class PatientFirst extends StatelessWidget {
                           'Avoir votre dossier medical \nnumérique à porté',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.openSans(
-                              textStyle:  const TextStyle(
-                                  fontSize: 25,color: Colors.white)
+                              textStyle:   TextStyle(
+                                  fontSize: 25,color: HexColor('#EB455F'))
                           ),
                         ),
                         SizedBox(height: 35,),

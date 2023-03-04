@@ -14,6 +14,7 @@ class AdminPatientListePage extends StatelessWidget {
   const AdminPatientListePage({Key? key}) : super(key: key);
 
   Widget build(BuildContext context) {
+    String _searchText = "";
     return Scaffold(
         appBar: AppBar(
           elevation: 0,

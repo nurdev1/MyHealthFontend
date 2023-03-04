@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:masante/AllFile/global/LaisonBankend.dart';
 import 'package:masante/modeles/Consultation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 class ConsultationService{
 
   Future<http.Response> ajouterConsultation(String titre, String description, String fichier, int idMedecin, int idPatient) async {
@@ -65,7 +66,32 @@ class ConsultationService{
 
     return results;
   }
+//////////////////////////////////////////////////////////
+  //ADD CONSULTATION
+  /*Future<String> addSession(int idmedecin, int idpatient) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int? connecteduserid = prefs.getInt("id");
+    String? token = prefs.getString("token");
+    var url = Uri.parse('$masante/quiz/score/add/$idQuiz/$connecteduserid');
+    final data = jsonEncode(
+        {
+          'points' : point
+        });
+    var headers = {
+      "Authorization": "Bearer $token",
+      "Content-Type": "application/json"
+    };
+    var response = await client.post(url, body: data, headers: headers);
 
+    if (response.statusCode == 200) {
+      Map<String, dynamic> json = jsonDecode(response.body);
+      connexion = true;
+      return json['points'].toString();
+    } else {
+      //throw ("Can't get the Articles");
+      return "Score non ajouté ${response.statusCode} ${response.body} !";
+    }
+  }*/
 
 
 }

@@ -61,7 +61,7 @@ class MedecinInformation extends StatelessWidget {
                         padding: EdgeInsets.only(bottom: 8),
                         alignment: Alignment.centerLeft,
                         //child: Text('DR Fatoumata',
-                        child: Text(medecin.specialite!,
+                        child: Text(medecin.prenom!,
 
                           //  child: Text(myProducts[index]["name"]),
                           style: TextStyle(
@@ -79,8 +79,8 @@ class MedecinInformation extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Icon(MdiIcons.hospital, color: HexColor("EB455F"),),
-                              Text(medecin.hopital!.nom!,
+                              Icon(MdiIcons.medicalBag, color: HexColor("EB455F"),),
+                              Text(medecin.specialite!,
                                 style: TextStyle(
                                     fontSize: 13,
                                     // color: HexColor("54DEFC"),

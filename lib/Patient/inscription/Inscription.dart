@@ -10,13 +10,11 @@ import 'package:masante/Patient/home/PatientNew.dart';
 import 'package:masante/modeles/Patient.dart';
 import 'package:http/http.dart' as http;
 import 'package:masante/service/Patient.dart';
-import 'package:motion_toast/motion_toast.dart';
 import 'package:quickalert/quickalert.dart';
 
 
 import '../../AllFile/showSnackBar.dart';
 import '../../admin/common/theme_helper.dart';
-import '../../firebase/authServices.dart';
 import '../../page/Connexion.dart';
 import '../../widget/HeaderWidget.dart';
 
@@ -272,7 +270,7 @@ class _Inscription extends State<Inscription> {
                                   String password = motdepasseController.text;
                                   String username= usernameController.text;
                                   String retour = await PatientService.addPatient(
-                                      nom, phone, prenom, email,password,username);
+                                      nom,  prenom, email,phone,password,username);
                                   prenomController.text = '';
                                   emailController.text = '';
                                   telephoneController.text = '';
@@ -327,20 +325,20 @@ class _Inscription extends State<Inscription> {
                               child: FaIcon(
                                 FontAwesomeIcons.googlePlus, size: 35,
                                 color: HexColor("#EC2D2F"),),
-                              // onTap: () {
-                              //   setState(() {
-                              //     showDialog(
-                              //       context: context,
-                              //       builder: (BuildContext context) {
-                              //         return ThemeHelper().alartDialog(
-                              //             "Google Plus",
-                              //             "Vous appuyez sur l'icône sociale GooglePlus.",
-                              //             context);
-                              //       },
-                              //     );
-                              //   });
-                              // },
-                               onTap: () => signIn(context),
+                              onTap: () {
+                                setState(() {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return ThemeHelper().alartDialog(
+                                          "Google Plus",
+                                          "Vous appuyez sur l'icône sociale GooglePlus.",
+                                          context);
+                                    },
+                                  );
+                                });
+                              },
+                             //  onTap: () => signIn(context),
                               //onPressed: () => signIn(context),
                             ),
                             const SizedBox(width: 30.0,),
@@ -406,26 +404,7 @@ class _Inscription extends State<Inscription> {
 
   //google inscription
 
-  Future signIn(BuildContext context) async {
-    if (kIsWeb) {
-      setState(() {
-        inLoginProcess = true;
-        AuthService().signInWithGoogle();
-      });
-    } else {
-      try {
-        final result = await InternetAddress.lookup('google.com');
-        if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-          setState(() async {
-            inLoginProcess = true;
-            AuthService().signInWithGoogle();
-          });
-        }
-      } on SocketException catch (_) {
-        showNotification(context, 'Aucune connexion internet');
-      }
-    }
-  }
+
 
 
 

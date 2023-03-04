@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/AllFile/global/LaisonBankend.dart';
 
 import '../../admin/common/theme_helper.dart';
 import '../../widget/EntetePage.dart';
@@ -57,7 +58,7 @@ class AjouterDossierPage extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.chevron_left,
-                                color: Colors.black,
+                                color: Colors.white,
                                 size: 35,
                               ),
                               Row(
@@ -87,7 +88,7 @@ class AjouterDossierPage extends StatelessWidget {
                           ),
                           SizedBox(height: 5),
                           Text(
-                              "Salut Dr Fatoumata",
+                              "$nomUser",
                               style:  GoogleFonts.openSans(
                                   textStyle:  TextStyle(
                                       fontSize: 18,
@@ -99,7 +100,7 @@ class AjouterDossierPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children:  [
                               Text(
-                                  "Ajouter des information médical",
+                                  "Créer mon médical numérique",
                                   style:  GoogleFonts.openSans(
                                       textStyle:  TextStyle(
                                           fontSize: 20,
@@ -133,7 +134,7 @@ class AjouterDossierPage extends StatelessWidget {
                                       )
                                   ),
                                   const SizedBox(
-                                    height: 20,
+                                    height: 25,
                                   ),
                                   TextField(
                                     // controller: cnom,
@@ -159,50 +160,11 @@ class AjouterDossierPage extends StatelessWidget {
                                         ),
                                       ),
                                       decoration: const InputDecoration(
+                                        prefixIcon: Icon(Icons.upload),
                                           labelText: 'Fichier',
                                           border: OutlineInputBorder(
                                               borderRadius:
                                               BorderRadius.all(Radius.circular(40))))),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-
-                                  Padding(
-                                    padding: const EdgeInsets.all(6),
-                                    child: Container(
-
-                                      padding: EdgeInsets.only(left: 16,right: 16),
-                                      decoration: BoxDecoration(
-                                        border: Border.all(color: Colors.black,width: 1.0),
-                                        borderRadius: BorderRadius.all(Radius.circular(40))
-                                      ),
-                                      child: DropdownButton(
-                                        hint: Text('Selectionner un dossier'),
-                                        dropdownColor: HexColor('#54DEFC').withOpacity(0.5),
-                                        elevation: 5,
-                                        // Initial Value
-                                        value: dropdownvalue,
-
-                                        // Down Arrow Icon
-                                        icon: const Icon(Icons.keyboard_arrow_down),
-
-                                        // Array list of items
-                                        items: items.map((value) {
-                                          return DropdownMenuItem(
-                                            value: value,
-                                            child: Text(value),
-                                          );
-                                        }).toList(),
-                                        // After selecting the desired option,it will
-                                        // change button value to selected value
-                                        onChanged: (value) {
-                                         /* setState(() {
-                                            dropdownvalue = value!;
-                                          });*/
-                                        },
-                                      ),
-                                    ),
-                                  ),
 
                                   const SizedBox(
                                     height: 20,

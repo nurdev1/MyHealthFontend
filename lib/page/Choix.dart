@@ -166,7 +166,7 @@ class _ChoixState extends State<ChoixPage> {
                         Container(
                           height: 250,
                           child: ListView(
-                            scrollDirection: Axis.horizontal,
+                            scrollDirection: Axis.vertical,
                             children:<Widget> [
                               GestureDetector(
                                 child: MakeItemPatient(image:'assets/images/profil.jpg'),
