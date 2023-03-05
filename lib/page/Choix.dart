@@ -8,6 +8,7 @@ import 'package:masante/page/Connexion.dart';
 import '../Patient/Connexion/Connexion.dart';
 import '../Patient/inscription/Inscription.dart';
 import '../medecin/Inscription/InscriptionMedecin.dart';
+import '../widget/EntetePage.dart';
 
 
 class ChoixPage extends StatefulWidget {
@@ -18,68 +19,42 @@ class ChoixPage extends StatefulWidget {
 }
 
 class _ChoixState extends State<ChoixPage> {
+
+  double _headerHeight =  160;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-         title:   Text(
-                    'MaSante ',/*'Votre dossier medical informatisé ',*/
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.openSans(
-                        textStyle:  TextStyle(
-                            fontSize: 25,fontWeight: FontWeight.bold,color:HexColor('EB455F'))
-                    ),
-          ),
-        elevation: 0,
-        iconTheme: IconThemeData(color: Colors.white),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[
-                    Theme.of(context).primaryColor,
-                    Theme.of(context).accentColor,
-                  ])),
-        ),
-        actions: [
-          Container(
-            margin: EdgeInsets.only(
-              top: 16,
-              right: 16,
-            ),
-            child: Stack(
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child:
-                        CircleAvatar(
-                          radius: 30,
-                          backgroundImage: AssetImage("assets/images/Masante6.png",),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
       body: SingleChildScrollView(
         child: Stack(
           children: [
+            Container(
+              height: _headerHeight,
+              child: EnteteWidhet(_headerHeight,  false),
+            ),
+            SizedBox(height: 10,),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child:
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundImage: AssetImage("assets/images/Masante6.png",),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+           // SizedBox(height: 140,),
             Padding(
-              padding: EdgeInsets.only(top: 5),
+              padding: EdgeInsets.only(top: 180),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 10,),
+                 // SizedBox(height: 10,),
                   Container(
                     height: 300,
                     decoration:  const BoxDecoration(
@@ -148,7 +123,7 @@ class _ChoixState extends State<ChoixPage> {
                           style: GoogleFonts.openSans(
                               textStyle:   TextStyle(
                                   fontSize: 20,color: Colors.white)
-                                  //HexColor('EB455F')
+                            //HexColor('EB455F')
                           ),
                         ),
 
@@ -161,12 +136,12 @@ class _ChoixState extends State<ChoixPage> {
                     padding: EdgeInsets.all(20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                   //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget> [
                         Container(
-                          height: 250,
+                          height: 225,
                           child: ListView(
-                            scrollDirection: Axis.vertical,
+                            scrollDirection: Axis.horizontal,
                             children:<Widget> [
                               GestureDetector(
                                 child: MakeItemPatient(image:'assets/images/profil.jpg'),
@@ -196,10 +171,10 @@ class _ChoixState extends State<ChoixPage> {
 
             ),
 
-           ],
+          ],
 
-    ),
-    ),
+        ),
+      ),
     );
   }
 
@@ -223,8 +198,8 @@ class _ChoixState extends State<ChoixPage> {
                 Row(
                   children:<Widget> [
                     Container(
-                      width: 150,
-                      height: 150,
+                      width: 130,
+                      height: 130,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
                           image: DecorationImage(
@@ -271,8 +246,8 @@ class _ChoixState extends State<ChoixPage> {
                 Row(
                   children:<Widget> [
                     Container(
-                      width: 150,
-                      height: 150,
+                      width: 130,
+                      height: 130,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
                           image: DecorationImage(

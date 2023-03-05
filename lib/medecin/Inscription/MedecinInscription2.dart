@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,6 +10,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:masante/modeles/Medecin.dart';
 import 'package:masante/modeles/hopitalModel.dart';
+import 'package:masante/page/Connexion.dart';
 import 'package:masante/service/Hopital.dart';
 import 'package:masante/service/Medecin.dart';
 import 'package:quickalert/models/quickalert_type.dart';
@@ -222,18 +224,22 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1> {
                           decoration:
                           ThemeHelper().buttonBoxDecoration(context),
                           child: ElevatedButton(
-                              style: ThemeHelper().buttonStyle(),
-                              child: Padding(
-                                padding:
-                                const EdgeInsets.fromLTRB(40, 10, 40, 10),
-                                child: Text(
-                                  "S'inscrire".toUpperCase(),
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
+                              style: ElevatedButton.styleFrom(
+                                primary: HexColor('#54DEFC'),
+                                textStyle: const TextStyle(fontSize: 25),
+                                padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(30)),
                                 ),
+                              ),
+                              child: Text(
+                                  "S'inscrire".toUpperCase(),
+                                  style: GoogleFonts.openSans(
+                                      textStyle: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w900,
+                                          color: Colors.white)
+                                  )
                               ),
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
@@ -244,7 +250,7 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1> {
                                   String username =usernameController.text;
                                   String specialite = specialiteController.text;
                                   String password = passwordController.text;
-                                  String retour = await MedecinService.addMedecin( nom, phone, prenom, email,password,username,specialite);
+                                  String retour = await MedecinService.addMedecin( nom,email, phone, prenom, password,username,specialite);
                                   prenomController.text = '';
                                   emailController.text = '';
                                   telephoneController.text = '';
@@ -269,16 +275,16 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1> {
                               }
                           ),
                         ),
-                        SizedBox(height: 30.0),
+                        SizedBox(height: 25.0),
                         Text(
                           "Ou créez un compte en utilisant les médias sociaux",
                           style: GoogleFonts.openSans(
                               textStyle: const TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 13,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.black)),
                         ),
-                        SizedBox(height: 25.0),
+                        SizedBox(height: 20.0),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -359,6 +365,46 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1> {
                             ),
                           ],
                         ),
+                        SizedBox(height: 5,),
+                       /* Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            GestureDetector(child: Text('Connexion',  style: GoogleFonts.openSans(
+                                textStyle:  TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: HexColor('#EB455F')))),
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          LoginPage()));
+                            },),
+                          ],
+                        ),*/
+                        Container(
+                          margin: EdgeInsets.fromLTRB(10, 20, 10, 20),
+                          //child: Text('Don\'t have an account? Create'),
+                          child: Text.rich(TextSpan(children: [
+                            TextSpan(text: "Vous avez un compte ? "),
+                            TextSpan(
+                              text: 'Connexion',
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              LoginPage()));
+                                },
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).accentColor),
+                            ),
+                          ])),
+                        ),
+
                       ],
                     ),
                   ),

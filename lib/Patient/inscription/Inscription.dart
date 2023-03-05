@@ -107,7 +107,7 @@ class _Inscription extends State<Inscription> {
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        SizedBox(height: 30,),
+                        SizedBox(height: 20,),
                         Container(
                           child: TextFormField(
                             controller: nomController,
@@ -247,19 +247,22 @@ class _Inscription extends State<Inscription> {
                           decoration: ThemeHelper().buttonBoxDecoration(
                               context),
                           child: ElevatedButton(
-                            style: ThemeHelper().buttonStyle(),
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(
-                                  40, 10, 40, 10),
-                              child: Text(
-                                  "S'inscrire".toUpperCase(),
-                                  style: GoogleFonts.openSans(
-                                      textStyle: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w900,
-                                          color: Colors.white)
-                                  )
+                              style: ElevatedButton.styleFrom(
+                                primary: HexColor('#54DEFC'),
+                                textStyle: const TextStyle(fontSize: 25),
+                                padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                                ),
                               ),
+                            child: Text(
+                                "S'inscrire".toUpperCase(),
+                                style: GoogleFonts.openSans(
+                                    textStyle: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w900,
+                                        color: Colors.white)
+                                )
                             ),
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
@@ -300,6 +303,20 @@ class _Inscription extends State<Inscription> {
                               }
 
                           ),
+                          /*ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.teal,
+                              textStyle: const TextStyle(fontSize: 25),
+                              padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(30)),
+                              ),
+                            ),
+                            child: const Text('Troisième bouton'),
+                            onPressed: () {
+                              debugPrint('Code de mon bouton');
+                            },
+                          ),*/
                         ),
                         SizedBox(height: 30.0),
                         Text(

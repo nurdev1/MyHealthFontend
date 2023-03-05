@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/page/Choix.dart';
 
 import '../../admin/common/theme_helper.dart';
@@ -106,7 +108,7 @@ class _InscriptionMedecin extends State<InscriptionMedecin> {
                           ),
                         ),
                         SizedBox(
-                          height: 100,
+                          height: 180,
                         ),
                         Container(
                           child: TextFormField(
@@ -153,7 +155,7 @@ class _InscriptionMedecin extends State<InscriptionMedecin> {
                               return null;
                             },
                             decoration: ThemeHelper().textInputDecoration(
-                                'Spécialité", "Entrez votre spécialité '),
+                                'Spécialité', 'Entrez votre spécialité '),
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
@@ -161,18 +163,22 @@ class _InscriptionMedecin extends State<InscriptionMedecin> {
                         Container(
                           decoration: ThemeHelper().buttonBoxDecoration(context),
                           child: ElevatedButton(
-                            style: ThemeHelper().buttonStyle(),
-
-                            child: Padding(
+                            style: ElevatedButton.styleFrom(
+                              primary: HexColor('#54DEFC'),
+                              textStyle: const TextStyle(fontSize: 25),
                               padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
-                              child: Text(
-                                "Suivant".toUpperCase(),
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(30)),
                               ),
+                            ),
+                            child: Text(
+                                "Suivant".toUpperCase(),
+                                style: GoogleFonts.openSans(
+                                    textStyle: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w900,
+                                        color: Colors.white)
+                                )
                             ),
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {

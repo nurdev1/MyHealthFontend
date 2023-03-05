@@ -16,6 +16,7 @@ import 'package:masante/page/splash/SplashPage.dart';
 import 'package:masante/page/table/Tablemain.dart';
 
 import 'admin/Dashboard.dart';
+import 'medecin/PatientListePage.dart';
 
 
 
@@ -56,7 +57,7 @@ class LoginUiApp extends StatelessWidget {
       ),
    // home: Splash(title: 'Myhealth',),
        //home: AdminSplash(title: 'Myhealth',),
-       home: Dashboard(),
+       home: ChoixPage(),
     );
 /*  @override
   Widget build(BuildContext context) {
