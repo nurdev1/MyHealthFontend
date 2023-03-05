@@ -2,14 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:masante/service/Patient.dart';
+import 'package:masante/modeles/Medecin.dart';
 
-import '../modeles/Patient.dart';
+import '../service/Medecin.dart';
+import 'ActiverMedecin.dart';
 
-class ListePatientTableau extends StatelessWidget {
-  const ListePatientTableau({
-    Key? key,
-  }) : super(key: key);
+class ActivationMedecinPage extends StatelessWidget {
+  final List<MedecinModel> medecins;
+
+  ActivationMedecinPage({required this.medecins});
 
   @override
   Widget build(BuildContext context) {
@@ -18,20 +19,15 @@ class ListePatientTableau extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          child: FutureBuilder<List<ModelPatient>>(
-            future: PatientService.getAllPatient(),
-            builder: (BuildContext context, AsyncSnapshot<List<ModelPatient>> snapshot) {
+          // width: double.infinity/2,
+          child: FutureBuilder<List<MedecinModel>>(
+            future: MedecinService.getAllMedecin(),
+            builder: (BuildContext context, AsyncSnapshot<List<MedecinModel>> snapshot) {
               if (snapshot.hasData) {
-                var liste = snapshot.data as List<ModelPatient>;
+                var liste = snapshot.data as List<MedecinModel>;
                 return PaginatedDataTable(
                   //headingRowColor: MaterialStateColor.resolveWith((states) => HexColor('#54DEFC')),
                   columns: <DataColumn>[
-                    DataColumn(
-                      label: Text(
-                        'Code',
-                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
-                      ),
-                    ),
                     DataColumn(
                       label: Text(
                         'Nom',
@@ -40,14 +36,20 @@ class ListePatientTableau extends StatelessWidget {
                     ),
                     DataColumn(
                       label: Text(
-                        'Prénom',
+                        'Prenom',
                         style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
                       ),
                     ),
                     DataColumn(
                       label: Text(
-                        'Numéro',
-                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),
+                        'Nom Utilisateur',
+                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Téléphone',
+                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
                       ),
                     ),
                     DataColumn(
@@ -58,13 +60,13 @@ class ListePatientTableau extends StatelessWidget {
                     ),
                     DataColumn(
                       label: Text(
-                        'Etat',
+                        'Spécialité',
                         style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
                       ),
                     ),
                     DataColumn(
                       label: Text(
-                        'Action',
+                        'Statut',
                         style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
                       ),
                     ),
@@ -88,20 +90,20 @@ class ListePatientTableau extends StatelessWidget {
 class _PatientDataSource extends DataTableSource {
   _PatientDataSource(this._liste);
 
-  final List<ModelPatient> _liste;
+  final List<MedecinModel> _liste;
 
   @override
   DataRow? getRow(int index) {
     if (index >= _liste.length) {
       return null;
     }
-    final patient = _liste[index];
+    final medecin = _liste[index];
     return DataRow.byIndex(
       index: index,
       cells: <DataCell>[
         DataCell(
           Text(
-            patient.username!,
+            medecin.nom!,
             style: GoogleFonts.roboto(
               textStyle: const TextStyle(fontSize: 14,),
             ),
@@ -109,7 +111,18 @@ class _PatientDataSource extends DataTableSource {
         ),
         DataCell(
           Text(
-            patient.nom!,
+            medecin.prenom!,
+            style: GoogleFonts.roboto(
+              textStyle: const TextStyle(fontSize: 14,),
+            ),
+          ),
+        ),
+        DataCell(Text(medecin.username!, style: GoogleFonts.roboto(
+            textStyle: const TextStyle(fontSize: 14,)
+        ),)),
+        DataCell(
+          Text(
+            medecin.telephone!,
             style: GoogleFonts.roboto(
               textStyle: const TextStyle(fontSize: 14,),
             ),
@@ -117,48 +130,22 @@ class _PatientDataSource extends DataTableSource {
         ),
         DataCell(
           Text(
-            patient.prenom!,
+            medecin.email!,
             style: GoogleFonts.roboto(
               textStyle: const TextStyle(fontSize: 14,),
             ),
           ),
         ),
-        DataCell(Text(patient.telephone!, style: GoogleFonts.roboto(
+        DataCell(Text(medecin.specialite!, style: GoogleFonts.roboto(
             textStyle: const TextStyle(fontSize: 14,)
         ),)),
-        DataCell(Text(patient.email!, style: GoogleFonts.roboto(
-            textStyle: const TextStyle(fontSize: 14,)
-        ),)),
-       /* DataCell(Icon(Icons.offline_pin_rounded,
-            color: HexColor('54DEFC'))),*/
-           DataCell(
+        DataCell(
           Icon(
-            patient.etat! ? Icons.offline_pin_rounded : Icons.offline_pin_rounded, // changer l'icone en fonction de l'etat du medecin
-            color: patient.etat! ? HexColor('54DEFC') : HexColor('EB455F'), // changer la couleur de l'icone en fonction de l'etat du medecin
+            medecin.etat! ? Icons.offline_pin_rounded : Icons.offline_pin_rounded, // changer l'icone en fonction de l'etat du medecin
+            color: medecin.etat! ? HexColor('EB45F') : HexColor('54DEFC'), // changer la couleur de l'icone en fonction de l'etat du medecin
           ),
         ),
-        /*   DataCell(
-          Icon(
-            patient.isDoctor ? Icons.offline_pin_rounded : Icons.online_pin_rounded, // changer l'icone en fonction de l'etat du medecin
-            color: patient.isDoctor ? HexColor('EB45F') : HexColor('54DEFC'), // changer la couleur de l'icone en fonction de l'etat du medecin
-          ),
-        ),
-*/
 
-        DataCell(Row(
-          children: [
-            Icon(
-              Icons.edit,
-              color: HexColor('54DEFC'),
-            ),
-            Icon(
-              Icons.delete,
-              color: HexColor('EB455F'),
-            ),
-            Icon(Icons.remove_red_eye_outlined,
-                color: HexColor('54DEFC'))
-          ],
-        )),
       ],
     );
   }
@@ -175,4 +162,3 @@ class _PatientDataSource extends DataTableSource {
       List.generate(rowCount, (index) => getRow(index)!);
 
 }
-

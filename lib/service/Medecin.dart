@@ -202,4 +202,17 @@ class MedecinService {
 
     return resultats;
   }*/
+  //activer médecin
+  static Future<void> activerMedecin(int id) async {
+    final response = await http.put(Uri.parse('$masante/medecin/$id/activer'));
+
+    if (response.statusCode == 200) {
+      print('Le médecin a été activé avec succès.');
+    } else if (response.statusCode == 404) {
+      print('Médecin non trouvé');
+    } else {
+      print('Erreur lors de l\'activation du médecin');
+    }
+  }
+
 }

@@ -73,12 +73,13 @@ class AdminPatientListePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Liste des Patients' ,style: GoogleFonts.openSans(
-                          textStyle: const TextStyle(fontSize: 40,fontWeight: FontWeight.bold)
+                          textStyle: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold)
                       ),),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            width: 300,
+                            width: 500,
                            // alignment: Alignment.bottomLeft,
                             child: Padding(
                               padding: const EdgeInsets.only(left: 40.0, right: 5),

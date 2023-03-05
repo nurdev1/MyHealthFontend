@@ -15,21 +15,20 @@ class ListeHopitalTableau extends StatefulWidget {
 
 class _ListeHopitalTableauState extends State<ListeHopitalTableau> {
   @override
-    Widget build(BuildContext context) {
-      List<Hopital> filterList(String searchText, List<Hopital> liste) {
-        List<Hopital> filteredList = [];
-        for (Hopital hopital in liste) {
-          if (hopital.nom!.toLowerCase().contains(searchText.toLowerCase())) {
-            filteredList.add(hopital);
-          }
+  Widget build(BuildContext context) {
+    List<Hopital> filterList(String searchText, List<Hopital> liste) {
+      List<Hopital> filteredList = [];
+      for (Hopital hopital in liste) {
+        if (hopital.nom!.toLowerCase().contains(searchText.toLowerCase())) {
+          filteredList.add(hopital);
         }
-        return filteredList;
       }
+      return filteredList;
+    }
 
-      String _searchText = "";
-      return Column(
-
-        children: [
+    String _searchText = "";
+    return Column(
+      children: [
         /*  TextFormField(
             decoration: InputDecoration(
               hintText: 'Rechercher',
@@ -40,7 +39,7 @@ class _ListeHopitalTableauState extends State<ListeHopitalTableau> {
               });
             },
           ),*/
-         /* Row(
+        /* Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -120,162 +119,187 @@ class _ListeHopitalTableauState extends State<ListeHopitalTableau> {
               ),
             ],
           ),*/
-          SizedBox(
-            child: FutureBuilder<List<Hopital>>(
-              future: HopitalService.getAllHopital(),
-              builder: (BuildContext context, AsyncSnapshot<List<Hopital>> snapshot) {
-                if (snapshot.hasData) {
-                  var liste = snapshot.data as List<Hopital>;
-                  var filteredList = filterList(_searchText, liste);
-                  return PaginatedDataTable(
-                    //headingRowColor: MaterialStateColor.resolveWith((states) => HexColor('#54DEFC')),
-                    columns: <DataColumn>[
-                      DataColumn(
-                        label: Text(
-                          'Nom',
-                          style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
-                        ),
+        SizedBox(
+          child: FutureBuilder<List<Hopital>>(
+            future: HopitalService.getAllHopital(),
+            builder:
+                (BuildContext context, AsyncSnapshot<List<Hopital>> snapshot) {
+              if (snapshot.hasData) {
+                var liste = snapshot.data as List<Hopital>;
+                var filteredList = filterList(_searchText, liste);
+                return PaginatedDataTable(
+                  //headingRowColor: MaterialStateColor.resolveWith((states) => HexColor('#54DEFC')),
+                  columns: <DataColumn>[
+                    DataColumn(
+                      label: Text(
+                        'Nom',
+                        style: GoogleFonts.openSans(
+                            textStyle: const TextStyle(
+                          fontSize: 16,
+                        )),
                       ),
-                      DataColumn(
-                        label: Text(
-                          'Téléphone',
-                          style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
-                        ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Téléphone',
+                        style: GoogleFonts.openSans(
+                            textStyle: const TextStyle(
+                          fontSize: 16,
+                        )),
                       ),
-                      DataColumn(
-                        label: Text(
-                          'Email',
-                          style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
-                        ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Email',
+                        style: GoogleFonts.openSans(
+                            textStyle: const TextStyle(
+                          fontSize: 16,
+                        )),
                       ),
-                      DataColumn(
-                        label: Text(
-                          'Ville',
-                          style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
-                        ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Ville',
+                        style: GoogleFonts.openSans(
+                            textStyle: const TextStyle(
+                          fontSize: 16,
+                        )),
                       ),
-                      DataColumn(
-                        label: Text(
-                          'Adresse',
-                          style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
-                        ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        'Adresse',
+                        style: GoogleFonts.openSans(
+                            textStyle: const TextStyle(
+                          fontSize: 16,
+                        )),
                       ),
-                      /*  DataColumn(
+                    ),
+                    /*  DataColumn(
                       label: Text(
                         'Etat',
                         style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 20,)),
                       ),
                     ),*/
-                      DataColumn(
-                        label: Text(
-                          'Action',
-                          style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
-                        ),
+                    DataColumn(
+                      label: Text(
+                        'Action',
+                        style: GoogleFonts.openSans(
+                            textStyle: const TextStyle(
+                          fontSize: 16,
+                        )),
                       ),
-                    ],
-                    source: _PatientDataSource(filteredList),
-                    rowsPerPage: 4,
-                  );
-                } else if (snapshot.hasError) {
-                  return Text('${snapshot.error}');
-                } else {
-                  return const Center(child: CircularProgressIndicator());
-                }
-              },
-            ),
+                    ),
+                  ],
+                  source: _PatientDataSource(filteredList),
+                  rowsPerPage: 4,
+                );
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
+            },
           ),
-        ],
-      );
-    }
+        ),
+      ],
+    );
   }
+}
 
-  class _PatientDataSource extends DataTableSource {
+class _PatientDataSource extends DataTableSource {
   _PatientDataSource(this._liste);
 
   final List<Hopital> _liste;
 
   @override
   DataRow? getRow(int index) {
-  if (index >= _liste.length) {
-  return null;
-  }
-  final hopital = _liste[index];
-  return DataRow.byIndex(
-  index: index,
-  cells: <DataCell>[
-  DataCell(
-  Text(
-  hopital.nom!,
-  style: GoogleFonts.roboto(
-  textStyle: const TextStyle(fontSize: 14,),
-  ),
-  ),
-  ),
-  DataCell(
-  Text(
-  hopital.telephone!,
-  style: GoogleFonts.roboto(
-  textStyle: const TextStyle(fontSize: 14,),
-  ),
-  ),
-  ),
-  DataCell(
-  Text(
-  hopital.email!,
-  style: GoogleFonts.roboto(
-  textStyle: const TextStyle(fontSize: 14,),
-  ),
-  ),
-  ),
-  DataCell(Text(hopital.ville!, style: GoogleFonts.roboto(
-  textStyle: const TextStyle(fontSize: 14,)
-  ),)),
-  DataCell(Text(hopital.adresse!, style: GoogleFonts.roboto(
-  textStyle: const TextStyle(fontSize: 14,)
-  ),)),
-  /* DataCell(Icon(Icons.offline_pin_rounded,
+    if (index >= _liste.length) {
+      return null;
+    }
+    final hopital = _liste[index];
+    return DataRow.byIndex(
+      index: index,
+      cells: <DataCell>[
+        DataCell(
+          Text(
+            hopital.nom!,
+            style: GoogleFonts.roboto(
+              textStyle: const TextStyle(
+                fontSize: 14,
+              ),
+            ),
+          ),
+        ),
+        DataCell(
+          Text(
+            hopital.telephone!,
+            style: GoogleFonts.roboto(
+              textStyle: const TextStyle(
+                fontSize: 14,
+              ),
+            ),
+          ),
+        ),
+        DataCell(
+          Text(
+            hopital.email!,
+            style: GoogleFonts.roboto(
+              textStyle: const TextStyle(
+                fontSize: 14,
+              ),
+            ),
+          ),
+        ),
+        DataCell(Text(
+          hopital.ville!,
+          style: GoogleFonts.roboto(
+              textStyle: const TextStyle(
+            fontSize: 14,
+          )),
+        )),
+        DataCell(Text(
+          hopital.adresse!,
+          style: GoogleFonts.roboto(
+              textStyle: const TextStyle(
+            fontSize: 14,
+          )),
+        )),
+        /* DataCell(Icon(Icons.offline_pin_rounded,
             color: HexColor('54DEFC'))),*/
-  /*  DataCell(
+        /*  DataCell(
           Icon(
             hopital.etat! ? Icons.offline_pin_rounded : Icons.offline_pin_rounded, // changer l'icone en fonction de l'etat du medecin
             color: hopital.etat! ? HexColor('EB45F') : HexColor('54DEFC'), // changer la couleur de l'icone en fonction de l'etat du medecin
           ),
-        ),*/
-  /*   DataCell(
-          Icon(
-            patient.isDoctor ? Icons.offline_pin_rounded : Icons.online_pin_rounded, // changer l'icone en fonction de l'etat du medecin
-            color: patient.isDoctor ? HexColor('EB45F') : HexColor('54DEFC'), // changer la couleur de l'icone en fonction de l'etat du medecin
-          ),
-        ),
-*/
+        ),*/ /**/
 
-  DataCell(Row(
-  children: [
-  Icon(
-  Icons.edit,
-  color: HexColor('54DEFC'),
-  ),
-  Icon(
-  Icons.delete,
-  color: HexColor('EB455F'),
-  ),
-  Icon(Icons.remove_red_eye_outlined,
-  color: HexColor('54DEFC'))
-  ],
-  )),
-  ],
-  );
+        DataCell(Row(
+          children: [
+            Icon(
+              Icons.edit,
+              color: HexColor('54DEFC'),
+            ),
+            Icon(
+              Icons.delete,
+              color: HexColor('EB455F'),
+            ),
+            Icon(Icons.remove_red_eye_outlined, color: HexColor('54DEFC'))
+          ],
+        )),
+      ],
+    );
   }
 
   @override
   bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount=> _liste.length;
+  int get rowCount => _liste.length;
 
   @override
   int get selectedRowCount => 0;
-  List<DataRow> getRowKist() =>
-  List.generate(rowCount, (index) => getRow(index)!);
 
-  }
+  List<DataRow> getRowKist() =>
+      List.generate(rowCount, (index) => getRow(index)!);
+}

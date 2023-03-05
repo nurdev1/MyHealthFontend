@@ -2,19 +2,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:masante/service/Medecin.dart';
 
 import '../modeles/Medecin.dart';
+import '../service/Medecin.dart';
 
-class ListeMedecinTableau extends StatelessWidget {
-  const ListeMedecinTableau({
-    Key? key,
-  }) : super(key: key);
+class ListeMedecinTableau extends StatefulWidget {
+  const ListeMedecinTableau({Key? key}) : super(key: key);
 
+  @override
+  State<ListeMedecinTableau> createState() => _ListeMedecinTableauState();
+}
+
+class _ListeMedecinTableauState extends State<ListeMedecinTableau> {
   @override
   Widget build(BuildContext context) {
 
     String _searchText = "";
+    String? selectedSpecialite;
+    MedecinModel _liste;
     return Column(
       children: [
         SizedBox(
@@ -24,60 +29,85 @@ class ListeMedecinTableau extends StatelessWidget {
             builder: (BuildContext context, AsyncSnapshot<List<MedecinModel>> snapshot) {
               if (snapshot.hasData) {
                 var liste = snapshot.data as List<MedecinModel>;
-                return PaginatedDataTable(
-                  //headingRowColor: MaterialStateColor.resolveWith((states) => HexColor('#54DEFC')),
-                  columns: <DataColumn>[
-                    DataColumn(
-                      label: Text(
-                        'Nom',
-                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
+                return Column(
+                  children: [
+                    SizedBox(
+                      width: 150,
+                      child: DropdownButtonFormField<String>(
+                        decoration: InputDecoration(
+                          labelText: 'Spécialité',
+                          border: OutlineInputBorder(),
+                        ),
+                        value: selectedSpecialite,
+                        items: List<String>.from(liste.map((medecin) => medecin.specialite!).toSet())
+                            .map((specialite) => DropdownMenuItem<String>(
+                          value: specialite,
+                          child: Text(specialite),
+                        )).toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            selectedSpecialite = value;
+                          });
+                        },
                       ),
                     ),
-                    DataColumn(
-                      label: Text(
-                        'Prenom',
-                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
-                      ),
-                    ),
-                    DataColumn(
-                      label: Text(
-                        'Nom Utilisateur',
-                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
-                      ),
-                    ),
-                    DataColumn(
-                      label: Text(
-                        'Téléphone',
-                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
-                      ),
-                    ),
-                    DataColumn(
-                      label: Text(
-                        'Email',
-                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
-                      ),
-                    ),
-                    DataColumn(
-                      label: Text(
-                        'Spécialité',
-                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
-                      ),
-                    ),
-                      DataColumn(
-                      label: Text(
-                        'Etat',
-                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
-                      ),
-                    ),
-                    DataColumn(
-                      label: Text(
-                        'Action',
-                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
-                      ),
+                    SizedBox(height: 5,),
+                    PaginatedDataTable(
+                      //headingRowColor: MaterialStateColor.resolveWith((states) => HexColor('#54DEFC')),
+                      columns: <DataColumn>[
+                        DataColumn(
+                          label: Text(
+                            'Nom',
+                            style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
+                            'Prenom',
+                            style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
+                            'Nom Utilisateur',
+                            style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
+                            'Téléphone',
+                            style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
+                            'Email',
+                            style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
+                            'Spécialité',
+                            style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
+                            'Etat',
+                            style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
+                            'Action',
+                            style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
+                          ),
+                        ),
+                      ],
+                      source: _PatientDataSource(liste),
+                      rowsPerPage: 4,
                     ),
                   ],
-                  source: _PatientDataSource(liste),
-                  rowsPerPage: 4,
                 );
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
@@ -146,10 +176,10 @@ class _PatientDataSource extends DataTableSource {
         ),)),
         /* DataCell(Icon(Icons.offline_pin_rounded,
             color: HexColor('54DEFC'))),*/
-         DataCell(
+        DataCell(
           Icon(
             medecin.etat! ? Icons.offline_pin_rounded : Icons.offline_pin_rounded, // changer l'icone en fonction de l'etat du medecin
-            color: medecin.etat! ? HexColor('EB45F') : HexColor('54DEFC'), // changer la couleur de l'icone en fonction de l'etat du medecin
+            color: medecin.etat! ? HexColor('54DEFC') : HexColor('EB455F'), // changer la couleur de l'icone en fonction de l'etat du medecin
           ),
         ),
         /*   DataCell(
@@ -188,5 +218,7 @@ class _PatientDataSource extends DataTableSource {
   int get selectedRowCount => 0;
   List<DataRow> getRowKist() =>
       List.generate(rowCount, (index) => getRow(index)!);
+
+
 
 }

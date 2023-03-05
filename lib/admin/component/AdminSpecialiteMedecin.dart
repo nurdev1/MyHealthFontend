@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:lottie/lottie.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class AdminSpecialiteMedecinWidget extends StatelessWidget {
@@ -13,15 +14,15 @@ class AdminSpecialiteMedecinWidget extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-         for (int i=0;i<4;i++)
+        // for (int i=0;i<4;i++)
             Container(
               margin: EdgeInsets.symmetric(horizontal: 30),
-              padding: EdgeInsets.symmetric(vertical:35, horizontal: 35),
+              padding: EdgeInsets.symmetric(vertical:30, horizontal: 35),
               decoration: BoxDecoration(
                 color: HexColor("EB455F"),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Specialite( image: 'assets/images/discussion.png',nom: "Hôpital",),
+              child: Specialite( image: 'https://assets3.lottiefiles.com/private_files/lf30_4FGi6N.json',nom: "",),
             )
         ],
       ),
@@ -45,7 +46,7 @@ class Specialite extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children:  [
-        Image.asset(image,width: 30,),
+        Lottie.network(image,width: 50,),
         SizedBox(width: 10,),
 
         //on utiluse une variable pour changer l'icone en fonction

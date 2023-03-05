@@ -150,7 +150,7 @@ class PatientService {
     List<ModelPatient> items = [];
     //String? token = prefs.getString("token");
     //Get the item from the API
-    var url = Uri.parse('http://127.0.0.1:8082/medecin/afficher');
+    var url = Uri.parse('http://127.0.0.1:8082/patient/afficher');
     // var headers = {
     //   "Authorization": "Bearer $token"
     // };

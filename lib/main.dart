@@ -57,7 +57,7 @@ class LoginUiApp extends StatelessWidget {
       ),
    // home: Splash(title: 'Myhealth',),
        //home: AdminSplash(title: 'Myhealth',),
-       home: ChoixPage(),
+       home: AdminPatientListePage(),
     );
 /*  @override
   Widget build(BuildContext context) {
