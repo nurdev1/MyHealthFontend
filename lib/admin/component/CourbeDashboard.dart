@@ -65,7 +65,7 @@ class BarchartComponent extends StatelessWidget {
             BarChartGroupData(
                 x: 0,
                 barRods: [
-                  BarChartRodData(y: 0, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 15 : 15, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.white.withOpacity(0.5)])),
+                  BarChartRodData(y: 30, colors: [HexColor('#54DEFC')], borderRadius: BorderRadius.circular(2), width: Responsive.isDesktop(context) ? 15 : 15, backDrawRodData: BackgroundBarChartRodData(y: 90, show: true, colors: [Colors.white.withOpacity(0.5)])),
                 ]
             ),
             BarChartGroupData(

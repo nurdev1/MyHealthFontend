@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:masante/modeles/Hopital.dart';
+import 'package:masante/service/Hopital.dart';
 import '../../AllFile/style/colors.dart';
 import '../../AllFile/style/style.dart';
+import '../../responsive.dart';
 import '../config/size_config.dart';
 import 'package:lottie/lottie.dart';
 
@@ -21,7 +24,7 @@ class DetailDasboard extends StatelessWidget {
             borderRadius: BorderRadius.circular(30),
             boxShadow: const [
               BoxShadow(
-                color: Colors.grey,
+                color: Colors.white,
                 blurRadius: 15.0,
                 offset: Offset(
                   10.0,
@@ -29,12 +32,10 @@ class DetailDasboard extends StatelessWidget {
                 ),
               )
             ]),
-        // child: Image.asset('assets/images/Masante6.png',width: 300,),
-        child: Image.network(
-            'https://cdn.pixabay.com/animation/2022/12/05/15/23/15-23-06-837_512.gif',
-            )
+        child: Lottie.network(
+          'https://assets1.lottiefiles.com/packages/lf20_tutvdkg0.json',
+        ),
       ),
-      //https://assets2.lottiefiles.com/packages/lf20_ioxlu1zt.json
       SizedBox(
         height: SizeConfig.blockSizeVertical! * 5,
       ),
@@ -70,39 +71,54 @@ class NouveauHopitaux extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: EdgeInsets.only(left: 0, right: 20.0),
-      visualDensity: VisualDensity.standard,
-      leading: Container(
-          width: 50.0,
-          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Image.asset('images/h.jpg')),
-      title: PrimaryText(
-        text: 'Hôpital hu Mali',
-        size: 15,
-      ),
-      subtitle: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          PrimaryText(
-            text: 'Médecins',
-            size: 14,
-            color: Colors.black,
-          ),
-          PrimaryText(
-            text: '566',
-            size: 14,
-            color: Colors.black,
-          ),
-        ],
-      ),
+  /*  */
+    return FutureBuilder<List<Hopital>>(
+      future: HopitalService.NouveauHopitaux(),
+      builder:
+          (BuildContext context, AsyncSnapshot<List<Hopital>> snapshot) {
+            if (snapshot.hasData) {
+              var liste = snapshot.data as List<Hopital>;
+              int index = 0; // Define and initialize the index variable
+              return  ListTile(
+                contentPadding: EdgeInsets.only(left: 0, right: 20.0),
+                visualDensity: VisualDensity.standard,
+                leading: Container(
+                    width: 50.0,
+                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Image.asset('images/h.jpg')),
+                title: PrimaryText(
+                  text: liste[index].nom!!,
+                  size: 15,
+                ),
+                subtitle: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    PrimaryText(
+                      text: 'Médecins',
+                      size: 14,
+                      color: Colors.black,
+                    ),
+                    PrimaryText(
+                      text: '566',
+                      size: 14,
+                      color: Colors.black,
+                    ),
+                  ],
+                ),
+              );
+            }else if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      },
     );
+
   }
 }
 
-/* child:  (Lottie.network("https://assets10.lottiefiles.com/packages/lf20_tutvdkg0.json",
-                  animate: true)*/
+

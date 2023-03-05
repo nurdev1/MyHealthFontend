@@ -17,12 +17,12 @@ class InfoMedecin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Object>>(
-      future: MedecinService.getCompteMedecin(),
+    return FutureBuilder<List<MedecinModel>>(
+      future: MedecinService.getAllMedecin(),
       builder:
-          (BuildContext context, AsyncSnapshot<List<Object>> snapshot) {
+          (BuildContext context, AsyncSnapshot<List<MedecinModel>> snapshot) {
         if (snapshot.hasData) {
-          var liste = snapshot.data as List<Object>;
+          var liste = snapshot.data as List<MedecinModel>;
           var compte =liste.length;
           return Container(
             constraints: BoxConstraints(
@@ -37,7 +37,7 @@ class InfoMedecin extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20.0),
-              color: HexColor('#EB455F').withOpacity(0.8),
+              color: HexColor('#EB455F'),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,15 +47,15 @@ class InfoMedecin extends StatelessWidget {
                   height: SizeConfig.blockSizeVertical! * 2,
                 ),
                 const PrimaryText(
-                  text: "Médecin",
+                  text: "Médecins",
                   color: Colors.black,
                   size: 16.0,
                 ),
                 SizedBox(
                   height: SizeConfig.blockSizeVertical! * 2,
                 ),
-                const PrimaryText(
-                  text: "23",
+                 PrimaryText(
+                  text: "$compte",
                   fontWeight: FontWeight.w700,
                   size: 18.0,
                 ),
@@ -71,41 +71,3 @@ class InfoMedecin extends StatelessWidget {
     );
   }
 }
-//Container(
-//       constraints: BoxConstraints(
-//           minWidth: Responsive.isDesktop(context)
-//               ? 200
-//               : SizeConfig.screenWidth! / 2 - 40),
-//       padding: EdgeInsets.only(
-//         top: 20.0,
-//         left: 20.0,
-//         bottom: 20.0,
-//         right: Responsive.isDesktop(context) ? 40.0 : 20,
-//       ),
-//       decoration: BoxDecoration(
-//         borderRadius: BorderRadius.circular(20.0),
-//         color: HexColor('#EB455F').withOpacity(0.8),
-//       ),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.center,
-//         children: [
-//           Image.asset('assets/images/medecin.png', width: 35),
-//           SizedBox(
-//             height: SizeConfig.blockSizeVertical! * 2,
-//           ),
-//           const PrimaryText(
-//             text: "Médecin",
-//             color: Colors.black,
-//             size: 16.0,
-//           ),
-//           SizedBox(
-//             height: SizeConfig.blockSizeVertical! * 2,
-//           ),
-//           const PrimaryText(
-//             text: "934",
-//             fontWeight: FontWeight.w700,
-//             size: 18.0,
-//           ),
-//         ],
-//       ),
-//     );

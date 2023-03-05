@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:masante/admin/component/DetailDasboard.dart';
 
 import '../AllFile/global/LaisonBankend.dart';
 import '../modeles/Hopital.dart';
@@ -46,8 +47,8 @@ class HopitalService {
   }*/
 
 /////////////////////////////////////////////////////////////////////////
-  static Future<List<Hopital>> compteHopital() async {
-    final response = await http.get(Uri.parse('$masante/compte'));
+  static Future<List<Hopital>> NouveauHopitaux() async {
+    final response = await http.get(Uri.parse('$masante/nouveau'));
     if (response.statusCode == 200) {
       final List<dynamic> jsonList = json.decode(response.body);
       return jsonList.map((e) => Hopital.fromJson(e)).toList();

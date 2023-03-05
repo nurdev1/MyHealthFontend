@@ -112,7 +112,7 @@ class Menu extends StatelessWidget {
                     )
                     );
                   },
-                  icon: Icon(MdiIcons.naturePeople,
+                  icon: Icon(Icons.hail,
                     color: Colors.white,
                     size: 30,),
                   padding: EdgeInsets.symmetric(vertical: 20.0),
@@ -123,7 +123,7 @@ class Menu extends StatelessWidget {
                   fontSize: 14,
                 ),
                 ),
-                IconButton(
+               /* IconButton(
                   onPressed:() {},
                   icon: const Icon(
                     Icons.notification_important_outlined,
@@ -132,13 +132,13 @@ class Menu extends StatelessWidget {
                   iconSize: 20,
 
                   padding: EdgeInsets.symmetric(vertical: 20.0),
-                ),
+                ),*/
                 //SizedBox(height: 2,),
-                Text('Notification', style: TextStyle(
+             /*   Text('Notification', style: TextStyle(
                   color: Colors.white,
                   fontSize: 14,
                 ),
-                ),
+                ),*/
                 IconButton(
                   onPressed:() {},
                   icon: const Icon(

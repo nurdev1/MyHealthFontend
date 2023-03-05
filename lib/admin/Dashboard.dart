@@ -81,7 +81,7 @@ class Dashboard extends StatelessWidget {
                           child: Wrap(
                             spacing: 20,
                             runSpacing: 20,
-                           // alignment: WrapAlignment.spaceBetween,
+                            alignment: WrapAlignment.spaceBetween,
                             children: const [
                               InfoHopitalDansboard(),
                               InfoMedecin(),
