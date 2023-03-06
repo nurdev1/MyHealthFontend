@@ -69,7 +69,7 @@ class DossierService {
   var data = [];
   List<DossierModele> results = [];
 
-  String fetchUrl ='$masante/patient/afficher';
+  String fetchUrl ='$masante/dossier/afficher';
   Future<List<DossierModele>> getDossierModel({String ,query}) async{
 
     var url = Uri.parse(fetchUrl);
@@ -94,7 +94,7 @@ class DossierService {
   }
 
   static Future<String> addDossier(String nom, String email, String prenom, String telephone,String password) async {
-    var url = Uri.parse('$masante/patient/ajouter');
+    var url = Uri.parse('$masante/dossier/ajouter');
     final data = jsonEncode(
         {'nom': nom, 'email': email, 'prenom': prenom, 'telephone':telephone,'motdepasse':password });
     print(data);

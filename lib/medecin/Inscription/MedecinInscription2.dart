@@ -9,7 +9,6 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:masante/modeles/Medecin.dart';
-import 'package:masante/modeles/hopitalModel.dart';
 import 'package:masante/page/Connexion.dart';
 import 'package:masante/service/Hopital.dart';
 import 'package:masante/service/Medecin.dart';

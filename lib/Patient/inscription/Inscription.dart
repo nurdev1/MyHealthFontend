@@ -272,8 +272,9 @@ class _Inscription extends State<Inscription> {
                                   String email = emailController.text;
                                   String password = motdepasseController.text;
                                   String username= usernameController.text;
+
                                   String retour = await PatientService.addPatient(
-                                      nom,  prenom, email,phone,password,username);
+                                      nom,  prenom, username, email,phone,password);
                                   prenomController.text = '';
                                   emailController.text = '';
                                   telephoneController.text = '';

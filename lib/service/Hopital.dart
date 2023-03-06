@@ -5,7 +5,6 @@ import 'package:masante/admin/component/DetailDasboard.dart';
 
 import '../AllFile/global/LaisonBankend.dart';
 import '../modeles/Hopital.dart';
-import '../modeles/hopitalModel.dart';
 
 class HopitalService {
 
@@ -58,7 +57,7 @@ class HopitalService {
   }
   ///////////////////////////////////////////////////////////////
   var data = [];
-  List<HopitalsModel> results = [];
+  List<Hopital> results = [];
 
   String fetchUrl ='http://127.0.0.1:8082/hopital/afficher';
 

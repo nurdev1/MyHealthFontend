@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:masante/modeles/Hopital.dart';
 import 'package:masante/service/Hopital.dart';
 
-import '../modeles/hopitalModel.dart';
 
 class HopitalTableau extends StatefulWidget {
   const HopitalTableau({Key? key}) : super(key: key);

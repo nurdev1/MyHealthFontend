@@ -21,5 +21,5 @@ class ProfilePanle extends StatelessWidget {
   }
 
   Widget ProfileImage() => CircleAvatar(
-      radius: 90, backgroundImage: AssetImage('assets/images/profil.jpg'));
+      radius: 90, backgroundImage: AssetImage('assets/images/fk.jpg'));
 }

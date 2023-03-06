@@ -129,7 +129,7 @@ class PatientService {
   static Future<String> addPatient(String nom, String prenom,String username,String email, String telephone,String password) async {
     var url = Uri.parse('$masante/patient/signup');
     final data = jsonEncode(
-        {'nom': nom, 'email': email, 'prenom': prenom, 'telephone':telephone,'password':password,'username':username });
+        {'nom': nom,  'prenom': prenom, 'username':username,'email': email, 'telephone':telephone,'password':password });
       print(data);
     Map<String, String> headers = {"Content-Type": "application/json"};
     var response = await http.post(url, body: data, headers: headers);

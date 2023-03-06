@@ -8,7 +8,7 @@ class ConsultationService{
 
   Future<http.Response> ajouterConsultation(String titre, String description, String fichier, int idMedecin, int idPatient) async {
     final response = await http.post(
-      Uri.parse('$masante+/consultations/ajouter'),
+      Uri.parse('$masante+/consultation/add'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

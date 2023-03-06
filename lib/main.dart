@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/Patient/Consultation.dart';
 import 'package:masante/Patient/PatientListeMedecin.dart';
 import 'package:masante/Patient/inscription/Inscription.dart';
+import 'package:masante/admin/ListeHopital.dart';
 import 'package:masante/admin/ListePatient.dart';
 import 'package:masante/admin/component/ListeActivite.dart';
 import 'package:masante/medecin/AccueilMedecin.dart';
@@ -57,7 +59,7 @@ class LoginUiApp extends StatelessWidget {
       ),
    // home: Splash(title: 'Myhealth',),
        //home: AdminSplash(title: 'Myhealth',),
-       home: AdminPatientListePage(),
+       home: PatientListeMedecinPage(),
     );
 /*  @override
   Widget build(BuildContext context) {

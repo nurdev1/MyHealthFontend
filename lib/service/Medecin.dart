@@ -38,22 +38,23 @@ class MedecinService {
 
   static Future<String> addMedecin(
       String nom,
-      String email,
       String prenom,
+      String username,
+      String email,
       String telephone,
       String password,
-      String username,
       String specialite) async {
     var url = Uri.parse('$masante/medecin/save');
     final data = jsonEncode({
       'nom': nom,
       'prenom': prenom,
+      'username': username,
+      'email': email,
       'telephone': telephone,
       'password': password,
-      'specialite': specialite,
-      'username': username,
-      'email': email
+      'specialite': specialite
     });
+
     print(data);
     Map<String, String> headers = {"Content-Type": "application/json"};
     var response = await http.post(url, body: data, headers: headers);
