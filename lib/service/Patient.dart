@@ -1,17 +1,11 @@
-
-
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:masante/modeles/Patient.dart';
 
 import '../AllFile/global/LaisonBankend.dart';
-import 'package:http/http.dart' as http;
 
 class PatientService {
-
-
-
   /*static Future<ModelPatient> ajouterDossier(String nom, String image) async {
     Map data = {
       'nom': nom,
@@ -95,8 +89,9 @@ class PatientService {
   var data = [];
   List<ModelPatient> results = [];
 
-  String fetchUrl ='$masante/patient/afficher';
-  Future<List<ModelPatient>> getPatientModel({String ,query}) async{
+  String fetchUrl = '$masante/patient/afficher';
+
+  Future<List<ModelPatient>> getPatientModel({String, query}) async {
     final headers = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
@@ -107,18 +102,22 @@ class PatientService {
     var url = Uri.parse(fetchUrl);
     var response = await http.get(url);
 
-    try{
-      if(response.statusCode == 200){
-        data = json.decode(response.body);
-        results = data.map((e)=> ModelPatient.fromJson(e)).toList();
+    try {
+      if (response.statusCode == 200) {
+        // Decoding the response with utf8 and json.decode()
+        List<dynamic> data = json.decode(utf8.decode(response.bodyBytes));
+        results = data.map((e) => ModelPatient.fromJson(e)).toList();
 
-        if(query != null){
-          results = results.where((element) => element.nom!.toLowerCase().contains(query.toString())).toList();
+        if (query != null) {
+          results = results
+              .where((element) =>
+                  element.nom!.toLowerCase().contains(query.toString()))
+              .toList();
         }
-      }else{
+      } else {
         print('Erreur lors de la récupération des données');
       }
-    }on Exception catch(e){
+    } on Exception catch (e) {
       print('Erreur lors de la récupération des données: $e');
     }
     print(results);
@@ -126,7 +125,7 @@ class PatientService {
     return results;
   }
 
-  static Future<String> addPatient(String nom, String prenom,String username,String email, String telephone,String password) async {
+  /* static Future<String> addPatient(String nom, String prenom,String username,String email, String telephone,String password) async {
     var url = Uri.parse('$masante/patient/signup');
     final data = jsonEncode(
         {'nom': nom,  'prenom': prenom, 'username':username,'email': email, 'telephone':telephone,'password':password });
@@ -138,6 +137,31 @@ class PatientService {
     if (response.statusCode == 200) {
       Map<String, dynamic> json = jsonDecode(response.body);
      // connexion = true;
+      return json['message'];
+    } else {
+      //throw ("Can't get the Articles");
+      return "Problème lors de l'inscription ${response.statusCode} ${response.body}";
+    }
+  }*/
+  static Future<String> addPatient(String nom, String prenom, String username,
+      String email, String telephone, String password) async {
+    var url = Uri.parse('$masante/patient/signup');
+    final data = jsonEncode({
+      'nom': Uri.encodeComponent(nom),
+      'prenom': Uri.encodeComponent(prenom),
+      'username': Uri.encodeComponent(username),
+      'email': Uri.encodeComponent(email),
+      'telephone': Uri.encodeComponent(telephone),
+      'password': Uri.encodeComponent(password)
+    });
+    print(data);
+    Map<String, String> headers = {"Content-Type": "application/json"};
+    var response = await http.post(url, body: data, headers: headers);
+
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      Map<String, dynamic> json = jsonDecode(response.body);
+      // connexion = true;
       return json['message'];
     } else {
       //throw ("Can't get the Articles");
@@ -161,7 +185,6 @@ class PatientService {
     http.Response response = await http.get(url);
 
     if (response.statusCode == 200) {
-
       //get the data from the response
       String jsonString = response.body;
       var jsonByte = response.bodyBytes;
@@ -175,15 +198,11 @@ class PatientService {
       items = data.map((e) => ModelPatient.fromJson(e)).toList();
       print("items");
       print(items);
-
     }
 
     return items;
-
-
   }
-  }
-
+}
 
 /*
 Future<void> fetchData() async {

@@ -14,10 +14,11 @@ class MedecinService {
   Future<List<MedecinModel>> getMedecinModel({String, query}) async {
     var url = Uri.parse(fetchUrl);
     var response = await http.get(url);
-
+    //List data = json.decode(jsonString);
     try {
       if (response.statusCode == 200) {
-        data = json.decode(response.body);
+        // Decoding the response with utf8 and json.decode()
+        List<dynamic> data = json.decode(utf8.decode(response.bodyBytes));
         results = data.map((e) => MedecinModel.fromJson(e)).toList();
 
         if (query != null) {
@@ -46,13 +47,13 @@ class MedecinService {
       String specialite) async {
     var url = Uri.parse('$masante/medecin/save');
     final data = jsonEncode({
-      'nom': nom,
-      'prenom': prenom,
-      'username': username,
-      'email': email,
-      'telephone': telephone,
-      'password': password,
-      'specialite': specialite
+      'nom': Uri.encodeComponent(nom),
+      'prenom':Uri.encodeComponent(prenom),
+      'username': Uri.encodeComponent(username),
+      'email': Uri.encodeComponent(email),
+      'telephone': Uri.encodeComponent(telephone),
+      'password': Uri.encodeComponent(password),
+      'specialite': Uri.encodeComponent(specialite)
     });
 
     print(data);

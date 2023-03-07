@@ -24,7 +24,8 @@ class SyntheseMedicalService{
 
     try{
       if(response.statusCode == 200){
-        data = json.decode(response.body);
+        // Decoding the response with utf8 and json.decode()
+        List<dynamic> data = json.decode(utf8.decode(response.bodyBytes));
         results = data.map((e)=> SyntheseMedicalModele.fromJson(e)).toList();
 
         if(query != null){
