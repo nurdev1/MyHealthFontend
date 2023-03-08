@@ -66,7 +66,7 @@ class PatientAccueilListe extends StatelessWidget {
                                       ),
                                       //child: Image.asset("assets/images/docteur${index + 1}.jpg",
                                       child: Image.asset(
-                                        "assets/images/profil.jpg",
+                                        "assets/images/user.png",
                                         height: 80,
                                         width: 80,
                                         fit: BoxFit.cover,

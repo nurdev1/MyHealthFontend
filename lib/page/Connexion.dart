@@ -7,9 +7,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
 import 'package:masante/AllFile/global/LaisonBankend.dart';
+import 'package:masante/medecin/AccueilMedecin.dart';
 import 'package:masante/page/Choix.dart';
 import 'package:masante/service/connexion.dart';
 
+import '../Patient/home/PatientAccueil.dart';
 import '../Patient/home/PatientNew.dart';
 import '../admin/common/theme_helper.dart';
 import '../widget/HeaderWidget.dart';
@@ -226,22 +228,16 @@ class _LoginPageState extends State<LoginPage> {
       print(roleuser);
       print(nomUser);
       print(prenomUser);
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (BuildContext context) => PatientFirst()),
-          (Route<dynamic> route) => false);
+      if(roleuser!.contains("MEDECIN")) {
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (BuildContext context) => MedecinAccueil()),
+                (Route<dynamic> route) => false);
+      } else {
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (BuildContext context) => PatientAccueil()),
+                (Route<dynamic> route) => false);
+      }
 
-      // if(){
-      //   Navigator.of(context).pushAndRemoveUntil(
-      //       MaterialPageRoute(builder: (BuildContext context) => PatientFirst()),
-      //           (Route<dynamic> route) => false);
-      //
-      // }
-      // else{
-      //
-      //   Navigator.of(context).pushAndRemoveUntil(
-      //       MaterialPageRoute(builder: (BuildContext context) => MedecinAccueil()),
-      //           (Route<dynamic> route) => false);
-      // }
     } else {
       setState(() {});
       // sharedPreferences.setBool("isLoggedIn", false);

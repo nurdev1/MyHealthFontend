@@ -144,12 +144,12 @@ class _LoginState extends State<Login> {
                               ),),
                             onPressed: () async {
                               //After successful login we will redirect to profile page. Let's create profile page now
-                              /* Navigator.pushReplacement(context,
-                                  MaterialPageRoute(builder: (context) => Dashboard()));*/
-                              String retour = await ConnexionService().signin(usernameController.value.text,  passwordController.value.text);
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: (context) => Dashboard()));
+                             /* String retour = await ConnexionService().signin(usernameController.value.text,  passwordController.value.text);
                               Navigator.pop(context);
                               Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard()));
-                              print(retour);
+                              print(retour);*/
                             },
                           ),
 

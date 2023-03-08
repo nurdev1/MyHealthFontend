@@ -24,6 +24,7 @@ import 'Patient/dossier/AjouterDossier.dart';
 import 'Patient/home/MedecinListe.dart';
 import 'Patient/test.dart';
 import 'admin/Dashboard.dart';
+import 'admin/component/AdminSplashPage.dart';
 import 'medecin/ConnexionMedecinPatient.dart';
 import 'medecin/PatientListePage.dart';
 import 'medecin/consultation/consultation.dart';
@@ -65,9 +66,9 @@ class LoginUiApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.grey.shade100,
         primarySwatch: Colors.grey,
       ),
-   // home: Splash(title: 'Myhealth',),
-       //home: AdminSplash(title: 'Myhealth',),
-       home: ComptePatient(),
+   //home: Splash(title: 'Myhealth',),
+      // home: AdminSplash(title: 'Myhealth',),
+      home: Dashboard(),
     );
   }
 }
