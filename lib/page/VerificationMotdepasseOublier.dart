@@ -128,7 +128,14 @@ class _VerificationState extends State<Verification> {
                             Container(
                               decoration: _pinSuccess ? ThemeHelper().buttonBoxDecoration(context):ThemeHelper().buttonBoxDecoration(context, "#AAAAAA","#757575"),
                               child: ElevatedButton(
-                                style: ThemeHelper().buttonStyle(),
+                                style:  ElevatedButton.styleFrom(
+                                  primary: HexColor('#54DEFC'),
+                                  textStyle: const TextStyle(fontSize: 25),
+                                  padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                                  ),
+                                ),
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(
                                       40, 10, 40, 10),

@@ -52,7 +52,7 @@ class PatientListeMedecinPage extends StatelessWidget {
                         GestureDetector(
                           child: const CircleAvatar(
                             radius: 30,
-                            backgroundImage: AssetImage("assets/images/profil.jpg",),
+                            backgroundImage: AssetImage("assets/images/user.png",),
                           ),
                           onTap: () {
                             Navigator.push(context, MaterialPageRoute(
@@ -90,12 +90,12 @@ class PatientListeMedecinPage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 30),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 15),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(height: 5),
                             Text(

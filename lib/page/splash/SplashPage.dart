@@ -5,7 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
-import '../../Patient/Connexion/Connexion.dart';
+
+import '../Connexion.dart';
 
 
 class Splash extends StatefulWidget {

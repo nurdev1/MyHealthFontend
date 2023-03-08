@@ -29,7 +29,7 @@ class HeaderDasboard extends StatelessWidget {
               ],
             )
         ),
-        Spacer(flex: 1,),
+    /*    Spacer(flex: 1,),
         Expanded(
           flex: Responsive.isDesktop(context) ? 1:3,
             child: TextField(
@@ -50,7 +50,7 @@ class HeaderDasboard extends StatelessWidget {
               helperStyle: TextStyle(color: AppColors.secondarBg, fontSize: 14.0)
           ),
         )
-        ),
+        ),*/
 
       ],
     );

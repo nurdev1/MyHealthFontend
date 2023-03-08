@@ -1,40 +1,36 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:masante/AllFile/global/LaisonBankend.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 
+import '../../AllFile/global/LaisonBankend.dart';
 import '../../admin/common/theme_helper.dart';
+import '../../page/DossierList.dart';
+import '../../service/Dossier.dart';
 import '../../widget/EntetePage.dart';
 import '../profile/profile_page.dart';
 
-class AjouterDossierPage extends StatelessWidget {
+class AjouterDossierPage extends StatefulWidget {
   const AjouterDossierPage({Key? key}) : super(key: key);
+
+  @override
+  State<AjouterDossierPage> createState() => _AjouterDossierPageState();
+}
+
+class _AjouterDossierPageState extends State<AjouterDossierPage> {
+  TextEditingController nomCrontroller = TextEditingController();
+  TextEditingController descriptionCrontroller = TextEditingController();
+  TextEditingController patientCrontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     double _headerHeight = 180;
-
-/*    String? valueChoose;
-
-    List dossierItem =[
-      "analyse",
-      "consultation",
-      "syntése médical",
-      "Imagerie"
-    ];*/
-
-    // Initial Selected Value
-    String dropdownvalue = 'Item 1';
-
-    // List of items in our dropdown menu
-    var items = [
-      'Item 1',
-      'Item 2',
-      'Item 3',
-      'Item 4',
-      'Item 5',
-    ];
+    String _fichier = '';
 
     return Material(
         child: Stack(
@@ -72,7 +68,7 @@ class AjouterDossierPage extends StatelessWidget {
                                   GestureDetector(
                                     child: const CircleAvatar(
                                       radius: 30,
-                                      backgroundImage: AssetImage("assets/images/profil.jpg",),
+                                      backgroundImage: AssetImage("assets/images/user.png",),
                                     ),
                                     onTap: () {
                                       Navigator.push(context, MaterialPageRoute(
@@ -100,7 +96,7 @@ class AjouterDossierPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children:  [
                               Text(
-                                  "Créer mon médical numérique",
+                                  "  information médical numérique",
                                   style:  GoogleFonts.openSans(
                                       textStyle:  TextStyle(
                                           fontSize: 20,
@@ -120,6 +116,7 @@ class AjouterDossierPage extends StatelessWidget {
                                 mainAxisAlignment:MainAxisAlignment.center,
                                 children: [
                                   TextField(
+                                      controller: nomCrontroller,
                                       style: GoogleFonts.openSans(
                                         textStyle: const TextStyle(
                                           fontSize: 16,
@@ -137,7 +134,7 @@ class AjouterDossierPage extends StatelessWidget {
                                     height: 25,
                                   ),
                                   TextField(
-                                    // controller: cnom,
+                                      controller: descriptionCrontroller,
                                       style: GoogleFonts.openSans(
                                         textStyle: const TextStyle(
                                           fontSize: 16,
@@ -152,7 +149,7 @@ class AjouterDossierPage extends StatelessWidget {
                                   const SizedBox(
                                     height: 20,
                                   ),
-                                  TextField(
+                                  /*TextField(
                                       style: GoogleFonts.openSans(
                                         textStyle: const TextStyle(
                                           fontSize: 20,
@@ -160,11 +157,24 @@ class AjouterDossierPage extends StatelessWidget {
                                         ),
                                       ),
                                       decoration: const InputDecoration(
-                                        prefixIcon: Icon(Icons.upload),
+                                          prefixIcon: Icon(Icons.upload),
                                           labelText: 'Fichier',
                                           border: OutlineInputBorder(
                                               borderRadius:
-                                              BorderRadius.all(Radius.circular(40))))),
+                                              BorderRadius.all(Radius.circular(40))))),*/
+                                  TextButton(
+                                    onPressed: () async {
+                                      FilePickerResult? result = await FilePicker.platform.pickFiles();
+                                      if (result != null) {
+                                        File file = File(result.files.single.path!);
+                                        setState(() {
+                                          _fichier = file.path;
+                                        });
+                                      }
+                                    },
+                                    child: Text('Sélectionner un fichier'),
+                                  ),
+
 
                                   const SizedBox(
                                     height: 20,
@@ -175,10 +185,35 @@ class AjouterDossierPage extends StatelessWidget {
                                   Container(
                                     decoration: ThemeHelper().buttonBoxDecoration(context),
                                     child: ElevatedButton(
-                                        onPressed: () {
+                                        onPressed: () async {
+                                          String nom = nomCrontroller.text;
+                                          String description = descriptionCrontroller.text;
 
+                                          String retour = await DossierService.addDossier(nom,  description);
+                                          nomCrontroller.text = '';
+                                          descriptionCrontroller.text = '';
+                                          // nomController.text='';
+                                          print(retour);
+                                          print("okkkkkkk");
+                                          await Future.delayed(const Duration(milliseconds: 1000));
+                                          await QuickAlert.show(
+                                            context: context,
+                                            type: QuickAlertType.success,
+                                            text: " dossier creer avec succès !!.",
+                                          );
+                                          Navigator.push(context, MaterialPageRoute(
+                                              builder: (context) => DossierList()
+                                          )
+                                          );
                                         },
-                                        style: ThemeHelper().buttonStyle(),
+                                        style:  ElevatedButton.styleFrom(
+                                          primary: HexColor('#54DEFC'),
+                                          textStyle: const TextStyle(fontSize: 25),
+                                          padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                                          ),
+                                        ),
                                         child: Container(
                                           width: double.infinity,
                                           //child: Icon(Icons.add,size: 32, ),
@@ -212,4 +247,3 @@ class AjouterDossierPage extends StatelessWidget {
 
   }
 }
-

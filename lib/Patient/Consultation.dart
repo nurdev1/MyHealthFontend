@@ -50,7 +50,7 @@ class _ConsulationsListeState extends State<ConsulationsListe> {
                         GestureDetector(
                           child: const CircleAvatar(
                             radius: 35,
-                            backgroundImage: AssetImage("assets/images/profil.jpg",),
+                            backgroundImage: AssetImage("assets/images/user.png",),
                           ),
                           onTap: () {
                             Navigator.push(context, MaterialPageRoute(

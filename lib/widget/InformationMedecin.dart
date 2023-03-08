@@ -37,7 +37,7 @@ class MedecinInformation extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(25),
                           child: Image.asset(
-                            "assets/images/profil.jpg",
+                            "assets/images/me.png",
                             height: 120,
                             width: 120,
                             fit: BoxFit.cover,

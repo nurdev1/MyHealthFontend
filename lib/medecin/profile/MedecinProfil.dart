@@ -7,6 +7,8 @@ import 'package:masante/medecin/AccueilMedecin.dart';
 import 'package:masante/medecin/profile/ModifierProfile.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import '../../AllFile/global/LaisonBankend.dart';
+
 class MedecinProfil extends StatelessWidget {
   const MedecinProfil({Key? key}) : super(key: key);
 
@@ -192,7 +194,7 @@ class MedecinProfil extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Dr Fatoumata Sy",
+                  Text('Dr  $prenomUser $nomUser',
                       style: GoogleFonts.openSans(
                           textStyle: TextStyle(
                               fontSize: 30,
@@ -212,7 +214,7 @@ class MedecinProfil extends StatelessWidget {
                                   fontWeight: FontWeight.bold,color:Colors.black87))
                       ),
                       SizedBox(height: 10,),
-                      Text("Fatou",
+                      Text('$nom',
                         style: GoogleFonts.openSans(
                             textStyle:  const TextStyle(
                                 fontSize: 18,
@@ -232,7 +234,7 @@ class MedecinProfil extends StatelessWidget {
                         height: 5,
                         width: 30,
                       ),
-                      Text("74467865",
+                      Text('$userTelehone',
                           style: GoogleFonts.openSans(
                               textStyle: const TextStyle(
                                   fontSize: 20,
@@ -254,7 +256,7 @@ class MedecinProfil extends StatelessWidget {
                         height: 5,
                         width: 30,
                       ),
-                      Text("fk1@gmail.com",
+                      Text('$emailUser',
                           style: GoogleFonts.openSans(
                               textStyle: const TextStyle(
                                   fontSize: 20,

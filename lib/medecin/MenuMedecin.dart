@@ -6,19 +6,11 @@ import 'package:masante/medecin/AccueilMedecin.dart';
 import '../Patient/dossier/AjouterDossier.dart';
 import '../page/Connexion.dart';
 import '../page/DossierList.dart';
+import 'ConnexionMedecinPatient.dart';
 import 'medecinListePatient/MedecinListe.dart';
 
 class MedecinMenu extends StatelessWidget {
-/*  const MedecinMenu({
-    Key? key,
-    required double drawerIconSize,
-    required double drawerFontSize,
-  })  : _drawerIconSize = drawerIconSize,
-        _drawerFontSize = drawerFontSize,
-        super(key: key);*/
-/**/
-/*  final double _drawerIconSize;
-  final double _drawerFontSize;*/
+
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +74,7 @@ class MedecinMenu extends StatelessWidget {
               leading: Icon(Icons.person_add_alt_1,
                   size: 40, color: Theme.of(context).accentColor),
               title: Text(
-                'Ajouter dossier',
+                'Patient',
                 style:  GoogleFonts.openSans(
                     textStyle: const TextStyle(fontSize: 16,fontWeight: FontWeight.normal)
                 ),
@@ -90,7 +82,7 @@ class MedecinMenu extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AjouterDossierPage()),
+                  MaterialPageRoute(builder: (context) => ComptePatient()),
                 );
               },
             ),
@@ -145,7 +137,7 @@ class MedecinMenu extends StatelessWidget {
               leading: Icon(Icons.login_rounded,
                   size: 40, color: Theme.of(context).accentColor),
               title: Text(
-                'Login Page',
+                'Connexion',
                 style:  GoogleFonts.openSans(
                     textStyle: const TextStyle(fontSize: 16,fontWeight: FontWeight.normal)
                 )

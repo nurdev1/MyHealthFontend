@@ -16,25 +16,6 @@ class AdminMedecinListePage extends StatelessWidget {
  // const AdminMedecinListePage({Key? key}) : super(key: key);
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  List<String> sortBy = ['Plus médecins', 'moins Descending', ''];
-  SortTypes? sortType;
-  String? sortValue;
-  String? searchValue;
-  int pagesNum = 0;
-  int nextPage = 1;
-
-
-/*  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration.zero, () async {
-      await Provider.of<HopitalProvider>(context, listen: false)
-          .getProducts(0, null, null, GetTypes.PAGING);
-      pagesNum =
-          Provider.of<ProductProvider>(context, listen: false).pagesNumber;
-    });
-  }*/
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +38,7 @@ class AdminMedecinListePage extends StatelessWidget {
                     GestureDetector(
                       child: const CircleAvatar(
                         radius: 25,
-                        backgroundImage: AssetImage("assets/images/profil.jpg",),
+                        backgroundImage: AssetImage("assets/images/fk.jpg",),
                       ),
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(

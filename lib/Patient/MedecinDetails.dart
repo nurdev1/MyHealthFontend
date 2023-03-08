@@ -2,30 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../AllFile/global/LaisonBankend.dart';
-import '../medecin/AccueilMedecin.dart';
+class MedecinDetail extends StatelessWidget {
+ // final int id;
 
+  const MedecinDetail({/*required this.id,*/ Key? key}) : super(key: key);
 
-class MedecinDetail extends StatefulWidget {
-
- // final Patient selectedPatient;
-  const MedecinDetail({Key? key}) : super(key: key);
- // ,required this.selectedPatient
-  @override
-  State<MedecinDetail> createState() => _MedecinDetailState();
-}
-
-class _MedecinDetailState extends State<MedecinDetail> {
 
   @override
   Widget build(BuildContext context) {
+    //final medecin = medecins.firstWhere((medecin) => medecin.id == id);
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Stack(
-        children:<Widget> [
+        children: <Widget>[
           Container(
             height: screenHeight,
             width: screenWidth,
@@ -34,14 +25,13 @@ class _MedecinDetailState extends State<MedecinDetail> {
           Container(
             height: screenHeight - screenHeight / 3,
             width: screenWidth,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/profil.jpg'),
-                fit: BoxFit.cover
-              )
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/use.jpg'),
+                    fit: BoxFit.cover)
             ),
           ),
-          GestureDetector(
+          /*     GestureDetector(
             child: Icon(
               Icons.arrow_back,
               color: HexColor('#54DEFC'),
@@ -55,10 +45,10 @@ class _MedecinDetailState extends State<MedecinDetail> {
                           MedecinAccueil())
               );
             },
-          ),
+          ),*/
 
           Positioned(
-            top: screenHeight - screenHeight/3 -25.0,
+              top: screenHeight - screenHeight / 3 - 25.0,
               child: Container(
                 padding: EdgeInsets.only(left: 20.0),
                 height: screenHeight / 3 + 25.0,
@@ -66,15 +56,22 @@ class _MedecinDetailState extends State<MedecinDetail> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
-                   /* Text(widget.selectedPatient.nom,
+                    /* Text(widget.selectedPatient.nom,
                       style: GoogleFonts.poppins(fontSize: 25.0,fontWeight: FontWeight.w500),
                     ),*/
-                    SizedBox(height: 7.0,),
-                    Text(" Dr $prenomUser ",
-                      style: GoogleFonts.poppins(fontSize: 25,fontWeight: FontWeight.w900,color:HexColor('#54DEFC')),
+                    SizedBox(
+                      height: 7.0,
                     ),
-                    SizedBox(height: 30.0,),
+                    Text(
+                      'Nom : ',
+                      style: GoogleFonts.poppins(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w900,
+                          color: HexColor('#54DEFC')),
+                    ),
+                    SizedBox(
+                      height: 30.0,
+                    ),
                     Container(
                       width: 180.0,
                       child: Row(
@@ -84,20 +81,16 @@ class _MedecinDetailState extends State<MedecinDetail> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-
-                              SizedBox(height: 7.0,),
+                              SizedBox(
+                                height: 7.0,
+                              ),
                               Row(
                                 children: [
-                               /*   Icon(
-                                    Icons.email,
-                                    color: HexColor('#EB455F'),
-                                    size: 20,
-                                  ),*/
                                   const SizedBox(
                                     height: 5,
                                     width: 30,
                                   ),
-                                  Text("fk1@gmail.com",
+                                  Text('Nom : ',
                                       style: GoogleFonts.openSans(
                                           textStyle: const TextStyle(
                                               fontSize: 20,
@@ -108,18 +101,31 @@ class _MedecinDetailState extends State<MedecinDetail> {
                               const SizedBox(
                                 height: 15,
                               ),
-                              Text('76907854',
-                                style: GoogleFonts.poppins(fontSize: 18.0,fontWeight: FontWeight.w500),
+                              Text(
+                                'Téléphone : ',
+                                style: GoogleFonts.poppins(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w500),
                               ),
-                              SizedBox(height: 7.0,),
-                              Text('fs1@gmail.com',
-                                style: GoogleFonts.poppins(fontSize: 18.0,fontWeight: FontWeight.w500),
+                              SizedBox(
+                                height: 7.0,
                               ),
-                              SizedBox(height: 7.0,),
-                              Text('Dentiste',
-                                style: GoogleFonts.poppins(fontSize: 18.0,fontWeight: FontWeight.w500),
+                              Text(
+                                'Email : ',
+                                style: GoogleFonts.poppins(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w500),
                               ),
-                             /* TextButton(
+                              SizedBox(
+                                height: 7.0,
+                              ),
+                              Text(
+                                'Spécialité : ',
+                                style: GoogleFonts.poppins(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              /* TextButton(
                                 child: Text('Dentiste'.toUpperCase(), style:
                                 TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.lightBlue),),
                                 onPressed: (){
@@ -135,14 +141,16 @@ class _MedecinDetailState extends State<MedecinDetail> {
                     )
                   ],
                 ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25.0),topRight: Radius.circular(25.0))
-                ),
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(25.0),
+                        topRight: Radius.circular(25.0))),
               ))
         ],
       ),
     );
   }
 }
+
+

@@ -5,6 +5,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/Patient/dossier/AjouterDossier.dart';
 
 import '../../AllFile/global/LaisonBankend.dart';
+import '../../page/dossierchose.dart';
 import '../../widget/EntetePage.dart';
 import '../profile/profile_page.dart';
 
@@ -163,7 +164,7 @@ class PatientFirst extends StatelessWidget {
                           onPressed: (){
                             //After successful login we will redirect to profile page. Let's create profile page now
                             Navigator.pushReplacement(context,
-                                MaterialPageRoute(builder: (context) => AjouterDossierPage()));
+                                MaterialPageRoute(builder: (context) => PatientNewT()));
                           },
                         ),
                       ],

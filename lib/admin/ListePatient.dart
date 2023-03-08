@@ -35,7 +35,7 @@ class AdminPatientListePage extends StatelessWidget {
                       GestureDetector(
                         child: const CircleAvatar(
                           radius: 25,
-                          backgroundImage: AssetImage("assets/images/profil.jpg",),
+                          backgroundImage: AssetImage("assets/images/fk.jpg",),
                         ),
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(

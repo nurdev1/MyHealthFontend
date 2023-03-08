@@ -34,7 +34,7 @@ class _PatientDetailState extends State<PatientDetail> {
             width: screenWidth,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/profil.jpg'),
+                image: AssetImage('assets/images/user.png'),
                 fit: BoxFit.cover
               )
             ),

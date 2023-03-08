@@ -3,8 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:masante/Patient/Consultation.dart';
 import 'package:masante/service/Consultation.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 
 import '../../AllFile/global/LaisonBankend.dart';
@@ -19,6 +22,9 @@ class CreerConsultationPage extends StatefulWidget {
 }
 
 class _CreerConsultationPageState extends State<CreerConsultationPage> {
+  TextEditingController nomController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController patienController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   String _titre = '';
   String _description = '';
@@ -64,7 +70,7 @@ class _CreerConsultationPageState extends State<CreerConsultationPage> {
                                 child: CircleAvatar(
                                   radius: 30,
                                   backgroundImage: AssetImage(
-                                    "assets/images/profil.jpg",
+                                    "assets/images/user.png",
                                   ),
                                 ),
                                 onTap: () {
@@ -134,6 +140,7 @@ class _CreerConsultationPageState extends State<CreerConsultationPage> {
                             children: [
                               Container(
                                 child: TextFormField(
+                                  controller: patienController,
                                   decoration:
                                       InputDecoration(labelText: 'Patient'),
                                   validator: (String? value) {
@@ -149,11 +156,12 @@ class _CreerConsultationPageState extends State<CreerConsultationPage> {
                               ),
                               Container(
                                 child: TextFormField(
+                                  controller: nomController,
                                   decoration:
-                                      InputDecoration(labelText: 'Titre'),
+                                      InputDecoration(labelText: 'Nom'),
                                   validator: (String? value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'Veuillez entrer un titre';
+                                      return 'Veuillez entrer un Nom';
                                     }
                                     return null;
                                   },
@@ -165,7 +173,7 @@ class _CreerConsultationPageState extends State<CreerConsultationPage> {
                               Container(
                                 // height: 200,
                                 child: TextFormField(
-                                 // controller: _description,
+                                  controller: descriptionController,
                                   decoration:
                                       InputDecoration(labelText: 'Description'),
                                   validator: (String? value) {
@@ -187,22 +195,6 @@ class _CreerConsultationPageState extends State<CreerConsultationPage> {
                                     ],
                                   )
                               ),
-                              /*Container(
-                                // height: 200,
-                                child: TextFormField(
-                                  decoration:
-                                      InputDecoration(labelText: 'Fichier'),
-                                  validator: (String? value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Veuillez entrer une description';
-                                    }
-                                    return null;
-                                  },
-                                  onSaved: (value) {
-                                    _fichier = value!;
-                                  },
-                                ),
-                              ),*/
                               TextButton(
                                 onPressed: () async {
                                   FilePickerResult? result = await FilePicker.platform.pickFiles();
@@ -221,8 +213,15 @@ class _CreerConsultationPageState extends State<CreerConsultationPage> {
                                 decoration:
                                     ThemeHelper().buttonBoxDecoration(context),
                                 alignment: Alignment.center,
-                               /* child: ElevatedButton(
-                                  style: ThemeHelper().buttonStyle(),
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    primary: HexColor('#54DEFC'),
+                                    textStyle: const TextStyle(fontSize: 25),
+                                    padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                                    ),
+                                  ),
                                   child: Padding(
                                     padding: const EdgeInsets.fromLTRB(
                                         40, 10, 40, 10),
@@ -233,14 +232,33 @@ class _CreerConsultationPageState extends State<CreerConsultationPage> {
                                                 fontWeight: FontWeight.w900,
                                                 color: Colors.white))),
                                   ),
-                                  onPressed: () {
-                                    *//*                                   if (_formKey.currentState?.validate()) {
-                                      _formKey.currentState?.save();
-                                      // TODO: envoyer la demande de consultation*//*
-                                    _formKey.currentState?.save();
-                                    //ConsultationService.ajouterConsultation(_titre, _description, _fichier);
-                                  },
-                                ),*/
+                                    onPressed: () async {
+                                      if (_formKey.currentState!.validate()) {
+                                        String nom = nomController.text;
+                                        String description = descriptionController.text;
+                                        String patient = patienController.text;
+
+                                        String retour = await ConsultationService.addConsultation(
+                                            nom,  description,patient);
+                                        patienController.text = '';
+                                        descriptionController.text = '';
+                                        nomController.text='';
+                                        print(retour);
+                                        print("okkkkkkk");
+                                        await Future.delayed(const Duration(milliseconds: 1000));
+                                        await QuickAlert.show(
+                                          context: context,
+                                          type: QuickAlertType.success,
+                                          text: " information avec succès !!.",
+                                        );
+                                        Navigator.push(context, MaterialPageRoute(
+                                            builder: (context) => ConsulationsListe()
+                                        )
+                                        );
+
+                                      }
+                                    }
+                                ),
                               ),
                             ],
                           ),

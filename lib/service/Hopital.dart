@@ -46,7 +46,7 @@ class HopitalService {
   }*/
 
 /////////////////////////////////////////////////////////////////////////
-  static Future<List<Hopital>> NouveauHopitaux() async {
+/*  static Future<List<Hopital>> NouveauHopitaux() async {
     final response = await http.get(Uri.parse('$masante/nouveau'));
     if (response.statusCode == 200) {
       final List<dynamic> jsonList = json.decode(response.body);
@@ -54,7 +54,7 @@ class HopitalService {
     } else {
       throw Exception('Échec du chargement des hôpitaux');
     }
-  }
+  }*/
   ///////////////////////////////////////////////////////////////
   var data = [];
   List<Hopital> results = [];
@@ -99,7 +99,48 @@ class HopitalService {
 
   }
 
+/////////////////////////////////////////////////////////////////:
+  var file = [];
+  List<Hopital> result = [];
 
+
+  static Future<List<Hopital>> NouveauHopitaux() async {
+    //SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<Hopital> items = [];
+    //String? token = prefs.getString("token");
+    //Get the item from the API
+    var url = Uri.parse('http://127.0.0.1:8082/hopital/nouveau');
+    // var headers = {
+    //   "Authorization": "Bearer $token"
+    // };
+    /*http.Response response = await http.get(url,
+      headers: headers,
+    );*/
+
+    http.Response response = await http.get(url);
+
+    if (response.statusCode == 200) {
+
+      //get the data from the response
+      String jsonString = response.body;
+      var jsonByte = response.bodyBytes;
+
+      //Convert to List<Map>
+      //List data = json.decode(jsonString);
+      List file = json.decode(utf8.decode(jsonByte));
+      //Convert to List<Map>
+      print(file);
+      //List data = jsonDecode(jsonString);
+      items = file.map((e) => Hopital.fromJson(e)).toList();
+      print("items");
+      print(items);
+
+    }
+
+    return items;
+
+
+  }
 
 
 

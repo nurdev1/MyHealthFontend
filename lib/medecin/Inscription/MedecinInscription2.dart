@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
+import 'package:masante/medecin/AccueilMedecin.dart';
 
 import 'package:masante/modeles/Medecin.dart';
 import 'package:masante/page/Connexion.dart';
@@ -18,6 +19,7 @@ import 'package:quickalert/widgets/quickalert_dialog.dart';
 import '../../AllFile/global/LaisonBankend.dart';
 import '../../admin/common/theme_helper.dart';
 import '../../widget/HeaderWidget.dart';
+import '../MedecinNew.dart';
 import 'InscriptionMedecin.dart';
 import 'Inscriptionvar.dart';
 
@@ -264,12 +266,12 @@ class _InscriptionMedecin1 extends State<InscriptionMedecin1> {
                                   await QuickAlert.show(
                                     context: context,
                                     type: QuickAlertType.success,
-                                    text: "Bonjour, votre demande a été bien pris en compte veuillez vérifier vos email!.",
+                                    text: "Bonjour, Félicitations , votre inscription a été validée avec succès.",
                                   );
-                               /*   Navigator.push(context, MaterialPageRoute(
-                                      builder: (context) => PatientFirst()
+                                Navigator.push(context, MaterialPageRoute(
+                                      builder: (context) => First(),
                                   )
-                                  );*/
+                                  );
                                 }
                               }
                           ),

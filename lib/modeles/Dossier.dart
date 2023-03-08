@@ -1,55 +1,28 @@
 import 'Patient.dart';
 
 class DossierModele {
-  /*late final String iddossier;
-  final String nom;
-  final String? date;
-  final String patient;
 
-  DossierModele(
-  this.iddossier,
-   this.nom,
-    this.date,
-   this.patient
-      );
 
-  //collection en objet
-  factory DossierModele.fromMap(Map json) {
-    return DossierModele(
-       json['iddossier'],
-       json['nom'],
-     json['date'],
-      json['patient']
-    );
-  }
-//objet en collection
-  Map<String, dynamic> toJson() {
-    return {
-      'iddossier': iddossier,
-      'nom': nom,
-      //  'date': date,
-      // 'patient': patient
-    };
-  }*/
-
-   int? iddossier;
+   int? id;
    String? nom;
-   String? date;
+   String? description;
    ModelPatient? patient;
 
-  DossierModele({this.iddossier, this.nom, this.date, this.patient});
+  DossierModele({this.id, this.nom, this.description, this.patient});
 
   DossierModele.fromJson(Map<String, dynamic> json){
-    iddossier= json['iddossier'];
+    id= json['id'];
     nom = json['nom'];
+    description=json['description'];
     patient = json['patient'] != null ? ModelPatient.fromJson(json['patient']) : null;
 
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data =  Map<String, dynamic>();
-    data['iddossier'] = this.iddossier;
+    data['id'] = this.id;
     data['nom'] = this.nom;
+    data['description']=this.description;
     if(ModelPatient != null){
       data['Patient'] = ModelPatient().toJson();
     }

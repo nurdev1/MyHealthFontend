@@ -8,10 +8,7 @@ import 'package:masante/Patient/dossier/AjouterDossier.dart';
 import 'package:masante/Patient/PatientListeMedecin.dart';
 import 'package:masante/page/DossierList.dart';
 
-import '../../Patient/Connexion/Connexion.dart';
-import '../../Patient/inscription/Inscription.dart';
-import '../../Patient/home/PatientAccueil.dart';
-import '../../Patient/profile/profile_page.dart';
+
 import '../../medecin/profile/MedecinProfil.dart';
 import '../../widget/EntetePage.dart';
 import '../../widget/ListeDossierWidget.dart';
@@ -69,14 +66,15 @@ class _DossierAjoutState extends State<DossierAjout> {
                             child: const CircleAvatar(
                               radius: 30,
                               backgroundImage: AssetImage(
-                                "assets/images/profil.jpg",
+                                "assets/images/user.png",
                               ),
                             ),
                             onTap: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => MedecinProfil()));
+                                      builder: (context) => MedecinProfil())
+                              );
                             },
                           ),
                         ],
@@ -100,7 +98,7 @@ class _DossierAjoutState extends State<DossierAjout> {
                         'Liste Dossier Médecal',
                         style: GoogleFonts.openSans(
                             textStyle: TextStyle(
-                                fontSize: 25,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: HexColor('#EB455F'))),
                       ),

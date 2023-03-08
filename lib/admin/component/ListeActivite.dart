@@ -28,7 +28,7 @@ class ListeActiviteRecente extends StatelessWidget {
             PrimaryText(
                 text: 'Consultation', size: 18, fontWeight: FontWeight.w800),
             PrimaryText(
-              text: '02 Janvier 2023',
+              text: ' mars 2023',
               size: 14,
               fontWeight: FontWeight.w400,
               color:  Colors.white60,

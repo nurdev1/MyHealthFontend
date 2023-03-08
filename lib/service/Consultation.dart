@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:masante/AllFile/global/LaisonBankend.dart';
 import 'package:masante/modeles/Consultation.dart';
+import 'package:masante/modeles/Medecin.dart';
+import 'package:masante/modeles/Patient.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 class ConsultationService{
 
@@ -67,32 +69,27 @@ class ConsultationService{
 
     return results;
   }
-//////////////////////////////////////////////////////////
-  //ADD CONSULTATION
-  /*Future<String> addSession(int idmedecin, int idpatient) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    int? connecteduserid = prefs.getInt("id");
-    String? token = prefs.getString("token");
-    var url = Uri.parse('$masante/quiz/score/add/$idQuiz/$connecteduserid');
-    final data = jsonEncode(
-        {
-          'points' : point
-        });
-    var headers = {
-      "Authorization": "Bearer $token",
-      "Content-Type": "application/json"
-    };
-    var response = await client.post(url, body: data, headers: headers);
+  static Future<String> addConsultation(String nom, String description, String patient) async {
+    var url = Uri.parse('$masante/consultation/ajouter');
+    final data = jsonEncode({
+      'nom': Uri.encodeComponent(nom),
+      'description': Uri.encodeComponent(description),
+      'patient': Uri.encodeComponent(patient),
 
+    });
+    print(data);
+    Map<String, String> headers = {"Content-Type": "application/json"};
+    var response = await http.post(url, body: data, headers: headers);
+
+    print(response.statusCode);
     if (response.statusCode == 200) {
       Map<String, dynamic> json = jsonDecode(response.body);
-      connexion = true;
-      return json['points'].toString();
+      // connexion = true;
+      return json['message'];
     } else {
       //throw ("Can't get the Articles");
-      return "Score non ajouté ${response.statusCode} ${response.body} !";
+      return "Problème lors de l'ajout ${response.statusCode} ${response.body}";
     }
-  }*/
-
+  }
 
 }

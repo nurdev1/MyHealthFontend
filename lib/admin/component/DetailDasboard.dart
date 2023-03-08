@@ -17,7 +17,7 @@ class DetailDasboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       SizedBox(
-        height: SizeConfig.blockSizeVertical! * 5,
+        height: SizeConfig.blockSizeVertical! * 4,
       ),
       Container(
         decoration: BoxDecoration(
@@ -34,10 +34,11 @@ class DetailDasboard extends StatelessWidget {
             ]),
         child: Lottie.network(
           'https://assets1.lottiefiles.com/packages/lf20_tutvdkg0.json',
+          width: 180,
         ),
       ),
       SizedBox(
-        height: SizeConfig.blockSizeVertical! * 5,
+        height: SizeConfig.blockSizeVertical! * 4,
       ),
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +48,7 @@ class DetailDasboard extends StatelessWidget {
               size: 18,
               fontWeight: FontWeight.w800),
           PrimaryText(
-            text: '02 Janvier 20213',
+            text: ' Mars 2023',
             size: 14,
             fontWeight: FontWeight.w400,
             color: AppColors.secondary,
@@ -55,11 +56,9 @@ class DetailDasboard extends StatelessWidget {
         ],
       ),
       SizedBox(
-        height: SizeConfig.blockSizeVertical! * 2,
+        height: SizeConfig.blockSizeVertical! * 1,
       ),
       NouveauHopitaux(),
-      NouveauHopitaux(),
-      NouveauHopitaux()
     ]);
   }
 }
@@ -71,54 +70,66 @@ class NouveauHopitaux extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  /*  */
+    /*  */
     return FutureBuilder<List<Hopital>>(
       future: HopitalService.NouveauHopitaux(),
       builder:
           (BuildContext context, AsyncSnapshot<List<Hopital>> snapshot) {
-            if (snapshot.hasData) {
-              var liste = snapshot.data as List<Hopital>;
-              int index = 0; // Define and initialize the index variable
-              return  ListTile(
-                contentPadding: EdgeInsets.only(left: 0, right: 20.0),
+        if (snapshot.hasData) {
+          List<Hopital> hopitaux = snapshot.data!;
+          int startIndex = hopitaux.length >= 3 ? hopitaux.length - 3 : 0;
+          print(
+              'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff');
+          print(hopitaux);
+          int index = 0; // Define and initialize the index variable
+          return ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: hopitaux.length >= 3 ? 3 : hopitaux.length,
+              itemBuilder: (BuildContext context, int index) {
+                int hospitalIndex = startIndex + index;
+                Hopital hopital = hopitaux[hospitalIndex];
+                return ListTile(
+                    contentPadding: EdgeInsets.only(left: 0, right: 20.0),
                 visualDensity: VisualDensity.standard,
                 leading: Container(
-                    width: 50.0,
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Image.asset('images/h.jpg')),
+                width: 50.0,
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                ),
+                child: Image.asset('images/h.jpg')),
                 title: PrimaryText(
-                  text: liste[index].nom!!,
-                  size: 15,
+                text: hopitaux[index].nom!!,
+                size: 15,
                 ),
                 subtitle: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    PrimaryText(
-                      text: 'Médecins',
-                      size: 14,
-                      color: Colors.black,
-                    ),
-                    PrimaryText(
-                      text: '566',
-                      size: 14,
-                      color: Colors.black,
-                    ),
-                  ],
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                PrimaryText(
+                text: hopitaux[index].ville!!,
+                size: 14,
+                color: Colors.black,
                 ),
-              );
-            }else if (snapshot.hasError) {
-          return Text('${snapshot.error}');
+                PrimaryText(
+                text: '',
+                size: 14,
+                color: Colors.black,
+                ),
+                ],
+                ),
+                );
+              }
+
+        );
+        }else if (snapshot.hasError) {
+        return Text('${snapshot.error}');
         } else {
-          return const Center(child: CircularProgressIndicator());
+        return const Center(child: CircularProgressIndicator());
         }
       },
     );
-
   }
 }
-
 

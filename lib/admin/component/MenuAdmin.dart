@@ -38,7 +38,7 @@ class Menu extends StatelessWidget {
                   child: SizedBox(
                     width: 50,
                     height: 50,
-                    child:  Image.asset('images/Masante2.png',
+                    child:  Image.asset('images/Masante6.png',
                       ),
                   ),
                 ),

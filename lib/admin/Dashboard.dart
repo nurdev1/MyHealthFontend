@@ -74,7 +74,7 @@ class Dashboard extends StatelessWidget {
                       children: [
                         HeaderDasboard(),
                         SizedBox(
-                          height: SizeConfig.blockSizeVertical! * 4,
+                          height: SizeConfig.blockSizeVertical! * 2,
                         ),
                         SizedBox(
                           width: SizeConfig.screenWidth,
@@ -91,7 +91,7 @@ class Dashboard extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: SizeConfig.blockSizeVertical! * 4,
+                          height: SizeConfig.blockSizeVertical! * 2,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -106,10 +106,6 @@ class Dashboard extends StatelessWidget {
                                   fontWeight: FontWeight.w400,
                                     color: Colors.white60,
                                 ),
-                                /*PrimaryText(
-                                    text: '\$1500',
-                                    size: 30,
-                                    fontWeight: FontWeight.w800),*/
                               ],
                             ),
                             const PrimaryText(
@@ -121,14 +117,14 @@ class Dashboard extends StatelessWidget {
                           ],
                         ),
                         SizedBox(
-                          height: SizeConfig.blockSizeVertical! * 3,
+                          height: SizeConfig.blockSizeVertical! * 1,
                         ),
                         Container(
-                          height: 180,
+                          height: 150,
                           child: const BarchartComponent(),
                         ),
                         SizedBox(
-                          height: SizeConfig.blockSizeVertical! * 5,
+                          height: SizeConfig.blockSizeVertical! * 2,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,7 +142,7 @@ class Dashboard extends StatelessWidget {
                           ],
                         ),
                         SizedBox(
-                          height: SizeConfig.blockSizeVertical! * 3,
+                          height: SizeConfig.blockSizeVertical! * 1,
                         ),
                         const MedecinNouveau(),
                         if (!Responsive.isDesktop(context)) ListeActiviteRecente(),

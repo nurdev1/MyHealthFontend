@@ -62,16 +62,11 @@ class ListePatientTableau extends StatelessWidget {
                         style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
                       ),
                     ),
-                    DataColumn(
-                      label: Text(
-                        'Action',
-                        style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
-                      ),
-                    ),
                   ],
                   source: _PatientDataSource(liste),
                   rowsPerPage: 4,
                 );
+
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               } else {
@@ -137,28 +132,7 @@ class _PatientDataSource extends DataTableSource {
             color: patient.etat! ? HexColor('54DEFC') : HexColor('EB455F'), // changer la couleur de l'icone en fonction de l'etat du medecin
           ),
         ),
-        /*   DataCell(
-          Icon(
-            patient.isDoctor ? Icons.offline_pin_rounded : Icons.online_pin_rounded, // changer l'icone en fonction de l'etat du medecin
-            color: patient.isDoctor ? HexColor('EB45F') : HexColor('54DEFC'), // changer la couleur de l'icone en fonction de l'etat du medecin
-          ),
-        ),
-*/
 
-        DataCell(Row(
-          children: [
-            Icon(
-              Icons.edit,
-              color: HexColor('54DEFC'),
-            ),
-            Icon(
-              Icons.delete,
-              color: HexColor('EB455F'),
-            ),
-            Icon(Icons.remove_red_eye_outlined,
-                color: HexColor('54DEFC'))
-          ],
-        )),
       ],
     );
   }

@@ -44,7 +44,7 @@ class InfoHopitalDansboard extends StatelessWidget {
               children: [
                 Image.asset('assets/images/hospital.png', width: 35),
                 SizedBox(
-                  height: SizeConfig.blockSizeVertical! * 2,
+                  height: SizeConfig.blockSizeVertical! * 1,
                 ),
                 const PrimaryText(
                   text: "Hôpiataux",
@@ -52,7 +52,7 @@ class InfoHopitalDansboard extends StatelessWidget {
                   size: 16.0,
                 ),
                 SizedBox(
-                  height: SizeConfig.blockSizeVertical! * 2,
+                  height: SizeConfig.blockSizeVertical! * 1,
                 ),
                 PrimaryText(
                   text: "$compte",

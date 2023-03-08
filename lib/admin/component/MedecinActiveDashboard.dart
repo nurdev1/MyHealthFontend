@@ -28,7 +28,7 @@ class MedecinNouveau extends StatelessWidget {
               columns:  <DataColumn>[
                 DataColumn(
                   label: Text(
-                    'Nom utilisateur',
+                    'utilisateur',
                     style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),),
                 ),
                 DataColumn(
@@ -48,12 +48,12 @@ class MedecinNouveau extends StatelessWidget {
                     style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
                   ),
                 ),
-                DataColumn(
+              /*  DataColumn(
                   label: Text(
                     'date',
                     style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),
                   ),
-                ),
+                ),*/
                 DataColumn(label: Text("Action",style: GoogleFonts.openSans(textStyle: const TextStyle(fontSize: 16,)),),
                 ),
               ],
@@ -73,11 +73,11 @@ class MedecinNouveau extends StatelessWidget {
                     DataCell(Text(liste[index].email!,style: GoogleFonts.roboto(
                         textStyle: const TextStyle(fontSize: 14,)
                     ),)),
-                    DataCell(Text(liste[index].date.toString()!,style: GoogleFonts.roboto(
+                  /*  DataCell(Text(liste[index].date.toString()!,style: GoogleFonts.roboto(
                         textStyle: const TextStyle(fontSize: 14,)
-                    ),)),
+                    ),)),*/
                     DataCell(Icon(Icons.offline_pin_rounded,
-                        color: HexColor('54DEFC'))),
+                        color: HexColor('EB455F'))),
                   ],
                 ),
               ),

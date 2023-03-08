@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:masante/AllFile/global/LaisonBankend.dart';
 
+import '../page/Connexion.dart';
 import '../widget/HeaderWidget.dart';
-import 'Connexion/Connexion.dart';
 import 'inscription/Inscription.dart';
 import '../page/MotdepasseOublier.dart';
 import '../page/splash/SplashPage.dart';
@@ -250,7 +251,7 @@ class _Profil extends State<Profil> {
           children: [
             Container(
               height: 200,
-              child: HeaderWidget(100, Icons.house_rounded, false),
+              child: HeaderWidget(200, Icons.house_rounded, false),
             ),
             Container(
               alignment: Alignment.center,
@@ -281,15 +282,15 @@ class _Profil extends State<Profil> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(
-                    'Dr Mohamed Sylla',
+                   Text(
+                    '$prenomUser',
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(
-                    'Généraliste',
+                   Text(
+                    '$nomUser',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
@@ -299,7 +300,7 @@ class _Profil extends State<Profil> {
                     padding: const EdgeInsets.all(10),
                     child: Column(
                       children: <Widget>[
-                        Container(
+                        /*Container(
                           padding:
                               const EdgeInsets.only(left: 8.0, bottom: 4.0),
                           alignment: Alignment.topLeft,
@@ -312,7 +313,7 @@ class _Profil extends State<Profil> {
                             ),
                             textAlign: TextAlign.left,
                           ),
-                        ),
+                        ),*/
                         Card(
                           child: Container(
                             alignment: Alignment.topLeft,
@@ -324,28 +325,28 @@ class _Profil extends State<Profil> {
                                     ...ListTile.divideTiles(
                                       color: Colors.grey,
                                       tiles: [
-                                        const ListTile(
+                                         ListTile(
                                           contentPadding: EdgeInsets.symmetric(
                                               horizontal: 12, vertical: 4),
-                                          leading: Icon(Icons.my_location),
+                                          leading: Icon(Icons.person),
                                           title: Text("Ville"),
-                                          subtitle: Text("Bamako"),
+                                          subtitle: Text("$nom"),
                                         ),
-                                        const ListTile(
+                                         ListTile(
                                           leading: Icon(Icons.email),
                                           title: Text("Email"),
-                                          subtitle: Text("ms1@gmail.com"),
+                                          subtitle: Text("$emailUser"),
                                         ),
-                                        const ListTile(
+                                         ListTile(
                                           leading: Icon(Icons.phone),
-                                          title: Text("Phone"),
-                                          subtitle: Text("78983256"),
+                                          title: Text("téléphone"),
+                                          subtitle: Text("$userTelehone"),
                                         ),
-                                        const ListTile(
+                                        /*const ListTile(
                                           leading: Icon(Icons.person),
                                           title: Text("Hôpital"),
                                           subtitle: Text("Mère et l'Enfant."),
-                                        ),
+                                        ),*/
                                       ],
                                     ),
                                   ],

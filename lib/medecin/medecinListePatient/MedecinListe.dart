@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/medecin/consultation/consultation.dart';
+import 'package:masante/modeles/Dossier.dart';
 import 'package:masante/modeles/Medecin.dart';
 import 'package:masante/modeles/Patient.dart';
 import 'package:masante/service/Medecin.dart';
@@ -9,6 +10,7 @@ import 'package:masante/service/Patient.dart';
 
 
 import '../../Patient/MenuPatient.dart';
+import '../../service/Dossier.dart';
 import '../profile/MedecinProfil.dart';
 
 
@@ -31,7 +33,7 @@ class _MedecinListViewPageState extends State<MedecinListPatientPage> {
     double width = MediaQuery.of(context).size.width * 0.6;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Liste patient",
+        title: Text("Liste Dossier",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         elevation: 0,
@@ -83,7 +85,7 @@ class _MedecinListViewPageState extends State<MedecinListPatientPage> {
                         GestureDetector(
                           child: const CircleAvatar(
                             radius: 35,
-                            backgroundImage: AssetImage("assets/images/profil.jpg",),
+                            backgroundImage: AssetImage("assets/images/user.png",),
                           ),
                           onTap: () {
                             Navigator.push(context, MaterialPageRoute(
@@ -110,8 +112,8 @@ class _MedecinListViewPageState extends State<MedecinListPatientPage> {
 
 
     FutureBuilder(
-    future: PatientService().getPatientModel(),
-    builder: (BuildContext context, AsyncSnapshot<List<ModelPatient>> snapshot) {
+    future: DossierService().getDossierModel(),
+    builder: (BuildContext context, AsyncSnapshot<List<DossierModele>> snapshot) {
     if(snapshot.hasError) {
     return Center(child: Text('Erreur : ${snapshot.error}'),);
     } else if (snapshot.hasData) {
@@ -124,7 +126,7 @@ class _MedecinListViewPageState extends State<MedecinListPatientPage> {
       return Stack(
         children: [
 
-          listePatientClasse(img: data[index].prenom!, title: data[index].nom!, desc: data[index].email!, width: width),
+          listePatientClasse(img: data[index].nom!, title: data[index].nom!, desc: data[index].description!, width: width),
 
         ],
       );

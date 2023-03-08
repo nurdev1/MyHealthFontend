@@ -35,7 +35,7 @@ class ProfileInFo extends StatelessWidget {
                 Spacer(flex: 1)
               ])),
       /// card header
-      SizedBox(height: isMobile ? 20 : 50), LargeBoldTextBlack('Fatoumata Sy'),
+      SizedBox(height: isMobile ? 20 : 50), LargeBoldTextBlack('Fatoumata Kaloga'),
       SizedBox(height: 30),
       Row(
           mainAxisAlignment: MainAxisAlignment.center,

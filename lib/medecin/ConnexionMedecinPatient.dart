@@ -8,21 +8,21 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
 import 'package:masante/AllFile/global/LaisonBankend.dart';
 import 'package:masante/page/Choix.dart';
+import 'package:masante/page/DossierList.dart';
 import 'package:masante/service/connexion.dart';
 
 import '../Patient/home/PatientNew.dart';
 import '../admin/common/theme_helper.dart';
 import '../widget/HeaderWidget.dart';
-import 'MotdepasseOublier.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class ComptePatient extends StatefulWidget {
+  const ComptePatient({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<ComptePatient> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<ComptePatient> {
   double _headerHeight = 250;
   final _formKey = GlobalKey<FormState>();
 
@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                                 fontSize: 60,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black))),
-                    Text('connexion à votre compte',
+                    Text('Acceder compte patient',
                         style: GoogleFonts.openSans(
                             textStyle: const TextStyle(
                                 fontSize: 16,
@@ -72,11 +72,11 @@ class _LoginPageState extends State<LoginPage> {
                               child: TextFormField(
                                 controller: usernameController,
                                 validator: (value) => value!.isEmpty
-                                    ? "veillez saisir un nom"
+                                    ? "veillez saisir le code patient"
                                     : null,
                                 decoration: ThemeHelper().textInputDecoration(
-                                    'nom utilisateur',
-                                    'Entrer votre utilisateur'),
+                                    'code patient',
+                                    'Entrer le code patient'),
                               ),
                             ),
                             SizedBox(height: 30.0),
@@ -94,28 +94,6 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             SizedBox(height: 15.0),
-                            Container(
-                              margin: EdgeInsets.fromLTRB(10, 0, 10, 20),
-                              alignment: Alignment.topRight,
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            MotdepasseOublier()),
-                                  );
-                                },
-                                child: Text(
-                                  "Mot de passe oublier?",
-                                  style: GoogleFonts.openSans(
-                                      textStyle:  TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.normal,
-                                          color: HexColor('EB455F'))),
-                                ),
-                              ),
-                            ),
                             Container(
                               decoration:
                                   ThemeHelper().buttonBoxDecoration(context),
@@ -147,27 +125,6 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
 
-                            Container(
-                              margin: EdgeInsets.fromLTRB(10, 20, 10, 20),
-                              //child: Text('Don\'t have an account? Create'),
-                              child: Text.rich(TextSpan(children: [
-                                TextSpan(text: "Vous n'avez pas de compte ? "),
-                                TextSpan(
-                                  text: 'Inscription',
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ChoixPage()));
-                                    },
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Theme.of(context).accentColor),
-                                ),
-                              ])),
-                            ),
                           ],
                         )),
                   ],
@@ -180,9 +137,9 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  signIn(String username, String password) async {
+  signIn(String codePatient, String password) async {
     // SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    Map data = {'username': username, 'password': password};
+    Map data = {'codePatient': codePatient, 'password': password};
 
     print(data);
     var jsonResponse = null;
@@ -192,10 +149,10 @@ class _LoginPageState extends State<LoginPage> {
       'Accept': '*/*'
     };
 
-    final msg = jsonEncode({"username": username, "password": password});
+    final msg = jsonEncode({"codePatient": codePatient, "password": password});
 
     var response = await http.post(
-        Uri.parse('http://10.0.2.2:8082/api/auth/signin'),
+        Uri.parse('http://10.0.2.2:8082/patient/signin'),
         body: msg,
         headers: headers);
     jsonResponse = json.decode(response.body);
@@ -227,21 +184,9 @@ class _LoginPageState extends State<LoginPage> {
       print(nomUser);
       print(prenomUser);
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (BuildContext context) => PatientFirst()),
+          MaterialPageRoute(builder: (BuildContext context) => DossierList()),
           (Route<dynamic> route) => false);
 
-      // if(){
-      //   Navigator.of(context).pushAndRemoveUntil(
-      //       MaterialPageRoute(builder: (BuildContext context) => PatientFirst()),
-      //           (Route<dynamic> route) => false);
-      //
-      // }
-      // else{
-      //
-      //   Navigator.of(context).pushAndRemoveUntil(
-      //       MaterialPageRoute(builder: (BuildContext context) => MedecinAccueil()),
-      //           (Route<dynamic> route) => false);
-      // }
     } else {
       setState(() {});
       // sharedPreferences.setBool("isLoggedIn", false);

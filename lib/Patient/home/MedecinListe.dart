@@ -62,9 +62,9 @@ class MedecinListe extends StatelessWidget {
                                       ),
                                       //child: Image.asset("assets/images/docteur${index + 1}.jpg",
                                       child: Image.asset(
-                                        "assets/images/profil.jpg",
-                                        height: 150,
-                                        width: 150,
+                                        "assets/images/me.png",
+                                        height: 70,
+                                        width: 70,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -87,7 +87,7 @@ class MedecinListe extends StatelessWidget {
                                           color: HexColor("54DEFC")),
                                     ),
                                     Text(
-                                      data[index].specialite!,
+                                      data[index].prenom!,
                                       style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w500,
@@ -95,7 +95,7 @@ class MedecinListe extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      data[index].hopital!.nom!,
+                                      data[index].specialite!,
                                       style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w500,

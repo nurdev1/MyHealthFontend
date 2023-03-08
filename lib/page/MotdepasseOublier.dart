@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 
-import '../Patient/Connexion/Connexion.dart';
 import '../admin/common/theme_helper.dart';
 import '../widget/HeaderWidget.dart';
 import 'Connexion.dart';
@@ -21,7 +21,7 @@ class _MotdepasseOublier extends State<MotdepasseOublier> {
 
   @override
   Widget build(BuildContext context) {
-    double _headerHeight = 300;
+    double _headerHeight = 250;
     return Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
@@ -97,7 +97,14 @@ class _MotdepasseOublier extends State<MotdepasseOublier> {
                             Container(
                               decoration: ThemeHelper().buttonBoxDecoration(context),
                               child: ElevatedButton(
-                                style: ThemeHelper().buttonStyle(),
+                                style:  ElevatedButton.styleFrom(
+                                  primary: HexColor('#54DEFC'),
+                                  textStyle: const TextStyle(fontSize: 25),
+                                  padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                                  ),
+                                ),
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(
                                       40, 10, 40, 10),

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import '../Patient/MenuPatient.dart';
+import '../Patient/profile/profile_page.dart';
 import 'PatientDetails.dart';
 
 
@@ -19,10 +21,60 @@ class _PatientListePageState extends State<PatientListePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        /*  title: Text("Profile Page",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),*/
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.white),
+        flexibleSpace:Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[Theme.of(context).primaryColor, Theme.of(context).accentColor,]
+              )
+          ),
+        ),
+        actions: [
+          Container(
+            margin: EdgeInsets.only( top: 16, right: 16,),
+            child: Stack(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Icon(Icons.notifications),
+                        GestureDetector(
+                          child: const CircleAvatar(
+                            radius: 30,
+                            backgroundImage: AssetImage("assets/images/me.png",),
+                          ),
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => PatientProfilePage()
+                            )
+                            );
+                          },
+                        ),
+                      ],
+                    )
+
+                  ],
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+      drawer: PatientMenu(),
       backgroundColor: Colors.white,
       body: ListView(
         children: <Widget> [
-          Row(
+         /* Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget> [
               IconButton(
@@ -32,8 +84,8 @@ class _PatientListePageState extends State<PatientListePage> {
                   onPressed: null, icon: Icon(Icons.menu,color: Colors.black,)
               ),
             ],
-          ),
-          Padding(padding: EdgeInsets.only(left: 15.0, right: 15.0),
+          ),*/
+         /* Padding(padding: EdgeInsets.only(left: 15.0, right: 15.0),
           child: Text(
             'Liste Patient',
             style: GoogleFonts.poppins(
@@ -42,8 +94,8 @@ class _PatientListePageState extends State<PatientListePage> {
             ),
 
           ),
-          ),
-          Padding(padding: EdgeInsets.only(left: 15.0, right: 15.0),
+          ),*/
+         /* Padding(padding: EdgeInsets.only(left: 15.0, right: 15.0),
           child: TextField(
             decoration: InputDecoration(
               prefixIcon: IconButton(
@@ -60,7 +112,7 @@ class _PatientListePageState extends State<PatientListePage> {
               ),
             ),
           ),
-          ),
+          ),*/
           Container(
             height: MediaQuery.of(context).size.height - 200.bitLength,
             child: GridView.count(

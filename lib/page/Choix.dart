@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:masante/page/Connexion.dart';
 
-import '../Patient/Connexion/Connexion.dart';
+
 import '../Patient/inscription/Inscription.dart';
 import '../medecin/Inscription/InscriptionMedecin.dart';
 import '../widget/EntetePage.dart';
@@ -215,7 +215,8 @@ class _ChoixState extends State<ChoixPage> {
                 Text('Patient', style: GoogleFonts.openSans(
                     textStyle:   TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.w500,color:HexColor('EB455F'))
+                        fontWeight: FontWeight.w500,color:HexColor('EB455F')
+                    )
                 )
                 ),
 

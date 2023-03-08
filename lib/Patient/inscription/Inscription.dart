@@ -293,7 +293,7 @@ class _Inscription extends State<Inscription> {
                                   await QuickAlert.show(
                                     context: context,
                                     type: QuickAlertType.success,
-                                    text: "Félicitations, votre inscription a été effectuée avec succès !!.",
+                                    text: "Félicitations , votre inscription a été validée avec succès !!.",
                                   );
                                   Navigator.push(context, MaterialPageRoute(
                                       builder: (context) => PatientFirst()

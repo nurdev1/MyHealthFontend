@@ -45,7 +45,7 @@ class DossierList extends StatelessWidget {
                         GestureDetector(
                           child: const CircleAvatar(
                             radius: 35,
-                            backgroundImage: AssetImage("assets/images/profil.jpg",),
+                            backgroundImage: AssetImage("assets/images/user.png",),
                           ),
                           onTap: () {
                             Navigator.push(context, MaterialPageRoute(
@@ -73,8 +73,8 @@ class DossierList extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text('Liste Dossier Médecal',style: GoogleFonts.openSans(
-                            textStyle:  TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: HexColor('#EB455F'))
+                        Text('Liste information Médical',style: GoogleFonts.openSans(
+                            textStyle:  TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: HexColor('#EB455F'))
                         ),
                         ),
                         Container(
@@ -120,7 +120,7 @@ class DossierList extends StatelessWidget {
                                 SizedBox(height: 40),
                                 TypeDossierWidget(),
                                 //Spacer(),
-                                SizedBox(height: 40),
+                             /*   SizedBox(height: 40),
                                 Expanded(
                                     child: TextField(
                                       decoration: InputDecoration(
@@ -148,7 +148,7 @@ class DossierList extends StatelessWidget {
                                           )
                                       ),
                                     )
-                                ),
+                                ),*/
 
                               ],
                             ),

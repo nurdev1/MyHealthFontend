@@ -26,9 +26,17 @@ class _PatientProfilePageState extends State<PatientProfilePage> {
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [
-          ProfileWidget(
-            imagePath: user.imagePath,
-            onClicked: () async {},
+          GestureDetector(
+            child: const CircleAvatar(
+              radius: 30,
+              backgroundImage: AssetImage("assets/images/user.png",),
+            ),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => PatientProfilePage()
+              )
+              );
+            },
           ),
           const SizedBox(height: 24),
           buildName(user),
@@ -46,12 +54,12 @@ class _PatientProfilePageState extends State<PatientProfilePage> {
   Widget buildName(UsersPatient user) => Column(
         children: [
           Text(
-            '$nomUser',
+           ' $nomUser' ,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
           ),
           const SizedBox(height: 4),
           Text(
-              '$prenomUser',
+            '$prenomUser',
             style: TextStyle(color: Colors.grey),
           )
         ],
@@ -63,20 +71,25 @@ class _PatientProfilePageState extends State<PatientProfilePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Telethone',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              '$userTelehone',
+            const Text(
+              'Nom utilisateur',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             Text(
-              user.lovalisation,
+              '$nom',
               style: TextStyle(fontSize: 16, height: 1.4),
             ),
             SizedBox(height: 16,),
+            Text(
+              'Telethone',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              '$userTelehone',
+              style: TextStyle(fontSize: 16, height: 1.4),
+            ),
             const Text(
               'email',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -86,6 +99,7 @@ class _PatientProfilePageState extends State<PatientProfilePage> {
               '$emailUser',
               style: TextStyle(fontSize: 16, height: 1.4),
             ),
+            SizedBox(height: 16,),
             SizedBox(height: 30,),
            Row(
              crossAxisAlignment: CrossAxisAlignment.center,
@@ -93,14 +107,14 @@ class _PatientProfilePageState extends State<PatientProfilePage> {
              children: [
                IconButton(
                  iconSize: 45,
-                 icon:  Icon(Icons.edit,color: HexColor('#54DEFC'),),
+                 icon: const Icon(Icons.edit,color: Colors.blue,),
                  onPressed: () {
                    // ...
                  },
                ),
                IconButton(
                  iconSize: 45,
-                 icon:  Icon(Icons.delete,color: HexColor('#EB455F')),
+                 icon: const Icon(Icons.delete,color: Colors.blue),
                  onPressed: () {
                    // ...
                  },
